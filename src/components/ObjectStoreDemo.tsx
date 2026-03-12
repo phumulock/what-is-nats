@@ -154,7 +154,7 @@ export function ObjectStoreDemo() {
       </div>
 
       {/* Status */}
-      <div className="p-3 text-center text-sm text-gray-500 border-t border-border">
+      <div className="p-3 pt-6 text-center text-sm min-h-10 text-gray-500 border-t border-border">
         {step === 0 && "Large file ready to store..."}
         {step === 1 && (
           <span className="text-accent-blue">

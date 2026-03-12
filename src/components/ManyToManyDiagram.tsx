@@ -176,7 +176,7 @@ export function ManyToManyDiagram() {
       </div>
 
       {/* Status text */}
-      <div className="mt-4 text-center text-sm text-gray-500 min-h-10">
+      <div className="mt-6 text-center text-sm min-h-10 text-gray-500">
         <AnimatePresence mode="wait">
           <motion.div
             key={step}

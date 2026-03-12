@@ -92,7 +92,7 @@ export function KVStoreDemo() {
       </div>
 
       {/* Status */}
-      <div className="p-3 text-center text-sm text-gray-500">
+      <div className="p-3 pt-6 text-center text-sm min-h-10 text-gray-500">
         {step === 0 && "KV store with 3 keys..."}
         {step === 1 && (
           <span className="text-accent-green">

@@ -88,7 +88,7 @@ export function NoRespondersDiagram() {
         </div>
       </div>
 
-      <div className="mt-4 text-center text-sm text-gray-500">
+      <div className="mt-6 text-center text-sm min-h-10 text-gray-500">
         {step === 0 && "Requester sends a request to a subject"}
         {step === 1 && "NATS checks for subscribers on that subject..."}
         {step === 2 && "No one is listening — NATS responds immediately"}

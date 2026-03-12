@@ -84,7 +84,7 @@ export function ClusterRoutingDiagram() {
       </div>
 
       {/* Status */}
-      <div className="mt-4 text-center text-sm text-gray-500">
+      <div className="mt-6 text-center text-sm min-h-10 text-gray-500">
         {step === 0 && "Publisher sends message in Tokyo..."}
         {step === 1 && "Local server receives message..."}
         {step === 2 && "Message routes to London cluster..."}

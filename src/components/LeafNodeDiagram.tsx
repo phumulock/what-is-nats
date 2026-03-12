@@ -213,7 +213,7 @@ export function LeafNodeDiagram() {
       </svg>
 
       {/* Status */}
-      <div className="mt-3 text-center text-sm text-gray-500 h-5">
+      <div className="mt-6 text-center text-sm min-h-10 text-gray-500">
         {step === 0 && "Device publishes sensor data at the factory..."}
         {step === 1 && "Leaf node forwards upstream to cluster..."}
         {step === 2 && "Cluster receives and routes to subscribers..."}

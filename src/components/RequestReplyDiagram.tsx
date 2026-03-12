@@ -78,7 +78,7 @@ export function RequestReplyDiagram() {
         </div>
       </div>
 
-      <div className="mt-4 text-center text-sm text-gray-500">
+      <div className="mt-6 text-center text-sm min-h-10 text-gray-500">
         {step === 0 && "Requester creates unique inbox (_INBOX.abc)"}
         {step === 1 && "Request sent with reply-to: _INBOX.abc"}
         {step === 2 && "Responder receives request, processes..."}

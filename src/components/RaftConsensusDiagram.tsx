@@ -211,7 +211,7 @@ export function RaftConsensusDiagram() {
       </div>
 
       {/* Status */}
-      <div className="mt-4 text-center text-sm text-gray-500 h-5">
+      <div className="mt-6 text-center text-sm min-h-10 text-gray-500">
         {step === 0 && "Stream ORDERS replicated across 3 servers (R3)..."}
         {step === 1 && "nats-2\u2019s election timer fires \u2014 becomes candidate..."}
         {step === 2 && "Requests votes from peers..."}

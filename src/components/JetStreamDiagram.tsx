@@ -258,7 +258,7 @@ export function JetStreamDiagram() {
       <CursorView c1Pos={slide.c1Pos} c2Pos={slide.c2Pos} />
 
       {/* Status text */}
-      <div className="mt-6 text-center text-sm h-10">
+      <div className="mt-6 text-center text-sm min-h-10">
         <motion.span
           key={step}
           initial={{ opacity: 0 }}

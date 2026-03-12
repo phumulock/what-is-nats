@@ -63,7 +63,7 @@ export function QueueGroupDiagram() {
         </div>
       </div>
 
-      <div className="mt-4 text-center text-sm text-gray-500">
+      <div className="mt-6 text-center text-sm min-h-10 text-gray-500">
         Each message goes to exactly one worker in the queue group
       </div>
 

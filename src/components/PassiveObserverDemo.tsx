@@ -191,7 +191,7 @@ export function PassiveObserverDemo() {
       </div>
 
       {/* Status text */}
-      <div className="mt-4 text-center text-sm min-h-10">
+      <div className="mt-6 text-center text-sm min-h-10">
         <AnimatePresence mode="wait">
           <motion.div
             key={step}

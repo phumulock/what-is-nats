@@ -150,7 +150,7 @@ export function TcpDiagram() {
       </motion.div>
 
       {/* Status text */}
-      <div className="mt-4 text-center text-sm min-h-[20px]">
+      <div className="mt-6 text-center text-sm min-h-10">
         {step === 0 && (
           <span className="text-gray-500">TCP was built for reliable communication...</span>
         )}

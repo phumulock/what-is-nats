@@ -175,7 +175,7 @@ export function AccountIsolationDiagram() {
       </div>
 
       {/* Status */}
-      <div className="px-6 pb-2 text-center text-sm min-h-[2.5rem] flex items-center justify-center">
+      <div className="px-6 pb-2 pt-6 text-center text-sm min-h-10 flex items-center justify-center">
         {step === 0 && (
           <span className="text-gray-500">
             Two accounts on the same NATS server...

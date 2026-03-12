@@ -482,7 +482,7 @@ export function SuperclusterDiagram() {
       </div>
 
       {/* Status text with colored accents */}
-      <div className="mt-3 text-center text-sm text-gray-500 min-h-[2.5rem] flex items-center justify-center">
+      <div className="mt-6 text-center text-sm min-h-10 text-gray-500 flex items-center justify-center">
         {step === 0 && (
           <span>
             <span style={{ color: COLORS.green }}>Publisher</span> sends to{" "}

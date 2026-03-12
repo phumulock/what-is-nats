@@ -146,7 +146,7 @@ export function WildcardMatcher() {
         </div>
 
         {/* Status text */}
-        <div className="mt-3 text-sm text-gray-500">
+        <div className="mt-6 text-sm min-h-10 text-gray-500">
           {!isManual && (
             <motion.span
               key={step}
