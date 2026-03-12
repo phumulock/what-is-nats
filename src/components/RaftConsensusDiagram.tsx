@@ -41,172 +41,194 @@ export function RaftConsensusDiagram() {
   const { step, isPlaying, play, pause, next, prev, totalSteps, containerProps } =
     useDiagramPlayback(8, 2500);
 
-  return (
-    <div className="border border-border rounded-lg p-5 bg-surface" {...containerProps}>
-      <div className="flex items-center gap-3">
-        {/* Publisher */}
-        <div className="flex flex-col items-center shrink-0 w-16">
-          <motion.div
-            animate={{
-              borderColor: step === 4 || step === 7 ? COLORS.green : COLORS.border,
-              backgroundColor: step === 4 ? `${COLORS.green}10` : step === 7 ? `${COLORS.green}10` : "rgba(0,0,0,0)",
+  const raftSvg = (fontSize: number, nodeRadius: number) => (
+    <svg viewBox="0 0 340 170" className="w-full" style={{ maxHeight: 170 }}>
+      {/* Route lines between servers */}
+      {ROUTES.map(([from, to], i) => (
+        <motion.line
+          key={i}
+          x1={NODES[from].cx}
+          y1={NODES[from].cy}
+          x2={NODES[to].cx}
+          y2={NODES[to].cy}
+          strokeDasharray="4 4"
+          animate={{
+            stroke: step >= 3 ? COLORS.green : COLORS.border,
+            strokeOpacity: step >= 3 ? 0.4 : 0.6,
+            strokeWidth: 1,
+          }}
+        />
+      ))}
+
+      {/* Step 2: Vote request arrows from nats-2 to peers */}
+      {step === 2 &&
+        [0, 2].map((to, i) => (
+          <motion.circle
+            key={`vote-${to}`}
+            r={4}
+            fill={COLORS.yellow}
+            initial={{
+              cx: NODES[1].cx,
+              cy: NODES[1].cy,
+              opacity: 0,
             }}
-            className="border rounded-lg px-2 py-1.5 text-center"
-          >
-            <div className="text-[10px] text-gray-400">Publisher</div>
-          </motion.div>
+            animate={{
+              cx: NODES[to].cx,
+              cy: NODES[to].cy,
+              opacity: 1,
+            }}
+            transition={{ duration: 0.8, delay: i * 0.15 }}
+          />
+        ))}
+
+      {/* Step 4: Publisher sends message to leader (nats-2) */}
+      {step === 4 && (
+        <motion.circle
+          r={5}
+          fill={COLORS.green}
+          initial={{ cx: 20, cy: 140, opacity: 0 }}
+          animate={{ cx: NODES[1].cx, cy: NODES[1].cy, opacity: 1 }}
+          transition={{ duration: 0.8 }}
+        />
+      )}
+
+      {/* Step 5: Leader replicates to followers */}
+      {step === 5 &&
+        [0, 2].map((to, i) => (
+          <motion.circle
+            key={`rep-${to}`}
+            r={5}
+            fill={COLORS.green}
+            initial={{
+              cx: NODES[1].cx,
+              cy: NODES[1].cy,
+              opacity: 0,
+            }}
+            animate={{
+              cx: NODES[to].cx,
+              cy: NODES[to].cy,
+              opacity: 1,
+            }}
+            transition={{ duration: 0.8, delay: i * 0.2 }}
+          />
+        ))}
+
+      {/* Step 6: ACK dot from nats-1 back to leader */}
+      {step === 6 && (
+        <motion.circle
+          r={4}
+          fill={COLORS.blue}
+          initial={{ cx: NODES[0].cx, cy: NODES[0].cy, opacity: 0 }}
+          animate={{ cx: NODES[1].cx, cy: NODES[1].cy, opacity: 1 }}
+          transition={{ duration: 0.6 }}
+        />
+      )}
+
+      {/* Step 7: ACK back to publisher */}
+      {step === 7 && (
+        <motion.circle
+          r={5}
+          fill={COLORS.green}
+          initial={{ cx: NODES[1].cx, cy: NODES[1].cy, opacity: 0 }}
+          animate={{ cx: 20, cy: 140, opacity: 1 }}
+          transition={{ duration: 0.8 }}
+        />
+      )}
+
+      {/* Server nodes */}
+      {NODES.map((node, i) => {
+        const role = getRole(step, i);
+        const stroke = getNodeStroke(step, i);
+        const isHighlighted =
+          (step === 1 && i === 1) ||
+          (step === 3 && i === 1);
+
+        return (
+          <g key={node.id}>
+            <motion.circle
+              cx={node.cx}
+              cy={node.cy}
+              r={nodeRadius}
+              fill={COLORS.terminalBg}
+              animate={{
+                stroke,
+                strokeWidth: isHighlighted ? 2.5 : 1.5,
+                fill: isHighlighted ? `${stroke}12` : COLORS.terminalBg,
+              }}
+            />
+            <text
+              x={node.cx}
+              y={node.cy - 4}
+              textAnchor="middle"
+              dominantBaseline="middle"
+              fill={step === 0 ? COLORS.textQuaternary : stroke}
+              fontSize={fontSize}
+              fontFamily="monospace"
+            >
+              {node.id}
+            </text>
+            {step >= 1 && (
+              <text
+                x={node.cx}
+                y={node.cy + 10}
+                textAnchor="middle"
+                dominantBaseline="middle"
+                fill={getRoleColor(role)}
+                fontSize={fontSize - 2}
+                fontFamily="monospace"
+                opacity={0.8}
+              >
+                {role}
+              </text>
+            )}
+          </g>
+        );
+      })}
+    </svg>
+  );
+
+  const publisherBox = (
+    <motion.div
+      animate={{
+        borderColor: step === 4 || step === 7 ? COLORS.green : COLORS.border,
+        backgroundColor: step === 4 ? `${COLORS.green}10` : step === 7 ? `${COLORS.green}10` : "rgba(0,0,0,0)",
+      }}
+      className="border rounded-lg px-2 py-1.5 text-center"
+    >
+      <div className="text-[10px] text-gray-400">Publisher</div>
+    </motion.div>
+  );
+
+  return (
+    <div className="border border-border rounded-lg p-4 md:p-5 bg-surface" {...containerProps}>
+      {/* Mobile: publisher above diagram */}
+      <div className="flex md:hidden items-center justify-center gap-4 mb-3">
+        {publisherBox}
+      </div>
+
+      {/* Desktop: horizontal with side publisher */}
+      <div className="hidden md:flex items-center gap-3">
+        <div className="flex flex-col items-center shrink-0 w-16">
+          {publisherBox}
         </div>
 
-        {/* Raft Group */}
         <div className="flex-1">
           <div className="border border-dashed border-accent-green/25 rounded-lg bg-[#0f0f0f] p-3">
             <div className="text-[9px] text-accent-green/50 text-center mb-1 tracking-widest font-mono">
               RAFT GROUP — STREAM &quot;ORDERS&quot; (R3)
             </div>
-            <svg viewBox="0 0 340 170" className="w-full" style={{ maxHeight: 170 }}>
-              {/* Route lines between servers */}
-              {ROUTES.map(([from, to], i) => (
-                <motion.line
-                  key={i}
-                  x1={NODES[from].cx}
-                  y1={NODES[from].cy}
-                  x2={NODES[to].cx}
-                  y2={NODES[to].cy}
-                  strokeDasharray="4 4"
-                  animate={{
-                    stroke: step >= 3 ? COLORS.green : COLORS.border,
-                    strokeOpacity: step >= 3 ? 0.4 : 0.6,
-                    strokeWidth: 1,
-                  }}
-                />
-              ))}
-
-              {/* Step 2: Vote request arrows from nats-2 to peers */}
-              {step === 2 &&
-                [0, 2].map((to, i) => (
-                  <motion.circle
-                    key={`vote-${to}`}
-                    r={4}
-                    fill={COLORS.yellow}
-                    initial={{
-                      cx: NODES[1].cx,
-                      cy: NODES[1].cy,
-                      opacity: 0,
-                    }}
-                    animate={{
-                      cx: NODES[to].cx,
-                      cy: NODES[to].cy,
-                      opacity: 1,
-                    }}
-                    transition={{ duration: 0.8, delay: i * 0.15 }}
-                  />
-                ))}
-
-              {/* Step 4: Publisher sends message to leader (nats-2) */}
-              {step === 4 && (
-                <motion.circle
-                  r={5}
-                  fill={COLORS.green}
-                  initial={{ cx: 20, cy: 140, opacity: 0 }}
-                  animate={{ cx: NODES[1].cx, cy: NODES[1].cy, opacity: 1 }}
-                  transition={{ duration: 0.8 }}
-                />
-              )}
-
-              {/* Step 5: Leader replicates to followers */}
-              {step === 5 &&
-                [0, 2].map((to, i) => (
-                  <motion.circle
-                    key={`rep-${to}`}
-                    r={5}
-                    fill={COLORS.green}
-                    initial={{
-                      cx: NODES[1].cx,
-                      cy: NODES[1].cy,
-                      opacity: 0,
-                    }}
-                    animate={{
-                      cx: NODES[to].cx,
-                      cy: NODES[to].cy,
-                      opacity: 1,
-                    }}
-                    transition={{ duration: 0.8, delay: i * 0.2 }}
-                  />
-                ))}
-
-              {/* Step 6: ACK dot from nats-1 back to leader */}
-              {step === 6 && (
-                <motion.circle
-                  r={4}
-                  fill={COLORS.blue}
-                  initial={{ cx: NODES[0].cx, cy: NODES[0].cy, opacity: 0 }}
-                  animate={{ cx: NODES[1].cx, cy: NODES[1].cy, opacity: 1 }}
-                  transition={{ duration: 0.6 }}
-                />
-              )}
-
-              {/* Step 7: ACK back to publisher */}
-              {step === 7 && (
-                <motion.circle
-                  r={5}
-                  fill={COLORS.green}
-                  initial={{ cx: NODES[1].cx, cy: NODES[1].cy, opacity: 0 }}
-                  animate={{ cx: 20, cy: 140, opacity: 1 }}
-                  transition={{ duration: 0.8 }}
-                />
-              )}
-
-              {/* Server nodes */}
-              {NODES.map((node, i) => {
-                const role = getRole(step, i);
-                const stroke = getNodeStroke(step, i);
-                const isHighlighted =
-                  (step === 1 && i === 1) ||
-                  (step === 3 && i === 1);
-
-                return (
-                  <g key={node.id}>
-                    <motion.circle
-                      cx={node.cx}
-                      cy={node.cy}
-                      r={22}
-                      fill={COLORS.terminalBg}
-                      animate={{
-                        stroke,
-                        strokeWidth: isHighlighted ? 2.5 : 1.5,
-                        fill: isHighlighted ? `${stroke}12` : COLORS.terminalBg,
-                      }}
-                    />
-                    <text
-                      x={node.cx}
-                      y={node.cy - 4}
-                      textAnchor="middle"
-                      dominantBaseline="middle"
-                      fill={step === 0 ? COLORS.textQuaternary : stroke}
-                      fontSize={9}
-                      fontFamily="monospace"
-                    >
-                      {node.id}
-                    </text>
-                    {step >= 1 && (
-                      <text
-                        x={node.cx}
-                        y={node.cy + 10}
-                        textAnchor="middle"
-                        dominantBaseline="middle"
-                        fill={getRoleColor(role)}
-                        fontSize={7}
-                        fontFamily="monospace"
-                        opacity={0.8}
-                      >
-                        {role}
-                      </text>
-                    )}
-                  </g>
-                );
-              })}
-            </svg>
+            {raftSvg(9, 22)}
           </div>
+        </div>
+      </div>
+
+      {/* Mobile: full-width SVG */}
+      <div className="md:hidden">
+        <div className="border border-dashed border-accent-green/25 rounded-lg bg-[#0f0f0f] p-2">
+          <div className="text-[9px] text-accent-green/50 text-center mb-1 tracking-widest font-mono">
+            RAFT GROUP — STREAM &quot;ORDERS&quot; (R3)
+          </div>
+          {raftSvg(11, 24)}
         </div>
       </div>
 

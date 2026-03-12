@@ -18,8 +18,8 @@ export function PassiveObserverDemo() {
   const sensorActive = tempValue !== null;
 
   return (
-    <div className="border border-border rounded-lg p-6 bg-surface" {...containerProps}>
-      <div className="flex items-start justify-between gap-4">
+    <div className="border border-border rounded-lg p-4 md:p-6 bg-surface" {...containerProps}>
+      <div className="flex flex-col md:flex-row items-center md:items-start justify-between gap-3 md:gap-4">
         {/* Publisher: Sensor */}
         <div className="flex flex-col items-center gap-2 shrink-0">
           <motion.div
@@ -34,8 +34,29 @@ export function PassiveObserverDemo() {
           <span className="text-xs text-gray-500">Publisher</span>
         </div>
 
-        {/* Center: message lanes + NATS */}
-        <div className="flex-1 flex flex-col items-center gap-2">
+        {/* Mobile: vertical incoming message */}
+        <div className="flex md:hidden items-center justify-center w-8 h-10 relative">
+          <div className="absolute top-0 bottom-0 left-1/2 w-px bg-border" />
+          <AnimatePresence mode="wait">
+            {tempValue && (
+              <motion.div
+                key={`msg-in-v-${step}`}
+                initial={{ y: 0, opacity: 0 }}
+                animate={{ y: 20, opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.5 }}
+                className="absolute top-0 z-10"
+              >
+                <div className="px-2 py-0.5 bg-accent-green text-black text-[10px] rounded whitespace-nowrap">
+                  temp: {tempValue}
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </div>
+
+        {/* Center: message lanes + NATS (desktop) */}
+        <div className="hidden md:flex flex-1 flex-col items-center gap-2">
           {/* Incoming message lane */}
           <div className="relative w-full h-8">
             <AnimatePresence mode="wait">
@@ -57,7 +78,7 @@ export function PassiveObserverDemo() {
           </div>
 
           {/* NATS server + ghosted labels */}
-          <div className="relative mb-8 sm:mb-0">
+          <div className="relative">
             <motion.div
               animate={{
                 boxShadow: sensorActive
@@ -76,7 +97,7 @@ export function PassiveObserverDemo() {
                   initial={{ opacity: 0, y: 4 }}
                   animate={{ opacity: 0.4 }}
                   exit={{ opacity: 0 }}
-                  className="absolute left-1/2 -translate-x-1/2 -bottom-7 flex gap-1 sm:flex-col sm:left-auto sm:-left-16 sm:top-1 sm:bottom-auto sm:translate-x-0"
+                  className="absolute left-auto -left-16 top-1 translate-x-0 flex flex-col gap-1"
                 >
                   <div
                     className="text-xs border border-dashed rounded px-1.5 py-0.5 line-through whitespace-nowrap"
@@ -98,7 +119,6 @@ export function PassiveObserverDemo() {
           {/* Outgoing message lanes */}
           <div className="relative w-full h-8">
             <AnimatePresence mode="wait">
-              {/* Message delivered to active subscribers */}
               {(step === 1 || step === 3 || step === 4) && (
                 <motion.div
                   key={`msg-out-${step}`}
@@ -131,8 +151,67 @@ export function PassiveObserverDemo() {
           </div>
         </div>
 
+        {/* Mobile: NATS circle */}
+        <div className="flex md:hidden flex-col items-center gap-2 relative">
+          <motion.div
+            animate={{
+              boxShadow: sensorActive
+                ? "0 0 16px rgba(74, 222, 128, 0.3)"
+                : "0 0 0px rgba(0,0,0,0)",
+            }}
+            className="w-20 h-20 rounded-full bg-terminal-bg border-2 border-accent-green flex items-center justify-center"
+          >
+            <span className="text-accent-green text-xs font-bold">NATS</span>
+          </motion.div>
+          {/* Ghosted labels on mobile */}
+          <AnimatePresence>
+            {step >= 1 && (
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 0.4 }}
+                exit={{ opacity: 0 }}
+                className="flex gap-1"
+              >
+                <div
+                  className="text-xs border border-dashed rounded px-1.5 py-0.5 line-through whitespace-nowrap"
+                  style={{ borderColor: COLORS.red, color: COLORS.red }}
+                >
+                  No ACK
+                </div>
+                <div
+                  className="text-xs border border-dashed rounded px-1.5 py-0.5 line-through whitespace-nowrap"
+                  style={{ borderColor: COLORS.red, color: COLORS.red }}
+                >
+                  No disk
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </div>
+
+        {/* Mobile: vertical outgoing arrow */}
+        <div className="flex md:hidden items-center justify-center w-8 h-10 relative">
+          <div className="absolute top-0 bottom-0 left-1/2 w-px bg-border" />
+          <AnimatePresence mode="wait">
+            {(step === 1 || step === 3 || step === 4) && (
+              <motion.div
+                key={`msg-out-v-${step}`}
+                initial={{ y: 0, opacity: 0 }}
+                animate={{ y: 20, opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.5 }}
+                className="absolute top-0 z-10"
+              >
+                <div className="px-1.5 py-0.5 bg-accent-green text-black rounded font-bold" style={{ fontSize: "0.6rem" }}>
+                  MSG
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </div>
+
         {/* Subscribers */}
-        <div className="flex flex-col gap-3 shrink-0">
+        <div className="flex flex-row md:flex-col gap-3 shrink-0">
           {/* Dashboard */}
           <div className="flex flex-col items-center gap-1">
             <motion.div

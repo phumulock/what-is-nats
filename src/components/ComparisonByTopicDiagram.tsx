@@ -66,12 +66,12 @@ export function ComparisonByTopicDiagram({
       {...containerProps}
     >
       {/* Category tabs */}
-      <div className="flex border-b border-border">
+      <div className="flex border-b border-border overflow-x-auto">
         {comparisons.map((comp, i) => (
           <button
             key={comp.category}
             onClick={() => goTo(i)}
-            className={`flex-1 px-2 py-2.5 text-[11px] font-mono transition-colors cursor-pointer ${
+            className={`flex-1 min-w-0 px-1 md:px-2 py-2.5 text-[9px] md:text-[11px] font-mono transition-colors cursor-pointer ${
               step === i
                 ? "bg-accent-green/15 text-accent-green border-b-2 border-accent-green"
                 : "bg-transparent text-gray-500 hover:text-gray-300"

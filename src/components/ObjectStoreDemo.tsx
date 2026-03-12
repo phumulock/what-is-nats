@@ -11,15 +11,10 @@ export function ObjectStoreDemo() {
   const { step, isPlaying, play, pause, next, prev, totalSteps, containerProps } =
     useDiagramPlayback(4, 2500);
 
-  // step 0: file shown, ready to store
-  // step 1: file splits into chunks
-  // step 2: chunks stored in JetStream stream
-  // step 3: reader reassembles chunks back into file
-
   return (
     <div className="border border-border rounded-lg overflow-hidden" {...containerProps}>
       <div className="p-4">
-        <div className="flex items-center justify-between gap-4">
+        <div className="flex flex-col md:flex-row items-center justify-between gap-3 md:gap-4">
           {/* Source file */}
           <div className="flex flex-col items-center gap-2 min-w-[80px]">
             <div className="text-xs text-gray-500 mb-1">FILE</div>
@@ -48,8 +43,18 @@ export function ObjectStoreDemo() {
             </motion.div>
           </div>
 
-          {/* Arrow / split indicator */}
-          <div className="flex flex-col items-center gap-1">
+          {/* Mobile: vertical arrow */}
+          <div className="flex md:hidden items-center justify-center w-8 h-8 relative">
+            <motion.div
+              animate={{ opacity: step >= 1 ? 1 : 0.3 }}
+              className="text-gray-500 text-lg"
+            >
+              {step <= 2 ? "↓" : "↑"}
+            </motion.div>
+          </div>
+
+          {/* Desktop: horizontal arrow */}
+          <div className="hidden md:flex flex-col items-center gap-1">
             <motion.div
               animate={{ opacity: step >= 1 ? 1 : 0.3 }}
               className="text-gray-500 text-lg"
@@ -65,7 +70,7 @@ export function ObjectStoreDemo() {
           </div>
 
           {/* Chunks / JetStream stream */}
-          <div className="flex-1 max-w-[240px]">
+          <div className="flex-1 w-full md:w-auto max-w-[240px]">
             <div className="text-xs text-gray-500 mb-1 text-center">
               JETSTREAM STREAM
             </div>
@@ -101,8 +106,18 @@ export function ObjectStoreDemo() {
             </div>
           </div>
 
-          {/* Arrow */}
-          <div className="flex flex-col items-center gap-1">
+          {/* Mobile: vertical arrow */}
+          <div className="flex md:hidden items-center justify-center w-8 h-8 relative">
+            <motion.div
+              animate={{ opacity: step >= 3 ? 1 : 0.3 }}
+              className="text-gray-500 text-lg"
+            >
+              ↓
+            </motion.div>
+          </div>
+
+          {/* Desktop: horizontal arrow */}
+          <div className="hidden md:flex flex-col items-center gap-1">
             <motion.div
               animate={{ opacity: step >= 3 ? 1 : 0.3 }}
               className="text-gray-500 text-lg"

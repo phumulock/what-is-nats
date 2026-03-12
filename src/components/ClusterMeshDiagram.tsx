@@ -34,111 +34,138 @@ export function ClusterMeshDiagram() {
     return false;
   };
 
+  const clusterSvg = (fontSize: number, nodeRadius: number) => (
+    <svg viewBox="0 0 280 160" className="w-full" style={{ maxHeight: 160 }}>
+      {/* Route lines */}
+      {ROUTES.map(([from, to], i) => {
+        const active = step === 2 && from === 0;
+        return (
+          <motion.line
+            key={i}
+            x1={NODES[from].cx}
+            y1={NODES[from].cy}
+            x2={NODES[to].cx}
+            y2={NODES[to].cy}
+            strokeDasharray="4 4"
+            animate={{
+              stroke: active ? COLORS.green : step >= 3 ? COLORS.green : COLORS.border,
+              strokeWidth: active ? 2 : 1,
+              strokeOpacity: step >= 3 ? 0.4 : active ? 1 : 0.6,
+            }}
+          />
+        );
+      })}
+      {/* Message dots traveling routes */}
+      {step === 2 &&
+        ROUTES.filter(([from]) => from === 0).map(([from, to], i) => (
+          <motion.circle
+            key={`dot-${to}`}
+            r={5}
+            fill={COLORS.green}
+            initial={{
+              cx: NODES[from].cx,
+              cy: NODES[from].cy,
+              opacity: 0,
+            }}
+            animate={{
+              cx: NODES[to].cx,
+              cy: NODES[to].cy,
+              opacity: 1,
+            }}
+            transition={{ duration: 0.8, delay: i * 0.2 }}
+          />
+        ))}
+      {/* Server nodes */}
+      {NODES.map((node, i) => (
+        <g key={node.id}>
+          <motion.circle
+            cx={node.cx}
+            cy={node.cy}
+            r={nodeRadius}
+            fill={COLORS.terminalBg}
+            animate={{
+              stroke: serverHighlight(i) ? COLORS.green : COLORS.yellow,
+              strokeWidth: serverHighlight(i) ? 2.5 : 1.5,
+              fill: serverHighlight(i) ? `${COLORS.green}12` : COLORS.terminalBg,
+            }}
+          />
+          <text
+            x={node.cx}
+            y={node.cy + 1}
+            textAnchor="middle"
+            dominantBaseline="middle"
+            fill={serverActive(i) ? COLORS.yellow : COLORS.textQuaternary}
+            fontSize={fontSize}
+            fontFamily="monospace"
+          >
+            {node.id}
+          </text>
+        </g>
+      ))}
+      {/* "route" labels on lines */}
+      <text x={80} y={72} fill="var(--text-tertiary)" fontSize={fontSize - 2} fontFamily="monospace" transform="rotate(-40, 80, 72)">
+        route
+      </text>
+      <text x={200} y={72} fill="var(--text-tertiary)" fontSize={fontSize - 2} fontFamily="monospace" transform="rotate(40, 200, 72)">
+        route
+      </text>
+      <text x={140} y={152} fill="var(--text-tertiary)" fontSize={fontSize - 2} fontFamily="monospace" textAnchor="middle">
+        route
+      </text>
+    </svg>
+  );
+
+  const publisherBox = (
+    <motion.div
+      animate={{
+        borderColor: step === 0 ? COLORS.green : COLORS.border,
+        backgroundColor: step === 0 ? `${COLORS.green}10` : "rgba(0,0,0,0)",
+      }}
+      className="border rounded-lg px-2 py-1.5 text-center"
+    >
+      <div className="text-[10px] text-gray-400">Publisher</div>
+    </motion.div>
+  );
+
+  const subscriberBoxes = ["Sub A", "Sub B"].map((sub) => (
+    <motion.div
+      key={sub}
+      animate={{
+        borderColor: step >= 4 ? COLORS.blue : COLORS.border,
+        backgroundColor: step === 5 ? `${COLORS.blue}10` : "rgba(0,0,0,0)",
+      }}
+      className="border rounded-lg px-2 py-1.5 text-center"
+    >
+      <div className="text-[10px] text-gray-400">{sub}</div>
+    </motion.div>
+  ));
+
   return (
-    <div className="border border-border rounded-lg p-5 bg-surface" {...containerProps}>
-      <div className="flex items-center gap-3">
+    <div className="border border-border rounded-lg p-4 md:p-5 bg-surface" {...containerProps}>
+      {/* Mobile: pub & subs row above diagram */}
+      <div className="flex md:hidden items-center justify-center gap-4 mb-3">
+        {publisherBox}
+        {subscriberBoxes}
+      </div>
+
+      {/* Desktop: horizontal with side columns */}
+      <div className="hidden md:flex items-center gap-3">
         {/* Publisher */}
         <div className="flex flex-col items-center shrink-0 w-16">
-          <motion.div
-            animate={{
-              borderColor: step === 0 ? COLORS.green : COLORS.border,
-              backgroundColor: step === 0 ? `${COLORS.green}10` : "rgba(0,0,0,0)",
-            }}
-            className="border rounded-lg px-2 py-1.5 text-center"
-          >
-            <div className="text-[10px] text-gray-400">Publisher</div>
-          </motion.div>
+          {publisherBox}
           <motion.div
             animate={{ backgroundColor: step === 0 ? COLORS.green : COLORS.borderLight }}
             className="h-px w-8 mt-1"
           />
         </div>
 
-        {/* Cluster */}
+        {/* Cluster SVG — desktop */}
         <div className="flex-1">
           <div className="border border-dashed border-accent-green/25 rounded-lg bg-[#0f0f0f] p-3">
             <div className="text-[9px] text-accent-green/50 text-center mb-1 tracking-widest font-mono">
               CLUSTER
             </div>
-            {/* SVG mesh */}
-            <svg viewBox="0 0 280 160" className="w-full" style={{ maxHeight: 160 }}>
-              {/* Route lines */}
-              {ROUTES.map(([from, to], i) => {
-                const active = step === 2 && from === 0;
-                return (
-                  <motion.line
-                    key={i}
-                    x1={NODES[from].cx}
-                    y1={NODES[from].cy}
-                    x2={NODES[to].cx}
-                    y2={NODES[to].cy}
-                    strokeDasharray="4 4"
-                    animate={{
-                      stroke: active ? COLORS.green : step >= 3 ? COLORS.green : COLORS.border,
-                      strokeWidth: active ? 2 : 1,
-                      strokeOpacity: step >= 3 ? 0.4 : active ? 1 : 0.6,
-                    }}
-                  />
-                );
-              })}
-              {/* Message dots traveling routes */}
-              {step === 2 &&
-                ROUTES.filter(([from]) => from === 0).map(([from, to], i) => (
-                  <motion.circle
-                    key={`dot-${to}`}
-                    r={5}
-                    fill={COLORS.green}
-                    initial={{
-                      cx: NODES[from].cx,
-                      cy: NODES[from].cy,
-                      opacity: 0,
-                    }}
-                    animate={{
-                      cx: NODES[to].cx,
-                      cy: NODES[to].cy,
-                      opacity: 1,
-                    }}
-                    transition={{ duration: 0.8, delay: i * 0.2 }}
-                  />
-                ))}
-              {/* Server nodes */}
-              {NODES.map((node, i) => (
-                <g key={node.id}>
-                  <motion.circle
-                    cx={node.cx}
-                    cy={node.cy}
-                    r={20}
-                    fill={COLORS.terminalBg}
-                    animate={{
-                      stroke: serverHighlight(i) ? COLORS.green : COLORS.yellow,
-                      strokeWidth: serverHighlight(i) ? 2.5 : 1.5,
-                      fill: serverHighlight(i) ? `${COLORS.green}12` : COLORS.terminalBg,
-                    }}
-                  />
-                  <text
-                    x={node.cx}
-                    y={node.cy + 1}
-                    textAnchor="middle"
-                    dominantBaseline="middle"
-                    fill={serverActive(i) ? COLORS.yellow : COLORS.textQuaternary}
-                    fontSize={10}
-                    fontFamily="monospace"
-                  >
-                    {node.id}
-                  </text>
-                </g>
-              ))}
-              {/* "route" labels on lines */}
-              <text x={80} y={72} fill="var(--text-tertiary)" fontSize={8} fontFamily="monospace" transform="rotate(-40, 80, 72)">
-                route
-              </text>
-              <text x={200} y={72} fill="var(--text-tertiary)" fontSize={8} fontFamily="monospace" transform="rotate(40, 200, 72)">
-                route
-              </text>
-              <text x={140} y={152} fill="var(--text-tertiary)" fontSize={8} fontFamily="monospace" textAnchor="middle">
-                route
-              </text>
-            </svg>
+            {clusterSvg(10, 20)}
           </div>
         </div>
 
@@ -161,6 +188,16 @@ export function ClusterMeshDiagram() {
               </motion.div>
             </div>
           ))}
+        </div>
+      </div>
+
+      {/* Mobile: full-width SVG */}
+      <div className="md:hidden">
+        <div className="border border-dashed border-accent-green/25 rounded-lg bg-[#0f0f0f] p-2">
+          <div className="text-[9px] text-accent-green/50 text-center mb-1 tracking-widest font-mono">
+            CLUSTER
+          </div>
+          {clusterSvg(11, 22)}
         </div>
       </div>
 

@@ -8,7 +8,7 @@ export function ThreeDataDiagram() {
         <p className="text-xs text-gray-500 mb-3">
           Traditional &mdash; three separate systems
         </p>
-        <div className="grid grid-cols-3 gap-3">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-2 md:gap-3">
           <Box label="Messages" sub="Events, commands" color={COLORS.green} />
           <Box label="State" sub="Config, sessions, flags" color={COLORS.blue} />
           <Box label="Files" sub="Models, images, backups" color={COLORS.yellow} />
@@ -25,7 +25,7 @@ export function ThreeDataDiagram() {
         <p className="text-xs text-gray-500 mb-3">
           NATS &mdash; one system
         </p>
-        <div className="grid grid-cols-3 gap-3">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-2 md:gap-3">
           <Box label="JetStream" sub="Streams &amp; consumers" color={COLORS.green} />
           <Box label="KV Store" sub="Keys as subjects" color={COLORS.blue} />
           <Box label="Object Store" sub="Chunked messages" color={COLORS.yellow} />

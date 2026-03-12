@@ -104,7 +104,7 @@ export function WildcardMatcher() {
       </div>
 
       {/* Wildcard legend */}
-      <div className="px-4 py-3 border-b border-border flex gap-6 text-sm">
+      <div className="px-4 py-3 border-b border-border flex flex-col sm:flex-row gap-2 sm:gap-6 text-sm">
         <div>
           <code className="text-accent-yellow">*</code>
           <span className="text-gray-500"> — matches exactly one token</span>

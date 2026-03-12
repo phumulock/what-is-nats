@@ -25,9 +25,9 @@ export function AccountIsolationDiagram() {
       className="border border-border rounded-lg overflow-hidden bg-surface"
       {...containerProps}
     >
-      <div className="p-6">
+      <div className="p-4 md:p-6">
         {/* Main layout: Account A | NATS Server | Account B */}
-        <div className="flex items-stretch gap-3">
+        <div className="flex flex-col md:flex-row items-stretch gap-3">
           {/* Account A */}
           <div
             className={`flex-1 rounded-lg border p-4 transition-colors duration-500 ${
@@ -84,7 +84,7 @@ export function AccountIsolationDiagram() {
           </div>
 
           {/* NATS Server (center) */}
-          <div className="flex flex-col items-center justify-center gap-2 px-2">
+          <div className="flex flex-row md:flex-col items-center justify-center gap-2 px-2">
             <div className="w-14 h-14 rounded-full border-2 border-accent-green bg-terminal-bg flex items-center justify-center">
               <span className="text-accent-green text-[10px] font-bold">
                 NATS
@@ -97,7 +97,7 @@ export function AccountIsolationDiagram() {
                 opacity: showBridge ? 1 : 0,
                 scale: showBridge ? 1 : 0.8,
               }}
-              className="flex flex-col items-center gap-0.5"
+              className="flex flex-row md:flex-col items-center gap-0.5"
             >
               <div className="text-[9px] text-accent-yellow font-mono">
                 export
@@ -175,7 +175,7 @@ export function AccountIsolationDiagram() {
       </div>
 
       {/* Status */}
-      <div className="px-6 pb-2 pt-6 text-center text-sm min-h-10 flex items-center justify-center">
+      <div className="px-4 md:px-6 pb-2 pt-6 text-center text-sm min-h-10 flex items-center justify-center">
         {step === 0 && (
           <span className="text-gray-500">
             Two accounts on the same NATS server...

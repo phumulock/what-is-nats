@@ -78,7 +78,7 @@ function TemporalDecouplingView({ phase }: { phase: Phase }) {
 
   return (
     <>
-      <div className="flex justify-between items-start gap-4">
+      <div className="flex flex-col md:flex-row justify-between items-center md:items-start gap-3 md:gap-4">
         {/* Publisher */}
         <div className="flex flex-col items-center gap-2">
           <div className="w-16 h-16 rounded-lg bg-terminal-bg border border-accent-green flex items-center justify-center text-xs">
@@ -90,10 +90,15 @@ function TemporalDecouplingView({ phase }: { phase: Phase }) {
           </span>
         </div>
 
+        {/* Mobile: vertical arrow */}
+        <div className="flex md:hidden items-center justify-center w-8 h-6 relative">
+          <div className="absolute top-0 bottom-0 left-1/2 w-px bg-border" />
+        </div>
+
         {/* JetStream */}
-        <div className="flex-1 flex flex-col items-center">
+        <div className="flex-1 flex flex-col items-center w-full md:w-auto">
           <div className="text-xs text-gray-500 mb-2">JETSTREAM STREAM</div>
-          <div className="flex gap-1 overflow-hidden">
+          <div className="flex gap-1 overflow-hidden flex-wrap justify-center">
             {allMessages.map((msg, i) => (
               <motion.div
                 key={msg}
@@ -111,6 +116,11 @@ function TemporalDecouplingView({ phase }: { phase: Phase }) {
           <div className="text-xs text-gray-500 mt-2">
             {visibleMessageCount} messages persisted
           </div>
+        </div>
+
+        {/* Mobile: vertical arrow */}
+        <div className="flex md:hidden items-center justify-center w-8 h-6 relative">
+          <div className="absolute top-0 bottom-0 left-1/2 w-px bg-border" />
         </div>
 
         {/* Subscriber */}
@@ -138,7 +148,7 @@ function TemporalDecouplingView({ phase }: { phase: Phase }) {
       {/* Received messages */}
       <div className="mt-4 pt-4 border-t border-border">
         <div className="text-xs text-gray-500 mb-2">CONSUMER RECEIVED:</div>
-        <div className="flex gap-1">
+        <div className="flex gap-1 flex-wrap">
           {allMessages.map((msg, i) => (
             <motion.div
               key={msg}
@@ -229,7 +239,7 @@ function DurabilityView({ step }: { step: number }) {
       </div>
 
       {/* Main row: Producer — Broker(s) — Consumer */}
-      <div className="flex items-start justify-between gap-4">
+      <div className="flex flex-col md:flex-row items-center md:items-start justify-between gap-2 md:gap-4">
         {/* Producer */}
         <div className="flex flex-col items-center gap-2 w-20">
           <div className="w-16 h-16 rounded-lg bg-terminal-bg border border-accent-green flex items-center justify-center text-xs text-accent-green">
@@ -237,8 +247,26 @@ function DurabilityView({ step }: { step: number }) {
           </div>
         </div>
 
-        {/* Arrow: Producer → Broker */}
-        <div className="flex-1 flex flex-col items-center justify-center pt-5">
+        {/* Arrow: Producer → Broker (mobile: vertical) */}
+        <div className="flex md:hidden items-center justify-center w-8 h-10 relative">
+          <div className="absolute top-0 bottom-0 left-1/2 w-px bg-border" />
+          <motion.div
+            key={`msg-left-v-${step}`}
+            initial={{ y: 0, opacity: 0 }}
+            animate={{ y: 20, opacity: 1 }}
+            transition={{ duration: 0.8 }}
+            className="absolute top-0 z-10"
+          >
+            <div
+              className="px-2 py-0.5 text-black text-[10px] rounded"
+              style={{ backgroundColor: tier.borderColor }}
+            >
+              msg
+            </div>
+          </motion.div>
+        </div>
+        {/* Arrow: Producer → Broker (desktop: horizontal) */}
+        <div className="hidden md:flex flex-1 flex-col items-center justify-center pt-5">
           <div className="relative w-full h-8">
             <motion.div
               key={`msg-left-${step}`}
@@ -319,8 +347,26 @@ function DurabilityView({ step }: { step: number }) {
           </motion.div>
         </div>
 
-        {/* Arrow: Broker → Consumer */}
-        <div className="flex-1 flex flex-col items-center justify-center pt-5">
+        {/* Arrow: Broker → Consumer (mobile: vertical) */}
+        <div className="flex md:hidden items-center justify-center w-8 h-10 relative">
+          <div className="absolute top-0 bottom-0 left-1/2 w-px bg-border" />
+          <motion.div
+            key={`msg-right-v-${step}`}
+            initial={{ y: 0, opacity: 0 }}
+            animate={{ y: 20, opacity: 1 }}
+            transition={{ duration: 0.8, delay: 0.6 }}
+            className="absolute top-0 z-10"
+          >
+            <div
+              className="px-2 py-0.5 text-black text-[10px] rounded"
+              style={{ backgroundColor: tier.borderColor }}
+            >
+              msg
+            </div>
+          </motion.div>
+        </div>
+        {/* Arrow: Broker → Consumer (desktop: horizontal) */}
+        <div className="hidden md:flex flex-1 flex-col items-center justify-center pt-5">
           <div className="relative w-full h-8">
             <motion.div
               key={`msg-right-${step}`}

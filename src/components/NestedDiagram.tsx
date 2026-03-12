@@ -20,7 +20,7 @@ export function NestedDiagram({ title, layers, variant = "nested" }: NestedDiagr
       )}
 
       {variant === "nested" ? (
-        <div className="p-2">
+        <div className="p-2 overflow-x-auto max-w-full">
           {layers.reduceRight<ReactNode>((inner, layer, index) => (
             <div
               key={index}

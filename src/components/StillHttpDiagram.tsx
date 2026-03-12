@@ -61,7 +61,7 @@ export function StillHttpDiagram() {
 
   return (
     <div
-      className="border border-border rounded-lg p-6 bg-surface"
+      className="border border-border rounded-lg p-4 md:p-6 bg-surface"
       {...containerProps}
     >
       {/* Protocol cards stack */}
