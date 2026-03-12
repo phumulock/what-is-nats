@@ -6,9 +6,9 @@ import { useDiagramPlayback } from "./useDiagramPlayback";
 import { DiagramControls } from "./DiagramControls";
 
 const NODES = [
-  { id: "nats-1", cx: 180, cy: 30 },
-  { id: "nats-2", cx: 100, cy: 140 },
-  { id: "nats-3", cx: 260, cy: 140 },
+  { id: "nats-1", cx: 225, cy: 38 },
+  { id: "nats-2", cx: 125, cy: 175 },
+  { id: "nats-3", cx: 325, cy: 175 },
 ];
 
 const ROUTES: [number, number][] = [
@@ -42,7 +42,7 @@ export function RaftConsensusDiagram() {
     useDiagramPlayback(8, 2500);
 
   const raftSvg = (fontSize: number, nodeRadius: number) => (
-    <svg viewBox="0 0 340 170" className="w-full" style={{ maxHeight: 170 }}>
+    <svg viewBox="0 0 425 212" className="w-full" style={{ maxHeight: 212 }}>
       {/* Route lines between servers */}
       {ROUTES.map(([from, to], i) => (
         <motion.line
@@ -86,7 +86,7 @@ export function RaftConsensusDiagram() {
         <motion.circle
           r={5}
           fill={COLORS.green}
-          initial={{ cx: 20, cy: 140, opacity: 0 }}
+          initial={{ cx: 25, cy: 175, opacity: 0 }}
           animate={{ cx: NODES[1].cx, cy: NODES[1].cy, opacity: 1 }}
           transition={{ duration: 0.8 }}
         />
@@ -130,7 +130,7 @@ export function RaftConsensusDiagram() {
           r={5}
           fill={COLORS.green}
           initial={{ cx: NODES[1].cx, cy: NODES[1].cy, opacity: 0 }}
-          animate={{ cx: 20, cy: 140, opacity: 1 }}
+          animate={{ cx: 25, cy: 175, opacity: 1 }}
           transition={{ duration: 0.8 }}
         />
       )}
@@ -195,12 +195,12 @@ export function RaftConsensusDiagram() {
       }}
       className="border rounded-lg px-2 py-1.5 text-center"
     >
-      <div className="text-[10px] text-gray-400">Publisher</div>
+      <div className="text-xs text-gray-400">Publisher</div>
     </motion.div>
   );
 
   return (
-    <div className="border border-border rounded-lg p-4 md:p-5 bg-surface" {...containerProps}>
+    <div className="border border-border rounded-lg p-5 md:p-6 bg-surface" {...containerProps}>
       {/* Mobile: publisher above diagram */}
       <div className="flex md:hidden items-center justify-center gap-4 mb-3">
         {publisherBox}
@@ -208,16 +208,16 @@ export function RaftConsensusDiagram() {
 
       {/* Desktop: horizontal with side publisher */}
       <div className="hidden md:flex items-center gap-3">
-        <div className="flex flex-col items-center shrink-0 w-16">
+        <div className="flex flex-col items-center shrink-0 w-22">
           {publisherBox}
         </div>
 
         <div className="flex-1">
           <div className="border border-dashed border-accent-green/25 rounded-lg bg-[#0f0f0f] p-3">
-            <div className="text-[9px] text-accent-green/50 text-center mb-1 tracking-widest font-mono">
+            <div className="text-[11px] text-accent-green/50 text-center mb-1 tracking-widest font-mono">
               RAFT GROUP — STREAM &quot;ORDERS&quot; (R3)
             </div>
-            {raftSvg(9, 22)}
+            {raftSvg(11, 28)}
           </div>
         </div>
       </div>
@@ -225,10 +225,10 @@ export function RaftConsensusDiagram() {
       {/* Mobile: full-width SVG */}
       <div className="md:hidden">
         <div className="border border-dashed border-accent-green/25 rounded-lg bg-[#0f0f0f] p-2">
-          <div className="text-[9px] text-accent-green/50 text-center mb-1 tracking-widest font-mono">
+          <div className="text-[11px] text-accent-green/50 text-center mb-1 tracking-widest font-mono">
             RAFT GROUP — STREAM &quot;ORDERS&quot; (R3)
           </div>
-          {raftSvg(11, 24)}
+          {raftSvg(13, 30)}
         </div>
       </div>
 

@@ -5,11 +5,11 @@ import { COLORS } from "@/lib/colors";
 import { useDiagramPlayback } from "./useDiagramPlayback";
 import { DiagramControls } from "./DiagramControls";
 
-// Triangle layout — pixel positions within a 280×160 viewBox
+// Triangle layout — pixel positions within a 350×200 viewBox
 const NODES = [
-  { id: "nats-1", cx: 140, cy: 24 },
-  { id: "nats-2", cx: 44, cy: 136 },
-  { id: "nats-3", cx: 236, cy: 136 },
+  { id: "nats-1", cx: 175, cy: 30 },
+  { id: "nats-2", cx: 55, cy: 170 },
+  { id: "nats-3", cx: 295, cy: 170 },
 ];
 
 const ROUTES: [number, number][] = [
@@ -35,7 +35,7 @@ export function ClusterMeshDiagram() {
   };
 
   const clusterSvg = (fontSize: number, nodeRadius: number) => (
-    <svg viewBox="0 0 280 160" className="w-full" style={{ maxHeight: 160 }}>
+    <svg viewBox="0 0 350 200" className="w-full" style={{ maxHeight: 200 }}>
       {/* Route lines */}
       {ROUTES.map(([from, to], i) => {
         const active = step === 2 && from === 0;
@@ -103,13 +103,13 @@ export function ClusterMeshDiagram() {
         </g>
       ))}
       {/* "route" labels on lines */}
-      <text x={80} y={72} fill="var(--text-tertiary)" fontSize={fontSize - 2} fontFamily="monospace" transform="rotate(-40, 80, 72)">
+      <text x={100} y={90} fill="var(--text-tertiary)" fontSize={fontSize - 2} fontFamily="monospace" transform="rotate(-40, 100, 90)">
         route
       </text>
-      <text x={200} y={72} fill="var(--text-tertiary)" fontSize={fontSize - 2} fontFamily="monospace" transform="rotate(40, 200, 72)">
+      <text x={250} y={90} fill="var(--text-tertiary)" fontSize={fontSize - 2} fontFamily="monospace" transform="rotate(40, 250, 90)">
         route
       </text>
-      <text x={140} y={152} fill="var(--text-tertiary)" fontSize={fontSize - 2} fontFamily="monospace" textAnchor="middle">
+      <text x={175} y={192} fill="var(--text-tertiary)" fontSize={fontSize - 2} fontFamily="monospace" textAnchor="middle">
         route
       </text>
     </svg>
@@ -123,7 +123,7 @@ export function ClusterMeshDiagram() {
       }}
       className="border rounded-lg px-2 py-1.5 text-center"
     >
-      <div className="text-[10px] text-gray-400">Publisher</div>
+      <div className="text-xs text-gray-400">Publisher</div>
     </motion.div>
   );
 
@@ -136,12 +136,12 @@ export function ClusterMeshDiagram() {
       }}
       className="border rounded-lg px-2 py-1.5 text-center"
     >
-      <div className="text-[10px] text-gray-400">{sub}</div>
+      <div className="text-xs text-gray-400">{sub}</div>
     </motion.div>
   ));
 
   return (
-    <div className="border border-border rounded-lg p-4 md:p-5 bg-surface" {...containerProps}>
+    <div className="border border-border rounded-lg p-5 md:p-6 bg-surface" {...containerProps}>
       {/* Mobile: pub & subs row above diagram */}
       <div className="flex md:hidden items-center justify-center gap-4 mb-3">
         {publisherBox}
@@ -151,7 +151,7 @@ export function ClusterMeshDiagram() {
       {/* Desktop: horizontal with side columns */}
       <div className="hidden md:flex items-center gap-3">
         {/* Publisher */}
-        <div className="flex flex-col items-center shrink-0 w-16">
+        <div className="flex flex-col items-center shrink-0 w-22">
           {publisherBox}
           <motion.div
             animate={{ backgroundColor: step === 0 ? COLORS.green : COLORS.borderLight }}
@@ -162,15 +162,15 @@ export function ClusterMeshDiagram() {
         {/* Cluster SVG — desktop */}
         <div className="flex-1">
           <div className="border border-dashed border-accent-green/25 rounded-lg bg-[#0f0f0f] p-3">
-            <div className="text-[9px] text-accent-green/50 text-center mb-1 tracking-widest font-mono">
+            <div className="text-[11px] text-accent-green/50 text-center mb-1 tracking-widest font-mono">
               CLUSTER
             </div>
-            {clusterSvg(10, 20)}
+            {clusterSvg(12, 25)}
           </div>
         </div>
 
         {/* Subscribers */}
-        <div className="flex flex-col items-center gap-3 shrink-0 w-16">
+        <div className="flex flex-col items-center gap-3 shrink-0 w-22">
           {["Sub A", "Sub B"].map((sub) => (
             <div key={sub} className="flex items-center">
               <motion.div
@@ -184,7 +184,7 @@ export function ClusterMeshDiagram() {
                 }}
                 className="border rounded-lg px-2 py-1.5 text-center"
               >
-                <div className="text-[10px] text-gray-400">{sub}</div>
+                <div className="text-xs text-gray-400">{sub}</div>
               </motion.div>
             </div>
           ))}
@@ -194,10 +194,10 @@ export function ClusterMeshDiagram() {
       {/* Mobile: full-width SVG */}
       <div className="md:hidden">
         <div className="border border-dashed border-accent-green/25 rounded-lg bg-[#0f0f0f] p-2">
-          <div className="text-[9px] text-accent-green/50 text-center mb-1 tracking-widest font-mono">
+          <div className="text-[11px] text-accent-green/50 text-center mb-1 tracking-widest font-mono">
             CLUSTER
           </div>
-          {clusterSvg(11, 22)}
+          {clusterSvg(13, 27)}
         </div>
       </div>
 

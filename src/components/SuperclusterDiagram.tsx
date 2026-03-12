@@ -11,35 +11,35 @@ import { DiagramControls } from "./DiagramControls";
 const REGIONS = [
   {
     name: "US-EAST",
-    cx: 110,
-    cy: 65,
+    cx: 138,
+    cy: 81,
     color: COLORS.green,
     servers: [
-      { x: 88, y: 73 },
-      { x: 132, y: 73 },
-      { x: 110, y: 99 },
+      { x: 110, y: 91 },
+      { x: 165, y: 91 },
+      { x: 138, y: 124 },
     ],
   },
   {
     name: "EU-WEST",
-    cx: 330,
-    cy: 65,
+    cx: 413,
+    cy: 81,
     color: COLORS.blue,
     servers: [
-      { x: 308, y: 73 },
-      { x: 352, y: 73 },
-      { x: 330, y: 99 },
+      { x: 385, y: 91 },
+      { x: 440, y: 91 },
+      { x: 413, y: 124 },
     ],
   },
   {
     name: "AP-TOKYO",
-    cx: 220,
-    cy: 195,
+    cx: 275,
+    cy: 244,
     color: COLORS.pink,
     servers: [
-      { x: 198, y: 203 },
-      { x: 242, y: 203 },
-      { x: 220, y: 229 },
+      { x: 248, y: 254 },
+      { x: 303, y: 254 },
+      { x: 275, y: 286 },
     ],
   },
 ];
@@ -51,27 +51,27 @@ const GATEWAYS = [
     from: 0,
     to: 1,
     // US-EAST right edge → EU-WEST left edge, curve upward
-    path: "M 170 55 Q 220 8 270 55",
-    labelX: 220,
-    labelY: 16,
+    path: "M 213 69 Q 275 10 338 69",
+    labelX: 275,
+    labelY: 20,
   },
   {
     id: "us-ap",
     from: 0,
     to: 2,
     // US-EAST bottom → AP-TOKYO left edge
-    path: "M 110 120 Q 115 158 165 172",
-    labelX: 118,
-    labelY: 155,
+    path: "M 138 150 Q 144 198 206 215",
+    labelX: 148,
+    labelY: 194,
   },
   {
     id: "eu-ap",
     from: 1,
     to: 2,
     // EU-WEST bottom → AP-TOKYO right edge
-    path: "M 330 120 Q 325 158 275 172",
-    labelX: 320,
-    labelY: 155,
+    path: "M 413 150 Q 406 198 344 215",
+    labelX: 400,
+    labelY: 194,
   },
 ];
 
@@ -95,7 +95,7 @@ export function SuperclusterDiagram() {
   const gatewayDimmed = (gi: number) => gi === 2 && step === 4;
 
   return (
-    <div className="border border-border rounded-lg p-4 md:p-5 bg-surface" {...containerProps}>
+    <div className="border border-border rounded-lg p-5 md:p-6 bg-surface" {...containerProps}>
       {/* Mobile: pub & subs row above diagram. Desktop: horizontal layout */}
       <div className="flex md:hidden items-center justify-center gap-4 mb-3">
         {/* Publisher */}
@@ -106,8 +106,8 @@ export function SuperclusterDiagram() {
           }}
           className="border rounded-lg px-2 py-1.5 text-center"
         >
-          <div className="text-[10px] text-gray-400">Publisher</div>
-          <div className="text-[9px] font-mono text-accent-green">orders.us</div>
+          <div className="text-xs text-gray-400">Publisher</div>
+          <div className="text-[11px] font-mono text-accent-green">orders.us</div>
         </motion.div>
         {/* Sub A */}
         <motion.div
@@ -117,8 +117,8 @@ export function SuperclusterDiagram() {
           }}
           className="border rounded-lg px-2 py-1.5 text-center"
         >
-          <div className="text-[10px] text-gray-400">Sub A</div>
-          <div className="text-[9px] font-mono text-accent-blue">orders.&gt;</div>
+          <div className="text-xs text-gray-400">Sub A</div>
+          <div className="text-[11px] font-mono text-accent-blue">orders.&gt;</div>
         </motion.div>
         {/* Sub B */}
         <motion.div
@@ -128,14 +128,14 @@ export function SuperclusterDiagram() {
           }}
           className="border rounded-lg px-2 py-1.5 text-center"
         >
-          <div className="text-[10px] text-gray-400">Sub B</div>
-          <div className="text-[9px] font-mono text-accent-pink">orders.&gt;</div>
+          <div className="text-xs text-gray-400">Sub B</div>
+          <div className="text-[11px] font-mono text-accent-pink">orders.&gt;</div>
         </motion.div>
       </div>
 
       <div className="hidden md:flex items-center gap-3">
         {/* Publisher — desktop only */}
-        <div className="flex flex-col items-center shrink-0 w-18">
+        <div className="flex flex-col items-center shrink-0 w-24">
           <motion.div
             animate={{
               borderColor: step === 0 ? COLORS.green : COLORS.border,
@@ -143,8 +143,8 @@ export function SuperclusterDiagram() {
             }}
             className="border rounded-lg px-2 py-1.5 text-center"
           >
-            <div className="text-[10px] text-gray-400">Publisher</div>
-            <div className="text-[9px] font-mono text-accent-green">orders.us</div>
+            <div className="text-xs text-gray-400">Publisher</div>
+            <div className="text-[11px] font-mono text-accent-green">orders.us</div>
           </motion.div>
           <motion.div
             animate={{ backgroundColor: step === 0 ? COLORS.green : COLORS.borderLight }}
@@ -155,10 +155,10 @@ export function SuperclusterDiagram() {
         {/* SVG Diagram — desktop */}
         <div className="flex-1">
           <div className="border border-dashed border-gray-700/40 rounded-lg bg-[#0f0f0f] p-3">
-            <div className="text-[9px] text-gray-500 text-center mb-1 tracking-widest font-mono">
+            <div className="text-[11px] text-gray-500 text-center mb-1 tracking-widest font-mono">
               SUPERCLUSTER
             </div>
-            <svg viewBox="0 0 440 258" className="w-full" style={{ maxHeight: 270 }}>
+            <svg viewBox="0 0 550 322" className="w-full" style={{ maxHeight: 340 }}>
               <defs>
                 {GATEWAYS.map((gw) => (
                   <path key={`def-${gw.id}`} id={`gw-path-${gw.id}`} d={gw.path} />
@@ -186,18 +186,18 @@ export function SuperclusterDiagram() {
                     y={gw.labelY}
                     textAnchor="middle"
                     fill={gatewayDimmed(gi) ? `${COLORS.textTertiary}60` : COLORS.textTertiary}
-                    fontSize={7}
+                    fontSize={9}
                     fontFamily="monospace"
                   >
                     gateway
                   </text>
                   {gatewayDimmed(gi) && (
                     <text
-                      x={gw.labelX - 18}
-                      y={gw.labelY + 12}
+                      x={gw.labelX - 22}
+                      y={gw.labelY + 14}
                       textAnchor="middle"
                       fill={COLORS.pink}
-                      fontSize={7}
+                      fontSize={9}
                       fontFamily="monospace"
                       opacity={0.8}
                     >
@@ -206,7 +206,7 @@ export function SuperclusterDiagram() {
                   )}
                   {gatewayActive(gi) && (
                     <motion.circle
-                      r={4}
+                      r={5}
                       fill={REGIONS[gw.from].color}
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
@@ -221,10 +221,10 @@ export function SuperclusterDiagram() {
               {REGIONS.map((region, ri) => (
                 <g key={region.name}>
                   <motion.rect
-                    x={region.cx - 60}
-                    y={region.cy - 28}
-                    width={120}
-                    height={82}
+                    x={region.cx - 75}
+                    y={region.cy - 35}
+                    width={150}
+                    height={102}
                     rx={8}
                     fill={COLORS.terminalBg}
                     strokeDasharray="4 4"
@@ -236,10 +236,10 @@ export function SuperclusterDiagram() {
                   />
                   <text
                     x={region.cx}
-                    y={region.cy - 18}
+                    y={region.cy - 22}
                     textAnchor="middle"
                     fill={regionActive(ri) ? region.color : COLORS.textQuaternary}
-                    fontSize={9}
+                    fontSize={11}
                     fontWeight={600}
                     fontFamily="monospace"
                     letterSpacing={1}
@@ -271,7 +271,7 @@ export function SuperclusterDiagram() {
                       <motion.circle
                         cx={s.x}
                         cy={s.y}
-                        r={11}
+                        r={14}
                         fill={COLORS.surface}
                         animate={{
                           stroke: regionActive(ri) ? region.color : COLORS.borderLight,
@@ -285,7 +285,7 @@ export function SuperclusterDiagram() {
                         textAnchor="middle"
                         dominantBaseline="middle"
                         fill={regionActive(ri) ? region.color : COLORS.textTertiary}
-                        fontSize={7}
+                        fontSize={9}
                         fontFamily="monospace"
                       >
                         n{ri * 3 + si + 1}
@@ -299,7 +299,7 @@ export function SuperclusterDiagram() {
         </div>
 
         {/* Subscribers — desktop only */}
-        <div className="flex flex-col items-center gap-3 shrink-0 w-18">
+        <div className="flex flex-col items-center gap-3 shrink-0 w-24">
           <div className="flex items-center">
             <motion.div
               animate={{ backgroundColor: step === 3 ? COLORS.blue : COLORS.borderLight }}
@@ -312,8 +312,8 @@ export function SuperclusterDiagram() {
               }}
               className="border rounded-lg px-2 py-1.5 text-center"
             >
-              <div className="text-[10px] text-gray-400">Sub A</div>
-              <div className="text-[9px] font-mono text-accent-blue">orders.&gt;</div>
+              <div className="text-xs text-gray-400">Sub A</div>
+              <div className="text-[11px] font-mono text-accent-blue">orders.&gt;</div>
             </motion.div>
           </div>
           <div className="flex items-center">
@@ -328,8 +328,8 @@ export function SuperclusterDiagram() {
               }}
               className="border rounded-lg px-2 py-1.5 text-center"
             >
-              <div className="text-[10px] text-gray-400">Sub B</div>
-              <div className="text-[9px] font-mono text-accent-pink">orders.&gt;</div>
+              <div className="text-xs text-gray-400">Sub B</div>
+              <div className="text-[11px] font-mono text-accent-pink">orders.&gt;</div>
             </motion.div>
           </div>
         </div>
@@ -338,10 +338,10 @@ export function SuperclusterDiagram() {
       {/* SVG Diagram — mobile (full width, no side columns stealing space) */}
       <div className="md:hidden">
         <div className="border border-dashed border-gray-700/40 rounded-lg bg-[#0f0f0f] p-2">
-          <div className="text-[9px] text-gray-500 text-center mb-1 tracking-widest font-mono">
+          <div className="text-[11px] text-gray-500 text-center mb-1 tracking-widest font-mono">
             SUPERCLUSTER
           </div>
-          <svg viewBox="0 0 440 258" className="w-full">
+          <svg viewBox="0 0 550 322" className="w-full">
             <defs>
               {GATEWAYS.map((gw) => (
                 <path key={`def-m-${gw.id}`} id={`gw-path-m-${gw.id}`} d={gw.path} />
@@ -369,18 +369,18 @@ export function SuperclusterDiagram() {
                   y={gw.labelY}
                   textAnchor="middle"
                   fill={gatewayDimmed(gi) ? `${COLORS.textTertiary}60` : COLORS.textTertiary}
-                  fontSize={9}
+                  fontSize={11}
                   fontFamily="monospace"
                 >
                   gateway
                 </text>
                 {gatewayDimmed(gi) && (
                   <text
-                    x={gw.labelX - 18}
-                    y={gw.labelY + 12}
+                    x={gw.labelX - 22}
+                    y={gw.labelY + 14}
                     textAnchor="middle"
                     fill={COLORS.pink}
-                    fontSize={9}
+                    fontSize={11}
                     fontFamily="monospace"
                     opacity={0.8}
                   >
@@ -389,7 +389,7 @@ export function SuperclusterDiagram() {
                 )}
                 {gatewayActive(gi) && (
                   <motion.circle
-                    r={5}
+                    r={6}
                     fill={REGIONS[gw.from].color}
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
@@ -404,10 +404,10 @@ export function SuperclusterDiagram() {
             {REGIONS.map((region, ri) => (
               <g key={region.name}>
                 <motion.rect
-                  x={region.cx - 60}
-                  y={region.cy - 28}
-                  width={120}
-                  height={82}
+                  x={region.cx - 75}
+                  y={region.cy - 35}
+                  width={150}
+                  height={102}
                   rx={8}
                   fill={COLORS.terminalBg}
                   strokeDasharray="4 4"
@@ -419,10 +419,10 @@ export function SuperclusterDiagram() {
                 />
                 <text
                   x={region.cx}
-                  y={region.cy - 18}
+                  y={region.cy - 22}
                   textAnchor="middle"
                   fill={regionActive(ri) ? region.color : COLORS.textQuaternary}
-                  fontSize={11}
+                  fontSize={13}
                   fontWeight={600}
                   fontFamily="monospace"
                   letterSpacing={1}
@@ -454,7 +454,7 @@ export function SuperclusterDiagram() {
                     <motion.circle
                       cx={s.x}
                       cy={s.y}
-                      r={13}
+                      r={16}
                       fill={COLORS.surface}
                       animate={{
                         stroke: regionActive(ri) ? region.color : COLORS.borderLight,
@@ -468,7 +468,7 @@ export function SuperclusterDiagram() {
                       textAnchor="middle"
                       dominantBaseline="middle"
                       fill={regionActive(ri) ? region.color : COLORS.textTertiary}
-                      fontSize={9}
+                      fontSize={11}
                       fontFamily="monospace"
                     >
                       n{ri * 3 + si + 1}
