@@ -77,23 +77,22 @@ const GATEWAYS = [
 
 export function SuperclusterDiagram() {
   const { step, isPlaying, play, pause, next, prev, totalSteps, containerProps } =
-    useDiagramPlayback(7, 2500);
+    useDiagramPlayback(5, 2500);
 
   const regionActive = (ri: number) =>
-    (ri === 0 && step >= 1) || (ri === 1 && step >= 3) || (ri === 2 && step >= 5);
+    (ri === 0 && step >= 1) || (ri === 1 && step >= 3) || (ri === 2 && step >= 3);
 
   const regionHighlight = (ri: number) =>
-    (ri === 0 && step === 1) || (ri === 1 && step === 3) || (ri === 2 && step === 5);
+    (ri === 0 && step === 1) || (ri === 1 && step === 3) || (ri === 2 && step === 3);
 
-  // Which gateway is active at which step
-  const gatewayActive = (gi: number) => {
-    if (gi === 0) return step === 2; // US→EU
-    if (gi === 2) return step === 4; // EU→AP
-    return false;
-  };
+  // Which gateway is active at which step — origin fans out directly
+  const gatewayActive = (gi: number) =>
+    (gi === 0 && step === 2) || (gi === 1 && step === 2);
+  // gi=0 is us-eu, gi=1 is us-ap — both active at step 2
+  // gi=2 (eu-ap) is never active: origin sends directly, no relay
 
-  // The direct US→AP gateway stays dim at step 6 to show interest-based routing skipped it
-  const gatewayDimmed = (gi: number) => gi === 1 && step === 6;
+  // Show eu-ap as dimmed at step 4 to illustrate no relay between non-origin clusters
+  const gatewayDimmed = (gi: number) => gi === 2 && step === 4;
 
   return (
     <div className="border border-border rounded-lg p-4 md:p-5 bg-surface" {...containerProps}>
@@ -124,8 +123,8 @@ export function SuperclusterDiagram() {
         {/* Sub B */}
         <motion.div
           animate={{
-            borderColor: step >= 5 ? COLORS.pink : COLORS.border,
-            backgroundColor: step === 5 ? `${COLORS.pink}10` : `${COLORS.pink}00`,
+            borderColor: step >= 3 ? COLORS.pink : COLORS.border,
+            backgroundColor: step === 3 ? `${COLORS.pink}10` : `${COLORS.pink}00`,
           }}
           className="border rounded-lg px-2 py-1.5 text-center"
         >
@@ -319,13 +318,13 @@ export function SuperclusterDiagram() {
           </div>
           <div className="flex items-center">
             <motion.div
-              animate={{ backgroundColor: step === 5 ? COLORS.pink : COLORS.borderLight }}
+              animate={{ backgroundColor: step === 3 ? COLORS.pink : COLORS.borderLight }}
               className="h-px w-8 mr-1"
             />
             <motion.div
               animate={{
-                borderColor: step >= 5 ? COLORS.pink : COLORS.border,
-                backgroundColor: step === 5 ? `${COLORS.pink}10` : `${COLORS.pink}00`,
+                borderColor: step >= 3 ? COLORS.pink : COLORS.border,
+                backgroundColor: step === 3 ? `${COLORS.pink}10` : `${COLORS.pink}00`,
               }}
               className="border rounded-lg px-2 py-1.5 text-center"
             >
@@ -483,7 +482,7 @@ export function SuperclusterDiagram() {
       </div>
 
       {/* Status text with colored accents */}
-      <div className="mt-3 text-center text-sm text-gray-500 h-5">
+      <div className="mt-3 text-center text-sm text-gray-500 min-h-[2.5rem] flex items-center justify-center">
         {step === 0 && (
           <span>
             <span style={{ color: COLORS.green }}>Publisher</span> sends to{" "}
@@ -497,40 +496,31 @@ export function SuperclusterDiagram() {
         )}
         {step === 2 && (
           <span>
-            Gateway forwards{" "}
+            Gateways forward{" "}
             <span style={{ color: COLORS.green }}>US-EAST</span> →{" "}
-            <span style={{ color: COLORS.blue }}>EU-WEST</span> (subscriber interest exists)...
+            <span style={{ color: COLORS.blue }}>EU-WEST</span> and{" "}
+            <span style={{ color: COLORS.green }}>US-EAST</span> →{" "}
+            <span style={{ color: COLORS.pink }}>AP-TOKYO</span> (subscriber interest)...
           </span>
         )}
         {step === 3 && (
           <span>
-            <span style={{ color: COLORS.blue }}>EU-WEST</span> receives via gateway — Sub A gets message
+            Both regions receive — <span style={{ color: COLORS.blue }}>Sub A</span> and{" "}
+            <span style={{ color: COLORS.pink }}>Sub B</span> get message
           </span>
         )}
         {step === 4 && (
           <span>
-            Gateway forwards{" "}
-            <span style={{ color: COLORS.blue }}>EU-WEST</span> →{" "}
-            <span style={{ color: COLORS.pink }}>AP-TOKYO</span> (subscriber interest exists)...
-          </span>
-        )}
-        {step === 5 && (
-          <span>
-            <span style={{ color: COLORS.pink }}>AP-TOKYO</span> receives — Sub B gets message
-          </span>
-        )}
-        {step === 6 && (
-          <span>
-            All interested regions served —{" "}
-            <span style={{ color: COLORS.pink }}>direct US→AP path skipped</span> (hop routing)
+            Origin sends directly to all interested clusters —{" "}
+            <span style={{ color: COLORS.pink }}>no relay hops</span>
           </span>
         )}
       </div>
 
       {/* Key insight */}
       <div className="mt-3 pt-3 border-t border-border text-xs text-center">
-        <span className="text-gray-500">No subscribers in a region? </span>
-        <span className="text-white">Message never leaves the origin cluster</span>
+        <span className="block sm:inline text-gray-500">No subscribers in a region?</span>{" "}
+        <span className="block sm:inline text-white">Message never leaves the origin cluster</span>
       </div>
 
       <DiagramControls
