@@ -12,10 +12,20 @@ export function SecuritySection({ number, id }: SectionProps) {
       <SectionHeader number={number} title="Security" id={id} href="https://docs.nats.io/running-a-nats-service/configuration/securing_nats" />
       <p className="mt-4 text-white text-lg">Secure by default, decentralized by design.</p>
       <p className="mt-4 text-gray-500">
-        TLS encryption is a flag away. Authentication supports everything
-        from simple tokens to public-key cryptography. And unlike
-        centralized auth databases, NATS can verify credentials without
-        hitting any external system.
+        TLS encryption is a flag away. Accounts are isolated by
+        default&mdash;multi-tenant by design, messages in one account are
+        invisible to others, shared only through explicit exports/imports.
+        Auth scales from simple credentials to fully decentralized identity:
+      </p>
+      <p className="mt-4 text-gray-500">
+        <span className="text-accent-cyan font-bold">Tokens</span>{" "}
+        &mdash; a single shared secret string. The simplest option for
+        development and internal services.
+      </p>
+      <p className="mt-4 text-gray-500">
+        <span className="text-accent-orange font-bold">Username/Password</span>{" "}
+        &mdash; familiar credentials with optional bcrypt hashing. Easy
+        to set up, easy to reason about.
       </p>
       <p className="mt-4 text-gray-500">
         <span className="text-accent-green font-bold">NKeys</span>{" "}
@@ -30,25 +40,11 @@ export function SecuritySection({ number, id }: SectionProps) {
         restart and no config file edits.
       </p>
       <p className="mt-4 text-gray-500">
-        <span className="text-accent-blue font-bold">Account isolation</span>{" "}
-        &mdash; multi-tenant by design. Messages in one account are invisible
-        to others, and you share specific subjects between accounts with
-        explicit exports/imports&mdash;nothing leaks by accident.
+        <span className="text-accent-purple font-bold">Auth Callout</span>{" "}
+        &mdash; delegate authentication to your own external service. Plug
+        in LDAP, OAuth2, or any custom identity provider without forking
+        the server.
       </p>
-
-      <div className="mt-6 border border-border rounded-lg p-4">
-        <div className="text-sm text-gray-500 mb-2">AUTH METHODS</div>
-        <div className="flex flex-wrap gap-2">
-          {["Token", "Username/Password", "NKeys", "JWT", "Auth Callout"].map((method) => (
-            <span
-              key={method}
-              className="px-3 py-1 border border-border rounded text-sm hover:border-accent-green cursor-default transition-colors"
-            >
-              {method}
-            </span>
-          ))}
-        </div>
-      </div>
 
 
       <DiagramReveal>
