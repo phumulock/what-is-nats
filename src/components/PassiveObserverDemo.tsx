@@ -91,29 +91,25 @@ export function PassiveObserverDemo() {
             </motion.div>
 
             {/* Ghosted "No ACK" / "No disk" labels */}
-            <AnimatePresence>
-              {step >= 1 && (
-                <motion.div
-                  initial={{ opacity: 0, y: 4 }}
-                  animate={{ opacity: 0.4 }}
-                  exit={{ opacity: 0 }}
-                  className="absolute -left-16 top-1/2 -translate-y-1/2 flex flex-col gap-1"
-                >
-                  <div
-                    className="text-xs border border-dashed rounded px-1.5 py-0.5 line-through whitespace-nowrap"
-                    style={{ borderColor: COLORS.red, color: COLORS.red }}
-                  >
-                    No ACK
-                  </div>
-                  <div
-                    className="text-xs border border-dashed rounded px-1.5 py-0.5 line-through whitespace-nowrap"
-                    style={{ borderColor: COLORS.red, color: COLORS.red }}
-                  >
-                    No disk
-                  </div>
-                </motion.div>
-              )}
-            </AnimatePresence>
+            <motion.div
+              animate={{ opacity: step >= 1 ? 0.4 : 0 }}
+              transition={{ duration: 0.3 }}
+              className="absolute -left-16 top-1/2 -translate-y-1/2 flex flex-col gap-1"
+              style={{ pointerEvents: step >= 1 ? "auto" : "none" }}
+            >
+              <div
+                className="text-xs border border-dashed rounded px-1.5 py-0.5 line-through whitespace-nowrap"
+                style={{ borderColor: COLORS.red, color: COLORS.red }}
+              >
+                No ACK
+              </div>
+              <div
+                className="text-xs border border-dashed rounded px-1.5 py-0.5 line-through whitespace-nowrap"
+                style={{ borderColor: COLORS.red, color: COLORS.red }}
+              >
+                No disk
+              </div>
+            </motion.div>
           </div>
 
           {/* Outgoing message lanes */}
@@ -164,29 +160,25 @@ export function PassiveObserverDemo() {
             <span className="text-accent-green text-xs font-bold">NATS</span>
           </motion.div>
           {/* Ghosted labels on mobile */}
-          <AnimatePresence>
-            {step >= 1 && (
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 0.4 }}
-                exit={{ opacity: 0 }}
-                className="flex gap-1"
-              >
-                <div
-                  className="text-xs border border-dashed rounded px-1.5 py-0.5 line-through whitespace-nowrap"
-                  style={{ borderColor: COLORS.red, color: COLORS.red }}
-                >
-                  No ACK
-                </div>
-                <div
-                  className="text-xs border border-dashed rounded px-1.5 py-0.5 line-through whitespace-nowrap"
-                  style={{ borderColor: COLORS.red, color: COLORS.red }}
-                >
-                  No disk
-                </div>
-              </motion.div>
-            )}
-          </AnimatePresence>
+          <motion.div
+            animate={{ opacity: step >= 1 ? 0.4 : 0 }}
+            transition={{ duration: 0.3 }}
+            className="flex gap-1"
+            style={{ pointerEvents: step >= 1 ? "auto" : "none" }}
+          >
+            <div
+              className="text-xs border border-dashed rounded px-1.5 py-0.5 line-through whitespace-nowrap"
+              style={{ borderColor: COLORS.red, color: COLORS.red }}
+            >
+              No ACK
+            </div>
+            <div
+              className="text-xs border border-dashed rounded px-1.5 py-0.5 line-through whitespace-nowrap"
+              style={{ borderColor: COLORS.red, color: COLORS.red }}
+            >
+              No disk
+            </div>
+          </motion.div>
         </div>
 
         {/* Mobile: vertical outgoing arrow */}
@@ -253,19 +245,18 @@ export function PassiveObserverDemo() {
           </div>
 
           {/* "No replay" notice at step 4 */}
-          <AnimatePresence>
-            {step === 4 && (
-              <motion.div
-                initial={{ opacity: 0, y: 4 }}
-                animate={{ opacity: 0.5 }}
-                exit={{ opacity: 0 }}
-                className="self-center text-center text-xs border border-dashed rounded px-2 py-1"
-                style={{ borderColor: COLORS.yellow, color: COLORS.yellow }}
-              >
-                No replay, no backlog
-              </motion.div>
-            )}
-          </AnimatePresence>
+          <motion.div
+            animate={{ opacity: step === 4 ? 0.5 : 0 }}
+            transition={{ duration: 0.3 }}
+            className="self-center text-center text-xs border border-dashed rounded px-2 py-1"
+            style={{
+              borderColor: COLORS.yellow,
+              color: COLORS.yellow,
+              pointerEvents: step === 4 ? "auto" : "none",
+            }}
+          >
+            No replay, no backlog
+          </motion.div>
         </div>
       </div>
 

@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { COLORS } from "@/lib/colors";
 import { useDiagramPlayback } from "./useDiagramPlayback";
 import { DiagramControls } from "./DiagramControls";
@@ -430,43 +430,41 @@ export function DurabilitySpectrumDiagram() {
       className="border border-border rounded-lg p-6 bg-surface min-h-[360px]"
       {...containerProps}
     >
-      <AnimatePresence mode="wait">
-        {isTemporal ? (
-          <motion.div
-            key="temporal"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.3 }}
-          >
-            <TemporalDecouplingView phase={TEMPORAL_SLIDES[step].phase} />
-          </motion.div>
-        ) : (
-          <motion.div
-            key="durability"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.3 }}
-          >
-            <DurabilityView step={step - TEMPORAL_SLIDES.length} />
-          </motion.div>
-        )}
-      </AnimatePresence>
+      <div className="grid">
+        <motion.div
+          animate={{ opacity: isTemporal ? 1 : 0 }}
+          transition={{ duration: 0.3 }}
+          className="col-start-1 row-start-1"
+          style={{ pointerEvents: isTemporal ? "auto" : "none" }}
+        >
+          <TemporalDecouplingView phase={TEMPORAL_SLIDES[Math.min(step, TEMPORAL_SLIDES.length - 1)].phase} />
+        </motion.div>
+        <motion.div
+          animate={{ opacity: !isTemporal ? 1 : 0 }}
+          transition={{ duration: 0.3 }}
+          className="col-start-1 row-start-1"
+          style={{ pointerEvents: !isTemporal ? "auto" : "none" }}
+        >
+          <DurabilityView step={Math.max(0, step - TEMPORAL_SLIDES.length)} />
+        </motion.div>
+      </div>
 
       {/* Status text for temporal slides (DurabilityView has its own) */}
-      {isTemporal && (
-        <div className="mt-4 text-center text-sm min-h-6">
-          <motion.span
-            key={step}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            className={TEMPORAL_SLIDES[step].statusColor}
-          >
-            {TEMPORAL_SLIDES[step].status}
-          </motion.span>
-        </div>
-      )}
+      <motion.div
+        animate={{ opacity: isTemporal ? 1 : 0 }}
+        transition={{ duration: 0.3 }}
+        className="mt-4 text-center text-sm min-h-6"
+        style={{ pointerEvents: isTemporal ? "auto" : "none" }}
+      >
+        <motion.span
+          key={step}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          className={TEMPORAL_SLIDES[Math.min(step, TEMPORAL_SLIDES.length - 1)].statusColor}
+        >
+          {TEMPORAL_SLIDES[Math.min(step, TEMPORAL_SLIDES.length - 1)].status}
+        </motion.span>
+      </motion.div>
 
       <DiagramControls
         step={step}

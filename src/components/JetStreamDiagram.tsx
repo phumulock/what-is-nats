@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { useDiagramPlayback } from "./useDiagramPlayback";
 import { DiagramControls } from "./DiagramControls";
 import { COLORS } from "@/lib/colors";
@@ -154,26 +154,20 @@ function CursorView({ c1Pos, c2Pos }: { c1Pos: number; c2Pos: number | null }) {
               <span className="text-[9px] font-bold" style={{ color: COLORS.green }}>C1</span>
             </motion.div>
 
-            <AnimatePresence>
-              {showC2 && (
-                <motion.div
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1, left: c2Left }}
-                  exit={{ opacity: 0 }}
-                  transition={{
-                    type: "spring",
-                    stiffness: 300,
-                    damping: 30,
-                    delay: 0.2,
-                  }}
-                  className="absolute flex flex-col items-center"
-                  style={{ width: cursorWidth }}
-                >
-                  <CursorTriangle color={COLORS.blue} />
-                  <span className="text-[9px] font-bold" style={{ color: COLORS.blue }}>C2</span>
-                </motion.div>
-              )}
-            </AnimatePresence>
+            <motion.div
+              animate={{ opacity: showC2 ? 1 : 0, left: c2Left }}
+              transition={{
+                type: "spring",
+                stiffness: 300,
+                damping: 30,
+                delay: 0.2,
+              }}
+              className="absolute flex flex-col items-center"
+              style={{ width: cursorWidth, pointerEvents: showC2 ? "auto" : "none" }}
+            >
+              <CursorTriangle color={COLORS.blue} />
+              <span className="text-[9px] font-bold" style={{ color: COLORS.blue }}>C2</span>
+            </motion.div>
           </div>
         </div>
       </div>
@@ -193,24 +187,19 @@ function CursorView({ c1Pos, c2Pos }: { c1Pos: number; c2Pos: number | null }) {
           <span className="text-[10px] text-gray-500">pos: {c1Pos + 1}</span>
         </motion.div>
 
-        <AnimatePresence>
-          {showC2 && (
-            <motion.div
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.8 }}
-              transition={{ duration: 0.3 }}
-              className="w-16 h-12 rounded-lg flex flex-col items-center justify-center shrink-0"
-              style={{
-                border: `1.5px solid ${COLORS.blue}`,
-                backgroundColor: `${COLORS.blue}12`,
-              }}
-            >
-              <span className="text-xs font-bold" style={{ color: COLORS.blue }}>C2</span>
-              <span className="text-[10px] text-gray-500">pos: {c2Pos !== null ? c2Pos + 1 : 0}</span>
-            </motion.div>
-          )}
-        </AnimatePresence>
+        <motion.div
+          animate={{ opacity: showC2 ? 1 : 0, scale: showC2 ? 1 : 0.8 }}
+          transition={{ duration: 0.3 }}
+          className="w-16 h-12 rounded-lg flex flex-col items-center justify-center shrink-0"
+          style={{
+            border: `1.5px solid ${COLORS.blue}`,
+            backgroundColor: `${COLORS.blue}12`,
+            pointerEvents: showC2 ? "auto" : "none",
+          }}
+        >
+          <span className="text-xs font-bold" style={{ color: COLORS.blue }}>C2</span>
+          <span className="text-[10px] text-gray-500">pos: {c2Pos !== null ? c2Pos + 1 : 0}</span>
+        </motion.div>
       </div>
 
       {/* Legend */}

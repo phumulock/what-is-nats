@@ -77,15 +77,14 @@ export function NoRespondersDiagram() {
           </motion.div>
 
           <div className="h-6 flex items-center justify-center w-full">
-            {step === 2 && (
-              <motion.div
-                initial={{ scale: 0.5, opacity: 0 }}
-                animate={{ scale: 1, opacity: 1 }}
-                className="px-2 py-1 bg-accent-red text-white text-xs rounded font-medium"
-              >
-                no responders
-              </motion.div>
-            )}
+            <motion.div
+              animate={{ scale: step === 2 ? 1 : 0.5, opacity: step === 2 ? 1 : 0 }}
+              transition={{ duration: 0.3 }}
+              className="px-2 py-1 bg-accent-red text-white text-xs rounded font-medium"
+              style={{ pointerEvents: step === 2 ? "auto" : "none" }}
+            >
+              no responders
+            </motion.div>
           </div>
         </div>
 
@@ -104,15 +103,14 @@ export function NoRespondersDiagram() {
               NATS
             </span>
           </motion.div>
-          {step === 2 && (
-            <motion.div
-              initial={{ scale: 0.5, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              className="px-2 py-1 bg-accent-red text-white text-xs rounded font-medium"
-            >
-              no responders
-            </motion.div>
-          )}
+          <motion.div
+            animate={{ scale: step === 2 ? 1 : 0.5, opacity: step === 2 ? 1 : 0 }}
+            transition={{ duration: 0.3 }}
+            className="px-2 py-1 bg-accent-red text-white text-xs rounded font-medium"
+            style={{ pointerEvents: step === 2 ? "auto" : "none" }}
+          >
+            no responders
+          </motion.div>
         </div>
 
         {/* Mobile: vertical arrow to empty slot */}
