@@ -75,11 +75,17 @@
   --font-mono: var(--font-jetbrains-mono);
 }
 
+html {
+  overflow-x: hidden;
+  scrollbar-gutter: stable;
+}
+
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-mono), ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
   line-height: 1.7;
+  overflow-x: hidden;
 }
 
 /* Scrollbar styling */
