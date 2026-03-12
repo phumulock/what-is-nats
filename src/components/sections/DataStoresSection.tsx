@@ -22,7 +22,7 @@ export function DataStoresSection({ number, id }: SectionProps) {
 
       <p className="mt-4 text-gray-500">
         Most platforms cover one or two of these well, but not all three.
-        Message brokers add key-value APIs as an afterthought. KV stores bolt
+        Message brokers add key-value APIs as an afterthought. Key-value stores bolt
         on pub/sub. Nobody covers all three over a single protocol.
       </p>
 
