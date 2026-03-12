@@ -1,0 +1,108 @@
+@import "tailwindcss";
+
+:root {
+  --background: #000000;
+  --foreground: #aaaaaa;
+  --surface: #0a0a0a;
+  --accent-green: #4ade80;
+  --accent-green-bg: rgba(74, 222, 128, 0.08);
+  --accent-green-border: rgba(74, 222, 128, 0.25);
+  --accent-blue: #60a5fa;
+  --accent-blue-bg: rgba(96, 165, 250, 0.08);
+  --accent-blue-border: rgba(96, 165, 250, 0.25);
+  --accent-yellow: #fbbf24;
+  --accent-yellow-bg: rgba(251, 191, 36, 0.08);
+  --accent-yellow-border: rgba(251, 191, 36, 0.25);
+  --accent-purple: #a78bfa;
+  --accent-purple-bg: rgba(167, 139, 250, 0.08);
+  --accent-purple-border: rgba(167, 139, 250, 0.25);
+  --accent-pink: #f472b6;
+  --accent-pink-bg: rgba(244, 114, 182, 0.08);
+  --accent-pink-border: rgba(244, 114, 182, 0.25);
+  --accent-red: #ef4444;
+  --accent-red-bg: rgba(239, 68, 68, 0.08);
+  --accent-red-border: rgba(239, 68, 68, 0.25);
+  --accent-orange: #f97316;
+  --accent-orange-bg: rgba(249, 115, 22, 0.08);
+  --accent-orange-border: rgba(249, 115, 22, 0.25);
+  --accent-cyan: #22d3ee;
+  --accent-teal: #34d399;
+  --accent-indigo: #818cf8;
+  --accent-purple-light: #c084fc;
+  --accent-pink-bright: #fb7185;
+  --terminal-bg: #1a1a1a;
+  --border-color: #333333;
+  --border-light: #444444;
+  --text-tertiary: #555555;
+  --text-quaternary: #666666;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-surface: var(--surface);
+  --color-accent-green: var(--accent-green);
+  --color-accent-green-bg: var(--accent-green-bg);
+  --color-accent-green-border: var(--accent-green-border);
+  --color-accent-blue: var(--accent-blue);
+  --color-accent-blue-bg: var(--accent-blue-bg);
+  --color-accent-blue-border: var(--accent-blue-border);
+  --color-accent-yellow: var(--accent-yellow);
+  --color-accent-yellow-bg: var(--accent-yellow-bg);
+  --color-accent-yellow-border: var(--accent-yellow-border);
+  --color-accent-purple: var(--accent-purple);
+  --color-accent-purple-bg: var(--accent-purple-bg);
+  --color-accent-purple-border: var(--accent-purple-border);
+  --color-accent-pink: var(--accent-pink);
+  --color-accent-pink-bg: var(--accent-pink-bg);
+  --color-accent-pink-border: var(--accent-pink-border);
+  --color-accent-red: var(--accent-red);
+  --color-accent-red-bg: var(--accent-red-bg);
+  --color-accent-red-border: var(--accent-red-border);
+  --color-accent-orange: var(--accent-orange);
+  --color-accent-orange-bg: var(--accent-orange-bg);
+  --color-accent-orange-border: var(--accent-orange-border);
+  --color-accent-cyan: var(--accent-cyan);
+  --color-accent-teal: var(--accent-teal);
+  --color-accent-indigo: var(--accent-indigo);
+  --color-accent-purple-light: var(--accent-purple-light);
+  --color-accent-pink-bright: var(--accent-pink-bright);
+  --color-terminal-bg: var(--terminal-bg);
+  --color-border: var(--border-color);
+  --color-border-light: var(--border-light);
+  --color-text-tertiary: var(--text-tertiary);
+  --color-text-quaternary: var(--text-quaternary);
+  --font-mono: var(--font-jetbrains-mono);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-mono), ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+  line-height: 1.7;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--background);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border-color);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--border-light);
+}
+
+/* Selection styling */
+::selection {
+  background: var(--accent-green);
+  color: var(--background);
+}
