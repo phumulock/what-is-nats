@@ -65,7 +65,7 @@ export function TcpDiagram() {
       </motion.div>
 
       {/* What TCP provides */}
-      <div className="grid grid-cols-3 gap-2 md:gap-3">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-2 md:gap-3">
         {TCP_PROVIDES.map((item, i) => (
           <motion.div
             key={item.label}
