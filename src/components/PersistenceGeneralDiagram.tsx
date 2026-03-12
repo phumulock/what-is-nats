@@ -157,8 +157,8 @@ export function PersistenceGeneralDiagram() {
         </motion.span>
       </div>
 
-      {/* Main row: Producer — Broker — Consumer */}
-      <div className="flex items-start justify-between gap-4">
+      {/* Main layout: vertical on mobile, horizontal on md+ */}
+      <div className="flex flex-col md:flex-row items-center md:items-start justify-between gap-2 md:gap-4">
         {/* Producer */}
         <div className="flex flex-col items-center gap-2 w-20">
           <motion.div
@@ -170,9 +170,38 @@ export function PersistenceGeneralDiagram() {
         </div>
 
         {/* Arrow: Producer → Broker */}
-        <div className="flex-1 flex flex-col items-center justify-center pt-5">
+        {/* Vertical arrow on mobile */}
+        <div className="flex md:hidden items-center justify-center w-8 h-10 relative">
+          <div className="absolute top-0 bottom-0 left-1/2 w-px bg-border" />
+          {(s.msgState === "delivered" ||
+            s.msgState === "stuck" ||
+            s.msgState === "piling" ||
+            s.msgState === "persisted" ||
+            s.msgState === "replicated") && (
+            <motion.div
+              key={`msg-left-v-${step}`}
+              initial={{ y: 0, opacity: 0 }}
+              animate={{ y: 20, opacity: 1 }}
+              transition={{ duration: 0.8 }}
+              className="absolute top-0 z-10"
+            >
+              <div
+                className={`px-2 py-0.5 text-black text-[10px] rounded ${
+                  s.msgState === "persisted" || s.msgState === "replicated"
+                    ? "bg-accent-blue"
+                    : s.msgState === "piling"
+                      ? "bg-accent-yellow"
+                      : "bg-accent-green"
+                }`}
+              >
+                msg
+              </div>
+            </motion.div>
+          )}
+        </div>
+        {/* Horizontal arrow on md+ */}
+        <div className="hidden md:flex flex-1 flex-col items-center justify-center pt-5">
           <div className="relative w-full h-8">
-            {/* Message animation */}
             {(s.msgState === "delivered" ||
               s.msgState === "stuck" ||
               s.msgState === "piling" ||
@@ -248,7 +277,25 @@ export function PersistenceGeneralDiagram() {
         </div>
 
         {/* Arrow: Broker → Consumer */}
-        <div className="flex-1 flex flex-col items-center justify-center pt-5">
+        {/* Vertical arrow on mobile */}
+        <div className="flex md:hidden items-center justify-center w-8 h-10 relative">
+          <div className="absolute top-0 bottom-0 left-1/2 w-px bg-border" />
+          {s.msgState === "delivered" && (
+            <motion.div
+              key={`msg-right-v-${step}`}
+              initial={{ y: 0, opacity: 0 }}
+              animate={{ y: 20, opacity: 1 }}
+              transition={{ duration: 0.8, delay: 0.6 }}
+              className="absolute top-0 z-10"
+            >
+              <div className="px-2 py-0.5 bg-accent-green text-black text-[10px] rounded">
+                msg
+              </div>
+            </motion.div>
+          )}
+        </div>
+        {/* Horizontal arrow on md+ */}
+        <div className="hidden md:flex flex-1 flex-col items-center justify-center pt-5">
           <div className="relative w-full h-8">
             {s.msgState === "delivered" && (
               <motion.div
