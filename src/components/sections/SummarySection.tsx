@@ -22,7 +22,7 @@ export function SummarySection({ number, id }: SectionProps) {
 
       <ComplexitySpectrum />
 
-      <DiagramReveal label="See the full decision guide">
+      <DiagramReveal>
         <NATSDecisionGuide />
       </DiagramReveal>
 
