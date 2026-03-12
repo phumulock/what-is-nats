@@ -18,7 +18,7 @@ export function SectionHeader({ number, title, id, href }: SectionHeaderProps) {
             className="text-green-400 no-underline transition-all duration-300 hover:text-green-300"
             style={{ textShadow: "0 0 10px rgba(74, 222, 128, 0.6), 0 0 30px rgba(74, 222, 128, 0.4), 0 0 60px rgba(74, 222, 128, 0.25), 0 0 100px rgba(74, 222, 128, 0.1)" }}
           >
-            {title}{" >"}
+            {title}{" →"}
           </a>
         ) : (
           title
