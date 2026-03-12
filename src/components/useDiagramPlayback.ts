@@ -29,8 +29,6 @@ export function useDiagramPlayback(
   const [isPlaying, setIsPlaying] = useState(false);
   const resumeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const wasPlayingBeforeHover = useRef(false);
-  const wasPlayingBeforeScroll = useRef(false);
-  const isPlayingRef = useRef(false);
   const containerRef = useRef<HTMLDivElement | null>(null);
 
   const play = useCallback(() => setIsPlaying(true), []);
@@ -73,11 +71,6 @@ export function useDiagramPlayback(
     }
   }, []);
 
-  // Keep ref in sync with state
-  useEffect(() => {
-    isPlayingRef.current = isPlaying;
-  }, [isPlaying]);
-
   // Ref callback that sets up IntersectionObserver when element mounts
   const observerRef = useRef<IntersectionObserver | null>(null);
   const setContainerRef = useCallback((node: HTMLDivElement | null) => {
@@ -91,12 +84,7 @@ export function useDiagramPlayback(
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (!entry.isIntersecting) {
-          wasPlayingBeforeScroll.current = isPlayingRef.current;
           setIsPlaying(false);
-        } else {
-          if (wasPlayingBeforeScroll.current) {
-            setIsPlaying(true);
-          }
         }
       },
       { threshold: 0.3 }
