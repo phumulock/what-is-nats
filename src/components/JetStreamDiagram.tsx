@@ -7,30 +7,20 @@ import { COLORS } from "@/lib/colors";
 
 // --- Slide metadata ---
 
-type CursorKind = "cursor-start" | "cursor-advance" | "cursor-complete";
-
 interface CursorSlide {
-  kind: CursorKind;
+  c1Pos: number;
+  c2Pos: number | null;
   status: string;
   statusColor: string;
 }
 
 const SLIDES: CursorSlide[] = [
-  {
-    kind: "cursor-start",
-    status: "Consumer tracks position with a cursor.",
-    statusColor: "text-gray-500",
-  },
-  {
-    kind: "cursor-advance",
-    status: "As messages are acknowledged, the cursor advances.",
-    statusColor: "text-accent-green",
-  },
-  {
-    kind: "cursor-complete",
-    status: "Each consumer is independent — add more without interference.",
-    statusColor: "text-accent-blue",
-  },
+  { c1Pos: 0, c2Pos: null, status: "Consumer tracks position with a cursor.", statusColor: "text-gray-500" },
+  { c1Pos: 1, c2Pos: null, status: "As messages are acknowledged, the cursor advances.", statusColor: "text-accent-green" },
+  { c1Pos: 2, c2Pos: null, status: "As messages are acknowledged, the cursor advances.", statusColor: "text-accent-green" },
+  { c1Pos: 2, c2Pos: 0, status: "Each consumer is independent — add more without interference.", statusColor: "text-accent-blue" },
+  { c1Pos: 3, c2Pos: 1, status: "Both consumers advance independently, at their own pace.", statusColor: "text-accent-blue" },
+  { c1Pos: 4, c2Pos: 2, status: "Both consumers advance independently, at their own pace.", statusColor: "text-accent-blue" },
 ];
 
 // --- SVG cursor triangle (points upward) ---
@@ -51,12 +41,18 @@ function CursorTriangle({ color }: { color: string }) {
 
 // --- Cursor View ---
 
-function CursorView({ kind }: { kind: CursorKind }) {
-  const messages = [1, 2, 3, 4, 5, 6, 7, 8];
+const TOTAL_SLOTS = 6; // 5 messages + 1 "..."
 
-  const c1Pos =
-    kind === "cursor-start" ? 2 : kind === "cursor-advance" ? 5 : 7;
-  const showC2 = kind === "cursor-complete";
+function CursorView({ c1Pos, c2Pos }: { c1Pos: number; c2Pos: number | null }) {
+  const messages = [1, 2, 3, 4, 5];
+
+  const showC2 = c2Pos !== null;
+
+  // Percentage-based positioning: each slot is 1/TOTAL_SLOTS of the row
+  const slotPct = 100 / TOTAL_SLOTS;
+  const c1Left = `${c1Pos * slotPct}%`;
+  const c2Left = c2Pos !== null ? `${c2Pos * slotPct}%` : "0%";
+  const cursorWidth = `${slotPct}%`;
 
   return (
     <>
@@ -75,12 +71,15 @@ function CursorView({ kind }: { kind: CursorKind }) {
           >
             STREAM: orders
           </div>
-          <div className="flex gap-1 overflow-x-auto p-1">
+          <div
+            className="grid gap-1"
+            style={{ gridTemplateColumns: `repeat(${TOTAL_SLOTS}, 1fr)` }}
+          >
             {messages.map((msg, i) => {
-              const isC2Processed = showC2 && i < 3;
-              const isC1Processed = showC2 ? i >= 3 && i < c1Pos : i < c1Pos;
+              const isC2Processed = showC2 && c2Pos !== null && i < c2Pos;
+              const isC1Processed = showC2 && c2Pos !== null ? i >= c2Pos && i < c1Pos : i < c1Pos;
               const isProcessed = isC1Processed || isC2Processed;
-              const isActive = i === c1Pos || (showC2 && i === 3);
+              const isActive = i === c1Pos || (showC2 && c2Pos !== null && i === c2Pos);
 
               let borderColor: string = COLORS.border;
               let bgColor: string = COLORS.surface;
@@ -107,7 +106,7 @@ function CursorView({ kind }: { kind: CursorKind }) {
                       : "0 0 0px rgba(0,0,0,0)",
                   }}
                   transition={{ duration: 0.3 }}
-                  className="w-12 h-12 rounded border flex flex-col items-center justify-center flex-shrink-0"
+                  className="aspect-square rounded border flex flex-col items-center justify-center"
                 >
                   <span
                     className="text-[10px]"
@@ -138,17 +137,18 @@ function CursorView({ kind }: { kind: CursorKind }) {
                 </motion.div>
               );
             })}
-            <div className="w-12 h-12 rounded border border-dashed border-border flex items-center justify-center text-xs text-gray-500 flex-shrink-0">
+            <div className="aspect-square rounded border border-dashed border-border flex items-center justify-center text-xs text-gray-500">
               ...
             </div>
           </div>
 
           {/* Cursor arrows inside stream container */}
-          <div className="relative h-5 mt-1 ml-1">
+          <div className="relative h-5 mt-3 ml-1">
             <motion.div
-              animate={{ x: c1Pos * 52 }}
+              animate={{ left: c1Left }}
               transition={{ type: "spring", stiffness: 300, damping: 30 }}
-              className="absolute flex flex-col items-center w-12"
+              className="absolute flex flex-col items-center"
+              style={{ width: cursorWidth }}
             >
               <CursorTriangle color={COLORS.green} />
               <span className="text-[9px] font-bold" style={{ color: COLORS.green }}>C1</span>
@@ -158,7 +158,7 @@ function CursorView({ kind }: { kind: CursorKind }) {
               {showC2 && (
                 <motion.div
                   initial={{ opacity: 0 }}
-                  animate={{ opacity: 1, x: 3 * 52 }}
+                  animate={{ opacity: 1, left: c2Left }}
                   exit={{ opacity: 0 }}
                   transition={{
                     type: "spring",
@@ -166,7 +166,8 @@ function CursorView({ kind }: { kind: CursorKind }) {
                     damping: 30,
                     delay: 0.2,
                   }}
-                  className="absolute flex flex-col items-center w-12"
+                  className="absolute flex flex-col items-center"
+                  style={{ width: cursorWidth }}
                 >
                   <CursorTriangle color={COLORS.blue} />
                   <span className="text-[9px] font-bold" style={{ color: COLORS.blue }}>C2</span>
@@ -180,9 +181,9 @@ function CursorView({ kind }: { kind: CursorKind }) {
       {/* Consumer boxes below */}
       <div className="flex items-center gap-2">
         <motion.div
-          animate={{ scale: kind === "cursor-advance" ? [1, 1.05, 1] : 1 }}
+          animate={{ scale: c1Pos > 0 && !showC2 ? [1, 1.05, 1] : 1 }}
           transition={{ duration: 0.4 }}
-          className="w-16 h-12 rounded-lg flex flex-col items-center justify-center flex-shrink-0"
+          className="w-16 h-12 rounded-lg flex flex-col items-center justify-center shrink-0"
           style={{
             border: `1.5px solid ${COLORS.green}`,
             backgroundColor: `${COLORS.green}12`,
@@ -199,14 +200,14 @@ function CursorView({ kind }: { kind: CursorKind }) {
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.8 }}
               transition={{ duration: 0.3 }}
-              className="w-16 h-12 rounded-lg flex flex-col items-center justify-center flex-shrink-0"
+              className="w-16 h-12 rounded-lg flex flex-col items-center justify-center shrink-0"
               style={{
                 border: `1.5px solid ${COLORS.blue}`,
                 backgroundColor: `${COLORS.blue}12`,
               }}
             >
               <span className="text-xs font-bold" style={{ color: COLORS.blue }}>C2</span>
-              <span className="text-[10px] text-gray-500">pos: 4</span>
+              <span className="text-[10px] text-gray-500">pos: {c2Pos !== null ? c2Pos + 1 : 0}</span>
             </motion.div>
           )}
         </AnimatePresence>
@@ -251,13 +252,13 @@ export function JetStreamDiagram() {
 
   return (
     <div
-      className="border border-border rounded-lg p-6 bg-surface min-h-[400px]"
+      className="border border-border rounded-lg p-6 bg-surface min-h-100"
       {...containerProps}
     >
-      <CursorView kind={slide.kind} />
+      <CursorView c1Pos={slide.c1Pos} c2Pos={slide.c2Pos} />
 
       {/* Status text */}
-      <div className="mt-4 text-center text-sm h-6">
+      <div className="mt-6 text-center text-sm h-10">
         <motion.span
           key={step}
           initial={{ opacity: 0 }}
