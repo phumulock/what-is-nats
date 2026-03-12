@@ -97,7 +97,7 @@ export function PassiveObserverDemo() {
                   initial={{ opacity: 0, y: 4 }}
                   animate={{ opacity: 0.4 }}
                   exit={{ opacity: 0 }}
-                  className="absolute left-auto -left-16 top-1 translate-x-0 flex flex-col gap-1"
+                  className="absolute -left-16 top-1/2 -translate-y-1/2 flex flex-col gap-1"
                 >
                   <div
                     className="text-xs border border-dashed rounded px-1.5 py-0.5 line-through whitespace-nowrap"
@@ -259,7 +259,7 @@ export function PassiveObserverDemo() {
                 initial={{ opacity: 0, y: 4 }}
                 animate={{ opacity: 0.5 }}
                 exit={{ opacity: 0 }}
-                className="text-center text-xs border border-dashed rounded px-2 py-1"
+                className="self-center text-center text-xs border border-dashed rounded px-2 py-1"
                 style={{ borderColor: COLORS.yellow, color: COLORS.yellow }}
               >
                 No replay, no backlog

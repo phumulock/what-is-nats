@@ -395,7 +395,7 @@ function DurabilityView({ step }: { step: number }) {
       </div>
 
       {/* Status text */}
-      <div className="mt-6 text-center text-sm h-6">
+      <div className="mt-6 text-center text-sm min-h-6">
         <motion.span
           key={step}
           initial={{ opacity: 0 }}
@@ -456,7 +456,7 @@ export function DurabilitySpectrumDiagram() {
 
       {/* Status text for temporal slides (DurabilityView has its own) */}
       {isTemporal && (
-        <div className="mt-4 text-center text-sm h-6">
+        <div className="mt-4 text-center text-sm min-h-6">
           <motion.span
             key={step}
             initial={{ opacity: 0 }}

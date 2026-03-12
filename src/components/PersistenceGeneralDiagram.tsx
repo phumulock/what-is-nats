@@ -339,7 +339,7 @@ export function PersistenceGeneralDiagram() {
       </div>
 
       {/* Status text */}
-      <div className="mt-6 text-center text-sm h-6">
+      <div className="mt-6 text-center text-sm min-h-6">
         <motion.span
           key={step}
           initial={{ opacity: 0 }}

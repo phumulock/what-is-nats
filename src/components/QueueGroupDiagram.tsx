@@ -11,10 +11,11 @@ export function QueueGroupDiagram() {
 
   const messageCount = step + 1;
   const targetSub = step % 3;
+  const workerColors = [COLORS.green, COLORS.blue, COLORS.yellow];
 
   return (
-    <div className="border border-border rounded-lg p-4 md:p-6 bg-surface" {...containerProps}>
-      <div className="flex flex-col md:flex-row items-center justify-between gap-2 md:gap-4">
+    <div className="border border-border rounded-lg p-6 md:p-8 bg-surface" {...containerProps}>
+      <div className="flex flex-col md:flex-row items-center justify-between gap-4 md:gap-6">
         {/* Publisher */}
         <div className="flex flex-col items-center gap-2">
           <div className="w-16 h-16 rounded-lg bg-terminal-bg border border-border flex items-center justify-center text-xs">
@@ -24,7 +25,7 @@ export function QueueGroupDiagram() {
         </div>
 
         {/* Mobile: vertical arrow */}
-        <div className="flex md:hidden items-center justify-center w-8 h-10 relative">
+        <div className="flex md:hidden items-center justify-center w-8 h-16 relative">
           <div className="absolute top-0 bottom-0 left-1/2 w-px bg-border" />
           <motion.div
             key={`msg-v-${messageCount}`}
@@ -33,7 +34,7 @@ export function QueueGroupDiagram() {
             transition={{ duration: 0.5 }}
             className="absolute top-0 z-10"
           >
-            <div className="px-2 py-0.5 bg-accent-green text-black text-[10px] rounded">
+            <div className="px-2 py-0.5 text-black text-[10px] rounded whitespace-nowrap" style={{ backgroundColor: workerColors[targetSub] }}>
               msg #{messageCount}
             </div>
           </motion.div>
@@ -46,7 +47,8 @@ export function QueueGroupDiagram() {
             initial={{ x: -20, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="px-2 py-1 bg-accent-green text-black text-xs rounded mb-2"
+            className="px-3 py-1 text-black text-xs rounded mb-4 whitespace-nowrap"
+            style={{ backgroundColor: workerColors[targetSub] }}
           >
             msg #{messageCount}
           </motion.div>
@@ -64,7 +66,7 @@ export function QueueGroupDiagram() {
         </div>
 
         {/* Mobile: vertical arrow to queue */}
-        <div className="flex md:hidden items-center justify-center w-8 h-10 relative">
+        <div className="flex md:hidden items-center justify-center w-8 h-16 relative">
           <div className="absolute top-0 bottom-0 left-1/2 w-px bg-border" />
         </div>
 
@@ -78,7 +80,7 @@ export function QueueGroupDiagram() {
               <motion.div
                 key={i}
                 animate={{
-                  borderColor: targetSub === i ? COLORS.green : COLORS.border,
+                  borderColor: targetSub === i ? workerColors[i] : COLORS.border,
                   scale: targetSub === i ? 1.05 : 1,
                 }}
                 className="w-14 h-10 rounded bg-terminal-bg border flex items-center justify-center text-xs"
