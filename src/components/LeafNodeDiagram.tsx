@@ -20,7 +20,7 @@ const DEVICE_Y = 265;
 
 export function LeafNodeDiagram() {
   const { step, isPlaying, play, pause, next, prev, totalSteps, containerProps } =
-    useDiagramPlayback(7, 2500);
+    useDiagramPlayback(7);
 
   const isDisconnected = step === 4 || step === 5;
 

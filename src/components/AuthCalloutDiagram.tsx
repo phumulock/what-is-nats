@@ -68,7 +68,7 @@ export function AuthCalloutDiagram() {
     prev,
     totalSteps,
     containerProps,
-  } = useDiagramPlayback(5, 2500);
+  } = useDiagramPlayback(5);
 
   return (
     <div

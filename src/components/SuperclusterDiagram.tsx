@@ -77,7 +77,7 @@ const GATEWAYS = [
 
 export function SuperclusterDiagram() {
   const { step, isPlaying, play, pause, next, prev, totalSteps, containerProps } =
-    useDiagramPlayback(5, 2500);
+    useDiagramPlayback(5);
 
   const regionActive = (ri: number) =>
     (ri === 0 && step >= 1) || (ri === 1 && step >= 3) || (ri === 2 && step >= 3);
@@ -93,6 +93,153 @@ export function SuperclusterDiagram() {
 
   // Show eu-ap as dimmed at step 4 to illustrate no relay between non-origin clusters
   const gatewayDimmed = (gi: number) => gi === 2 && step === 4;
+
+  const superclusterSvg = (
+    fontSize: number,
+    labelFontSize: number,
+    nodeRadius: number,
+    dotRadius: number,
+    idPrefix: string,
+    maxHeight?: number,
+  ) => (
+    <svg viewBox="0 0 550 322" className="w-full" style={maxHeight ? { maxHeight } : undefined}>
+      <defs>
+        {GATEWAYS.map((gw) => (
+          <path key={`def-${idPrefix}${gw.id}`} id={`gw-path-${idPrefix}${gw.id}`} d={gw.path} />
+        ))}
+      </defs>
+      {GATEWAYS.map((gw, gi) => (
+        <g key={gw.id}>
+          <motion.path
+            d={gw.path}
+            fill="none"
+            strokeDasharray="4 4"
+            strokeWidth={1}
+            stroke={COLORS.borderLight}
+            animate={{
+              stroke: gatewayActive(gi)
+                ? REGIONS[gw.from].color
+                : gatewayDimmed(gi)
+                  ? `${COLORS.border}60`
+                  : COLORS.borderLight,
+              strokeWidth: gatewayActive(gi) ? 2 : 1,
+            }}
+          />
+          <text
+            x={gw.labelX}
+            y={gw.labelY}
+            textAnchor="middle"
+            fill={gatewayDimmed(gi) ? `${COLORS.textTertiary}60` : COLORS.textTertiary}
+            fontSize={fontSize}
+            fontFamily="monospace"
+          >
+            gateway
+          </text>
+          {gatewayDimmed(gi) && (
+            <text
+              x={gw.labelX - 22}
+              y={gw.labelY + 14}
+              textAnchor="middle"
+              fill={COLORS.pink}
+              fontSize={fontSize}
+              fontFamily="monospace"
+              opacity={0.8}
+            >
+              (skipped)
+            </text>
+          )}
+          {gatewayActive(gi) && (
+            <motion.circle
+              r={dotRadius}
+              fill={REGIONS[gw.from].color}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+            >
+              <animateMotion dur="0.8s" fill="freeze">
+                <mpath href={`#gw-path-${idPrefix}${gw.id}`} />
+              </animateMotion>
+            </motion.circle>
+          )}
+        </g>
+      ))}
+      {REGIONS.map((region, ri) => (
+        <g key={region.name}>
+          <motion.rect
+            x={region.cx - 75}
+            y={region.cy - 35}
+            width={150}
+            height={102}
+            rx={8}
+            fill={COLORS.terminalBg}
+            strokeDasharray="4 4"
+            animate={{
+              stroke: regionHighlight(ri) ? region.color : COLORS.border,
+              fill: regionHighlight(ri) ? `${region.color}08` : COLORS.terminalBg,
+            }}
+            strokeWidth={1.5}
+          />
+          <text
+            x={region.cx}
+            y={region.cy - 22}
+            textAnchor="middle"
+            fill={regionActive(ri) ? region.color : COLORS.textQuaternary}
+            fontSize={labelFontSize}
+            fontWeight={600}
+            fontFamily="monospace"
+            letterSpacing={1}
+          >
+            {region.name}
+          </text>
+          {[
+            [0, 1],
+            [1, 2],
+            [0, 2],
+          ].map(([a, b]) => (
+            <motion.line
+              key={`route-${ri}-${a}-${b}`}
+              x1={region.servers[a].x}
+              y1={region.servers[a].y}
+              x2={region.servers[b].x}
+              y2={region.servers[b].y}
+              strokeDasharray="2 2"
+              strokeOpacity={0.25}
+              stroke={COLORS.border}
+              animate={{
+                stroke: regionActive(ri) ? region.color : COLORS.border,
+                strokeOpacity: 0.25,
+              }}
+            />
+          ))}
+          {region.servers.map((s, si) => (
+            <g key={si}>
+              <motion.circle
+                cx={s.x}
+                cy={s.y}
+                r={nodeRadius}
+                fill={COLORS.surface}
+                animate={{
+                  stroke: regionActive(ri) ? region.color : COLORS.borderLight,
+                  fill: regionHighlight(ri) ? `${region.color}12` : COLORS.surface,
+                }}
+                strokeWidth={1.5}
+              />
+              <text
+                x={s.x}
+                y={s.y + 1}
+                textAnchor="middle"
+                dominantBaseline="middle"
+                fill={regionActive(ri) ? region.color : COLORS.textTertiary}
+                fontSize={fontSize}
+                fontFamily="monospace"
+              >
+                n{ri * 3 + si + 1}
+              </text>
+            </g>
+          ))}
+        </g>
+      ))}
+    </svg>
+  );
 
   return (
     <div className="border border-border rounded-lg p-5 md:p-6 bg-surface" {...containerProps}>
@@ -154,147 +301,11 @@ export function SuperclusterDiagram() {
 
         {/* SVG Diagram — desktop */}
         <div className="flex-1">
-          <div className="border border-dashed border-gray-700/40 rounded-lg bg-[#0f0f0f] p-3">
+          <div className="border border-dashed border-gray-700/40 rounded-lg bg-surface-dark p-3">
             <div className="text-[11px] text-gray-500 text-center mb-1 tracking-widest font-mono">
               SUPERCLUSTER
             </div>
-            <svg viewBox="0 0 550 322" className="w-full" style={{ maxHeight: 340 }}>
-              <defs>
-                {GATEWAYS.map((gw) => (
-                  <path key={`def-${gw.id}`} id={`gw-path-${gw.id}`} d={gw.path} />
-                ))}
-              </defs>
-              {GATEWAYS.map((gw, gi) => (
-                <g key={gw.id}>
-                  <motion.path
-                    d={gw.path}
-                    fill="none"
-                    strokeDasharray="4 4"
-                    strokeWidth={1}
-                    stroke={COLORS.borderLight}
-                    animate={{
-                      stroke: gatewayActive(gi)
-                        ? REGIONS[gw.from].color
-                        : gatewayDimmed(gi)
-                          ? `${COLORS.border}60`
-                          : COLORS.borderLight,
-                      strokeWidth: gatewayActive(gi) ? 2 : 1,
-                    }}
-                  />
-                  <text
-                    x={gw.labelX}
-                    y={gw.labelY}
-                    textAnchor="middle"
-                    fill={gatewayDimmed(gi) ? `${COLORS.textTertiary}60` : COLORS.textTertiary}
-                    fontSize={9}
-                    fontFamily="monospace"
-                  >
-                    gateway
-                  </text>
-                  {gatewayDimmed(gi) && (
-                    <text
-                      x={gw.labelX - 22}
-                      y={gw.labelY + 14}
-                      textAnchor="middle"
-                      fill={COLORS.pink}
-                      fontSize={9}
-                      fontFamily="monospace"
-                      opacity={0.8}
-                    >
-                      (skipped)
-                    </text>
-                  )}
-                  {gatewayActive(gi) && (
-                    <motion.circle
-                      r={5}
-                      fill={REGIONS[gw.from].color}
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                    >
-                      <animateMotion dur="0.8s" fill="freeze">
-                        <mpath href={`#gw-path-${gw.id}`} />
-                      </animateMotion>
-                    </motion.circle>
-                  )}
-                </g>
-              ))}
-              {REGIONS.map((region, ri) => (
-                <g key={region.name}>
-                  <motion.rect
-                    x={region.cx - 75}
-                    y={region.cy - 35}
-                    width={150}
-                    height={102}
-                    rx={8}
-                    fill={COLORS.terminalBg}
-                    strokeDasharray="4 4"
-                    animate={{
-                      stroke: regionHighlight(ri) ? region.color : COLORS.border,
-                      fill: regionHighlight(ri) ? `${region.color}08` : COLORS.terminalBg,
-                    }}
-                    strokeWidth={1.5}
-                  />
-                  <text
-                    x={region.cx}
-                    y={region.cy - 22}
-                    textAnchor="middle"
-                    fill={regionActive(ri) ? region.color : COLORS.textQuaternary}
-                    fontSize={11}
-                    fontWeight={600}
-                    fontFamily="monospace"
-                    letterSpacing={1}
-                  >
-                    {region.name}
-                  </text>
-                  {[
-                    [0, 1],
-                    [1, 2],
-                    [0, 2],
-                  ].map(([a, b]) => (
-                    <motion.line
-                      key={`route-${ri}-${a}-${b}`}
-                      x1={region.servers[a].x}
-                      y1={region.servers[a].y}
-                      x2={region.servers[b].x}
-                      y2={region.servers[b].y}
-                      strokeDasharray="2 2"
-                      strokeOpacity={0.25}
-                      stroke={COLORS.border}
-                      animate={{
-                        stroke: regionActive(ri) ? region.color : COLORS.border,
-                        strokeOpacity: 0.25,
-                      }}
-                    />
-                  ))}
-                  {region.servers.map((s, si) => (
-                    <g key={si}>
-                      <motion.circle
-                        cx={s.x}
-                        cy={s.y}
-                        r={14}
-                        fill={COLORS.surface}
-                        animate={{
-                          stroke: regionActive(ri) ? region.color : COLORS.borderLight,
-                          fill: regionHighlight(ri) ? `${region.color}12` : COLORS.surface,
-                        }}
-                        strokeWidth={1.5}
-                      />
-                      <text
-                        x={s.x}
-                        y={s.y + 1}
-                        textAnchor="middle"
-                        dominantBaseline="middle"
-                        fill={regionActive(ri) ? region.color : COLORS.textTertiary}
-                        fontSize={9}
-                        fontFamily="monospace"
-                      >
-                        n{ri * 3 + si + 1}
-                      </text>
-                    </g>
-                  ))}
-                </g>
-              ))}
-            </svg>
+            {superclusterSvg(9, 11, 14, 5, "", 340)}
           </div>
         </div>
 
@@ -337,147 +348,11 @@ export function SuperclusterDiagram() {
 
       {/* SVG Diagram — mobile (full width, no side columns stealing space) */}
       <div className="md:hidden">
-        <div className="border border-dashed border-gray-700/40 rounded-lg bg-[#0f0f0f] p-2">
+        <div className="border border-dashed border-gray-700/40 rounded-lg bg-surface-dark p-2">
           <div className="text-[11px] text-gray-500 text-center mb-1 tracking-widest font-mono">
             SUPERCLUSTER
           </div>
-          <svg viewBox="0 0 550 322" className="w-full">
-            <defs>
-              {GATEWAYS.map((gw) => (
-                <path key={`def-m-${gw.id}`} id={`gw-path-m-${gw.id}`} d={gw.path} />
-              ))}
-            </defs>
-            {GATEWAYS.map((gw, gi) => (
-              <g key={gw.id}>
-                <motion.path
-                  d={gw.path}
-                  fill="none"
-                  strokeDasharray="4 4"
-                  strokeWidth={1}
-                  stroke={COLORS.borderLight}
-                  animate={{
-                    stroke: gatewayActive(gi)
-                      ? REGIONS[gw.from].color
-                      : gatewayDimmed(gi)
-                        ? `${COLORS.border}60`
-                        : COLORS.borderLight,
-                    strokeWidth: gatewayActive(gi) ? 2 : 1,
-                  }}
-                />
-                <text
-                  x={gw.labelX}
-                  y={gw.labelY}
-                  textAnchor="middle"
-                  fill={gatewayDimmed(gi) ? `${COLORS.textTertiary}60` : COLORS.textTertiary}
-                  fontSize={11}
-                  fontFamily="monospace"
-                >
-                  gateway
-                </text>
-                {gatewayDimmed(gi) && (
-                  <text
-                    x={gw.labelX - 22}
-                    y={gw.labelY + 14}
-                    textAnchor="middle"
-                    fill={COLORS.pink}
-                    fontSize={11}
-                    fontFamily="monospace"
-                    opacity={0.8}
-                  >
-                    (skipped)
-                  </text>
-                )}
-                {gatewayActive(gi) && (
-                  <motion.circle
-                    r={6}
-                    fill={REGIONS[gw.from].color}
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                  >
-                    <animateMotion dur="0.8s" fill="freeze">
-                      <mpath href={`#gw-path-m-${gw.id}`} />
-                    </animateMotion>
-                  </motion.circle>
-                )}
-              </g>
-            ))}
-            {REGIONS.map((region, ri) => (
-              <g key={region.name}>
-                <motion.rect
-                  x={region.cx - 75}
-                  y={region.cy - 35}
-                  width={150}
-                  height={102}
-                  rx={8}
-                  fill={COLORS.terminalBg}
-                  strokeDasharray="4 4"
-                  animate={{
-                    stroke: regionHighlight(ri) ? region.color : COLORS.border,
-                    fill: regionHighlight(ri) ? `${region.color}08` : COLORS.terminalBg,
-                  }}
-                  strokeWidth={1.5}
-                />
-                <text
-                  x={region.cx}
-                  y={region.cy - 22}
-                  textAnchor="middle"
-                  fill={regionActive(ri) ? region.color : COLORS.textQuaternary}
-                  fontSize={13}
-                  fontWeight={600}
-                  fontFamily="monospace"
-                  letterSpacing={1}
-                >
-                  {region.name}
-                </text>
-                {[
-                  [0, 1],
-                  [1, 2],
-                  [0, 2],
-                ].map(([a, b]) => (
-                  <motion.line
-                    key={`route-${ri}-${a}-${b}`}
-                    x1={region.servers[a].x}
-                    y1={region.servers[a].y}
-                    x2={region.servers[b].x}
-                    y2={region.servers[b].y}
-                    strokeDasharray="2 2"
-                    strokeOpacity={0.25}
-                    stroke={COLORS.border}
-                    animate={{
-                      stroke: regionActive(ri) ? region.color : COLORS.border,
-                      strokeOpacity: 0.25,
-                    }}
-                  />
-                ))}
-                {region.servers.map((s, si) => (
-                  <g key={si}>
-                    <motion.circle
-                      cx={s.x}
-                      cy={s.y}
-                      r={16}
-                      fill={COLORS.surface}
-                      animate={{
-                        stroke: regionActive(ri) ? region.color : COLORS.borderLight,
-                        fill: regionHighlight(ri) ? `${region.color}12` : COLORS.surface,
-                      }}
-                      strokeWidth={1.5}
-                    />
-                    <text
-                      x={s.x}
-                      y={s.y + 1}
-                      textAnchor="middle"
-                      dominantBaseline="middle"
-                      fill={regionActive(ri) ? region.color : COLORS.textTertiary}
-                      fontSize={11}
-                      fontFamily="monospace"
-                    >
-                      n{ri * 3 + si + 1}
-                    </text>
-                  </g>
-                ))}
-              </g>
-            ))}
-          </svg>
+          {superclusterSvg(11, 13, 16, 6, "m-")}
         </div>
       </div>
 

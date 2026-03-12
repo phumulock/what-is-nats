@@ -13,7 +13,7 @@ interface KVEntry {
 
 export function KVStoreDemo() {
   const { step, isPlaying, play, pause, next, prev, totalSteps, containerProps } =
-    useDiagramPlayback(4, 2500);
+    useDiagramPlayback(4);
 
   // All 4 entries always rendered; visibility controlled per step
   const entries: KVEntry[] = [

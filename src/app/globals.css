@@ -35,6 +35,7 @@
   --border-light: #444444;
   --text-tertiary: #555555;
   --text-quaternary: #666666;
+  --surface-dark: #0f0f0f;
 }
 
 @theme inline {
@@ -72,6 +73,7 @@
   --color-border-light: var(--border-light);
   --color-text-tertiary: var(--text-tertiary);
   --color-text-quaternary: var(--text-quaternary);
+  --color-surface-dark: var(--surface-dark);
   --font-mono: var(--font-jetbrains-mono);
 }
 

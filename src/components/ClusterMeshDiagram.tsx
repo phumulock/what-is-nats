@@ -20,7 +20,7 @@ const ROUTES: [number, number][] = [
 
 export function ClusterMeshDiagram() {
   const { step, isPlaying, play, pause, next, prev, totalSteps, containerProps } =
-    useDiagramPlayback(6, 2500);
+    useDiagramPlayback(6);
 
   const serverActive = (i: number) => {
     if (i === 0) return step >= 1;
@@ -161,7 +161,7 @@ export function ClusterMeshDiagram() {
 
         {/* Cluster SVG — desktop */}
         <div className="flex-1">
-          <div className="border border-dashed border-accent-green/25 rounded-lg bg-[#0f0f0f] p-3">
+          <div className="border border-dashed border-accent-green/25 rounded-lg bg-surface-dark p-3">
             <div className="text-[11px] text-accent-green/50 text-center mb-1 tracking-widest font-mono">
               CLUSTER
             </div>
@@ -193,7 +193,7 @@ export function ClusterMeshDiagram() {
 
       {/* Mobile: full-width SVG */}
       <div className="md:hidden">
-        <div className="border border-dashed border-accent-green/25 rounded-lg bg-[#0f0f0f] p-2">
+        <div className="border border-dashed border-accent-green/25 rounded-lg bg-surface-dark p-2">
           <div className="text-[11px] text-accent-green/50 text-center mb-1 tracking-widest font-mono">
             CLUSTER
           </div>

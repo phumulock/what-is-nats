@@ -9,7 +9,7 @@ const CHUNKS = ["Chunk 1", "Chunk 2", "Chunk 3", "Chunk 4"];
 
 export function ObjectStoreDemo() {
   const { step, isPlaying, play, pause, next, prev, totalSteps, containerProps } =
-    useDiagramPlayback(4, 2500);
+    useDiagramPlayback(4);
 
   return (
     <div className="border border-border rounded-lg overflow-hidden" {...containerProps}>

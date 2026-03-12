@@ -39,7 +39,7 @@ function getNodeStroke(step: number, nodeIndex: number): string {
 
 export function RaftConsensusDiagram() {
   const { step, isPlaying, play, pause, next, prev, totalSteps, containerProps } =
-    useDiagramPlayback(8, 2500);
+    useDiagramPlayback(8);
 
   const raftSvg = (fontSize: number, nodeRadius: number) => (
     <svg viewBox="0 0 425 212" className="w-full" style={{ maxHeight: 212 }}>
@@ -213,7 +213,7 @@ export function RaftConsensusDiagram() {
         </div>
 
         <div className="flex-1">
-          <div className="border border-dashed border-accent-green/25 rounded-lg bg-[#0f0f0f] p-3">
+          <div className="border border-dashed border-accent-green/25 rounded-lg bg-surface-dark p-3">
             <div className="text-[11px] text-accent-green/50 text-center mb-1 tracking-widest font-mono">
               RAFT GROUP — STREAM &quot;ORDERS&quot; (R3)
             </div>
@@ -224,7 +224,7 @@ export function RaftConsensusDiagram() {
 
       {/* Mobile: full-width SVG */}
       <div className="md:hidden">
-        <div className="border border-dashed border-accent-green/25 rounded-lg bg-[#0f0f0f] p-2">
+        <div className="border border-dashed border-accent-green/25 rounded-lg bg-surface-dark p-2">
           <div className="text-[11px] text-accent-green/50 text-center mb-1 tracking-widest font-mono">
             RAFT GROUP — STREAM &quot;ORDERS&quot; (R3)
           </div>

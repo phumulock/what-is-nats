@@ -234,7 +234,7 @@ function RetentionPolicyView({ slide }: { slide: SlideMeta }) {
 
 const TOTAL_SLIDES = SLIDES.length;
 
-export function StreamDiagram() {
+export function TemporalDecouplingDiagram() {
   const {
     step,
     isPlaying,
@@ -280,4 +280,3 @@ export function StreamDiagram() {
   );
 }
 
-export { StreamDiagram as TemporalDecouplingDiagram };

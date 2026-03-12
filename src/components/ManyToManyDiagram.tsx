@@ -28,7 +28,7 @@ const STEP_CONFIG: Record<number, { pub: number; subject: string; activeSubs: nu
 
 export function ManyToManyDiagram() {
   const { step, isPlaying, play, pause, next, prev, totalSteps, containerProps } =
-    useDiagramPlayback(5, 2500);
+    useDiagramPlayback(5);
 
   const config = STEP_CONFIG[step];
   const activePubIdx = config?.pub ?? -1;

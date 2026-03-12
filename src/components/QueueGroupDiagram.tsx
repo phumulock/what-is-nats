@@ -7,7 +7,7 @@ import { COLORS } from "@/lib/colors";
 
 export function QueueGroupDiagram() {
   const { step, isPlaying, play, pause, next, prev, totalSteps, containerProps } =
-    useDiagramPlayback(3, 2500);
+    useDiagramPlayback(3);
 
   const messageCount = step + 1;
   const targetSub = step % 3;

@@ -17,4 +17,5 @@ export const COLORS = {
   terminalBg: "#1a1a1a",
   textTertiary: "#555555",
   textQuaternary: "#666666",
+  surfaceDark: "#0f0f0f",
 } as const;

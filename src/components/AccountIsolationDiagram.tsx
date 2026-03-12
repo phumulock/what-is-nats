@@ -15,7 +15,7 @@ export function AccountIsolationDiagram() {
     prev,
     totalSteps,
     containerProps,
-  } = useDiagramPlayback(5, 2500);
+  } = useDiagramPlayback(5);
 
   const showBridge = step >= 3;
   const showBridgeMessage = step >= 4;

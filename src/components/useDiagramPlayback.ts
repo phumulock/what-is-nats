@@ -19,6 +19,7 @@ interface DiagramPlayback {
 }
 
 export const DIAGRAM_INTERVAL = 2500;
+const RESUME_DELAY = 5000;
 
 export function useDiagramPlayback(
   totalSteps: number,
@@ -68,7 +69,7 @@ export function useDiagramPlayback(
       resumeTimer.current = setTimeout(() => {
         setIsPlaying(true);
         resumeTimer.current = null;
-      }, 5000);
+      }, RESUME_DELAY);
     }
   }, []);
 

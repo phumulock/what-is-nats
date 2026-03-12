@@ -1,6 +1,6 @@
 import { SectionContainer } from "@/components/SectionContainer";
 import { SectionHeader } from "@/components/SectionHeader";
-import { StreamDiagram } from "@/components/TemporalDecouplingDiagram";
+import { TemporalDecouplingDiagram } from "@/components/TemporalDecouplingDiagram";
 import { DiagramReveal } from "@/components/DiagramReveal";
 import { WhyItMatters } from "@/components/WhyItMatters";
 
@@ -35,7 +35,7 @@ export function StreamsSection({ number, id }: SectionProps) {
       </p>
 
       <DiagramReveal>
-        <StreamDiagram />
+        <TemporalDecouplingDiagram />
       </DiagramReveal>
 
       <WhyItMatters>

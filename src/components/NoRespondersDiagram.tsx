@@ -7,7 +7,33 @@ import { COLORS } from "@/lib/colors";
 
 export function NoRespondersDiagram() {
   const { step, isPlaying, play, pause, next, prev, totalSteps, containerProps } =
-    useDiagramPlayback(4, 2500);
+    useDiagramPlayback(4);
+
+  const natsCircle = (
+    <>
+      <motion.div
+        animate={{
+          borderColor: step === 2 ? COLORS.red : COLORS.green,
+        }}
+        className="w-20 h-20 rounded-full bg-terminal-bg border-2 flex items-center justify-center"
+      >
+        <span
+          className="text-xs font-bold"
+          style={{ color: step === 2 ? COLORS.red : COLORS.green }}
+        >
+          NATS
+        </span>
+      </motion.div>
+      <motion.div
+        animate={{ scale: step === 2 ? 1 : 0.5, opacity: step === 2 ? 1 : 0 }}
+        transition={{ duration: 0.3 }}
+        className="px-2 py-1 bg-accent-red text-white text-xs rounded font-medium"
+        style={{ pointerEvents: step === 2 ? "auto" : "none" }}
+      >
+        no responders
+      </motion.div>
+    </>
+  );
 
   return (
     <div className="border border-border rounded-lg p-4 md:p-6 bg-surface" {...containerProps}>
@@ -62,55 +88,14 @@ export function NoRespondersDiagram() {
             )}
           </div>
 
-          <motion.div
-            animate={{
-              borderColor: step === 2 ? COLORS.red : COLORS.green,
-            }}
-            className="w-20 h-20 rounded-full bg-terminal-bg border-2 flex items-center justify-center"
-          >
-            <span
-              className="text-xs font-bold"
-              style={{ color: step === 2 ? "var(--accent-red)" : "var(--accent-green)" }}
-            >
-              NATS
-            </span>
-          </motion.div>
+          {natsCircle}
 
-          <div className="h-6 flex items-center justify-center w-full">
-            <motion.div
-              animate={{ scale: step === 2 ? 1 : 0.5, opacity: step === 2 ? 1 : 0 }}
-              transition={{ duration: 0.3 }}
-              className="px-2 py-1 bg-accent-red text-white text-xs rounded font-medium"
-              style={{ pointerEvents: step === 2 ? "auto" : "none" }}
-            >
-              no responders
-            </motion.div>
-          </div>
+          <div className="h-6 flex items-center justify-center w-full" />
         </div>
 
         {/* Mobile: NATS circle */}
         <div className="flex md:hidden flex-col items-center gap-2">
-          <motion.div
-            animate={{
-              borderColor: step === 2 ? COLORS.red : COLORS.green,
-            }}
-            className="w-20 h-20 rounded-full bg-terminal-bg border-2 flex items-center justify-center"
-          >
-            <span
-              className="text-xs font-bold"
-              style={{ color: step === 2 ? "var(--accent-red)" : "var(--accent-green)" }}
-            >
-              NATS
-            </span>
-          </motion.div>
-          <motion.div
-            animate={{ scale: step === 2 ? 1 : 0.5, opacity: step === 2 ? 1 : 0 }}
-            transition={{ duration: 0.3 }}
-            className="px-2 py-1 bg-accent-red text-white text-xs rounded font-medium"
-            style={{ pointerEvents: step === 2 ? "auto" : "none" }}
-          >
-            no responders
-          </motion.div>
+          {natsCircle}
         </div>
 
         {/* Mobile: vertical arrow to empty slot */}

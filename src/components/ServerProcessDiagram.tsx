@@ -165,7 +165,7 @@ export function ServerProcessDiagram() {
     prev,
     totalSteps,
     containerProps,
-  } = useDiagramPlayback(7, 2500);
+  } = useDiagramPlayback(7);
 
   return (
     <div

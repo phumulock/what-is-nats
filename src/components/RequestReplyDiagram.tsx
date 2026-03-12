@@ -7,7 +7,7 @@ import { DiagramControls } from "./DiagramControls";
 
 export function RequestReplyDiagram() {
   const { step, isPlaying, play, pause, next, prev, totalSteps, containerProps } =
-    useDiagramPlayback(5, 2500);
+    useDiagramPlayback(5);
 
   return (
     <div className="border border-border rounded-lg p-4 md:p-6 bg-surface" {...containerProps}>
