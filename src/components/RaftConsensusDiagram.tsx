@@ -43,6 +43,43 @@ export function RaftConsensusDiagram() {
 
   const raftSvg = (fontSize: number, nodeRadius: number) => (
     <svg viewBox="0 0 425 212" className="w-full" style={{ maxHeight: 212 }}>
+      {/* Publisher/client icon */}
+      <motion.rect
+        x={5}
+        y={155}
+        width={40}
+        height={36}
+        rx={6}
+        fill={COLORS.terminalBg}
+        animate={{
+          stroke: step === 4 || step === 7 ? COLORS.green : COLORS.border,
+          strokeWidth: step === 4 || step === 7 ? 2 : 1,
+        }}
+      />
+      <text
+        x={25}
+        y={170}
+        textAnchor="middle"
+        dominantBaseline="middle"
+        fill={step >= 4 ? COLORS.green : COLORS.textQuaternary}
+        fontSize={fontSize - 2}
+        fontFamily="monospace"
+      >
+        Client
+      </text>
+      <text
+        x={25}
+        y={182}
+        textAnchor="middle"
+        dominantBaseline="middle"
+        fill={step >= 4 ? COLORS.green : COLORS.textQuaternary}
+        fontSize={fontSize - 3}
+        fontFamily="monospace"
+        opacity={0.6}
+      >
+        (pub)
+      </text>
+
       {/* Route lines between servers */}
       {ROUTES.map(([from, to], i) => (
         <motion.line
@@ -86,7 +123,7 @@ export function RaftConsensusDiagram() {
         <motion.circle
           r={5}
           fill={COLORS.green}
-          initial={{ cx: 25, cy: 175, opacity: 0 }}
+          initial={{ cx: 45, cy: 173, opacity: 0 }}
           animate={{ cx: NODES[1].cx, cy: NODES[1].cy, opacity: 1 }}
           transition={{ duration: 0.8 }}
         />
@@ -130,7 +167,7 @@ export function RaftConsensusDiagram() {
           r={5}
           fill={COLORS.green}
           initial={{ cx: NODES[1].cx, cy: NODES[1].cy, opacity: 0 }}
-          animate={{ cx: 25, cy: 175, opacity: 1 }}
+          animate={{ cx: 45, cy: 173, opacity: 1 }}
           transition={{ duration: 0.8 }}
         />
       )}
@@ -187,49 +224,16 @@ export function RaftConsensusDiagram() {
     </svg>
   );
 
-  const publisherBox = (
-    <motion.div
-      animate={{
-        borderColor: step === 4 || step === 7 ? COLORS.green : COLORS.border,
-        backgroundColor: step === 4 ? `${COLORS.green}10` : step === 7 ? `${COLORS.green}10` : "rgba(0,0,0,0)",
-      }}
-      className="border rounded-lg px-2 py-1.5 text-center"
-    >
-      <div className="text-xs text-gray-400">Publisher</div>
-    </motion.div>
-  );
-
   return (
     <div className="border border-border rounded-lg p-5 md:p-6 bg-surface" {...containerProps}>
-      {/* Mobile: publisher above diagram */}
-      <div className="flex md:hidden items-center justify-center gap-4 mb-3">
-        {publisherBox}
-      </div>
-
-      {/* Desktop: horizontal with side publisher */}
-      <div className="hidden md:flex items-center gap-3">
-        <div className="flex flex-col items-center shrink-0 w-22">
-          {publisherBox}
+      <div className="border border-dashed border-accent-green/25 rounded-lg bg-surface-dark p-3">
+        <div className="text-[11px] text-accent-green/50 text-center mb-1 tracking-widest font-mono">
+          RAFT GROUP — STREAM &quot;ORDERS&quot; (R3)
         </div>
-
-        <div className="flex-1">
-          <div className="border border-dashed border-accent-green/25 rounded-lg bg-surface-dark p-3">
-            <div className="text-[11px] text-accent-green/50 text-center mb-1 tracking-widest font-mono">
-              RAFT GROUP — STREAM &quot;ORDERS&quot; (R3)
-            </div>
-            {raftSvg(11, 28)}
-          </div>
-        </div>
-      </div>
-
-      {/* Mobile: full-width SVG */}
-      <div className="md:hidden">
-        <div className="border border-dashed border-accent-green/25 rounded-lg bg-surface-dark p-2">
-          <div className="text-[11px] text-accent-green/50 text-center mb-1 tracking-widest font-mono">
-            RAFT GROUP — STREAM &quot;ORDERS&quot; (R3)
-          </div>
-          {raftSvg(13, 30)}
-        </div>
+        {/* Desktop */}
+        <div className="hidden md:block">{raftSvg(11, 28)}</div>
+        {/* Mobile */}
+        <div className="md:hidden">{raftSvg(13, 30)}</div>
       </div>
 
       {/* Status */}
