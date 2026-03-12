@@ -128,7 +128,7 @@ export function WildcardMatcher() {
                 key={sub.pattern}
                 animate={{
                   opacity: isMatch ? 1 : 0.4,
-                  borderColor: isMatch ? COLORS.green : "transparent",
+                  borderColor: isMatch ? COLORS.green : "rgba(0,0,0,0)",
                   backgroundColor: isMatch ? "rgba(74, 222, 128, 0.1)" : COLORS.terminalBg,
                 }}
                 transition={{ duration: 0.3 }}

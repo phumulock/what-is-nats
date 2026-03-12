@@ -1,7 +1,7 @@
 "use client";
 
-import { useState, useRef, useEffect, ReactNode } from "react";
-import { motion, AnimatePresence, useInView } from "framer-motion";
+import { useState, ReactNode } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
 interface DiagramRevealProps {
   children: ReactNode;
@@ -13,17 +13,9 @@ export function DiagramReveal({
   label = "See More",
 }: DiagramRevealProps) {
   const [open, setOpen] = useState(false);
-  const ref = useRef<HTMLDivElement>(null);
-  const isInView = useInView(ref, { margin: "-50px" });
-
-  useEffect(() => {
-    if (!isInView && open) {
-      setOpen(false);
-    }
-  }, [isInView, open]);
 
   return (
-    <div ref={ref} className="mt-6">
+    <div className="mt-6">
       <button
         onClick={() => setOpen(!open)}
         className="w-full border border-green-800 rounded-lg px-4 py-3 text-sm text-green-400 hover:text-white hover:bg-green-900/30 hover:border-green-500 transition-colors cursor-pointer flex items-center justify-center gap-2"
