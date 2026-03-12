@@ -11,11 +11,11 @@ export function SummaryHeroSection({ number, id }: SectionProps) {
       <div className="mt-6">
         <NestedDiagram
           layers={[
-            { label: "Security", examples: "TLS, NKeys, JWTs, account isolation", color: COLORS.purpleLight },
-            { label: "Clustering & Leaf Nodes", examples: "Multi-region, edge deployments", color: COLORS.pink },
-            { label: "KV Store & Object Store", examples: "get / put / watch, large blobs", color: COLORS.yellow },
-            { label: "JetStream", examples: "Streams, consumers, persistence", color: COLORS.blue },
-            { label: "Core", examples: "Pub/sub, request/reply, queue groups", color: COLORS.green },
+            { label: "Security", color: COLORS.purpleLight },
+            { label: "Clustering & Leaf Nodes", color: COLORS.pink },
+            { label: "KV Store & Object Store", color: COLORS.yellow },
+            { label: "JetStream", color: COLORS.blue },
+            { label: "Core", color: COLORS.green },
           ]}
         />
       </div>

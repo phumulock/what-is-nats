@@ -12,9 +12,9 @@ export function ScalingHeroSection({ number, id }: SectionProps) {
         <NestedDiagram
           layers={[
             { label: "Clustering & Leaf Nodes", examples: "Multi-region, edge deployments", color: COLORS.pink },
-            { label: "Data Stores", examples: "KV Store, Object Store", color: COLORS.yellow },
-            { label: "JetStream", examples: "Streams, consumers, persistence", color: COLORS.blue },
-            { label: "Core", examples: "Pub/sub, request/reply, queue groups", color: COLORS.green },
+            { label: "Data Stores", color: COLORS.yellow },
+            { label: "JetStream", color: COLORS.blue },
+            { label: "Core", color: COLORS.green },
           ]}
         />
       </div>

@@ -12,7 +12,7 @@ export function JetStreamHeroSection({ number, id }: SectionProps) {
         <NestedDiagram
           layers={[
             { label: "JetStream", examples: "Streams, consumers, persistence", color: COLORS.blue },
-            { label: "Core", examples: "Pub/sub, request/reply, queue groups", color: COLORS.green },
+            { label: "Core", color: COLORS.green },
           ]}
         />
       </div>

@@ -12,10 +12,10 @@ export function SecurityHeroSection({ number, id }: SectionProps) {
         <NestedDiagram
           layers={[
             { label: "Security", examples: "TLS, NKeys, JWTs, account isolation, auth callout", color: COLORS.purpleLight },
-            { label: "Clustering & Leaf Nodes", examples: "Multi-region, edge deployments", color: COLORS.pink },
-            { label: "Data Stores", examples: "KV Store, Object Store", color: COLORS.yellow },
-            { label: "JetStream", examples: "Streams, consumers, persistence", color: COLORS.blue },
-            { label: "Core", examples: "Pub/sub, request/reply, queue groups", color: COLORS.green },
+            { label: "Clustering & Leaf Nodes", color: COLORS.pink },
+            { label: "Data Stores", color: COLORS.yellow },
+            { label: "JetStream", color: COLORS.blue },
+            { label: "Core", color: COLORS.green },
           ]}
         />
       </div>
