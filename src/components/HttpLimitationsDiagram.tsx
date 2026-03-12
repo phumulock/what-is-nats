@@ -217,18 +217,18 @@ export function HttpLimitationsDiagram() {
             </div>
 
             <div className="flex flex-col md:flex-row justify-between items-start gap-6 md:gap-4">
-              {/* Services column */}
+              {/* Clients column */}
               <div className="space-y-2">
-                <div className="text-xs text-gray-500 mb-1">SERVICES</div>
-                {SERVICES.map((svc) => (
+                <div className="text-xs text-gray-500 mb-1">CLIENTS</div>
+                {CLIENTS.map((client) => (
                   <motion.div
-                    key={svc}
+                    key={client}
                     initial={{ opacity: 0, x: -10 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.3 }}
-                    className="w-24 h-10 border border-accent-blue rounded flex items-center justify-center text-xs"
+                    className="w-20 h-10 border border-border rounded flex items-center justify-center text-xs"
                   >
-                    {svc}
+                    {client}
                   </motion.div>
                 ))}
               </div>
@@ -252,18 +252,18 @@ export function HttpLimitationsDiagram() {
                 ))}
               </div>
 
-              {/* Clients column */}
+              {/* Services column */}
               <div className="space-y-2">
-                <div className="text-xs text-gray-500 mb-1">CLIENTS</div>
-                {CLIENTS.map((client) => (
+                <div className="text-xs text-gray-500 mb-1">SERVICES</div>
+                {SERVICES.map((svc) => (
                   <motion.div
-                    key={client}
+                    key={svc}
                     initial={{ opacity: 0, x: 10 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.3 }}
-                    className="w-20 h-10 border border-border rounded flex items-center justify-center text-xs"
+                    className="w-24 h-10 border border-accent-blue rounded flex items-center justify-center text-xs"
                   >
-                    {client}
+                    {svc}
                   </motion.div>
                 ))}
               </div>
