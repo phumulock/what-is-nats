@@ -57,7 +57,7 @@ export function PassiveObserverDemo() {
           </div>
 
           {/* NATS server + ghosted labels */}
-          <div className="relative">
+          <div className="relative mb-8 sm:mb-0">
             <motion.div
               animate={{
                 boxShadow: sensorActive
@@ -69,32 +69,27 @@ export function PassiveObserverDemo() {
               <span className="text-accent-green text-xs font-bold">NATS</span>
             </motion.div>
 
-            {/* Ghosted "No ACK" label */}
+            {/* Ghosted "No ACK" / "No disk" labels */}
             <AnimatePresence>
               {step >= 1 && (
                 <motion.div
                   initial={{ opacity: 0, y: 4 }}
                   animate={{ opacity: 0.4 }}
                   exit={{ opacity: 0 }}
-                  className="absolute -left-16 top-1 text-xs border border-dashed rounded px-1.5 py-0.5 line-through"
-                  style={{ borderColor: COLORS.red, color: COLORS.red }}
+                  className="absolute left-1/2 -translate-x-1/2 -bottom-7 flex gap-1 sm:flex-col sm:left-auto sm:-left-16 sm:top-1 sm:bottom-auto sm:translate-x-0"
                 >
-                  No ACK
-                </motion.div>
-              )}
-            </AnimatePresence>
-
-            {/* Ghosted "No disk" label */}
-            <AnimatePresence>
-              {step >= 1 && (
-                <motion.div
-                  initial={{ opacity: 0, y: 4 }}
-                  animate={{ opacity: 0.4 }}
-                  exit={{ opacity: 0 }}
-                  className="absolute -left-16 top-7 text-xs border border-dashed rounded px-1.5 py-0.5 line-through"
-                  style={{ borderColor: COLORS.red, color: COLORS.red }}
-                >
-                  No disk
+                  <div
+                    className="text-xs border border-dashed rounded px-1.5 py-0.5 line-through whitespace-nowrap"
+                    style={{ borderColor: COLORS.red, color: COLORS.red }}
+                  >
+                    No ACK
+                  </div>
+                  <div
+                    className="text-xs border border-dashed rounded px-1.5 py-0.5 line-through whitespace-nowrap"
+                    style={{ borderColor: COLORS.red, color: COLORS.red }}
+                  >
+                    No disk
+                  </div>
                 </motion.div>
               )}
             </AnimatePresence>
