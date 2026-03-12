@@ -42,7 +42,7 @@ export function ClusterMeshDiagram() {
           <motion.div
             animate={{
               borderColor: step === 0 ? COLORS.green : COLORS.border,
-              backgroundColor: step === 0 ? `${COLORS.green}10` : "transparent",
+              backgroundColor: step === 0 ? `${COLORS.green}10` : "rgba(0,0,0,0)",
             }}
             className="border rounded-lg px-2 py-1.5 text-center"
           >
@@ -153,7 +153,7 @@ export function ClusterMeshDiagram() {
               <motion.div
                 animate={{
                   borderColor: step >= 4 ? COLORS.blue : COLORS.border,
-                  backgroundColor: step === 5 ? `${COLORS.blue}10` : "transparent",
+                  backgroundColor: step === 5 ? `${COLORS.blue}10` : "rgba(0,0,0,0)",
                 }}
                 className="border rounded-lg px-2 py-1.5 text-center"
               >

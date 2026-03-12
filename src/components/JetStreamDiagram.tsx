@@ -104,7 +104,7 @@ function CursorView({ kind }: { kind: CursorKind }) {
                     scale: isActive ? 1.05 : 1,
                     boxShadow: isActive
                       ? `0 0 8px ${i === c1Pos ? COLORS.green : COLORS.blue}40`
-                      : "0 0 0px transparent",
+                      : "0 0 0px rgba(0,0,0,0)",
                   }}
                   transition={{ duration: 0.3 }}
                   className="w-12 h-12 rounded border flex flex-col items-center justify-center flex-shrink-0"

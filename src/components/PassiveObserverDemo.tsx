@@ -25,7 +25,7 @@ export function PassiveObserverDemo() {
           <motion.div
             animate={{
               borderColor: sensorActive ? COLORS.green : COLORS.border,
-              boxShadow: sensorActive ? `0 0 12px ${COLORS.green}40` : "0 0 0px transparent",
+              boxShadow: sensorActive ? `0 0 12px ${COLORS.green}40` : "0 0 0px rgba(0,0,0,0)",
             }}
             className="w-16 h-16 rounded-lg bg-terminal-bg border flex items-center justify-center text-xs"
           >
@@ -62,7 +62,7 @@ export function PassiveObserverDemo() {
               animate={{
                 boxShadow: sensorActive
                   ? "0 0 16px rgba(74, 222, 128, 0.3)"
-                  : "0 0 0px transparent",
+                  : "0 0 0px rgba(0,0,0,0)",
               }}
               className="w-20 h-20 rounded-full bg-terminal-bg border-2 border-accent-green flex items-center justify-center"
             >
@@ -138,7 +138,7 @@ export function PassiveObserverDemo() {
             <motion.div
               animate={{
                 borderColor: dashboardReceiving ? COLORS.green : COLORS.border,
-                boxShadow: dashboardReceiving ? `0 0 12px ${COLORS.green}40` : "0 0 0px transparent",
+                boxShadow: dashboardReceiving ? `0 0 12px ${COLORS.green}40` : "0 0 0px rgba(0,0,0,0)",
               }}
               className="w-20 h-12 rounded-lg bg-terminal-bg border flex items-center justify-center text-xs"
             >

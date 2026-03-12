@@ -29,7 +29,7 @@ export function ClusterRoutingDiagram() {
             <motion.div
               animate={{
                 borderColor: step === 1 ? COLORS.green : COLORS.yellow,
-                backgroundColor: step === 1 ? COLORS.green + "20" : "transparent",
+                backgroundColor: step === 1 ? COLORS.green + "20" : "rgba(0,0,0,0)",
               }}
               className="border-2 border-accent-yellow rounded-lg p-2 text-center"
             >
@@ -63,7 +63,7 @@ export function ClusterRoutingDiagram() {
             <motion.div
               animate={{
                 borderColor: step === 3 ? COLORS.green : COLORS.yellow,
-                backgroundColor: step === 3 ? COLORS.green + "20" : "transparent",
+                backgroundColor: step === 3 ? COLORS.green + "20" : "rgba(0,0,0,0)",
               }}
               className="border-2 border-accent-yellow rounded-lg p-2 text-center mb-2"
             >
@@ -73,7 +73,7 @@ export function ClusterRoutingDiagram() {
             <motion.div
               animate={{
                 borderColor: step === 4 ? COLORS.green : COLORS.border,
-                backgroundColor: step === 4 ? COLORS.green + "20" : "transparent",
+                backgroundColor: step === 4 ? COLORS.green + "20" : "rgba(0,0,0,0)",
               }}
               className="border rounded px-2 py-1 text-xs text-center"
             >

@@ -50,7 +50,7 @@ export function ManyToManyDiagram() {
               key={pub.name}
               animate={{
                 borderColor: activePubIdx === i ? pub.color : COLORS.border,
-                boxShadow: activePubIdx === i ? `0 0 12px ${pub.color}40` : "0 0 0px transparent",
+                boxShadow: activePubIdx === i ? `0 0 12px ${pub.color}40` : "0 0 0px rgba(0,0,0,0)",
               }}
               transition={{ duration: 0.3 }}
               className="w-28 h-12 border rounded flex items-center justify-center text-xs bg-terminal-bg"
@@ -90,7 +90,7 @@ export function ManyToManyDiagram() {
             animate={{
               boxShadow: config
                 ? "0 0 16px rgba(74, 222, 128, 0.3)"
-                : "0 0 0px transparent",
+                : "0 0 0px rgba(0,0,0,0)",
             }}
             transition={{ duration: 0.3 }}
             className="w-20 h-20 rounded-full border-2 border-accent-green flex items-center justify-center bg-accent-green/10"
@@ -138,7 +138,7 @@ export function ManyToManyDiagram() {
                 key={sub.name}
                 animate={{
                   borderColor: receiving ? sub.color : COLORS.border,
-                  boxShadow: receiving ? `0 0 12px ${sub.color}40` : "0 0 0px transparent",
+                  boxShadow: receiving ? `0 0 12px ${sub.color}40` : "0 0 0px rgba(0,0,0,0)",
                 }}
                 transition={{ duration: 0.3 }}
                 className="w-28 h-12 border rounded flex flex-col items-center justify-center bg-terminal-bg"

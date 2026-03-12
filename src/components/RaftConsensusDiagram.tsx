@@ -49,7 +49,7 @@ export function RaftConsensusDiagram() {
           <motion.div
             animate={{
               borderColor: step === 4 || step === 7 ? COLORS.green : COLORS.border,
-              backgroundColor: step === 4 ? `${COLORS.green}10` : step === 7 ? `${COLORS.green}10` : "transparent",
+              backgroundColor: step === 4 ? `${COLORS.green}10` : step === 7 ? `${COLORS.green}10` : "rgba(0,0,0,0)",
             }}
             className="border rounded-lg px-2 py-1.5 text-center"
           >
