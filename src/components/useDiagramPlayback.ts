@@ -12,6 +12,7 @@ interface DiagramPlayback {
   goTo: (step: number) => void;
   totalSteps: number;
   containerProps: {
+    ref: React.RefCallback<HTMLDivElement>;
     onMouseEnter: () => void;
     onMouseLeave: () => void;
   };
@@ -24,9 +25,12 @@ export function useDiagramPlayback(
   intervalMs: number = DIAGRAM_INTERVAL
 ): DiagramPlayback {
   const [step, setStep] = useState(0);
-  const [isPlaying, setIsPlaying] = useState(true);
+  const [isPlaying, setIsPlaying] = useState(false);
   const resumeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
-  const wasPlayingBeforeHover = useRef(true);
+  const wasPlayingBeforeHover = useRef(false);
+  const wasPlayingBeforeScroll = useRef(false);
+  const isPlayingRef = useRef(false);
+  const containerRef = useRef<HTMLDivElement | null>(null);
 
   const play = useCallback(() => setIsPlaying(true), []);
   const pause = useCallback(() => setIsPlaying(false), []);
@@ -68,6 +72,38 @@ export function useDiagramPlayback(
     }
   }, []);
 
+  // Keep ref in sync with state
+  useEffect(() => {
+    isPlayingRef.current = isPlaying;
+  }, [isPlaying]);
+
+  // Ref callback that sets up IntersectionObserver when element mounts
+  const observerRef = useRef<IntersectionObserver | null>(null);
+  const setContainerRef = useCallback((node: HTMLDivElement | null) => {
+    // Cleanup previous observer
+    if (observerRef.current) {
+      observerRef.current.disconnect();
+      observerRef.current = null;
+    }
+    containerRef.current = node;
+    if (!node) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry.isIntersecting) {
+          wasPlayingBeforeScroll.current = isPlayingRef.current;
+          setIsPlaying(false);
+        } else {
+          if (wasPlayingBeforeScroll.current) {
+            setIsPlaying(true);
+          }
+        }
+      },
+      { threshold: 0.3 }
+    );
+    observer.observe(node);
+    observerRef.current = observer;
+  }, []);
+
   // Cleanup timer on unmount
   useEffect(() => {
     return () => {
@@ -84,6 +120,6 @@ export function useDiagramPlayback(
     prev,
     goTo,
     totalSteps,
-    containerProps: { onMouseEnter, onMouseLeave },
+    containerProps: { ref: setContainerRef, onMouseEnter, onMouseLeave },
   };
 }
