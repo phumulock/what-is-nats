@@ -6,9 +6,9 @@ import { useDiagramPlayback } from "./useDiagramPlayback";
 import { DiagramControls } from "./DiagramControls";
 
 const LEAF_NODES = [
-  { name: "Factory", subject: "sensors.>", color: COLORS.yellow },
-  { name: "Vehicle", subject: "telemetry.>", color: COLORS.pink },
-  { name: "Store", subject: "pos.>", color: COLORS.purple },
+  { name: "Factory", subject: "sensors.>", color: COLORS.yellow, devices: ["sensor", "sensor"] },
+  { name: "Vehicle", subject: "telemetry.>", color: COLORS.pink, devices: ["gps", "obd"] },
+  { name: "Store", subject: "pos.>", color: COLORS.purple, devices: ["reg", "term"] },
 ];
 
 // Layout constants for a 450×250 viewBox
@@ -16,7 +16,7 @@ const CLUSTER_Y = 44;
 const CLUSTER_SERVERS = [188, 225, 263];
 const LEAF_Y = 163;
 const LEAF_XS = [75, 225, 375];
-const DEVICE_Y = 225;
+const DEVICE_Y = 265;
 
 export function LeafNodeDiagram() {
   const { step, isPlaying, play, pause, next, prev, totalSteps, containerProps } =
@@ -25,7 +25,7 @@ export function LeafNodeDiagram() {
   const isDisconnected = step === 4 || step === 5;
 
   const leafSvg = (fontSize: number) => (
-    <svg viewBox="0 0 450 250" className="w-full" style={{ maxHeight: 280 }}>
+    <svg viewBox="0 0 450 295" className="w-full" style={{ maxHeight: 330 }}>
       {/* ── Central cluster ── */}
       <motion.rect
         x={150} y={10} width={150} height={69} rx={8}
@@ -165,22 +165,22 @@ export function LeafNodeDiagram() {
                 transition={{ delay: j * 0.15 }}
               >
                 <rect
-                  x={lx - 17 + j * 14} y={LEAF_Y + 35}
-                  width={11} height={11} rx={2}
+                  x={lx - 27 + j * 19} y={LEAF_Y + 45}
+                  width={16} height={16} rx={2}
                   fill={`${COLORS.yellow}12`} stroke={`${COLORS.yellow}40`} strokeWidth={1}
                 />
                 <text
-                  x={lx - 11.5 + j * 14} y={LEAF_Y + 43}
+                  x={lx - 19 + j * 19} y={LEAF_Y + 55}
                   textAnchor="middle" dominantBaseline="middle"
-                  fill={COLORS.yellow} fontSize={fontSize - 3}
+                  fill={COLORS.yellow} fontSize={fontSize - 1}
                 >
-                  m
+                  M
                 </text>
               </motion.g>
             ))}
 
             {/* ── Devices below ── */}
-            {[-20, 20].map((dx, d) => (
+            {[-25, 25].map((dx, d) => (
               <g key={d}>
                 <line
                   x1={lx + dx} y1={LEAF_Y + 38}
@@ -188,19 +188,19 @@ export function LeafNodeDiagram() {
                   stroke="var(--border)" strokeWidth={1} strokeDasharray="2 2"
                 />
                 <motion.rect
-                  x={lx + dx - 15} y={DEVICE_Y - 8} width={30} height={18} rx={3}
+                  x={lx + dx - 21} y={DEVICE_Y - 8} width={42} height={18} rx={3}
                   fill="transparent"
                   animate={{
-                    stroke: step === 0 && i === 0 && d === 0 ? leaf.color : COLORS.border,
+                    stroke: step === 0 && i === 0 && d === 0 ? leaf.color : `${leaf.color}4D`,
                   }}
                   strokeWidth={1}
                 />
                 <text
                   x={lx + dx} y={DEVICE_Y + 3}
                   textAnchor="middle" dominantBaseline="middle"
-                  fill="var(--text-tertiary)" fontSize={fontSize - 2}
+                  fill={`${leaf.color}B3`} fontSize={fontSize - 2}
                 >
-                  dev
+                  {leaf.devices[d]}
                 </text>
               </g>
             ))}
