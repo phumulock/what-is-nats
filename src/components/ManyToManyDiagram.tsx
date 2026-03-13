@@ -40,10 +40,10 @@ export function ManyToManyDiagram() {
   const allSubs = showAuditLog ? [...SUBSCRIBERS, AUDIT_SUB] : SUBSCRIBERS;
 
   return (
-    <div className="border border-border rounded-lg p-6 bg-surface min-h-80" {...containerProps}>
+    <div className="border border-border rounded-lg p-4 bg-surface" {...containerProps}>
       <div className="flex flex-col md:flex-row justify-between items-center gap-6 md:gap-4">
         {/* Publishers */}
-        <div className="space-y-3 shrink-0">
+        <div className="space-y-2 shrink-0">
           <div className="text-xs text-gray-500 mb-2">PUBLISHERS</div>
           {PUBLISHERS.map((pub, i) => (
             <motion.div
@@ -53,7 +53,7 @@ export function ManyToManyDiagram() {
                 boxShadow: activePubIdx === i ? `0 0 12px ${pub.color}40` : "0 0 0px rgba(0,0,0,0)",
               }}
               transition={{ duration: 0.3 }}
-              className="w-28 h-12 border rounded flex items-center justify-center text-xs bg-terminal-bg"
+              className="w-28 h-10 border rounded flex items-center justify-center text-xs bg-terminal-bg"
             >
               {pub.name}
             </motion.div>
@@ -61,9 +61,9 @@ export function ManyToManyDiagram() {
         </div>
 
         {/* Message flow + NATS hub */}
-        <div className="flex flex-col items-center gap-2">
+        <div className="flex flex-col items-center gap-1">
           {/* Incoming message pill */}
-          <div className="relative w-20 h-8">
+          <div className="relative w-20 h-6">
             <AnimatePresence mode="wait">
               {config && (
                 <motion.div
@@ -93,13 +93,13 @@ export function ManyToManyDiagram() {
                 : "0 0 0px rgba(0,0,0,0)",
             }}
             transition={{ duration: 0.3 }}
-            className="w-20 h-20 rounded-full border-2 border-accent-green flex items-center justify-center bg-accent-green/10"
+            className="w-16 h-16 rounded-full border-2 border-accent-green flex items-center justify-center bg-accent-green/10"
           >
             <span className="text-accent-green text-sm font-bold">NATS</span>
           </motion.div>
 
           {/* Outgoing message pills */}
-          <div className="relative w-20 h-8">
+          <div className="relative w-20 h-6">
             <AnimatePresence mode="wait">
               {config && (
                 <motion.div
@@ -108,7 +108,7 @@ export function ManyToManyDiagram() {
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
                   transition={{ duration: 0.3 }}
-                  className="absolute top-1/2 -translate-y-1/2 flex gap-1"
+                  className="absolute top-1/2 -translate-y-1/2 flex gap-0.5"
                 >
                   {activeSubs.map((subIdx) => (
                     <motion.div
@@ -129,7 +129,7 @@ export function ManyToManyDiagram() {
         </div>
 
         {/* Subscribers */}
-        <div className="space-y-3 shrink-0">
+        <div className="space-y-2 shrink-0">
           <div className="text-xs text-gray-500 mb-2">SUBSCRIBERS</div>
           {SUBSCRIBERS.map((sub, i) => {
             const receiving = activeSubs.includes(i) || (auditReceiving && i < 3);
@@ -141,7 +141,7 @@ export function ManyToManyDiagram() {
                   boxShadow: receiving ? `0 0 12px ${sub.color}40` : "0 0 0px rgba(0,0,0,0)",
                 }}
                 transition={{ duration: 0.3 }}
-                className="w-28 h-12 border rounded flex flex-col items-center justify-center bg-terminal-bg"
+                className="w-28 h-10 border rounded flex flex-col items-center justify-center bg-terminal-bg"
               >
                 <span className="text-xs">{sub.name}</span>
                 <span className="text-gray-500" style={{ fontSize: "0.6rem" }}>
@@ -156,7 +156,7 @@ export function ManyToManyDiagram() {
             {showAuditLog && (
               <motion.div
                 initial={{ opacity: 0, x: 20, height: 0 }}
-                animate={{ opacity: 1, x: 0, height: 48 }}
+                animate={{ opacity: 1, x: 0, height: 40 }}
                 exit={{ opacity: 0, x: 20, height: 0 }}
                 transition={{ duration: 0.4 }}
                 className="w-28 border rounded flex flex-col items-center justify-center bg-terminal-bg overflow-hidden"
@@ -176,7 +176,7 @@ export function ManyToManyDiagram() {
       </div>
 
       {/* Status text */}
-      <div className="mt-6 text-center text-sm min-h-10 text-gray-500">
+      <div className="mt-3 text-center text-sm min-h-8 text-gray-500">
         <AnimatePresence mode="wait">
           <motion.div
             key={step}
