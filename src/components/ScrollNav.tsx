@@ -41,6 +41,16 @@ function sectionLabel(id: string): string {
     .join(" ");
 }
 
+function scrollToSection(id: string, globalIndex: number) {
+  if (globalIndex === 0) {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+    return;
+  }
+  const el = document.getElementById(id);
+  const section = el?.closest("section");
+  (section ?? el)?.scrollIntoView({ behavior: "smooth", block: "start" });
+}
+
 export function ScrollNav({ sections, groups }: ScrollNavProps) {
   const [activeId, setActiveId] = useState(sections[0]?.id ?? "");
   const pathname = usePathname();
@@ -161,11 +171,7 @@ export function ScrollNav({ sections, groups }: ScrollNavProps) {
               .map((hero) => (
                 <button
                   key={hero.name}
-                  onClick={() => {
-                    const el = document.getElementById(hero.id);
-                    const section = el?.closest("section");
-                    (section ?? el)?.scrollIntoView({ behavior: "smooth", block: "start" });
-                  }}
+                  onClick={() => scrollToSection(hero.id, hero.startIndex)}
                   className="text-xs text-gray-500 hover:text-white whitespace-nowrap transition-all"
                 >
                   {hero.name}
@@ -177,9 +183,7 @@ export function ScrollNav({ sections, groups }: ScrollNavProps) {
               onClick={() => {
                 const hero = groupHeros.find((h) => h.name === activeGroup.name);
                 if (hero) {
-                  const el = document.getElementById(hero.id);
-                  const section = el?.closest("section");
-                  (section ?? el)?.scrollIntoView({ behavior: "smooth", block: "start" });
+                  scrollToSection(hero.id, hero.startIndex);
                 }
               }}
               className="text-sm font-semibold text-accent-green whitespace-nowrap transition-all"
@@ -191,10 +195,7 @@ export function ScrollNav({ sections, groups }: ScrollNavProps) {
             {visibleSections.map((section) => (
               <button
                 key={section.id}
-                onClick={() => {
-                  const el = document.getElementById(section.id);
-                  el?.scrollIntoView({ behavior: "smooth" });
-                }}
+                onClick={() => scrollToSection(section.id, section.globalIndex)}
                 className={`flex items-center gap-1.5 text-xs font-medium transition-all whitespace-nowrap pl-2 ${
                   activeId === section.id
                     ? "text-accent-green"
@@ -219,11 +220,7 @@ export function ScrollNav({ sections, groups }: ScrollNavProps) {
               .map((hero) => (
                 <button
                   key={hero.name}
-                  onClick={() => {
-                    const el = document.getElementById(hero.id);
-                    const section = el?.closest("section");
-                    (section ?? el)?.scrollIntoView({ behavior: "smooth", block: "start" });
-                  }}
+                  onClick={() => scrollToSection(hero.id, hero.startIndex)}
                   className="text-xs text-gray-500 hover:text-white whitespace-nowrap transition-all"
                 >
                   {hero.name}
