@@ -59,7 +59,7 @@ function CursorView({ c1Pos, c2Pos }: { c1Pos: number; c2Pos: number | null }) {
       {/* Stream container */}
       <div className="mb-4">
         <div
-          className="rounded-lg p-3"
+          className="rounded-lg p-3 max-w-md mx-auto"
           style={{
             border: `1px dashed ${COLORS.green}`,
             backgroundColor: `${COLORS.green}08`,
@@ -106,7 +106,7 @@ function CursorView({ c1Pos, c2Pos }: { c1Pos: number; c2Pos: number | null }) {
                       : "0 0 0px rgba(0,0,0,0)",
                   }}
                   transition={{ duration: 0.3 }}
-                  className="aspect-square rounded border flex flex-col items-center justify-center"
+                  className="aspect-square rounded border flex flex-col items-center justify-center max-h-16"
                 >
                   <span
                     className="text-[10px]"
@@ -137,7 +137,7 @@ function CursorView({ c1Pos, c2Pos }: { c1Pos: number; c2Pos: number | null }) {
                 </motion.div>
               );
             })}
-            <div className="aspect-square rounded border border-dashed border-border flex items-center justify-center text-xs text-gray-500">
+            <div className="aspect-square rounded border border-dashed border-border flex items-center justify-center text-xs text-gray-500 max-h-16">
               ...
             </div>
           </div>
