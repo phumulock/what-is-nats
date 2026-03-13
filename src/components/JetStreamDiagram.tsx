@@ -144,30 +144,26 @@ function CursorView({ c1Pos, c2Pos }: { c1Pos: number; c2Pos: number | null }) {
 
           {/* Cursor arrows inside stream container */}
           <div className="relative h-5 mt-3 ml-1">
-            <motion.div
-              animate={{ left: c1Left }}
-              transition={{ type: "spring", stiffness: 300, damping: 30 }}
-              className="absolute flex flex-col items-center"
-              style={{ width: cursorWidth }}
+            <div
+              className="absolute flex flex-col items-center transition-[left] duration-300 ease-out"
+              style={{ width: cursorWidth, left: c1Left }}
             >
               <CursorTriangle color={COLORS.green} />
               <span className="text-[9px] font-bold" style={{ color: COLORS.green }}>C1</span>
-            </motion.div>
+            </div>
 
-            <motion.div
-              animate={{ opacity: showC2 ? 1 : 0, left: c2Left }}
-              transition={{
-                type: "spring",
-                stiffness: 300,
-                damping: 30,
-                delay: 0.2,
+            <div
+              className="absolute flex flex-col items-center transition-[left,opacity] duration-300 ease-out"
+              style={{
+                width: cursorWidth,
+                left: c2Left,
+                opacity: showC2 ? 1 : 0,
+                pointerEvents: showC2 ? "auto" : "none",
               }}
-              className="absolute flex flex-col items-center"
-              style={{ width: cursorWidth, pointerEvents: showC2 ? "auto" : "none" }}
             >
               <CursorTriangle color={COLORS.blue} />
               <span className="text-[9px] font-bold" style={{ color: COLORS.blue }}>C2</span>
-            </motion.div>
+            </div>
           </div>
         </div>
       </div>

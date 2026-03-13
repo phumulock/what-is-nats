@@ -92,8 +92,8 @@ export function RequestReplyDiagram() {
           {step === 3 && (
             <motion.div
               key={`reply-v-${step}`}
-              initial={{ y: 0, opacity: 0 }}
-              animate={{ y: 20, opacity: 1 }}
+              initial={{ y: 20, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
               transition={{ duration: 0.5 }}
               className="absolute top-0 z-10"
             >
