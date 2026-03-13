@@ -111,7 +111,7 @@ export function CapabilitiesTableSection({ number, id }: SectionProps) {
                       {cap.checks[sys.name] ? (
                         <span style={{ color: COLORS.green }}>&#10003;</span>
                       ) : (
-                        <span className="text-gray-600">&#10005;</span>
+                        <span style={{ color: COLORS.red }}>&#10005;</span>
                       )}
                     </td>
                   ))}
