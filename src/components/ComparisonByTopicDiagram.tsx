@@ -8,7 +8,7 @@ import { DiagramControls } from "./DiagramControls";
 const DEFAULT_ALT_COLORS: Record<string, string> = {
   Kafka: COLORS.orange,
   RabbitMQ: COLORS.purple,
-  MQTT: COLORS.pink,
+  ZeroMQ: COLORS.pink,
   "Redis Pub/Sub": COLORS.red,
   Redis: COLORS.red,
 };
@@ -17,6 +17,7 @@ interface Comparison {
   category: string;
   nats: string;
   others: { name: string; detail: string }[];
+  natsLabel?: string;
 }
 
 const DEFAULT_STATUS_TEXTS = [
@@ -66,7 +67,8 @@ export function ComparisonByTopicDiagram({
       {...containerProps}
     >
       {/* Category tabs */}
-      <div className="grid grid-cols-4 auto-rows-fr md:flex border-b border-border">
+      <div className={`grid auto-rows-fr md:flex border-b border-border`}
+           style={{ gridTemplateColumns: `repeat(${comparisons.length}, 1fr)` }}>
         {comparisons.map((comp, i) => (
           <button
             key={comp.category}
@@ -101,7 +103,7 @@ export function ComparisonByTopicDiagram({
               >
                 <div className="flex items-center gap-2 mb-2">
                   <span className="text-[10px] font-mono font-bold px-2 py-0.5 rounded border border-accent-green/60 text-accent-green">
-                    {natsLabel}
+                    {activeComparison.natsLabel ?? natsLabel}
                   </span>
                   <span className="text-[10px] text-gray-500 font-mono uppercase tracking-wider">
                     {activeComparison.category}

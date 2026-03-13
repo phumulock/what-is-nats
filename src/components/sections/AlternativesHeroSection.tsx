@@ -8,7 +8,7 @@ const ALTERNATIVES = [
   { label: "RabbitMQ", examples: "Traditional message broker", color: COLORS.blue },
   { label: "Redis", examples: "In-memory cache + pub/sub", color: COLORS.red },
   { label: "Pulsar", examples: "Tiered storage streaming", color: COLORS.purpleLight },
-  { label: "MQTT", examples: "IoT device protocol", color: COLORS.pink },
+  { label: "ZeroMQ", examples: "Brokerless messaging library", color: COLORS.pink },
 ];
 
 export function AlternativesHeroSection({ number, id }: SectionProps) {

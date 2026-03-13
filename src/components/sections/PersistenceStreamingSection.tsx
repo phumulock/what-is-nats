@@ -1,12 +1,12 @@
 import { SectionContainer } from "@/components/SectionContainer";
 import { SectionHeader } from "@/components/SectionHeader";
+import { WhyItMatters } from "@/components/WhyItMatters";
 import { ComparisonByTopicDiagram } from "@/components/ComparisonByTopicDiagram";
 import { DiagramReveal } from "@/components/DiagramReveal";
-import { WhyItMatters } from "@/components/WhyItMatters";
 import { COLORS } from "@/lib/colors";
 import { SectionProps } from "./types";
 
-const STREAMING_ALT_COLORS: Record<string, string> = {
+const ALT_COLORS: Record<string, string> = {
   Kafka: COLORS.blue,
   Pulsar: COLORS.purple,
   "RabbitMQ Streams": COLORS.orange,
@@ -14,24 +14,7 @@ const STREAMING_ALT_COLORS: Record<string, string> = {
   Redis: COLORS.red,
 };
 
-const STREAMING_STATUS_TEXTS = [
-  { text: "Streaming alternatives — what they each bring along", color: COLORS.yellow },
-  { text: "Persistence Model — choose the right guarantee per message", color: COLORS.green },
-  { text: "Stream Retention — subjects, not partitions", color: COLORS.green },
-  { text: "Exactly-Once Delivery — built in, not bolted on", color: COLORS.green },
-  { text: "Data Stores — KV and Object Store, same connection", color: COLORS.green },
-];
-
-const JETSTREAM_COMPARISONS = [
-  {
-    category: "Overview",
-    nats: "JetStream adds persistence as a feature inside the NATS server you already run. Single binary, same protocol, same connection. No separate cluster to deploy or operate.",
-    others: [
-      { name: "Kafka", detail: "Distributed commit log. Partition-bound consumers, mandatory persistence for all topics, JVM + ZooKeeper/KRaft overhead." },
-      { name: "Pulsar", detail: "Multi-tenant streaming. BookKeeper dependency, complex multi-component deploy, higher operational surface area." },
-      { name: "RabbitMQ Streams", detail: "Log-based extension for RabbitMQ. Bolted onto a queue model, Erlang VM overhead, no built-in global clustering." },
-    ],
-  },
+const COMPARISONS = [
   {
     category: "Persistence Model",
     nats: "Choose per-subject: ephemeral telemetry over Core, durable orders through JetStream. One system, right guarantee for each message.",
@@ -70,33 +53,39 @@ const JETSTREAM_COMPARISONS = [
   },
 ];
 
-export function StreamingAlternativesSection({ number, id }: SectionProps) {
+const STATUS_TEXTS = [
+  { text: "Persistence Model — choose the right guarantee per message", color: COLORS.green },
+  { text: "Stream Retention — subjects, not partitions", color: COLORS.green },
+  { text: "Exactly-Once Delivery — built in, not bolted on", color: COLORS.green },
+  { text: "Data Stores — KV and Object Store, same connection", color: COLORS.green },
+];
+
+export function PersistenceStreamingSection({ number, id }: SectionProps) {
   return (
     <SectionContainer>
       <SectionHeader
         number={number}
-        title="Why Not Another Streaming System?"
+        title="Persistence & Streaming"
         id={id}
       />
+
       <p className="mt-4 text-white text-lg">
         JetStream isn&apos;t the first persistent streaming system. But
         it&apos;s the only one that isn&apos;t a separate system.
       </p>
-      <p className="mt-6 text-gray-500">
-        You&apos;ve seen how JetStream adds persistence to Core
-        subjects. Other systems&mdash;Kafka, Pulsar, RabbitMQ
-        Streams&mdash;were built for durable streaming too. The difference is
-        in what else they bring along: separate protocols, separate clusters,
-        separate operational burdens. JetStream is a capability you turn on
-        inside the NATS server you already run.
+      <p className="mt-4 text-gray-500">
+        Kafka, Pulsar, and RabbitMQ Streams were built for durable streaming
+        too. The difference is in what else they bring along: separate
+        protocols, separate clusters, separate operational burdens. JetStream
+        is a capability you turn on inside the NATS server you already run.
       </p>
 
       <DiagramReveal>
         <ComparisonByTopicDiagram
-          comparisons={JETSTREAM_COMPARISONS}
+          comparisons={COMPARISONS}
           natsLabel="JetStream"
-          statusTexts={STREAMING_STATUS_TEXTS}
-          altColors={STREAMING_ALT_COLORS}
+          statusTexts={STATUS_TEXTS}
+          altColors={ALT_COLORS}
         />
       </DiagramReveal>
 

@@ -43,8 +43,11 @@ import { SecuritySection } from "./SecuritySection";
 import { AuthCalloutSection } from "./AuthCalloutSection";
 import { AlternativesHeroSection } from "./AlternativesHeroSection";
 import { AlternativesIntroSection } from "./AlternativesIntroSection";
-import { MessagingAlternativesSection } from "./MessagingAlternativesSection";
-import { StreamingAlternativesSection } from "./StreamingAlternativesSection";
+import { CapabilitiesTableSection } from "./CapabilitiesTableSection";
+import { ProtocolFundamentalsSection } from "./ProtocolFundamentalsSection";
+import { MessagingPatternsSection } from "./MessagingPatternsSection";
+import { PersistenceStreamingSection } from "./PersistenceStreamingSection";
+import { OperationsSecuritySection } from "./OperationsSecuritySection";
 import { WhatNatsReplacesSection } from "./WhatNatsReplacesSection";
 import { SummaryHeroSection } from "./SummaryHeroSection";
 import { FullPictureSection } from "./FullPictureSection";
@@ -105,11 +108,14 @@ export const WHAT_IS_NATS_SECTIONS: SectionEntry[] = [
   // --- Alternatives ---
   ["alternatives-hero", AlternativesHeroSection], // 41
   ["alternatives-intro", AlternativesIntroSection], // 42
-  ["messaging-alternatives", MessagingAlternativesSection], // 43
-  ["streaming-alternatives", StreamingAlternativesSection], // 44
+  ["capabilities-table", CapabilitiesTableSection], // 43
+  ["protocol-fundamentals", ProtocolFundamentalsSection], // 44
+  ["messaging-patterns", MessagingPatternsSection], // 45
+  ["persistence-streaming", PersistenceStreamingSection], // 46
+  ["operations-security", OperationsSecuritySection], // 47
   // --- Summary ---
-  ["summary-hero", SummaryHeroSection], // 45
-  ["full-picture", FullPictureSection], // 46
-  ["what-nats-replaces", WhatNatsReplacesSection], // 47
-  ["summary", SummarySection], // 48
+  ["summary-hero", SummaryHeroSection], // 48
+  ["full-picture", FullPictureSection], // 49
+  ["what-nats-replaces", WhatNatsReplacesSection], // 50
+  ["summary", SummarySection], // 51
 ];

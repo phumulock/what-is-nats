@@ -20,8 +20,8 @@ export const SECTION_GROUPS: SectionGroup[] = [
   { name: "Data Stores", startIndex: 25, endIndex: 30 },
   { name: "Scaling", startIndex: 30, endIndex: 37 },
   { name: "Security", startIndex: 37, endIndex: 41 },
-  { name: "Alternatives", startIndex: 41, endIndex: 45 },
-  { name: "Summary", startIndex: 45, endIndex: 49 },
+  { name: "Alternatives", startIndex: 41, endIndex: 48 },
+  { name: "Summary", startIndex: 48, endIndex: 52 },
 ];
 
 export interface PageConfig {
@@ -34,7 +34,7 @@ export interface PageConfig {
 }
 
 // Global spotlight indices from the original single-page layout
-const GLOBAL_SPOTLIGHT = [0, 4, 10, 19, 26, 31, 38, 42, 47];
+const GLOBAL_SPOTLIGHT = [0, 4, 10, 19, 26, 31, 38, 42, 50];
 
 function makePageConfig(
   path: string,
@@ -58,7 +58,7 @@ function makePageConfig(
 }
 
 export const PAGES: PageConfig[] = [
-  makePageConfig("/", "What is NATS?", 0, 49, [
+  makePageConfig("/", "What is NATS?", 0, 52, [
     { label: "Core", examples: "Pub/sub, request/reply, queue groups", color: "#4ade80" },
   ]),
 ];
