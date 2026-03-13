@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { COLORS } from "@/lib/colors";
+import { COLORS, withAlpha } from "@/lib/colors";
 import { useDiagramPlayback } from "./useDiagramPlayback";
 import { DiagramControls } from "./DiagramControls";
 
@@ -120,7 +120,7 @@ export function SuperclusterDiagram() {
               stroke: gatewayActive(gi)
                 ? REGIONS[gw.from].color
                 : gatewayDimmed(gi)
-                  ? `${COLORS.border}60`
+                  ? withAlpha(COLORS.border, 0.375)
                   : COLORS.borderLight,
               strokeWidth: gatewayActive(gi) ? 2 : 1,
             }}
@@ -129,7 +129,7 @@ export function SuperclusterDiagram() {
             x={gw.labelX}
             y={gw.labelY}
             textAnchor="middle"
-            fill={gatewayDimmed(gi) ? `${COLORS.textTertiary}60` : COLORS.textTertiary}
+            fill={gatewayDimmed(gi) ? withAlpha(COLORS.textTertiary, 0.375) : COLORS.textTertiary}
             fontSize={fontSize}
             fontFamily="monospace"
           >
@@ -174,7 +174,7 @@ export function SuperclusterDiagram() {
             strokeDasharray="4 4"
             animate={{
               stroke: regionHighlight(ri) ? region.color : COLORS.border,
-              fill: regionHighlight(ri) ? `${region.color}08` : COLORS.terminalBg,
+              fill: regionHighlight(ri) ? withAlpha(region.color, 0.03) : COLORS.terminalBg,
             }}
             strokeWidth={1.5}
           />
@@ -219,7 +219,7 @@ export function SuperclusterDiagram() {
                 fill={COLORS.surface}
                 animate={{
                   stroke: regionActive(ri) ? region.color : COLORS.borderLight,
-                  fill: regionHighlight(ri) ? `${region.color}12` : COLORS.surface,
+                  fill: regionHighlight(ri) ? withAlpha(region.color, 0.07) : COLORS.surface,
                 }}
                 strokeWidth={1.5}
               />
@@ -249,7 +249,7 @@ export function SuperclusterDiagram() {
         <motion.div
           animate={{
             borderColor: step === 0 ? COLORS.green : COLORS.border,
-            backgroundColor: step === 0 ? `${COLORS.green}10` : `${COLORS.green}00`,
+            backgroundColor: step === 0 ? withAlpha(COLORS.green, 0.063) : withAlpha(COLORS.green, 0),
           }}
           className="border rounded-lg px-2 py-1.5 text-center"
         >
@@ -260,7 +260,7 @@ export function SuperclusterDiagram() {
         <motion.div
           animate={{
             borderColor: step >= 3 ? COLORS.blue : COLORS.border,
-            backgroundColor: step === 3 ? `${COLORS.blue}10` : `${COLORS.blue}00`,
+            backgroundColor: step === 3 ? withAlpha(COLORS.blue, 0.063) : withAlpha(COLORS.blue, 0),
           }}
           className="border rounded-lg px-2 py-1.5 text-center"
         >
@@ -271,7 +271,7 @@ export function SuperclusterDiagram() {
         <motion.div
           animate={{
             borderColor: step >= 3 ? COLORS.pink : COLORS.border,
-            backgroundColor: step === 3 ? `${COLORS.pink}10` : `${COLORS.pink}00`,
+            backgroundColor: step === 3 ? withAlpha(COLORS.pink, 0.063) : withAlpha(COLORS.pink, 0),
           }}
           className="border rounded-lg px-2 py-1.5 text-center"
         >
@@ -286,7 +286,7 @@ export function SuperclusterDiagram() {
           <motion.div
             animate={{
               borderColor: step === 0 ? COLORS.green : COLORS.border,
-              backgroundColor: step === 0 ? `${COLORS.green}10` : `${COLORS.green}00`,
+              backgroundColor: step === 0 ? withAlpha(COLORS.green, 0.063) : withAlpha(COLORS.green, 0),
             }}
             className="border rounded-lg px-2 py-1.5 text-center"
           >
@@ -319,7 +319,7 @@ export function SuperclusterDiagram() {
             <motion.div
               animate={{
                 borderColor: step >= 3 ? COLORS.blue : COLORS.border,
-                backgroundColor: step === 3 ? `${COLORS.blue}10` : `${COLORS.blue}00`,
+                backgroundColor: step === 3 ? withAlpha(COLORS.blue, 0.063) : withAlpha(COLORS.blue, 0),
               }}
               className="border rounded-lg px-2 py-1.5 text-center"
             >
@@ -335,7 +335,7 @@ export function SuperclusterDiagram() {
             <motion.div
               animate={{
                 borderColor: step >= 3 ? COLORS.pink : COLORS.border,
-                backgroundColor: step === 3 ? `${COLORS.pink}10` : `${COLORS.pink}00`,
+                backgroundColor: step === 3 ? withAlpha(COLORS.pink, 0.063) : withAlpha(COLORS.pink, 0),
               }}
               className="border rounded-lg px-2 py-1.5 text-center"
             >

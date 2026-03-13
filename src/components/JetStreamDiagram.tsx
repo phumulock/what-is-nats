@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import { useDiagramPlayback } from "./useDiagramPlayback";
 import { DiagramControls } from "./DiagramControls";
-import { COLORS } from "@/lib/colors";
+import { COLORS, withAlpha } from "@/lib/colors";
 
 // --- Slide metadata ---
 
@@ -62,7 +62,7 @@ function CursorView({ c1Pos, c2Pos }: { c1Pos: number; c2Pos: number | null }) {
           className="rounded-lg p-3 max-w-md mx-auto"
           style={{
             border: `1px dashed ${COLORS.green}`,
-            backgroundColor: `${COLORS.green}08`,
+            backgroundColor: withAlpha(COLORS.green, 0.03),
           }}
         >
           <div
@@ -85,10 +85,10 @@ function CursorView({ c1Pos, c2Pos }: { c1Pos: number; c2Pos: number | null }) {
               let bgColor: string = COLORS.surface;
 
               if (isC2Processed) {
-                bgColor = `${COLORS.blue}15`;
+                bgColor = withAlpha(COLORS.blue, 0.082);
                 borderColor = COLORS.blue;
               } else if (isC1Processed) {
-                bgColor = `${COLORS.green}15`;
+                bgColor = withAlpha(COLORS.green, 0.082);
                 borderColor = COLORS.green;
               } else if (i === c1Pos) {
                 borderColor = COLORS.green;
@@ -102,7 +102,7 @@ function CursorView({ c1Pos, c2Pos }: { c1Pos: number; c2Pos: number | null }) {
                     borderColor,
                     scale: isActive ? 1.05 : 1,
                     boxShadow: isActive
-                      ? `0 0 8px ${i === c1Pos ? COLORS.green : COLORS.blue}40`
+                      ? `0 0 8px ${withAlpha(i === c1Pos ? COLORS.green : COLORS.blue, 0.25)}`
                       : "0 0 0px rgba(0,0,0,0)",
                   }}
                   transition={{ duration: 0.3 }}
@@ -176,7 +176,7 @@ function CursorView({ c1Pos, c2Pos }: { c1Pos: number; c2Pos: number | null }) {
           className="w-16 h-12 rounded-lg flex flex-col items-center justify-center shrink-0"
           style={{
             border: `1.5px solid ${COLORS.green}`,
-            backgroundColor: `${COLORS.green}12`,
+            backgroundColor: withAlpha(COLORS.green, 0.07),
           }}
         >
           <span className="text-xs font-bold" style={{ color: COLORS.green }}>C1</span>
@@ -189,7 +189,7 @@ function CursorView({ c1Pos, c2Pos }: { c1Pos: number; c2Pos: number | null }) {
           className="w-16 h-12 rounded-lg flex flex-col items-center justify-center shrink-0"
           style={{
             border: `1.5px solid ${COLORS.blue}`,
-            backgroundColor: `${COLORS.blue}12`,
+            backgroundColor: withAlpha(COLORS.blue, 0.07),
             pointerEvents: showC2 ? "auto" : "none",
           }}
         >
@@ -203,7 +203,7 @@ function CursorView({ c1Pos, c2Pos }: { c1Pos: number; c2Pos: number | null }) {
         <div className="flex items-center gap-1.5">
           <div
             className="w-3 h-3 rounded-sm"
-            style={{ backgroundColor: `${COLORS.green}30` }}
+            style={{ backgroundColor: withAlpha(COLORS.green, 0.19) }}
           />
           <span>processed</span>
         </div>

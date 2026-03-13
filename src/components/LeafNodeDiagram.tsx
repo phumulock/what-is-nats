@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { COLORS } from "@/lib/colors";
+import { COLORS, withAlpha } from "@/lib/colors";
 import { useDiagramPlayback } from "./useDiagramPlayback";
 import { DiagramControls } from "./DiagramControls";
 
@@ -140,7 +140,7 @@ export function LeafNodeDiagram() {
                     : step === 5 && i === 0
                       ? COLORS.yellow
                       : COLORS.borderLight,
-                fill: step === 3 && i === 0 ? `${leaf.color}10` : COLORS.terminalBg,
+                fill: step === 3 && i === 0 ? withAlpha(leaf.color, 0.063) : COLORS.terminalBg,
               }}
               strokeWidth={1.5}
             />
@@ -167,7 +167,7 @@ export function LeafNodeDiagram() {
                 <rect
                   x={lx - 27 + j * 19} y={LEAF_Y + 45}
                   width={16} height={16} rx={2}
-                  fill={`${COLORS.yellow}12`} stroke={`${COLORS.yellow}40`} strokeWidth={1}
+                  fill={withAlpha(COLORS.yellow, 0.07)} stroke={withAlpha(COLORS.yellow, 0.25)} strokeWidth={1}
                 />
                 <text
                   x={lx - 19 + j * 19} y={LEAF_Y + 55}
@@ -191,14 +191,14 @@ export function LeafNodeDiagram() {
                   x={lx + dx - 21} y={DEVICE_Y - 8} width={42} height={18} rx={3}
                   fill="transparent"
                   animate={{
-                    stroke: step === 0 && i === 0 && d === 0 ? leaf.color : `${leaf.color}4D`,
+                    stroke: step === 0 && i === 0 && d === 0 ? leaf.color : withAlpha(leaf.color, 0.3),
                   }}
                   strokeWidth={1}
                 />
                 <text
                   x={lx + dx} y={DEVICE_Y + 3}
                   textAnchor="middle" dominantBaseline="middle"
-                  fill={`${leaf.color}B3`} fontSize={fontSize - 2}
+                  fill={withAlpha(leaf.color, 0.7)} fontSize={fontSize - 2}
                 >
                   {leaf.devices[d]}
                 </text>

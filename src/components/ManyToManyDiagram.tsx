@@ -3,7 +3,7 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useDiagramPlayback } from "./useDiagramPlayback";
 import { DiagramControls } from "./DiagramControls";
-import { COLORS } from "@/lib/colors";
+import { COLORS, withAlpha } from "@/lib/colors";
 
 const PUBLISHERS = [
   { name: "Order API", color: COLORS.green },
@@ -50,7 +50,7 @@ export function ManyToManyDiagram() {
               key={pub.name}
               animate={{
                 borderColor: activePubIdx === i ? pub.color : COLORS.border,
-                boxShadow: activePubIdx === i ? `0 0 12px ${pub.color}40` : "0 0 0px rgba(0,0,0,0)",
+                boxShadow: activePubIdx === i ? `0 0 12px ${withAlpha(pub.color, 0.25)}` : "0 0 0px rgba(0,0,0,0)",
               }}
               transition={{ duration: 0.3 }}
               className="w-28 h-10 border rounded flex items-center justify-center text-xs bg-terminal-bg"
@@ -138,7 +138,7 @@ export function ManyToManyDiagram() {
                 key={sub.name}
                 animate={{
                   borderColor: receiving ? sub.color : COLORS.border,
-                  boxShadow: receiving ? `0 0 12px ${sub.color}40` : "0 0 0px rgba(0,0,0,0)",
+                  boxShadow: receiving ? `0 0 12px ${withAlpha(sub.color, 0.25)}` : "0 0 0px rgba(0,0,0,0)",
                 }}
                 transition={{ duration: 0.3 }}
                 className="w-28 h-10 border rounded flex flex-col items-center justify-center bg-terminal-bg"
@@ -162,7 +162,7 @@ export function ManyToManyDiagram() {
                 className="w-28 border rounded flex flex-col items-center justify-center bg-terminal-bg overflow-hidden"
                 style={{
                   borderColor: AUDIT_SUB.color,
-                  boxShadow: `0 0 12px ${AUDIT_SUB.color}40`,
+                  boxShadow: `0 0 12px ${withAlpha(AUDIT_SUB.color, 0.25)}`,
                 }}
               >
                 <span className="text-xs" style={{ color: AUDIT_SUB.color }}>{AUDIT_SUB.name}</span>

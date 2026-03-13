@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { COLORS } from "@/lib/colors";
+import { COLORS, withAlpha } from "@/lib/colors";
 import { useDiagramPlayback } from "./useDiagramPlayback";
 import { DiagramControls } from "./DiagramControls";
 
@@ -76,14 +76,14 @@ export function StillHttpDiagram() {
             transition={{ duration: 0.4 }}
             className="flex items-start gap-3 p-3 rounded-lg border"
             style={{
-              borderColor: step === 5 ? `${proto.color}80` : `${proto.color}40`,
-              backgroundColor: `${proto.color}08`,
+              borderColor: step === 5 ? withAlpha(proto.color, 0.5) : withAlpha(proto.color, 0.25),
+              backgroundColor: withAlpha(proto.color, 0.03),
             }}
           >
             <div className="flex-shrink-0">
               <div
                 className="text-[10px] font-mono px-2 py-0.5 rounded border"
-                style={{ color: proto.color, borderColor: `${proto.color}60` }}
+                style={{ color: proto.color, borderColor: withAlpha(proto.color, 0.375) }}
               >
                 {proto.name}
               </div>
@@ -123,8 +123,8 @@ export function StillHttpDiagram() {
       {/* HTTP foundation block */}
       <motion.div
         animate={{
-          borderColor: step === 5 ? COLORS.red : step >= 0 ? `${COLORS.red}60` : COLORS.border,
-          backgroundColor: step === 5 ? `${COLORS.red}15` : `${COLORS.red}08`,
+          borderColor: step === 5 ? COLORS.red : step >= 0 ? withAlpha(COLORS.red, 0.375) : COLORS.border,
+          backgroundColor: step === 5 ? withAlpha(COLORS.red, 0.082) : withAlpha(COLORS.red, 0.03),
         }}
         transition={{ duration: 0.5 }}
         className="rounded-lg border-2 border-dashed p-4 text-center"

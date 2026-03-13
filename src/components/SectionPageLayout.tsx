@@ -6,21 +6,17 @@ import { RevealSection } from "@/components/RevealSection";
 import { SpotlightProvider } from "@/components/SpotlightContext";
 import { ScrollNav } from "@/components/ScrollNav";
 import { HamburgerNav } from "@/components/HamburgerNav";
-import { SmartLink } from "@/components/SmartLink";
 import type { PageConfig } from "@/config/pages";
 import { getPageSections, SECTION_GROUPS } from "@/config/pages";
 import { NestedDiagram } from "@/components/NestedDiagram";
-
-const pad = (n: number) => String(n).padStart(2, "0");
+import { pad } from "@/lib/sections";
 
 interface SectionPageLayoutProps {
   page: PageConfig;
-  showFooter?: boolean;
 }
 
 export function SectionPageLayout({
   page,
-  showFooter,
 }: SectionPageLayoutProps) {
   const sections = getPageSections(page);
 
@@ -67,14 +63,6 @@ export function SectionPageLayout({
                 </RevealSection>
               </Fragment>
             ))}
-            {showFooter && (
-              <footer className="pt-12 pb-8 text-center text-sm text-gray-500">
-                <p>
-                  Built to explain{" "}
-                  <SmartLink href="https://nats.io">NATS</SmartLink>
-                </p>
-              </footer>
-            )}
           </div>
         </SpotlightProvider>
       </main>

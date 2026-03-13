@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, AnimatePresence } from "framer-motion";
-import { COLORS } from "@/lib/colors";
+import { COLORS, withAlpha } from "@/lib/colors";
 import { useDiagramPlayback } from "./useDiagramPlayback";
 import { DiagramControls } from "./DiagramControls";
 
@@ -126,14 +126,14 @@ export function ComparisonByTopicDiagram({
                       transition={{ duration: 0.4, delay: (i + 1) * 0.1 }}
                       className="flex items-start gap-3 p-3 rounded-lg border"
                       style={{
-                        borderColor: `${color}40`,
-                        backgroundColor: `${color}08`,
+                        borderColor: withAlpha(color, 0.25),
+                        backgroundColor: withAlpha(color, 0.03),
                       }}
                     >
                       <div className="shrink-0">
                         <div
                           className="text-[10px] font-mono px-2 py-0.5 rounded border"
-                          style={{ color, borderColor: `${color}60` }}
+                          style={{ color, borderColor: withAlpha(color, 0.375) }}
                         >
                           {alt.name}
                         </div>
