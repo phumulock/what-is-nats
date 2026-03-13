@@ -10,7 +10,7 @@ export function WhatNatsReplacesSection({ number, id }: SectionProps) {
     <SectionContainer>
       <SectionHeader
         number={number}
-        title="One System, Not Five"
+        title="One System, Not Eight"
         id={id}
       />
       <p className="mt-4 text-white text-lg">
@@ -24,7 +24,7 @@ export function WhatNatsReplacesSection({ number, id }: SectionProps) {
         cache for shared state, object storage for large payloads, multi-region
         replication, and a separate auth layer. That&apos;s eight systems with
         eight protocols, eight auth configurations, and eight failure modes. NATS replaces them not
-        by bundling five tools together, but because everything&mdash;pub/sub,
+        by bundling eight tools together, but because everything&mdash;pub/sub,
         streaming, KV, object storage&mdash;is built on the same subjects,
         connections, and security model.
       </p>
