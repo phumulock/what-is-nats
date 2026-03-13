@@ -76,17 +76,17 @@ export function CapabilitiesTableSection({ number, id }: SectionProps) {
 
       <DiagramReveal>
         <div className="border border-border rounded-lg bg-surface overflow-x-auto scrollbar-gutter-stable overscroll-x-contain">
-          <table className="w-full text-sm font-mono">
+          <table className="w-full text-xs md:text-sm font-mono">
             <thead>
               <tr className="border-b border-border">
-                <th className="text-left text-gray-500 text-xs uppercase tracking-wider px-4 py-3 sticky left-0 bg-surface z-10">
+                <th className="text-left text-gray-500 text-xs uppercase tracking-wider px-2 md:px-4 py-3 sticky left-0 bg-surface z-10">
                   Capability
                 </th>
                 {SYSTEMS.map((sys) => (
                   <th
                     key={sys.name}
-                    className="text-center px-3 py-3 text-xs font-bold whitespace-nowrap"
-                    style={{ color: sys.color }}
+                    className="text-center px-1 md:px-3 py-3 h-20 md:h-auto text-xs font-bold rotate-180 md:rotate-0 md:[writing-mode:horizontal-tb]"
+                    style={{ color: sys.color, writingMode: "vertical-lr" }}
                   >
                     {sys.name}
                   </th>
@@ -103,11 +103,11 @@ export function CapabilitiesTableSection({ number, id }: SectionProps) {
                       : ""
                   }
                 >
-                  <td className="text-gray-400 text-xs px-4 py-2.5 whitespace-nowrap sticky left-0 bg-surface z-10">
+                  <td className="text-gray-400 text-xs px-2 md:px-4 py-2.5 sticky left-0 bg-surface z-10">
                     {cap.label}
                   </td>
                   {SYSTEMS.map((sys) => (
-                    <td key={sys.name} className="text-center px-3 py-2.5">
+                    <td key={sys.name} className="text-center px-1 md:px-3 py-2.5">
                       {cap.checks[sys.name] ? (
                         <span style={{ color: COLORS.green }}>&#10003;</span>
                       ) : (
