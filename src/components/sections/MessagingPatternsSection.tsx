@@ -21,7 +21,7 @@ const COMPARISONS = [
     others: [
       { name: "Kafka", detail: "Every message hits disk and gets an offset. Consumers replay from last committed offset — sometimes thousands of stale messages after a crash." },
       { name: "RabbitMQ", detail: "Requires declaring exchanges, queues, and bindings before a single message flows. Slow consumers cause memory pressure on the broker." },
-      { name: "Redis", detail: "Simple fire-and-forget pub/sub, but no subject hierarchy, no wildcard routing, and no fan-out control." },
+      { name: "Redis", detail: "Simple fire-and-forget pub/sub with glob wildcards via PSUBSCRIBE, but no dot-delimited subject hierarchy and no fan-out control." },
       { name: "ZeroMQ", detail: "PUB/SUB socket types exist, but you manage connections and topic filtering yourself. No broker means no fan-out guarantees — if a subscriber isn't connected, the message is gone." },
     ],
   },
@@ -41,7 +41,7 @@ const COMPARISONS = [
     others: [
       { name: "Kafka", detail: "Consumer groups need a group coordinator. Partition rebalancing can pause consumption for minutes. Workers are locked to partitions." },
       { name: "RabbitMQ", detail: "Competing consumers work, but require explicit queue declaration, binding, and prefetch tuning per consumer." },
-      { name: "Redis", detail: "No native work distribution. You build it yourself with lists and BRPOP, or use Redis Streams consumer groups with manual ACKs." },
+      { name: "Redis", detail: "Redis Pub/Sub has no work distribution. Redis Streams added consumer groups with automatic distribution, but they require explicit stream/group setup and manual ACKs." },
     ],
   },
   {

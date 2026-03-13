@@ -24,7 +24,7 @@ const CAPABILITIES: { label: string; checks: Record<string, boolean> }[] = [
   },
   {
     label: "Queue Groups",
-    checks: { NATS: true, Kafka: true, RabbitMQ: true, Redis: false, Pulsar: true, ZeroMQ: false },
+    checks: { NATS: true, Kafka: true, RabbitMQ: true, Redis: true, Pulsar: true, ZeroMQ: false },
   },
   {
     label: "Persistence",
@@ -32,7 +32,7 @@ const CAPABILITIES: { label: string; checks: Record<string, boolean> }[] = [
   },
   {
     label: "Streaming / Replay",
-    checks: { NATS: true, Kafka: true, RabbitMQ: false, Redis: true, Pulsar: true, ZeroMQ: false },
+    checks: { NATS: true, Kafka: true, RabbitMQ: true, Redis: true, Pulsar: true, ZeroMQ: false },
   },
   {
     label: "KV Store",
@@ -56,11 +56,11 @@ const CAPABILITIES: { label: string; checks: Record<string, boolean> }[] = [
   },
   {
     label: "Auth Built-In",
-    checks: { NATS: true, Kafka: false, RabbitMQ: true, Redis: true, Pulsar: true, ZeroMQ: true },
+    checks: { NATS: true, Kafka: true, RabbitMQ: true, Redis: true, Pulsar: true, ZeroMQ: true },
   },
   {
     label: "Single Binary",
-    checks: { NATS: true, Kafka: false, RabbitMQ: false, Redis: true, Pulsar: false, ZeroMQ: true },
+    checks: { NATS: true, Kafka: false, RabbitMQ: false, Redis: true, Pulsar: false, ZeroMQ: false },
   },
 ];
 

@@ -18,9 +18,9 @@ const COMPARISONS = [
     category: "Clustering",
     nats: "Full-mesh clustering with zero-config gossip protocol. Add a node, point it at any existing node, and the cluster self-organizes. Superclusters span regions with gateway connections.",
     others: [
-      { name: "Kafka", detail: "Requires ZooKeeper (or KRaft) for metadata. Broker addition needs partition reassignment. Cross-region replication is a separate product (MirrorMaker)." },
+      { name: "Kafka", detail: "Requires KRaft for metadata consensus. Broker addition needs partition reassignment. Cross-region replication is a separate product (MirrorMaker)." },
       { name: "RabbitMQ", detail: "Clustering works within a LAN but breaks across regions. Federation and shovels exist but add operational complexity." },
-      { name: "Redis", detail: "Redis Cluster shards data by hash slots. Adding nodes means resharding. Pub/Sub doesn't participate in the cluster protocol at all." },
+      { name: "Redis", detail: "Redis Cluster shards data by hash slots. Adding nodes means resharding. Sharded Pub/Sub (Redis 7.0+) participates in the cluster protocol, but classic Pub/Sub does not." },
       { name: "ZeroMQ", detail: "No clustering — it's a library, not a server. You build your own topology with broker patterns (ROUTER/DEALER), but there's no automatic failover or discovery." },
     ],
   },
@@ -29,7 +29,7 @@ const COMPARISONS = [
     nats: "Multi-tenancy baked into the protocol. Accounts isolate traffic, NKeys provide decentralized identity, and JWTs handle authorization — no external auth system required.",
     others: [
       { name: "Kafka", detail: "Production auth requires configuring SASL, SSL, and ACLs. Multi-tenancy needs topic naming conventions or separate clusters — nothing enforced at the protocol level." },
-      { name: "RabbitMQ", detail: "Vhosts provide basic isolation. Production deployments typically need an external auth backend (LDAP, OAuth) and per-queue permission management." },
+      { name: "RabbitMQ", detail: "Vhosts provide basic isolation. Built-in username/password auth works for many deployments, though larger enterprises often add LDAP or OAuth plugins." },
       { name: "Redis", detail: "ACLs were added in Redis 6, but there's no multi-tenancy model. Isolation means running separate instances." },
       { name: "ZeroMQ", detail: "CurveZMQ provides encryption and authentication between sockets, but there's no authorization model, no multi-tenancy, and no centralized credential management." },
     ],
@@ -72,8 +72,8 @@ export function OperationsSecuritySection({ number, id }: SectionProps) {
 
       <WhyItMatters>
         Clustering that self-organizes and security that&apos;s built into the
-        protocol mean fewer moving parts in production. No ZooKeeper, no
-        external auth backends, no separate federation plugins.
+        protocol mean fewer moving parts in production. No separate metadata
+        service, no external auth backends, no separate federation plugins.
       </WhyItMatters>
     </SectionContainer>
   );

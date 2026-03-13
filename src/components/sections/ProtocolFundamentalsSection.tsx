@@ -21,7 +21,7 @@ const COMPARISONS = [
     category: "Wire Protocol",
     nats: "Plain text over TCP. You can debug it with telnet. Write a client in any language in an afternoon.",
     others: [
-      { name: "Kafka", detail: "Custom binary protocol. Needs generated client code and version-matched libraries." },
+      { name: "Kafka", detail: "Custom binary protocol. Requires a client library — no telnet debugging." },
       { name: "RabbitMQ", detail: "AMQP 0-9-1 — complex binary framing with channels, exchanges, and bindings baked into the wire format." },
       { name: "Redis", detail: "RESP protocol. Simple, but no built-in routing, wildcards behave differently, and no queue groups." },
       { name: "ZeroMQ", detail: "ZMTP binary protocol. Powerful socket types, but no broker — you wire topology by hand. No subject routing, no discovery, no clustering." },
@@ -31,7 +31,7 @@ const COMPARISONS = [
     category: "Subjects & Topics",
     nats: "Subjects are just dot-delimited strings. No pre-creation, no partition count, no replication factor. Publish to any subject instantly.",
     others: [
-      { name: "Kafka", detail: "Topics must be created with partition count and replication factor before use. Adding a new event type means admin CLI calls." },
+      { name: "Kafka", detail: "Topics auto-create by default, but production deployments pre-create them with explicit partition counts and replication factors. Adding a new event type means admin CLI calls." },
       { name: "RabbitMQ", detail: "Exchanges and queues must be declared and bound before messages flow. Routing topology is configured, not implicit." },
       { name: "ZeroMQ", detail: "No subject model. You connect sockets to endpoints directly. Routing logic lives in your application code, not the transport." },
     ],
@@ -41,7 +41,7 @@ const COMPARISONS = [
     natsLabel: "JetStream",
     nats: "JetStream adds persistence as a feature inside the NATS server you already run. Single binary, same protocol, same connection. No separate cluster to deploy or operate.",
     others: [
-      { name: "Kafka", detail: "Distributed commit log. Partition-bound consumers, mandatory persistence for all topics, JVM + ZooKeeper/KRaft overhead." },
+      { name: "Kafka", detail: "Distributed commit log. Partition-bound consumers, mandatory persistence for all topics, JVM + KRaft overhead." },
       { name: "Pulsar", detail: "Multi-tenant streaming. BookKeeper dependency, complex multi-component deploy, higher operational surface area." },
       { name: "RabbitMQ Streams", detail: "Log-based extension for RabbitMQ. Bolted onto a queue model, Erlang VM overhead, no built-in global clustering." },
     ],

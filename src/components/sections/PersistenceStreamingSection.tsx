@@ -19,8 +19,8 @@ const COMPARISONS = [
     category: "Persistence Model",
     nats: "Choose per-subject: ephemeral telemetry over Core, durable orders through JetStream. One system, right guarantee for each message.",
     others: [
-      { name: "Kafka", detail: "Every message hits disk, even ephemeral telemetry you'll never read again. No way to opt out per-topic without running separate clusters." },
-      { name: "Pulsar", detail: "Tiered storage helps offload old data, but all messages still flow through BookKeeper first. Persistence is all-or-nothing per topic." },
+      { name: "Kafka", detail: "Every message hits disk, even ephemeral telemetry you'll never read again. You can set very short retention per-topic, but messages always touch disk first." },
+      { name: "Pulsar", detail: "Tiered storage helps offload old data. Non-persistent topics exist for ephemeral data, but persistent topics always flow through BookKeeper first." },
       { name: "RabbitMQ", detail: "Quorum queues add durability, but at the cost of throughput. Classic queues are faster but can lose messages on node failure." },
     ],
   },
@@ -48,7 +48,7 @@ const COMPARISONS = [
     others: [
       { name: "Kafka", detail: "KTable and KStreams provide state lookups, but they're a separate API bolted onto the consumer framework. No blob storage." },
       { name: "Redis", detail: "Streams added messaging to Redis, but they aren't true pub/sub. Running Redis alongside Kafka means two clusters, two failure modes." },
-      { name: "Pulsar", detail: "Tiered storage offloads segments to S3, but no KV API. State storage requires a separate system like Apache BookKeeper." },
+      { name: "Pulsar", detail: "Tiered storage offloads segments to S3, but no KV API. Application-level state storage requires a separate database." },
     ],
   },
 ];
