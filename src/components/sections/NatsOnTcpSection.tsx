@@ -2,6 +2,7 @@ import { SectionContainer } from "@/components/SectionContainer";
 import { SectionHeader } from "@/components/SectionHeader";
 import { DiagramReveal } from "@/components/DiagramReveal";
 import { NatsSolutionsDiagram } from "@/components/NatsSolutionsDiagram";
+import { WhyItMatters } from "@/components/WhyItMatters";
 import { SectionProps } from "./types";
 
 export function NatsOnTcpSection({ number, id }: SectionProps) {
@@ -30,6 +31,12 @@ export function NatsOnTcpSection({ number, id }: SectionProps) {
       <DiagramReveal>
         <NatsSolutionsDiagram />
       </DiagramReveal>
+
+      <WhyItMatters>
+        NATS doesn&apos;t just ride on TCP&mdash;it compensates for TCP&apos;s
+        weaknesses. This is why NATS can deliver millions of messages per second
+        with predictable latency, even when clients misbehave or networks hiccup.
+      </WhyItMatters>
     </SectionContainer>
   );
 }

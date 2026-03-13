@@ -64,93 +64,88 @@ export function TcpDiagram() {
         </span>
       </motion.div>
 
-      {/* What TCP provides */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-2 md:gap-3">
-        {TCP_PROVIDES.map((item, i) => (
-          <motion.div
-            key={item.label}
-            animate={{
-              opacity: step >= i + 1 ? 1 : 0,
-              y: step >= i + 1 ? 0 : 10,
-            }}
-            transition={{ duration: 0.4 }}
-            className="text-center p-3 rounded-lg border"
-            style={{
-              borderColor: step >= i + 1 ? `${item.color}40` : COLORS.border,
-              backgroundColor: step >= i + 1 ? `${item.color}08` : "transparent",
-            }}
-          >
-            <div className="text-xs font-medium" style={{ color: item.color }}>
-              {item.label}
-            </div>
-            <div className="text-[10px] text-gray-600 mt-1">{item.desc}</div>
-          </motion.div>
-        ))}
-      </div>
+      {/* Side-by-side: provides (left) | divider | problems (right) on md+ */}
+      <div className="flex flex-col md:flex-row md:gap-6">
+        {/* What TCP provides */}
+        <div className="flex-1 space-y-2">
+          {TCP_PROVIDES.map((item, i) => (
+            <motion.div
+              key={item.label}
+              animate={{
+                opacity: step >= i + 1 ? 1 : 0,
+                y: step >= i + 1 ? 0 : 10,
+              }}
+              transition={{ duration: 0.4 }}
+              className="text-center p-3 rounded-lg border"
+              style={{
+                borderColor: step >= i + 1 ? `${item.color}40` : COLORS.border,
+                backgroundColor: step >= i + 1 ? `${item.color}08` : "transparent",
+              }}
+            >
+              <div className="text-xs font-medium" style={{ color: item.color }}>
+                {item.label}
+              </div>
+              <div className="text-[10px] text-gray-600 mt-1">{item.desc}</div>
+            </motion.div>
+          ))}
+        </div>
 
-      {/* "But at scale..." divider */}
-      <motion.div
-        animate={{ opacity: step >= 4 ? 1 : 0, scaleX: step >= 4 ? 1 : 0 }}
-        transition={{ duration: 0.5 }}
-        className="my-6 flex items-center gap-3"
-      >
-        <div className="flex-1 h-px bg-gradient-to-r from-transparent to-accent-red/40" />
-        <span className="text-xs text-accent-red font-mono whitespace-nowrap">
-          at millions of msg/sec
-        </span>
-        <div className="flex-1 h-px bg-gradient-to-l from-transparent to-accent-red/40" />
-      </motion.div>
+        {/* "But at scale..." divider — horizontal on mobile, vertical on md+ */}
+        <motion.div
+          animate={{ opacity: step >= 4 ? 1 : 0, scale: step >= 4 ? 1 : 0 }}
+          transition={{ duration: 0.5 }}
+          className="my-4 flex items-center gap-3 md:my-0 md:flex-col md:justify-center md:gap-2"
+        >
+          {/* Horizontal lines (mobile) */}
+          <div className="flex-1 h-px bg-gradient-to-r from-transparent to-accent-red/40 md:hidden" />
+          {/* Vertical line top (desktop) */}
+          <div className="hidden md:block md:flex-1 md:w-px md:bg-gradient-to-b md:from-transparent md:to-accent-red/40" />
+          <span className="text-xs text-accent-red font-mono whitespace-nowrap md:[writing-mode:vertical-lr] md:rotate-180">
+            at millions of msg/sec
+          </span>
+          {/* Horizontal lines (mobile) */}
+          <div className="flex-1 h-px bg-gradient-to-l from-transparent to-accent-red/40 md:hidden" />
+          {/* Vertical line bottom (desktop) */}
+          <div className="hidden md:block md:flex-1 md:w-px md:bg-gradient-to-t md:from-transparent md:to-accent-red/40" />
+        </motion.div>
 
-      {/* Problems at scale */}
-      <div className="space-y-3">
-        {TCP_PROBLEMS.map((item, i) => (
-          <motion.div
-            key={item.problem}
-            animate={{
-              opacity: step >= i + 5 ? 1 : 0,
-              x: step >= i + 5 ? 0 : -16,
-            }}
-            transition={{ duration: 0.4 }}
-            className="rounded-lg border overflow-hidden"
-            style={{ borderColor: `${item.color}30` }}
-          >
-            <div
-              className="flex items-start gap-3 p-3"
-              style={{ backgroundColor: `${item.color}06` }}
+        {/* Problems at scale */}
+        <div className="flex-1 space-y-2">
+          {TCP_PROBLEMS.map((item, i) => (
+            <motion.div
+              key={item.problem}
+              animate={{
+                opacity: step >= i + 5 ? 1 : 0,
+                x: step >= i + 5 ? 0 : -16,
+              }}
+              transition={{ duration: 0.4 }}
+              className="rounded-lg border overflow-hidden"
+              style={{ borderColor: `${item.color}30` }}
             >
               <div
-                className="flex-shrink-0 text-[10px] font-mono px-2 py-0.5 rounded border mt-0.5"
-                style={{ color: item.color, borderColor: `${item.color}50` }}
+                className="p-3"
+                style={{ backgroundColor: `${item.color}06` }}
               >
-                PROBLEM
+                <div className="flex items-center gap-2">
+                  <div
+                    className="text-[10px] font-mono px-2 py-0.5 rounded border"
+                    style={{ color: item.color, borderColor: `${item.color}50` }}
+                  >
+                    PROBLEM
+                  </div>
+                  <span className="text-sm font-medium" style={{ color: item.color }}>
+                    {item.problem}
+                  </span>
+                </div>
+                <p className="text-xs text-gray-600 mt-1 whitespace-nowrap">{item.detail}</p>
               </div>
-              <div className="min-w-0">
-                <span className="text-sm font-medium" style={{ color: item.color }}>
-                  {item.problem}
-                </span>
-                <p className="text-[11px] text-gray-600 mt-0.5">{item.detail}</p>
-              </div>
-            </div>
-          </motion.div>
-        ))}
+            </motion.div>
+          ))}
+        </div>
       </div>
 
-      {/* Final summary */}
-      <motion.div
-        animate={{ opacity: step >= 8 ? 1 : 0 }}
-        className="mt-6 p-4 border border-accent-red/20 rounded-lg bg-accent-red/5 text-center"
-      >
-        <p className="text-sm text-gray-300">
-          Reliable. Ordered. But not built for millions of messages per second.
-        </p>
-        <p className="text-xs text-gray-500 mt-1">
-          These aren&apos;t bugs&mdash;they&apos;re trade-offs from a protocol designed
-          before high-throughput messaging existed.
-        </p>
-      </motion.div>
-
       {/* Status text */}
-      <div className="mt-6 text-center text-sm min-h-10">
+      <div className="mt-4 text-center text-sm min-h-10">
         {step === 0 && (
           <span className="text-gray-500">TCP was built for reliable communication...</span>
         )}
@@ -170,7 +165,7 @@ export function TcpDiagram() {
           <span className="text-accent-yellow">TCP keepalives take minutes&mdash;too slow for real-time...</span>
         )}
         {step === 8 && (
-          <span className="text-gray-300">A solid foundation&mdash;but messaging needs more.</span>
+          <span className="text-yellow-400">A solid foundation&mdash;but messaging needs more.</span>
         )}
       </div>
 
