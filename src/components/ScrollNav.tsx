@@ -87,7 +87,7 @@ export function ScrollNav({ sections, groups }: ScrollNavProps) {
   }, [sections, activeGroup]);
 
   // Map each group to the section ID of its hero (first section in the group)
-  const groupHeros = useMemo(() => {
+  const groupHeroes = useMemo(() => {
     return groups.map((g) => {
       const hero = sections.find((s) => s.globalIndex === g.startIndex);
       return { name: g.name, id: hero?.id ?? "", startIndex: g.startIndex };
@@ -143,7 +143,7 @@ export function ScrollNav({ sections, groups }: ScrollNavProps) {
             className="flex flex-col items-start gap-2"
           >
             {/* Groups before active */}
-            {groupHeros
+            {groupHeroes
               .filter((hero) => hero.startIndex < activeGroup.startIndex)
               .map((hero) => (
                 <button
@@ -158,7 +158,7 @@ export function ScrollNav({ sections, groups }: ScrollNavProps) {
             {/* Active group name */}
             <button
               onClick={() => {
-                const hero = groupHeros.find((h) => h.name === activeGroup.name);
+                const hero = groupHeroes.find((h) => h.name === activeGroup.name);
                 if (hero) {
                   scrollToSection(hero.id, hero.startIndex);
                 }
@@ -192,7 +192,7 @@ export function ScrollNav({ sections, groups }: ScrollNavProps) {
             ))}
 
             {/* Groups after active */}
-            {groupHeros
+            {groupHeroes
               .filter((hero) => hero.startIndex > activeGroup.startIndex)
               .map((hero) => (
                 <button
