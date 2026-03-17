@@ -16,7 +16,7 @@ export function ClusterSection({ number, id }: SectionProps) {
       </p>
       <p className="mt-4 text-gray-500">
         <span className="text-accent-green font-bold">Full-mesh route connections</span>{" "}
-        &mdash; every server maintains a direct TCP link to every other server
+        &mdash; every server maintains a direct Tcp link to every other server
         in the cluster. Publish to any server, and it reaches all subscribers
         regardless of which server they&apos;re connected to.
       </p>
@@ -38,8 +38,8 @@ export function ClusterSection({ number, id }: SectionProps) {
       </DiagramReveal>
 
       <WhyItMatters>
-        NATS core routing is symmetric&mdash;every server can route messages
-        to every other. For JetStream, NATS uses the Raft consensus algorithm
+        Nats core routing is symmetric&mdash;every server can route messages
+        to every other. For Jetstream, Nats uses the Raft consensus algorithm
         to elect a leader per stream, ensuring consistency without a single
         external coordinator.
       </WhyItMatters>

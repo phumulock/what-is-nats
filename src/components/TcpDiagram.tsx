@@ -24,7 +24,7 @@ const TCP_PROBLEMS = [
   },
   {
     problem: "Slow Failure Detection",
-    detail: "TCP keepalives take minutes to detect dead peers",
+    detail: "Tcp keepalives take minutes to detect dead peers",
     color: COLORS.yellow,
   },
 ];
@@ -60,7 +60,7 @@ export function TcpDiagram() {
         className="text-center mb-4"
       >
         <span className="text-xs font-mono text-gray-500 border border-border rounded-full px-3 py-1">
-          TCP &mdash; The Foundation
+          Tcp &mdash; The Foundation
         </span>
       </motion.div>
 
@@ -147,7 +147,7 @@ export function TcpDiagram() {
       {/* Status text */}
       <div className="mt-4 text-center text-sm min-h-10">
         {step === 0 && (
-          <span className="text-gray-500">TCP was built for reliable communication...</span>
+          <span className="text-gray-500">Tcp was built for reliable communication...</span>
         )}
         {step >= 1 && step <= 3 && (
           <span className="text-gray-500">The kernel handles retransmission, congestion, and ordering...</span>
@@ -162,7 +162,7 @@ export function TcpDiagram() {
           <span className="text-accent-orange">Kernel buffers grow unpredictably under load...</span>
         )}
         {step === 7 && (
-          <span className="text-accent-yellow">TCP keepalives take minutes&mdash;too slow for real-time...</span>
+          <span className="text-accent-yellow">Tcp keepalives take minutes&mdash;too slow for real-time...</span>
         )}
         {step === 8 && (
           <span className="text-yellow-400">A solid foundation&mdash;but messaging needs more.</span>

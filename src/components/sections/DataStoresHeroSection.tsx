@@ -11,8 +11,8 @@ export function DataStoresHeroSection({ number, id }: SectionProps) {
       <div className="mt-6">
         <NestedDiagram
           layers={[
-            { label: "Data Stores", examples: "KV Store, Object Store", color: COLORS.yellow },
-            { label: "JetStream", color: COLORS.blue },
+            { label: "Data Stores", examples: "Key Value Store, Object Store", color: COLORS.yellow },
+            { label: "Jetstream", color: COLORS.blue },
             { label: "Core", color: COLORS.green },
           ]}
         />

@@ -8,7 +8,7 @@ import { SectionProps } from "./types";
 export function StillHttpSection({ number, id }: SectionProps) {
   return (
     <SectionContainer>
-      <SectionHeader number={number} title="Still HTTP" id={id} />
+      <SectionHeader number={number} title="Still Http" id={id} />
       <p className="mt-4 text-white text-lg">
         Better protocols don&apos;t change the model underneath.
       </p>

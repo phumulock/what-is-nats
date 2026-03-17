@@ -7,7 +7,7 @@ interface Layer {
 
 const LAYERS: Layer[] = [
   { label: "Core", color: COLORS.green },
-  { label: "JetStream", color: COLORS.blue },
+  { label: "Jetstream", color: COLORS.blue },
   { label: "Data Stores", color: COLORS.yellow },
   { label: "Clustering", color: COLORS.pink },
 ];

@@ -26,7 +26,7 @@ const TEMPORAL_SLIDES: {
   },
   {
     phase: "reconnect",
-    status: "Consumer reconnects. JetStream knows where it left off.",
+    status: "Consumer reconnects. Jetstream knows where it left off.",
     statusColor: "text-accent-blue",
   },
   {
@@ -97,7 +97,7 @@ function TemporalDecouplingView({ phase }: { phase: Phase }) {
 
         {/* JetStream */}
         <div className="flex-1 flex flex-col items-center w-full md:w-auto">
-          <div className="text-xs text-gray-500 mb-2">JETSTREAM STREAM</div>
+          <div className="text-xs text-gray-500 mb-2">Jetstream Stream</div>
           <div className="flex gap-1 overflow-hidden flex-wrap justify-center">
             {allMessages.map((msg, i) => (
               <motion.div

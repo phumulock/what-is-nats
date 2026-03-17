@@ -35,8 +35,8 @@ export function PersistenceProblemSection({ number, id }: SectionProps) {
       <WhyItMatters>
         The persistence problem isn&apos;t unique to any one tool. It&apos;s the
         central design tension in all messaging infrastructure. Understanding it
-        helps you evaluate any system&mdash;and understand why NATS built
-        JetStream.
+        helps you evaluate any system&mdash;and understand why Nats built
+        Jetstream.
       </WhyItMatters>
     </SectionContainer>
   );

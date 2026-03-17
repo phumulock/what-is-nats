@@ -108,13 +108,13 @@ export function AuthCalloutDiagram() {
           <DesktopArrow active={step === 1} color={COLORS.yellow} />
 
           <EntityBox
-            label="NATS SERVER"
+            label="Nats Server"
             color={COLORS.green}
             active={step === 1 || step === 4}
           >
             <div className="w-8 h-8 rounded-full border border-accent-green/40 flex items-center justify-center mt-1">
               <span className="text-accent-green text-[8px] font-bold">
-                NATS
+                Nats
               </span>
             </div>
             <motion.div
@@ -200,13 +200,13 @@ export function AuthCalloutDiagram() {
 
           <div className="w-full">
             <EntityBox
-              label="NATS SERVER"
+              label="Nats Server"
               color={COLORS.green}
               active={step === 1 || step === 4}
             >
               <div className="w-8 h-8 rounded-full border border-accent-green/40 flex items-center justify-center mt-1">
                 <span className="text-accent-green text-[8px] font-bold">
-                  NATS
+                  Nats
                 </span>
               </div>
               <motion.div
@@ -363,7 +363,7 @@ export function AuthCalloutDiagram() {
         )}
         {step === 1 && (
           <span className="text-accent-yellow">
-            NATS server intercepts the connection...
+            Nats server intercepts the connection...
           </span>
         )}
         {step === 2 && (
@@ -389,7 +389,7 @@ export function AuthCalloutDiagram() {
         <span className="text-white">your code</span>
         <span className="text-gray-500">
           {" "}
-          &mdash; NATS just enforces the result
+          &mdash; Nats just enforces the result
         </span>
       </div>
 

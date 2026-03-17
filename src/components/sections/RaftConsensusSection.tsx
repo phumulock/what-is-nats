@@ -11,17 +11,17 @@ export function RaftConsensusSection({ number, id }: SectionProps) {
     <SectionContainer>
       <SectionHeader number={number} title="Raft Consensus" id={id} href="https://docs.nats.io/running-a-nats-service/configuration/clustering/jetstream_clustering" />
       <p className="mt-4 text-white text-lg">
-        How JetStream keeps streams consistent across a cluster
+        How Jetstream keeps streams consistent across a cluster
       </p>
       <p className="mt-4 text-gray-500">
         <span className="text-accent-green font-bold">One Raft group per stream</span>{" "}
-        &mdash; JetStream runs a separate Raft consensus group for each stream
+        &mdash; Jetstream runs a separate Raft consensus group for each stream
         and each consumer. No single leader bottleneck&mdash;each group elects
         its own leader independently.
       </p>
       <p className="mt-4 text-gray-500">
         <span className="text-accent-blue font-bold">Meta group for placement</span>{" "}
-        &mdash; a cluster-wide meta group (all JetStream-enabled servers) decides
+        &mdash; a cluster-wide meta group (all Jetstream-enabled servers) decides
         where to place new streams and consumers. Each stream group then handles
         its own data replication; each consumer group tracks delivery state.
       </p>
@@ -37,7 +37,7 @@ export function RaftConsensusSection({ number, id }: SectionProps) {
       </DiagramReveal>
 
       <WhyItMatters>
-        Raft gives JetStream strong consistency without external dependencies
+        Raft gives Jetstream strong consistency without external dependencies
         like ZooKeeper or etcd. Every stream gets its own consensus group, so a
         busy stream can&apos;t block an unrelated one.
       </WhyItMatters>

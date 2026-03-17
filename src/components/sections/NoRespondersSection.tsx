@@ -14,8 +14,8 @@ export function NoRespondersSection({ number, id }: SectionProps) {
         Instant failure feedback, not silent timeouts.
       </p>
       <p className="mt-4 text-gray-500">
-        With HTTP, if a service is down your request hangs until a timeout
-        fires&mdash;30 seconds of wasted time and a blocked thread. NATS knows
+        With Http, if a service is down your request hangs until a timeout
+        fires&mdash;30 seconds of wasted time and a blocked thread. Nats knows
         the subscription table. If nobody is listening on a subject, the server
         tells you immediately with a <code className="text-accent-red">no
         responders</code> status. No guessing, no waiting, no cascading
@@ -27,8 +27,8 @@ export function NoRespondersSection({ number, id }: SectionProps) {
       </DiagramReveal>
 
       <WhyItMatters>
-        Circuit breakers exist because HTTP can&apos;t tell you &quot;nobody is
-        home&quot; fast enough. NATS gives you that answer in microseconds,
+        Circuit breakers exist because Http can&apos;t tell you &quot;nobody is
+        home&quot; fast enough. Nats gives you that answer in microseconds,
         built into the protocol. One less library to configure, one less
         failure mode to handle.
       </WhyItMatters>

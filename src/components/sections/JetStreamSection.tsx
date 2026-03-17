@@ -19,14 +19,14 @@ const FOUNDATIONS = [
 export function JetStreamSection({ number, id }: SectionProps) {
   return (
     <SectionContainer>
-      <SectionHeader number={number} title="JetStream" id={id} href="https://docs.nats.io/nats-concepts/jetstream" />
+      <SectionHeader number={number} title="Jetstream" id={id} href="https://docs.nats.io/nats-concepts/jetstream" />
 
       <p className="mt-4 text-white text-lg">
         Still fast. Now durable.
       </p>
       <p className="mt-4 text-gray-500">
         Core is fire-and-forget. If no one is listening when a message is
-        published, it vanishes. JetStream adds persistence on top&mdash;same
+        published, it vanishes. Jetstream adds persistence on top&mdash;same
         protocol, same subjects, but messages are stored and can be replayed.
       </p>
 
@@ -53,7 +53,7 @@ export function JetStreamSection({ number, id }: SectionProps) {
                 {p.problem}
               </p>
               <p className="text-sm text-gray-400 mt-2">
-                <span style={{ color: `${p.color}b3` }}>JetStream:</span>{" "}
+                <span style={{ color: `${p.color}b3` }}>Jetstream:</span>{" "}
                 {p.solution}
               </p>
             </div>
@@ -63,8 +63,8 @@ export function JetStreamSection({ number, id }: SectionProps) {
 
       <WhyItMatters>
         Most messaging systems force a choice: fast-and-ephemeral or
-        durable-and-heavy. NATS gives you both. Core for real-time
-        fire-and-forget, JetStream for when every message must be accounted
+        durable-and-heavy. Nats gives you both. Core for real-time
+        fire-and-forget, Jetstream for when every message must be accounted
         for. One binary, one protocol, two modes.
       </WhyItMatters>
 

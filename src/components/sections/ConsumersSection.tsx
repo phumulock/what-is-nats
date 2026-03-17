@@ -20,7 +20,7 @@ export function ConsumersSection({ number, id }: SectionProps) {
         For critical paths, idempotent publishing with message deduplication
         provides{" "}
         <span className="text-accent-blue font-bold">exactly-once</span> semantics.
-        When a consumer disconnects, JetStream remembers its position. On
+        When a consumer disconnects, Jetstream remembers its position. On
         reconnect, missed messages replay automatically.
       </p>
 

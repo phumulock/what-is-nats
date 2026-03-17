@@ -11,19 +11,19 @@ export function KVStoreSection({ number, id }: SectionProps) {
     <SectionContainer>
       <SectionHeader number={number} title="Key Value Store" id={id} href="https://docs.nats.io/nats-concepts/jetstream/key-value-store" />
       <p className="mt-4 text-white text-lg">
-        Key-value storage over your existing NATS connection.
+        Key-value storage over your existing Nats connection.
       </p>
       <p className="mt-4 text-gray-500">
-        NATS KV is a key-value store built on top of JetStream. Get, put,
-        delete, and watch keys&mdash;all over your existing NATS connection.
+        Nats Key Value is a key-value store built on top of Jetstream. Get, put,
+        delete, and watch keys&mdash;all over your existing Nats connection.
       </p>
       <p className="mt-2 text-gray-500">
-        Every KV bucket is backed by a JetStream stream. Keys map to subjects,
+        Every Key Value bucket is backed by a Jetstream stream. Keys map to subjects,
         values to message payloads, and revisions to sequence numbers. A{" "}
         <code className="text-accent-blue">put(&quot;user.123.name&quot;, &quot;Alice&quot;)</code>{" "}
         becomes a publish to{" "}
         <code className="text-accent-blue">$KV.users.user.123.name</code>.
-        Watchers are just JetStream consumers with subject filters.
+        Watchers are just Jetstream consumers with subject filters.
       </p>
       <p className="mt-4 text-gray-500">
         <span className="text-accent-green font-bold">Watch</span>{" "}
@@ -48,10 +48,10 @@ export function KVStoreSection({ number, id }: SectionProps) {
       </DiagramReveal>
 
       <WhyItMatters>
-        A dedicated KV store means another cluster to manage. NATS KV gives you the same
+        A dedicated Key Value store means another cluster to manage. Nats Key Value gives you the same
         get/put/watch semantics over the connection you&apos;re already using
         for messaging. One system, fewer moving parts, and replication comes
-        free from JetStream.
+        free from Jetstream.
       </WhyItMatters>
 
     </SectionContainer>

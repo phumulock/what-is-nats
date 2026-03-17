@@ -13,8 +13,8 @@ export function SummaryHeroSection({ number, id }: SectionProps) {
           layers={[
             { label: "Security", color: COLORS.purpleLight },
             { label: "Clustering & Leaf Nodes", color: COLORS.pink },
-            { label: "KV Store & Object Store", color: COLORS.yellow },
-            { label: "JetStream", color: COLORS.blue },
+            { label: "Key Value Store & Object Store", color: COLORS.yellow },
+            { label: "Jetstream", color: COLORS.blue },
             { label: "Core", color: COLORS.green },
           ]}
         />

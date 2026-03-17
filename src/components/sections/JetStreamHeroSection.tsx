@@ -7,11 +7,11 @@ import { SectionProps } from "./types";
 export function JetStreamHeroSection({ number, id }: SectionProps) {
   return (
     <SectionContainer variant="hero">
-      <SectionHeader number={number} title="JetStream" id={id} />
+      <SectionHeader number={number} title="Jetstream" id={id} />
       <div className="mt-6">
         <NestedDiagram
           layers={[
-            { label: "JetStream", examples: "Streams, consumers, persistence", color: COLORS.blue },
+            { label: "Jetstream", examples: "Streams, consumers, persistence", color: COLORS.blue },
             { label: "Core", color: COLORS.green },
           ]}
         />

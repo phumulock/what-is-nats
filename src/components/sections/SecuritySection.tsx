@@ -53,7 +53,7 @@ export function SecuritySection({ number, id }: SectionProps) {
 
       <WhyItMatters>
         Most message brokers need external auth systems for production.
-        NATS bakes multi-tenancy into the protocol. Onboard new customers
+        Nats bakes multi-tenancy into the protocol. Onboard new customers
         without server changes. Revoke access instantly. Keep tenants
         isolated without running separate clusters.
       </WhyItMatters>

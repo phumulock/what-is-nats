@@ -14,7 +14,7 @@ export function SecurityHeroSection({ number, id }: SectionProps) {
             { label: "Security", examples: "TLS, NKeys, JWTs, account isolation, auth callout", color: COLORS.purpleLight },
             { label: "Clustering & Leaf Nodes", color: COLORS.pink },
             { label: "Data Stores", color: COLORS.yellow },
-            { label: "JetStream", color: COLORS.blue },
+            { label: "Jetstream", color: COLORS.blue },
             { label: "Core", color: COLORS.green },
           ]}
         />

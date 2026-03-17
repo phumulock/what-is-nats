@@ -98,7 +98,7 @@ function ServerPanel({
                     className="text-[10px] font-mono"
                     style={{ color: labelColor }}
                   >
-                    TCP
+                    Tcp
                   </span>
 
                   {/* Per-client message animation */}
@@ -176,7 +176,7 @@ export function ServerProcessDiagram() {
         {/* HTTP Server */}
         <ServerPanel
           step={step}
-          label="HTTP SERVER"
+          label="Http Server"
           labelColor={COLORS.blue}
           processName="nginx"
           port=":80"
@@ -196,7 +196,7 @@ export function ServerProcessDiagram() {
         {/* NATS Server */}
         <ServerPanel
           step={step}
-          label="NATS SERVER"
+          label="Nats Server"
           labelColor={COLORS.green}
           processName="nats-server"
           port=":4222"
@@ -228,12 +228,12 @@ export function ServerProcessDiagram() {
         )}
         {step === 1 && (
           <span className="text-gray-500">
-            Each binds to a TCP port and listens...
+            Each binds to a Tcp port and listens...
           </span>
         )}
         {step === 2 && (
           <span className="text-gray-500">
-            Clients connect via TCP...
+            Clients connect via Tcp...
           </span>
         )}
         {step === 3 && (
@@ -253,7 +253,7 @@ export function ServerProcessDiagram() {
         )}
         {step === 6 && (
           <span className="text-accent-green">
-            Same concept. Process on TCP. That&apos;s it.
+            Same concept. Process on Tcp. That&apos;s it.
           </span>
         )}
       </div>

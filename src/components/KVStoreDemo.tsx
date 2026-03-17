@@ -44,7 +44,7 @@ export function KVStoreDemo() {
       <div className="flex flex-col md:flex-row border-b border-border">
         {/* KV Bucket */}
         <div className="flex-1 p-4 border-b md:border-b-0 md:border-r border-border">
-          <div className="text-xs text-gray-500 mb-3">KV BUCKET: users</div>
+          <div className="text-xs text-gray-500 mb-3">Key Value Bucket: users</div>
           <div className="space-y-2">
             {entries.map((entry) => (
               <motion.div
@@ -93,7 +93,7 @@ export function KVStoreDemo() {
 
       {/* Status */}
       <div className="p-3 pt-6 text-center text-sm min-h-10 text-gray-500">
-        {step === 0 && "KV store with 3 keys..."}
+        {step === 0 && "Key Value store with 3 keys..."}
         {step === 1 && (
           <span className="text-accent-green">
             Value updated → watcher notified instantly

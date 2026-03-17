@@ -21,7 +21,7 @@ export function NoRespondersDiagram() {
           className="text-xs font-bold"
           style={{ color: step === 2 ? COLORS.red : COLORS.green }}
         >
-          NATS
+          Nats
         </span>
       </motion.div>
       <motion.div
@@ -120,8 +120,8 @@ export function NoRespondersDiagram() {
 
       <div className="mt-6 text-center text-sm min-h-10 text-gray-500">
         {step === 0 && "Requester sends a request to a subject"}
-        {step === 1 && "NATS checks for subscribers on that subject..."}
-        {step === 2 && "No one is listening — NATS responds immediately"}
+        {step === 1 && "Nats checks for subscribers on that subject..."}
+        {step === 2 && "No one is listening — Nats responds immediately"}
         {step === 3 && "Requester gets instant feedback, no timeout wait"}
       </div>
 

@@ -56,14 +56,14 @@ export function QueueGroupDiagram() {
           </motion.div>
 
           <div className="w-20 h-20 rounded-full bg-terminal-bg border-2 border-accent-green flex items-center justify-center">
-            <span className="text-accent-green text-xs font-bold">NATS</span>
+            <span className="text-accent-green text-xs font-bold">Nats</span>
           </div>
         </div>
 
-        {/* Mobile: NATS circle */}
+        {/* Mobile: Nats circle */}
         <div className="flex md:hidden flex-col items-center gap-2">
           <div className="w-20 h-20 rounded-full bg-terminal-bg border-2 border-accent-green flex items-center justify-center">
-            <span className="text-accent-green text-xs font-bold">NATS</span>
+            <span className="text-accent-green text-xs font-bold">Nats</span>
           </div>
         </div>
 

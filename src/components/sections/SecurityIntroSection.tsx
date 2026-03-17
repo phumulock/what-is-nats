@@ -14,7 +14,7 @@ export function SecurityIntroSection({ number, id }: SectionProps) {
         </p>
         <p className="mt-4 text-gray-500">
           Most messaging systems bolt security on after the fact&mdash;an
-          external auth service here, a firewall rule there. NATS takes the
+          external auth service here, a firewall rule there. Nats takes the
           opposite approach: authentication, authorization, and multi-tenancy
           are built into the protocol itself.
         </p>

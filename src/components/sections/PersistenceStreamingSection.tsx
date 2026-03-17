@@ -17,7 +17,7 @@ const ALT_COLORS: Record<string, string> = {
 const COMPARISONS = [
   {
     category: "Persistence Model",
-    nats: "Choose per-subject: ephemeral telemetry over Core, durable orders through JetStream. One system, right guarantee for each message.",
+    nats: "Choose per-subject: ephemeral telemetry over Core, durable orders through Jetstream. One system, right guarantee for each message.",
     others: [
       { name: "Kafka", detail: "Every message hits disk, even ephemeral telemetry you'll never read again. You can set very short retention per-topic, but messages always touch disk first." },
       { name: "Pulsar", detail: "Tiered storage helps offload old data. Non-persistent topics exist for ephemeral data, but persistent topics always flow through BookKeeper first." },
@@ -35,7 +35,7 @@ const COMPARISONS = [
   },
   {
     category: "Exactly-Once Delivery",
-    nats: "Message deduplication built into JetStream using message IDs. Consumers use explicit ack with message deduplication. No external transaction coordinator needed.",
+    nats: "Message deduplication built into Jetstream using message IDs. Consumers use explicit ack with message deduplication. No external transaction coordinator needed.",
     others: [
       { name: "Kafka", detail: "Exactly-once requires idempotent producers + transactional API + read_committed isolation. Three separate features that must all be configured correctly." },
       { name: "Pulsar", detail: "Deduplication is broker-side but must be enabled per-topic. Transaction support exists but adds BookKeeper coordination overhead." },
@@ -44,7 +44,7 @@ const COMPARISONS = [
   },
   {
     category: "Data Stores",
-    nats: "KV Store (get/put/watch) and Object Store (large blobs) built on top of JetStream. Same connection, same protocol, same auth. No separate cluster to run.",
+    nats: "Key Value Store (get/put/watch) and Object Store (large blobs) built on top of Jetstream. Same connection, same protocol, same auth. No separate cluster to run.",
     others: [
       { name: "Kafka", detail: "KTable and KStreams provide state lookups, but they're a separate API bolted onto the consumer framework. No blob storage." },
       { name: "Redis", detail: "Streams added messaging to Redis, but they aren't true pub/sub. Running Redis alongside Kafka means two clusters, two failure modes." },
@@ -57,7 +57,7 @@ const STATUS_TEXTS = [
   { text: "Persistence Model — choose the right guarantee per message", color: COLORS.green },
   { text: "Stream Retention — subjects, not partitions", color: COLORS.green },
   { text: "Exactly-Once Delivery — built in, not bolted on", color: COLORS.green },
-  { text: "Data Stores — KV and Object Store, same connection", color: COLORS.green },
+  { text: "Data Stores — Key Value and Object Store, same connection", color: COLORS.green },
 ];
 
 export function PersistenceStreamingSection({ number, id }: SectionProps) {
@@ -70,20 +70,20 @@ export function PersistenceStreamingSection({ number, id }: SectionProps) {
       />
 
       <p className="mt-4 text-white text-lg">
-        JetStream isn&apos;t the first persistent streaming system. But
+        Jetstream isn&apos;t the first persistent streaming system. But
         it&apos;s the only one that isn&apos;t a separate system.
       </p>
       <p className="mt-4 text-gray-500">
         Kafka, Pulsar, and RabbitMQ Streams were built for durable streaming
         too. The difference is in what else they bring along: separate
-        protocols, separate clusters, separate operational burdens. JetStream
-        is a capability you turn on inside the NATS server you already run.
+        protocols, separate clusters, separate operational burdens. Jetstream
+        is a capability you turn on inside the Nats server you already run.
       </p>
 
       <DiagramReveal>
         <ComparisonByTopicDiagram
           comparisons={COMPARISONS}
-          natsLabel="JetStream"
+          natsLabel="Jetstream"
           statusTexts={STATUS_TEXTS}
           altColors={ALT_COLORS}
         />
@@ -92,7 +92,7 @@ export function PersistenceStreamingSection({ number, id }: SectionProps) {
       <WhyItMatters>
         Kafka and Pulsar are powerful distributed logs. But they are separate
         systems with separate protocols, separate operational burdens, and
-        separate failure modes. JetStream gives you durable streams, key-value
+        separate failure modes. Jetstream gives you durable streams, key-value
         storage, and object storage&mdash;all inside the same binary that
         handles your real-time messaging.
       </WhyItMatters>

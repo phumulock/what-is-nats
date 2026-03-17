@@ -77,7 +77,7 @@ export function MessagingPatternsSection({ number, id }: SectionProps) {
       </p>
       <p className="mt-4 text-gray-500">
         Pub/sub, request/reply, queue groups, and back-pressure are the
-        building blocks of real-time messaging. See how NATS handles each one
+        building blocks of real-time messaging. See how Nats handles each one
         natively, while alternatives require workarounds, extra components, or
         manual plumbing.
       </p>
@@ -85,7 +85,7 @@ export function MessagingPatternsSection({ number, id }: SectionProps) {
       <DiagramReveal>
         <ComparisonByTopicDiagram
           comparisons={COMPARISONS}
-          natsLabel="NATS"
+          natsLabel="Nats"
           statusTexts={STATUS_TEXTS}
           altColors={ALT_COLORS}
         />
@@ -93,7 +93,7 @@ export function MessagingPatternsSection({ number, id }: SectionProps) {
 
       <WhyItMatters>
         Every alternative solves one or two patterns&mdash;pub/sub here, queuing
-        there, request/reply somewhere else. NATS Core handles all of them
+        there, request/reply somewhere else. Nats Core handles all of them
         natively, in a single binary, with zero external dependencies.
       </WhyItMatters>
     </SectionContainer>

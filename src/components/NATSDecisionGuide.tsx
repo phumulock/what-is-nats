@@ -45,7 +45,7 @@ const GUIDE: LayerGuide[] = [
     ],
   },
   {
-    layer: "JetStream",
+    layer: "Jetstream",
     color: COLORS.blue,
     useCases: [
       {
@@ -76,12 +76,12 @@ const GUIDE: LayerGuide[] = [
     useCases: [
       {
         scenario: "Configuration & feature flags",
-        feature: "KV Store (watch)",
+        feature: "Key Value Store (watch)",
         why: "Watch for changes, instant updates across services",
       },
       {
         scenario: "Session state & distributed caching",
-        feature: "KV Store (TTL)",
+        feature: "Key Value Store (TTL)",
         why: "TTL support, replicated, same connection",
       },
       {
@@ -134,7 +134,7 @@ const GUIDE: LayerGuide[] = [
       {
         scenario: "Integrate existing auth (LDAP, OAuth)",
         feature: "Auth Callout",
-        why: "Your auth logic, NATS enforcement",
+        why: "Your auth logic, Nats enforcement",
       },
     ],
   },

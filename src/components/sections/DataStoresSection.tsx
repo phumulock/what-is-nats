@@ -9,9 +9,9 @@ const FOUNDATIONS = [
     title: "Unified Storage",
     color: COLORS.purple,
     problem:
-      "Running a message broker, a KV store, and an object store means three separate systems to deploy, monitor, and keep consistent.",
+      "Running a message broker, a Key Value store, and an object store means three separate systems to deploy, monitor, and keep consistent.",
     solution:
-      "A KV pair is a subject with the latest message retained. A file is chunked messages in a stream. One protocol, one connection, one cluster\u2014no extra infrastructure.",
+      "A Key Value pair is a subject with the latest message retained. A file is chunked messages in a stream. One protocol, one connection, one cluster\u2014no extra infrastructure.",
   },
 ];
 
@@ -27,7 +27,7 @@ export function DataStoresSection({ number, id }: SectionProps) {
       </p>
 
       <p className="mt-6 text-gray-500">
-        NATS does. A key-value pair is just a subject with the latest message
+        Nats does. A key-value pair is just a subject with the latest message
         retained. A large file is a sequence of chunked messages in a stream.
         Same protocol, same connection, same replication&mdash;no new
         infrastructure.
@@ -56,7 +56,7 @@ export function DataStoresSection({ number, id }: SectionProps) {
                 {p.problem}
               </p>
               <p className="text-sm text-gray-400 mt-2">
-                <span style={{ color: `${p.color}b3` }}>NATS:</span>{" "}
+                <span style={{ color: `${p.color}b3` }}>Nats:</span>{" "}
                 {p.solution}
               </p>
             </div>
@@ -65,8 +65,8 @@ export function DataStoresSection({ number, id }: SectionProps) {
       </div>
 
       <WhyItMatters>
-        Instead of running a separate KV store and object store alongside your
-        message broker, NATS gives you messages, state, and file storage from
+        Instead of running a separate Key Value store and object store alongside your
+        message broker, Nats gives you messages, state, and file storage from
         the same binary you&apos;re already running. One system to deploy,
         monitor, and reason about.
       </WhyItMatters>

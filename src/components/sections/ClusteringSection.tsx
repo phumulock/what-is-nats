@@ -22,23 +22,23 @@ export function ClusteringSection({ number, id }: SectionProps) {
 
       <p className="mt-4 text-white text-lg">Connect anywhere, reach everywhere.</p>
       <p className="mt-4 text-gray-500">
-        NATS servers form clusters so your code doesn&apos;t change whether
+        Nats servers form clusters so your code doesn&apos;t change whether
         subscribers are local, in another region, or on the edge—the
         network figures it out.{" "}
         <span className="text-accent-green font-bold">Interest-based routing</span>{" "}
-        means messages only flow where subscribers exist&mdash;NATS doesn&apos;t
+        means messages only flow where subscribers exist&mdash;Nats doesn&apos;t
         copy data to regions with no listeners, so bandwidth is automatically
         optimized.
       </p>
       <p className="mt-4 text-gray-500">
         <span className="text-accent-yellow font-bold">Leaf nodes</span>{" "}
-        &mdash; extend NATS to the edge via a 20MB binary that runs on a
+        &mdash; extend Nats to the edge via a 20MB binary that runs on a
         Raspberry Pi&mdash;factories, stores, vehicles, anywhere with
         intermittent connectivity. Messages queue locally during outages.
       </p>
       <p className="mt-4 text-gray-500">
         <span className="text-accent-blue font-bold">Clusters</span>{" "}
-        &mdash; a group of NATS servers that share clients and messages.
+        &mdash; a group of Nats servers that share clients and messages.
         They form a full mesh automatically&mdash;publish to any node,
         subscribers on any other node receive it.
       </p>
@@ -72,7 +72,7 @@ export function ClusteringSection({ number, id }: SectionProps) {
                 {p.problem}
               </p>
               <p className="text-sm text-gray-400 mt-2">
-                <span style={{ color: `${p.color}b3` }}>NATS:</span>{" "}
+                <span style={{ color: `${p.color}b3` }}>Nats:</span>{" "}
                 {p.solution}
               </p>
             </div>
@@ -81,7 +81,7 @@ export function ClusteringSection({ number, id }: SectionProps) {
       </div>
 
       <WhyItMatters>
-        NATS clustering is declarative—list your servers and they form
+        Nats clustering is declarative—list your servers and they form
         a mesh. Location independence isn&apos;t a feature, it&apos;s the
         architecture.
       </WhyItMatters>

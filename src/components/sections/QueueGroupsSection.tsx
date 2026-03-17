@@ -12,7 +12,7 @@ export function QueueGroupsSection({ number, id }: SectionProps) {
       <SectionHeader number={number} title="Queue Groups" id={id} href="https://docs.nats.io/nats-concepts/queue" />
       <p className="mt-4 text-white text-lg">Scaling without Kubernetes.</p>
       <p className="mt-4 text-gray-500">
-        Add a queue group name to your subscription and NATS distributes
+        Add a queue group name to your subscription and Nats distributes
         messages across all subscribers in that group. No coordinator, no
         leader election, no split-brain scenarios.
       </p>
@@ -24,7 +24,7 @@ export function QueueGroupsSection({ number, id }: SectionProps) {
       </p>
       <p className="mt-4 text-gray-500">
         <span className="text-accent-yellow font-bold">Load balance</span>{" "}
-        &mdash; NATS distributes work evenly across workers. Scale from 1 to
+        &mdash; Nats distributes work evenly across workers. Scale from 1 to
         1000 processes with zero configuration changes.
       </p>
       <p className="mt-4 text-gray-500">
@@ -41,7 +41,7 @@ export function QueueGroupsSection({ number, id }: SectionProps) {
 
       <WhyItMatters>
         Traditional message brokers tie consumers to partitions or
-        channels, making scaling disruptive. NATS queue groups scale
+        channels, making scaling disruptive. Nats queue groups scale
         from 1 to 1000 workers with zero configuration changes. Just
         start more processes.
       </WhyItMatters>

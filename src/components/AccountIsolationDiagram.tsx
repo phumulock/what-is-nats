@@ -87,7 +87,7 @@ export function AccountIsolationDiagram() {
           <div className="flex flex-row md:flex-col items-center justify-center gap-2 px-2">
             <div className="w-14 h-14 rounded-full border-2 border-accent-green bg-terminal-bg flex items-center justify-center">
               <span className="text-accent-green text-[10px] font-bold">
-                NATS
+                Nats
               </span>
             </div>
 
@@ -178,7 +178,7 @@ export function AccountIsolationDiagram() {
       <div className="px-4 md:px-6 pb-2 pt-6 text-center text-sm min-h-10 flex items-center justify-center">
         {step === 0 && (
           <span className="text-gray-500">
-            Two accounts on the same NATS server...
+            Two accounts on the same Nats server...
           </span>
         )}
         {step === 1 && (

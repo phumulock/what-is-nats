@@ -33,7 +33,7 @@ const LIMITATIONS = [
 ];
 
 const STATUS_TEXT: { text: string; color: string }[] = [
-  { text: "HTTP at its core...", color: "text-gray-500" },
+  { text: "Http at its core...", color: "text-gray-500" },
   { text: "Client must know exactly where the server lives \u2192 requires Discovery.", color: "text-accent-red" },
   { text: "One client, one server\u2014every time \u2192 requires Load Balancing.", color: "text-accent-orange" },
   { text: "Request blocks until response. Both sides must be online \u2192 requires Service Mesh.", color: "text-accent-yellow" },
@@ -169,7 +169,7 @@ export function HttpLimitationsDiagram() {
         className="text-center mt-4 mb-2"
       >
         <span className="text-xs text-gray-600 border border-border rounded-full px-3 py-1">
-          This is all HTTP does natively
+          This is all Http does natively
         </span>
       </motion.div>
 
