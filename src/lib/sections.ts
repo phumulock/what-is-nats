@@ -1,7 +1,7 @@
 export const pad = (n: number) => String(n).padStart(2, "0");
 
 export const CUSTOM_LABELS: Record<string, string> = {
-  "http-hero": "The HTTP Era",
+  "http-hero": "The Http Era",
   "nats-core-hero": "Enter the Core",
   "jetstream-hero": "Beyond Fire & Forget",
   "data-stores-hero": "More Than Messages",
@@ -17,11 +17,11 @@ export const CUSTOM_LABELS: Record<string, string> = {
 };
 
 const WORD_CASING: Record<string, string> = {
-  nats: "NATS",
-  http: "HTTP",
-  tcp: "TCP",
-  jetstream: "JetStream",
-  kv: "KV",
+  nats: "Nats",
+  http: "Http",
+  tcp: "Tcp",
+  jetstream: "Jetstream",
+  kv: "Key Value",
   pub: "Pub",
   sub: "Sub",
   mn: "M:N",

@@ -13,10 +13,10 @@ export interface SectionGroup {
 }
 
 export const SECTION_GROUPS: SectionGroup[] = [
-  { name: "What is NATS?", startIndex: 0, endIndex: 3 },
-  { name: "Why Not HTTP?", startIndex: 3, endIndex: 9 },
+  { name: "What is Nats?", startIndex: 0, endIndex: 3 },
+  { name: "Why Not Http?", startIndex: 3, endIndex: 9 },
   { name: "Core", startIndex: 9, endIndex: 18 },
-  { name: "JetStream", startIndex: 18, endIndex: 25 },
+  { name: "Jetstream", startIndex: 18, endIndex: 25 },
   { name: "Data Stores", startIndex: 25, endIndex: 30 },
   { name: "Scaling", startIndex: 30, endIndex: 37 },
   { name: "Security", startIndex: 37, endIndex: 41 },
@@ -58,8 +58,8 @@ function makePageConfig(
 }
 
 export const PAGES: PageConfig[] = [
-  makePageConfig("/", "What is NATS?", 0, 52, [
-    { label: "Core", examples: "Pub/sub, request/reply, queue groups", color: "#4ade80" },
+  makePageConfig("/", "What is Nats?", 0, 52, [
+    { label: "Core", examples: "Pub/Sub, request/reply, queue groups", color: "#4ade80" },
   ]),
 ];
 
