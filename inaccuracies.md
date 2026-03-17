@@ -173,6 +173,9 @@ Sections 03-06 describe HTTP/TCP limitations (general CS knowledge, no NATS clai
 
 **Total sections reviewed**: 52
 **Total factual claims extracted**: ~90
-**Inaccuracies found**: 2 minor
-1. "double-ack" terminology (sections 24, 46) — should be "message deduplication"
+**Inaccuracies found**: 5 (2 minor, 3 from cross-analysis)
+1. ~~"double-ack" terminology (sections 24, 46) — should be "message deduplication"~~ **FIXED**
 2. "default 128 KB" chunk size (section 29) — unverified, likely implementation detail
+3. QueueGroupDiagram used deterministic round-robin (`step % 3`) but NATS uses pseudo-random selection (KB Fact 35) — **FIXED**: replaced with randomized target sequence
+4. LeafNodeSection/LeafNodeDiagram claimed "messages queue locally" without JetStream qualifier — core NATS is at-most-once and does NOT queue during disconnection (KB Fact 51) — **FIXED**: added JetStream qualifier
+5. ObjectStoreDemo showed 1.2 GB file split into 4 chunks (real count ~9,600 with 128KB chunks) — **FIXED**: changed to 512 KB file to be realistic for 4 chunks

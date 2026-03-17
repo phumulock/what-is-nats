@@ -35,7 +35,7 @@ const COMPARISONS = [
   },
   {
     category: "Exactly-Once Delivery",
-    nats: "Message deduplication built into JetStream using message IDs. Consumers use explicit ack with double-ack protocol. No external transaction coordinator needed.",
+    nats: "Message deduplication built into JetStream using message IDs. Consumers use explicit ack with message deduplication. No external transaction coordinator needed.",
     others: [
       { name: "Kafka", detail: "Exactly-once requires idempotent producers + transactional API + read_committed isolation. Three separate features that must all be configured correctly." },
       { name: "Pulsar", detail: "Deduplication is broker-side but must be enabled per-topic. Transaction support exists but adds BookKeeper coordination overhead." },

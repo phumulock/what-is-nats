@@ -17,7 +17,7 @@ export function ConsumersSection({ number, id }: SectionProps) {
         Consumers act as durable cursors, tracking delivery progress
         independently. Messages redeliver until acknowledged, guaranteeing{" "}
         <span className="text-accent-green font-bold">at-least-once</span> delivery.
-        For critical paths, idempotent publishing with double-ack consumers
+        For critical paths, idempotent publishing with message deduplication
         provides{" "}
         <span className="text-accent-blue font-bold">exactly-once</span> semantics.
         When a consumer disconnects, JetStream remembers its position. On

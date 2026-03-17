@@ -38,8 +38,8 @@ export function ObjectStoreDemo() {
                   d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"
                 />
               </svg>
-              <span className="text-[10px] text-accent-blue">model.bin</span>
-              <span className="text-[10px] text-gray-600">1.2 GB</span>
+              <span className="text-[10px] text-accent-blue">config.bin</span>
+              <span className="text-[10px] text-gray-600">512 KB</span>
             </motion.div>
           </div>
 
@@ -158,10 +158,10 @@ export function ObjectStoreDemo() {
                 />
               </svg>
               <span className="text-[10px] text-accent-green" style={{ opacity: step === 3 ? 1 : 0.3 }}>
-                model.bin
+                config.bin
               </span>
               <span className="text-[10px] text-gray-600" style={{ opacity: step === 3 ? 1 : 0.3 }}>
-                1.2 GB
+                512 KB
               </span>
             </motion.div>
           </div>

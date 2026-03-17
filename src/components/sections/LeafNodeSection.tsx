@@ -27,10 +27,10 @@ export function LeafNodeSection({ number, id }: SectionProps) {
         keeping local traffic private. Only the data you choose leaves the edge.
       </p>
       <p className="mt-4 text-gray-500">
-        <span className="text-accent-pink font-bold">Queue locally</span>{" "}
+        <span className="text-accent-pink font-bold">Resilient at the edge</span>{" "}
         &mdash; when the upstream connection drops, the leaf node keeps running.
-        Local publishers and subscribers continue communicating, and messages
-        destined for the cluster queue until connectivity is
+        Local publishers and subscribers continue communicating. With JetStream
+        enabled, messages destined for the cluster queue until connectivity is
         restored&mdash;no data loss, no application changes.
       </p>
 

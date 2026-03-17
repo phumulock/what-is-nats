@@ -10,7 +10,9 @@ export function QueueGroupDiagram() {
     useDiagramPlayback(3);
 
   const messageCount = step + 1;
-  const targetSub = step % 3;
+  // NATS uses pseudo-random selection, not round-robin
+  const randomTargets = [2, 0, 1];
+  const targetSub = randomTargets[step % 3];
   const workerColors = [COLORS.green, COLORS.blue, COLORS.yellow];
 
   return (
