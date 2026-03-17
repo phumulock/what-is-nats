@@ -16,10 +16,21 @@ export const CUSTOM_LABELS: Record<string, string> = {
   "alternatives-intro": "But What About ___?",
 };
 
+const WORD_CASING: Record<string, string> = {
+  nats: "NATS",
+  http: "HTTP",
+  tcp: "TCP",
+  jetstream: "JetStream",
+  kv: "KV",
+  pub: "Pub",
+  sub: "Sub",
+  mn: "M:N",
+};
+
 export function sectionLabel(id: string): string {
   if (CUSTOM_LABELS[id]) return CUSTOM_LABELS[id];
   return id
     .split("-")
-    .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
+    .map((w) => WORD_CASING[w] ?? w.charAt(0).toUpperCase() + w.slice(1))
     .join(" ");
 }

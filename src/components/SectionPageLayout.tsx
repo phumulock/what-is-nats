@@ -36,6 +36,14 @@ export function SectionPageLayout({
         }))}
         groups={SECTION_GROUPS}
       />
+      <a
+        href="https://synadia.com"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="flex items-center justify-center py-4"
+      >
+        <img src="/images/synadia-logo.png" alt="Synadia" className="h-8" />
+      </a>
       <main className="min-h-screen px-6 py-12 md:py-20">
         <SpotlightProvider>
           <div className="max-w-2xl mx-auto space-y-32">
@@ -66,6 +74,14 @@ export function SectionPageLayout({
           </div>
         </SpotlightProvider>
       </main>
+      <a
+        href="https://synadia.com"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="flex items-center justify-center py-8"
+      >
+        <img src="/images/synadia-logo.png" alt="Synadia" className="h-8" />
+      </a>
     </PageWrapper>
   );
 }
