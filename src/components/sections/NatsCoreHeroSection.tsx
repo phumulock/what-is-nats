@@ -13,7 +13,7 @@ export function NatsCoreHeroSection({ number, id }: SectionProps) {
           layers={[
             {
               label: "Core",
-              examples: "Pub/sub, request/reply, queue groups",
+              examples: "Pub/Sub, request/reply, queue groups",
               color: COLORS.green,
             },
           ]}

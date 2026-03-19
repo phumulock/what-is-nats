@@ -59,7 +59,7 @@ function makePageConfig(
 
 export const PAGES: PageConfig[] = [
   makePageConfig("/", "What is NATS?", 0, 52, [
-    { label: "Core", examples: "Pub/sub, request/reply, queue groups", color: "#4ade80" },
+    { label: "Core", examples: "Pub/Sub, request/reply, queue groups", color: "#4ade80" },
   ]),
 ];
 

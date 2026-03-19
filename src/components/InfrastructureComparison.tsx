@@ -7,15 +7,15 @@ import { COLORS } from "@/lib/colors";
 type Tab = "traditional" | "nats";
 
 const NATS_FEATURES = [
-  { label: "Pub/sub messaging", color: COLORS.green },
-  { label: "Request/reply RPC", color: COLORS.green },
+  { label: "Pub/Sub messaging", color: COLORS.green },
+  { label: "Request/Reply RPC", color: COLORS.green },
   { label: "Queue group load balancing", color: COLORS.green },
   { label: "Persistent streams", color: COLORS.blue },
   { label: "Replay & retention", color: COLORS.blue },
-  { label: "Key/Value store", color: COLORS.yellow },
-  { label: "Object storage", color: COLORS.yellow },
+  { label: "Key-Value store", color: COLORS.yellow },
+  { label: "Object Store", color: COLORS.yellow },
   { label: "Multi-region clusters", color: COLORS.pink },
-  { label: "Edge via leaf nodes", color: COLORS.pink },
+  { label: "Edge via Leaf Nodes", color: COLORS.pink },
   { label: "Multi-tenancy & auth", color: COLORS.purpleLight },
 ];
 
