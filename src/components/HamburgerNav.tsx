@@ -16,14 +16,14 @@ interface HamburgerNavProps {
 }
 
 const GROUP_DESCRIPTIONS: Record<string, string> = {
-  "What is Nats?": "The communication fabric",
-  "Why Not Http?": "The limits of request/response",
-  "Core": "Pub/Sub, request/reply & more",
-  "Jetstream": "Persistence & guaranteed delivery",
-  "Data Stores": "Key Value, object store & beyond",
+  "What is NATS?": "The communication fabric",
+  "Why Not HTTP?": "The limits of request/response",
+  "Core": "Pub/sub, request/reply & more",
+  "JetStream": "Persistence & guaranteed delivery",
+  "Data Stores": "KV, object store & beyond",
   "Scaling": "Clusters, leaf nodes & superclusters",
   "Security": "Auth, accounts & zero trust",
-  "Alternatives": "How Nats compares",
+  "Alternatives": "How NATS compares",
   "Summary": "The full picture",
 };
 
