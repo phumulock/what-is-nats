@@ -13,7 +13,7 @@ export function PersistenceSection({ number, id }: SectionProps) {
         Publish now, consume later.
       </p>
       <p className="mt-4 text-gray-500">
-        Jetstream offers a durability spectrum. More durability means more work
+        JetStream offers a durability spectrum. More durability means more work
         per message&mdash;pick the right trade-off per stream.
       </p>
       <p className="mt-4 text-gray-500">
@@ -41,9 +41,9 @@ export function PersistenceSection({ number, id }: SectionProps) {
       </DiagramReveal>
 
       <WhyItMatters>
-        Most brokers force you to choose persistence upfront. Nats lets you
+        Most brokers force you to choose persistence upfront. NATS lets you
         mix: telemetry over Core (fast, ephemeral), orders through
-        Jetstream (durable, guaranteed). One system, right tool for each
+        JetStream (durable, guaranteed). One system, right tool for each
         job.
       </WhyItMatters>
     </SectionContainer>

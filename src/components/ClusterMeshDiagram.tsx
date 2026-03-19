@@ -214,7 +214,7 @@ export function ClusterMeshDiagram() {
       {/* Insight */}
       <div className="mt-3 pt-3 border-t border-border text-xs text-center">
         <span className="text-gray-500">Core routing is symmetric — </span>
-        <span className="text-white">Jetstream uses Raft to elect a leader per stream for consistency</span>
+        <span className="text-white">JetStream uses Raft to elect a leader per stream for consistency</span>
       </div>
 
       <DiagramControls

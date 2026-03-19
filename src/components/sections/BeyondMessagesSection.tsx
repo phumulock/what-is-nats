@@ -16,7 +16,7 @@ export function BeyondMessagesSection({ number, id }: SectionProps) {
           changes mid-flight. ML models too large for a single
           message. Every distributed system eventually needs
           state and files alongside its event stream&mdash;and
-          traditionally that means bolting on a separate Key Value store,
+          traditionally that means bolting on a separate KV store,
           object store, and another SDK.
         </p>
         <p className="mt-4 text-gray-500">

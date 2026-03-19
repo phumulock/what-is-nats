@@ -12,7 +12,7 @@ export function RequestReplySection({ number, id }: SectionProps) {
       <SectionHeader number={number} title="Request & Reply" id={id} href="https://docs.nats.io/nats-concepts/reqreply" />
       <p className="mt-4 text-white text-lg">RPC without the service mesh.</p>
       <p className="mt-4 text-gray-500">
-        Need a response? Nats creates a{" "}
+        Need a response? NATS creates a{" "}
         <span className="text-accent-green font-bold">
           unique inbox subject
         </span>{" "}
@@ -22,7 +22,7 @@ export function RequestReplySection({ number, id }: SectionProps) {
         replies (
         <span className="text-accent-yellow font-bold">scatter-gather</span>) to
         find the fastest responder or aggregate results from shards. No
-        response? The request times out cleanly&mdash;unlike Http hanging
+        response? The request times out cleanly&mdash;unlike HTTP hanging
         connections, failed services don&apos;t cascade into client-side thread
         exhaustion.
       </p>
@@ -34,7 +34,7 @@ export function RequestReplySection({ number, id }: SectionProps) {
 
       <WhyItMatters>
         gRPC needs protobuf schemas, generated stubs, and often a service mesh
-        for load balancing. Nats request/reply gives you RPC semantics with zero
+        for load balancing. NATS request/reply gives you RPC semantics with zero
         ceremony. Services just subscribe to their name and respond.
       </WhyItMatters>
 

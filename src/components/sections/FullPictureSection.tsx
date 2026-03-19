@@ -8,7 +8,7 @@ export function FullPictureSection({ number, id }: SectionProps) {
       <SectionHeader number={number} title="The Full Picture" id={id} />
       <div className="mt-6 border-l-2 border-green-400/40 pl-6">
         <p className="text-white text-lg">
-          We&apos;ve seen how Nats compares to the alternatives. Now
+          We&apos;ve seen how NATS compares to the alternatives. Now
           let&apos;s step back and see the full picture.
         </p>
         <p className="mt-4 text-gray-500">

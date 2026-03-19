@@ -13,7 +13,7 @@ export function ScalingHeroSection({ number, id }: SectionProps) {
           layers={[
             { label: "Clustering & Leaf Nodes", examples: "Multi-region, edge deployments", color: COLORS.pink },
             { label: "Data Stores", color: COLORS.yellow },
-            { label: "Jetstream", color: COLORS.blue },
+            { label: "JetStream", color: COLORS.blue },
             { label: "Core", color: COLORS.green },
           ]}
         />

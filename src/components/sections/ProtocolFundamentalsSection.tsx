@@ -19,7 +19,7 @@ const ALT_COLORS: Record<string, string> = {
 const COMPARISONS = [
   {
     category: "Wire Protocol",
-    nats: "Plain text over Tcp. You can debug it with telnet. Write a client in any language in an afternoon.",
+    nats: "Plain text over TCP. You can debug it with telnet. Write a client in any language in an afternoon.",
     others: [
       { name: "Kafka", detail: "Custom binary protocol. Requires a client library — no telnet debugging." },
       { name: "RabbitMQ", detail: "AMQP 0-9-1 — complex binary framing with channels, exchanges, and bindings baked into the wire format." },
@@ -38,8 +38,8 @@ const COMPARISONS = [
   },
   {
     category: "Overview",
-    natsLabel: "Jetstream",
-    nats: "Jetstream adds persistence as a feature inside the Nats server you already run. Single binary, same protocol, same connection. No separate cluster to deploy or operate.",
+    natsLabel: "JetStream",
+    nats: "JetStream adds persistence as a feature inside the NATS server you already run. Single binary, same protocol, same connection. No separate cluster to deploy or operate.",
     others: [
       { name: "Kafka", detail: "Distributed commit log. Partition-bound consumers, mandatory persistence for all topics, JVM + KRaft overhead." },
       { name: "Pulsar", detail: "Multi-tenant streaming. BookKeeper dependency, complex multi-component deploy, higher operational surface area." },
@@ -51,7 +51,7 @@ const COMPARISONS = [
 const STATUS_TEXTS = [
   { text: "Wire Protocol — simplicity you can telnet to", color: COLORS.green },
   { text: "Subjects — no admin overhead", color: COLORS.blue },
-  { text: "Jetstream — persistence without a separate system", color: COLORS.yellow },
+  { text: "JetStream — persistence without a separate system", color: COLORS.yellow },
 ];
 
 export function ProtocolFundamentalsSection({ number, id }: SectionProps) {
@@ -76,7 +76,7 @@ export function ProtocolFundamentalsSection({ number, id }: SectionProps) {
       <DiagramReveal>
         <ComparisonByTopicDiagram
           comparisons={COMPARISONS}
-          natsLabel="Nats"
+          natsLabel="NATS"
           statusTexts={STATUS_TEXTS}
           altColors={ALT_COLORS}
         />
@@ -84,8 +84,8 @@ export function ProtocolFundamentalsSection({ number, id }: SectionProps) {
 
       <WhyItMatters>
         A simple protocol means fewer dependencies, faster debugging, and
-        clients in every language. Nats gives you that simplicity at the wire
-        level, and Jetstream layers persistence on top without changing the
+        clients in every language. NATS gives you that simplicity at the wire
+        level, and JetStream layers persistence on top without changing the
         protocol.
       </WhyItMatters>
     </SectionContainer>

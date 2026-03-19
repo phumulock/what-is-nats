@@ -8,11 +8,11 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "What is Nats?",
-  description: "An interactive guide to understanding Nats - the simple, high-performance messaging system",
+  title: "What is NATS?",
+  description: "An interactive guide to understanding NATS - the simple, high-performance messaging system",
   openGraph: {
-    title: "What is Nats?",
-    description: "An interactive guide to understanding Nats",
+    title: "What is NATS?",
+    description: "An interactive guide to understanding NATS",
     type: "website",
   },
 };

@@ -5,7 +5,7 @@ import { COLORS } from "@/lib/colors";
 import { SectionProps } from "./types";
 
 const SYSTEMS = [
-  { name: "Nats", color: COLORS.green },
+  { name: "NATS", color: COLORS.green },
   { name: "Kafka", color: COLORS.orange },
   { name: "RabbitMQ", color: COLORS.purple },
   { name: "Redis", color: COLORS.red },
@@ -16,51 +16,51 @@ const SYSTEMS = [
 const CAPABILITIES: { label: string; checks: Record<string, boolean> }[] = [
   {
     label: "Pub/Sub",
-    checks: { Nats: true, Kafka: true, RabbitMQ: true, Redis: true, Pulsar: true, ZeroMQ: true },
+    checks: { NATS: true, Kafka: true, RabbitMQ: true, Redis: true, Pulsar: true, ZeroMQ: true },
   },
   {
     label: "Request/Reply",
-    checks: { Nats: true, Kafka: false, RabbitMQ: true, Redis: false, Pulsar: false, ZeroMQ: true },
+    checks: { NATS: true, Kafka: false, RabbitMQ: true, Redis: false, Pulsar: false, ZeroMQ: true },
   },
   {
     label: "Queue Groups",
-    checks: { Nats: true, Kafka: true, RabbitMQ: true, Redis: true, Pulsar: true, ZeroMQ: false },
+    checks: { NATS: true, Kafka: true, RabbitMQ: true, Redis: true, Pulsar: true, ZeroMQ: false },
   },
   {
     label: "Persistence",
-    checks: { Nats: true, Kafka: true, RabbitMQ: true, Redis: true, Pulsar: true, ZeroMQ: false },
+    checks: { NATS: true, Kafka: true, RabbitMQ: true, Redis: true, Pulsar: true, ZeroMQ: false },
   },
   {
     label: "Streaming / Replay",
-    checks: { Nats: true, Kafka: true, RabbitMQ: true, Redis: true, Pulsar: true, ZeroMQ: false },
+    checks: { NATS: true, Kafka: true, RabbitMQ: true, Redis: true, Pulsar: true, ZeroMQ: false },
   },
   {
-    label: "Key Value Store",
-    checks: { Nats: true, Kafka: false, RabbitMQ: false, Redis: true, Pulsar: false, ZeroMQ: false },
+    label: "KV Store",
+    checks: { NATS: true, Kafka: false, RabbitMQ: false, Redis: true, Pulsar: false, ZeroMQ: false },
   },
   {
     label: "Object Store",
-    checks: { Nats: true, Kafka: false, RabbitMQ: false, Redis: false, Pulsar: false, ZeroMQ: false },
+    checks: { NATS: true, Kafka: false, RabbitMQ: false, Redis: false, Pulsar: false, ZeroMQ: false },
   },
   {
     label: "Wildcard Subjects",
-    checks: { Nats: true, Kafka: false, RabbitMQ: true, Redis: true, Pulsar: false, ZeroMQ: false },
+    checks: { NATS: true, Kafka: false, RabbitMQ: true, Redis: true, Pulsar: false, ZeroMQ: false },
   },
   {
     label: "Clustering",
-    checks: { Nats: true, Kafka: true, RabbitMQ: true, Redis: true, Pulsar: true, ZeroMQ: false },
+    checks: { NATS: true, Kafka: true, RabbitMQ: true, Redis: true, Pulsar: true, ZeroMQ: false },
   },
   {
     label: "Multi-Tenancy",
-    checks: { Nats: true, Kafka: false, RabbitMQ: true, Redis: false, Pulsar: true, ZeroMQ: false },
+    checks: { NATS: true, Kafka: false, RabbitMQ: true, Redis: false, Pulsar: true, ZeroMQ: false },
   },
   {
     label: "Auth Built-In",
-    checks: { Nats: true, Kafka: true, RabbitMQ: true, Redis: true, Pulsar: true, ZeroMQ: true },
+    checks: { NATS: true, Kafka: true, RabbitMQ: true, Redis: true, Pulsar: true, ZeroMQ: true },
   },
   {
     label: "Single Binary",
-    checks: { Nats: true, Kafka: false, RabbitMQ: false, Redis: true, Pulsar: false, ZeroMQ: false },
+    checks: { NATS: true, Kafka: false, RabbitMQ: false, Redis: true, Pulsar: false, ZeroMQ: false },
   },
 ];
 

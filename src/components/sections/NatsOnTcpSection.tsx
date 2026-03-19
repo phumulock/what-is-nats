@@ -10,21 +10,21 @@ export function NatsOnTcpSection({ number, id }: SectionProps) {
     <SectionContainer>
       <SectionHeader
         number={number}
-        title="How Nats Builds on Tcp"
+        title="How NATS Builds on TCP"
         id={id}
       />
       <p className="mt-4 text-gray-500">
-        The Nats protocol is human-readable text over Tcp&mdash;you can
+        The NATS protocol is human-readable text over TCP&mdash;you can
         debug it with telnet.
       </p>
 
       <p className="mt-6 text-white text-lg">
-        But Nats doesn&apos;t just speak text over Tcp. It takes control.
+        But NATS doesn&apos;t just speak text over TCP. It takes control.
       </p>
       <p className="mt-4 text-gray-500">
-        Tcp&apos;s trade-offs at scale&mdash;head-of-line blocking,
+        TCP&apos;s trade-offs at scale&mdash;head-of-line blocking,
         unpredictable buffering, slow failure detection&mdash;don&apos;t
-        go away just because you have a nice protocol on top. Nats handles
+        go away just because you have a nice protocol on top. NATS handles
         them explicitly:
       </p>
 
@@ -33,8 +33,8 @@ export function NatsOnTcpSection({ number, id }: SectionProps) {
       </DiagramReveal>
 
       <WhyItMatters>
-        Nats doesn&apos;t just ride on Tcp&mdash;it compensates for Tcp&apos;s
-        weaknesses. This is why Nats can deliver millions of messages per second
+        NATS doesn&apos;t just ride on TCP&mdash;it compensates for TCP&apos;s
+        weaknesses. This is why NATS can deliver millions of messages per second
         with predictable latency, even when clients misbehave or networks hiccup.
       </WhyItMatters>
     </SectionContainer>

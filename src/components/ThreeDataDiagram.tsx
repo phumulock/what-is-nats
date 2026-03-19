@@ -23,11 +23,11 @@ export function ThreeDataDiagram() {
       {/* NATS: 1 system */}
       <div>
         <p className="text-xs text-gray-500 mb-3">
-          Nats &mdash; one system
+          NATS &mdash; one system
         </p>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-2 md:gap-3">
-          <Box label="Jetstream" sub="Streams &amp; consumers" color={COLORS.green} />
-          <Box label="Key Value Store" sub="Keys as subjects" color={COLORS.blue} />
+          <Box label="JetStream" sub="Streams &amp; consumers" color={COLORS.green} />
+          <Box label="KV Store" sub="Keys as subjects" color={COLORS.blue} />
           <Box label="Object Store" sub="Chunked messages" color={COLORS.yellow} />
         </div>
         <p className="text-center text-xs text-accent-green mt-3">

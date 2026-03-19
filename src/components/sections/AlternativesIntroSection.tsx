@@ -20,7 +20,7 @@ export function AlternativesIntroSection({ number, id }: SectionProps) {
           them.
         </p>
         <p className="mt-4 text-gray-500">
-          Let&apos;s see how Nats stacks up&mdash;and where the trade-offs
+          Let&apos;s see how NATS stacks up&mdash;and where the trade-offs
           actually are.
         </p>
       </div>

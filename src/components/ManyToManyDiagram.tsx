@@ -95,7 +95,7 @@ export function ManyToManyDiagram() {
             transition={{ duration: 0.3 }}
             className="w-16 h-16 rounded-full border-2 border-accent-green flex items-center justify-center bg-accent-green/10"
           >
-            <span className="text-accent-green text-sm font-bold">Nats</span>
+            <span className="text-accent-green text-sm font-bold">NATS</span>
           </motion.div>
 
           {/* Outgoing message pills */}

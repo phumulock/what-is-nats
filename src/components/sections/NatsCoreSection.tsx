@@ -33,7 +33,7 @@ export function NatsCoreSection({ number, id }: SectionProps) {
         The foundational data communication layer for distributed systems
       </p>
       <p className="mt-4 text-gray-500">
-        Core is the foundational layer that everything else in the Nats
+        Core is the foundational layer that everything else in the NATS
         ecosystem builds on. At its heart is
         publish/subscribe&mdash;fire-and-forget messaging where any publisher
         can reach any subscriber through named subjects.
@@ -62,7 +62,7 @@ export function NatsCoreSection({ number, id }: SectionProps) {
                 {p.httpProblem}
               </p>
               <p className="text-sm text-gray-400 mt-2">
-                <span style={{ color: `${p.color}b3` }}>Nats solution:</span>{" "}
+                <span style={{ color: `${p.color}b3` }}>NATS solution:</span>{" "}
                 {p.natsSolution}
               </p>
             </div>
@@ -72,7 +72,7 @@ export function NatsCoreSection({ number, id }: SectionProps) {
 
       <WhyItMatters>
         Everything that follows—subjects, pub/sub, request/reply, queue
-        groups, Jetstream, Key Value stores—is built on top of Core. Understand
+        groups, JetStream, KV stores—is built on top of Core. Understand
         this layer and the rest clicks into place.
       </WhyItMatters>
 

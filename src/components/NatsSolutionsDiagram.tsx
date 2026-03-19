@@ -55,7 +55,7 @@ export function NatsSolutionsDiagram() {
         className="text-center mb-4"
       >
         <span className="text-xs font-mono text-accent-green border border-accent-green/30 rounded-full px-3 py-1">
-          Nats builds on top of Tcp
+          NATS builds on top of TCP
         </span>
       </motion.div>
 
@@ -83,7 +83,7 @@ export function NatsSolutionsDiagram() {
                   borderColor: `${item.problemColor}30`,
                 }}
               >
-                Tcp
+                TCP
               </div>
               <span
                 className="text-sm"
@@ -108,7 +108,7 @@ export function NatsSolutionsDiagram() {
                   borderColor: `${item.solutionColor}50`,
                 }}
               >
-                Nats
+                NATS
               </div>
               <span className="text-sm" style={{ color: item.solutionColor }}>
                 {item.solution}
@@ -124,7 +124,7 @@ export function NatsSolutionsDiagram() {
         className="mt-6 p-4 border border-accent-green/30 rounded-lg bg-accent-green/5 text-center"
       >
         <p className="text-sm text-accent-green">
-          Keep Tcp&apos;s reliability. Replace what doesn&apos;t work at scale.
+          Keep TCP&apos;s reliability. Replace what doesn&apos;t work at scale.
         </p>
         <p className="text-xs text-gray-500 mt-1">
           Own connection management, own buffering, own failure detection.
@@ -135,7 +135,7 @@ export function NatsSolutionsDiagram() {
       <div className="mt-4 text-center text-sm min-h-[20px]">
         {step === 0 && (
           <span className="text-gray-500">
-            Nats doesn&apos;t fight Tcp&mdash;it builds on top...
+            NATS doesn&apos;t fight TCP&mdash;it builds on top...
           </span>
         )}
         {step === 1 && (

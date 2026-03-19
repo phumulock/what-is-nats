@@ -18,7 +18,7 @@ export function ScalingIntroSection({ number, id }: SectionProps) {
           without your code knowing the difference.
         </p>
         <p className="mt-4 text-gray-500">
-          Nats was built for this from the start&mdash;servers form a mesh
+          NATS was built for this from the start&mdash;servers form a mesh
           automatically, routing messages only where they&apos;re needed
           across clusters, superclusters, and leaf nodes.
         </p>

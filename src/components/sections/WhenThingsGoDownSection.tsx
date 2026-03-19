@@ -18,7 +18,7 @@ export function WhenThingsGoDownSection({ number, id }: SectionProps) {
           message is gone.
         </p>
         <p className="mt-4 text-gray-500">
-          So how do you keep the speed and simplicity of Nats while surviving
+          So how do you keep the speed and simplicity of NATS while surviving
           the reality that things go down?
         </p>
       </div>

@@ -17,7 +17,7 @@ export function PubSubSection({ number, id }: SectionProps) {
       />
       <p className="mt-4 text-white text-lg">Fire-and-forget messaging.</p>
       <p className="mt-4 text-gray-500">
-        Publish a message and Nats delivers it to all matching subscribers
+        Publish a message and NATS delivers it to all matching subscribers
         immediately. No disk writes. No acknowledgments. No broker
         consensus. Just memory-to-memory transfer.
       </p>
@@ -35,7 +35,7 @@ export function PubSubSection({ number, id }: SectionProps) {
 
       <WhyItMatters>
         Most messages don&apos;t need persistence guarantees. By making
-        simple pub/sub the default, Nats keeps the majority of your
+        simple pub/sub the default, NATS keeps the majority of your
         traffic blazing fast. Save the heavyweight machinery for the
         messages that truly need it.
       </WhyItMatters>

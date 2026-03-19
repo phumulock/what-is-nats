@@ -11,11 +11,11 @@ export function LeafNodeSection({ number, id }: SectionProps) {
     <SectionContainer>
       <SectionHeader number={number} title="Leaf Node" id={id} href="https://docs.nats.io/running-a-nats-service/configuration/leafnodes" />
       <p className="mt-4 text-white text-lg">
-        Extend Nats to the edge&mdash;factories, stores, vehicles, anywhere.
+        Extend NATS to the edge&mdash;factories, stores, vehicles, anywhere.
       </p>
       <p className="mt-4 text-gray-500">
         <span className="text-accent-yellow font-bold">Single upstream connection</span>{" "}
-        &mdash; a standalone Nats server (20MB binary) connects to a cluster.
+        &mdash; a standalone NATS server (20MB binary) connects to a cluster.
         Runs on a Raspberry Pi, an industrial gateway, or a vehicle&apos;s
         onboard computer&mdash;anywhere a full cluster member would be overkill.
       </p>
@@ -29,7 +29,7 @@ export function LeafNodeSection({ number, id }: SectionProps) {
       <p className="mt-4 text-gray-500">
         <span className="text-accent-pink font-bold">Resilient at the edge</span>{" "}
         &mdash; when the upstream connection drops, the leaf node keeps running.
-        Local publishers and subscribers continue communicating. With Jetstream
+        Local publishers and subscribers continue communicating. With JetStream
         enabled, messages destined for the cluster queue until connectivity is
         restored&mdash;no data loss, no application changes.
       </p>
@@ -40,7 +40,7 @@ export function LeafNodeSection({ number, id }: SectionProps) {
 
       <WhyItMatters>
         Edge deployments usually mean a completely separate messaging stack
-        with custom sync logic. Leaf nodes give you the same Nats
+        with custom sync logic. Leaf nodes give you the same NATS
         subjects, the same client libraries, and the same publish/subscribe
         semantics&mdash;just closer to the data source.
       </WhyItMatters>

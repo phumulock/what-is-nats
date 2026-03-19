@@ -229,13 +229,13 @@ export function LeafNodeDiagram() {
         {step === 2 && "Cluster receives and routes to subscribers..."}
         {step === 3 && "Filtered subjects — only sensors.> leaves the factory"}
         {step === 4 && "Upstream connection drops..."}
-        {step === 5 && "With Jetstream, messages queue locally on the leaf node..."}
+        {step === 5 && "With JetStream, messages queue locally on the leaf node..."}
         {step === 6 && "Connection restored — queued messages sync upstream"}
       </div>
 
       {/* Insight */}
       <div className="mt-3 pt-3 border-t border-border text-xs text-center">
-        <span className="text-gray-500">Same Nats subjects, same client code — </span>
+        <span className="text-gray-500">Same NATS subjects, same client code — </span>
         <span className="text-white">just closer to the data source</span>
       </div>
 

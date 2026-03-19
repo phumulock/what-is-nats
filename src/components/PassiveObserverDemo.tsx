@@ -87,7 +87,7 @@ export function PassiveObserverDemo() {
               }}
               className="w-20 h-20 rounded-full bg-terminal-bg border-2 border-accent-green flex items-center justify-center"
             >
-              <span className="text-accent-green text-xs font-bold">Nats</span>
+              <span className="text-accent-green text-xs font-bold">NATS</span>
             </motion.div>
 
             {/* Ghosted "No ACK" / "No disk" labels */}
@@ -157,7 +157,7 @@ export function PassiveObserverDemo() {
             }}
             className="w-20 h-20 rounded-full bg-terminal-bg border-2 border-accent-green flex items-center justify-center"
           >
-            <span className="text-accent-green text-xs font-bold">Nats</span>
+            <span className="text-accent-green text-xs font-bold">NATS</span>
           </motion.div>
           {/* Ghosted labels on mobile */}
           <motion.div
@@ -272,7 +272,7 @@ export function PassiveObserverDemo() {
           >
             {step === 0 && (
               <span className="text-gray-500">
-                Sensor, Dashboard, Logger — all connected to Nats
+                Sensor, Dashboard, Logger — all connected to NATS
               </span>
             )}
             {step === 1 && (

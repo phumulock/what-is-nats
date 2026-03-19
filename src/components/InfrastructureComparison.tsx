@@ -41,7 +41,7 @@ export function InfrastructureComparison() {
           onClick={() => setTab("nats")}
           className={tabStyle("nats", "bg-accent-green/20 text-accent-green")}
         >
-          With Nats
+          With NATS
         </button>
       </div>
 
@@ -117,7 +117,7 @@ export function InfrastructureComparison() {
               {/* Cache */}
               <div className="border border-accent-pink-bright rounded-lg p-3">
                 <div className="flex items-center justify-between">
-                  <span className="text-sm text-accent-pink-bright">Cache / Key Value Store</span>
+                  <span className="text-sm text-accent-pink-bright">Cache / KV Store</span>
                   <span className="text-xs text-gray-500">Redis, Memcached</span>
                 </div>
                 <p className="text-xs text-gray-500 mt-1">
@@ -177,12 +177,12 @@ export function InfrastructureComparison() {
               className="flex flex-col items-center justify-center h-full"
             >
               <div className="text-xs text-gray-500 mb-6">
-                Nats Provides All of This
+                NATS PROVIDES ALL OF THIS
               </div>
 
               <div className="w-32 h-32 rounded-full border-4 border-accent-green flex items-center justify-center bg-accent-green/10">
                 <span className="text-accent-green text-2xl font-bold">
-                  Nats
+                  NATS
                 </span>
               </div>
 

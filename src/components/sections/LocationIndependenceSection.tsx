@@ -17,12 +17,12 @@ export function LocationIndependenceSection({ number, id }: SectionProps) {
       />
       <p className="mt-4 text-white text-lg">Publishers and subscribers never need to know where each other are.</p>
       <p className="mt-4 text-gray-500">
-        In Nats, you don&apos;t send messages to servers, IPs, or endpoints — you
+        In NATS, you don&apos;t send messages to servers, IPs, or endpoints — you
         publish to <span className="text-accent-green font-bold">subjects</span>. A subject is just a
         string like{" "}
         <code className="text-accent-green">orders.us.east</code>. No admin CLI,
         no partition count, no pre-creation. Publish to it and it exists.
-        Subscribers express interest in subjects, and Nats routes messages
+        Subscribers express interest in subjects, and NATS routes messages
         to them — regardless of where they are in the network.
       </p>
 

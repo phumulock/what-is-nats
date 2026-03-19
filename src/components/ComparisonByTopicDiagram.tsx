@@ -33,7 +33,7 @@ const DEFAULT_STATUS_TEXTS = [
 
 export function ComparisonByTopicDiagram({
   comparisons,
-  natsLabel = "Nats",
+  natsLabel = "NATS",
   statusTexts = DEFAULT_STATUS_TEXTS,
   altColors = DEFAULT_ALT_COLORS,
 }: {

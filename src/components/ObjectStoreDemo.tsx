@@ -72,7 +72,7 @@ export function ObjectStoreDemo() {
           {/* Chunks / JetStream stream */}
           <div className="flex-1 w-full md:w-auto max-w-[240px]">
             <div className="text-xs text-gray-500 mb-1 text-center">
-              Jetstream Stream
+              JETSTREAM STREAM
             </div>
             <div className="border border-border rounded bg-surface p-2 space-y-1.5">
               {CHUNKS.map((chunk, i) => (
@@ -178,7 +178,7 @@ export function ObjectStoreDemo() {
         )}
         {step === 2 && (
           <span className="text-accent-blue">
-            Chunks stored & replicated in Jetstream
+            Chunks stored & replicated in JetStream
           </span>
         )}
         {step === 3 && (
