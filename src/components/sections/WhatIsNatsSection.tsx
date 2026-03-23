@@ -10,7 +10,7 @@ export function WhatIsNatsSection({ number, id }: SectionProps) {
         <p className="text-white text-lg">
           A communication fabric for distributed applications.
         </p>
-        <p className="mt-4 text-gray-500">
+        <p className="mt-4 text-gray-200 text-lg">
           NATS lets any service talk to any other service&mdash;without knowing
           where it lives, how many instances are running, or whether it&apos;s
           even online yet. One protocol covers pub/sub, request/reply,
@@ -19,7 +19,7 @@ export function WhatIsNatsSection({ number, id }: SectionProps) {
           deployments via leaf nodes, and built-in security with accounts and
           decentralized auth&mdash;all from a single binary.
         </p>
-        <p className="mt-4 text-gray-500">
+        <p className="mt-4 text-gray-200 text-lg">
           But to understand what that means&mdash;and everything NATS can
           do&mdash;let&apos;s start with something everyone knows.
         </p>

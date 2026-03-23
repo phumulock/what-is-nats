@@ -14,19 +14,19 @@ export function ClusterSection({ number, id }: SectionProps) {
         Full-mesh routes within a region&mdash;every server can reach every
         subscriber.
       </p>
-      <p className="mt-4 text-gray-500">
+      <p className="mt-4 text-gray-200 text-lg">
         <span className="text-accent-green font-bold">Full-mesh route connections</span>{" "}
         &mdash; every server maintains a direct TCP link to every other server
         in the cluster. Publish to any server, and it reaches all subscribers
         regardless of which server they&apos;re connected to.
       </p>
-      <p className="mt-4 text-gray-500">
+      <p className="mt-4 text-gray-200 text-lg">
         <span className="text-accent-blue font-bold">Auto-discovery</span>{" "}
         &mdash; point a new server at any existing member and it learns the
         full topology. No static config files listing every node. If one goes
         down, clients automatically reconnect to a surviving member.
       </p>
-      <p className="mt-4 text-gray-500">
+      <p className="mt-4 text-gray-200 text-lg">
         <span className="text-accent-yellow font-bold">Transparent failover</span>{" "}
         &mdash; clients connect to multiple servers and failover automatically.
         No connection pooling libraries, no retry logic to write, no circuit

@@ -205,7 +205,7 @@ export function HamburgerNav({ sections, groups }: HamburgerNavProps) {
                             <span className={`group-hover:text-accent-green transition-colors font-medium ${activeGroupName === group.name ? "text-accent-green" : "text-white"}`}>
                               {group.name}
                             </span>
-                            <p className="text-xs text-gray-600 mt-0.5">
+                            <p className="text-xs text-gray-400 mt-0.5">
                               {description}
                             </p>
                           </div>
@@ -220,9 +220,9 @@ export function HamburgerNav({ sections, groups }: HamburgerNavProps) {
                               key={section.id}
                               data-section-id={section.id}
                               onClick={() => handleSectionClick(section.id, section.globalIndex)}
-                              className={`w-full text-left px-3 py-1 rounded text-sm hover:text-white hover:bg-white/5 transition-colors flex items-center gap-3 ${activeId === section.id ? "text-accent-green bg-accent-green/10" : "text-gray-500"}`}
+                              className={`w-full text-left px-3 py-1 rounded text-sm hover:text-white hover:bg-white/5 transition-colors flex items-center gap-3 ${activeId === section.id ? "text-accent-green bg-accent-green/10" : "text-gray-300"}`}
                             >
-                              <span className="text-xs text-gray-700 font-mono w-5 shrink-0">
+                              <span className="text-xs text-gray-500 font-mono w-5 shrink-0">
                                 {pad(section.globalIndex)}
                               </span>
                               <span>{sectionLabel(section.id)}</span>

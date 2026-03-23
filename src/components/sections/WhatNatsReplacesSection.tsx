@@ -18,7 +18,7 @@ export function WhatNatsReplacesSection({ number, id }: SectionProps) {
         unified system&mdash;not a bundle of features, but layers built on a
         single foundation.
       </p>
-      <p className="mt-4 text-gray-500">
+      <p className="mt-4 text-gray-200 text-lg">
         Most microservice architectures require a service mesh for discovery, a
         load balancer for routing, a message broker for async communication, a
         cache for shared state, object storage for large payloads, multi-region

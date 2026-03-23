@@ -14,7 +14,7 @@ export function HttpHeroSection({ number, id }: SectionProps) {
           <span className="font-medium" style={{ color: "var(--accent-blue)" }}>
             HTTP
           </span>
-          <span className="text-gray-500 text-xs">
+          <span className="text-gray-300 text-xs">
             Location dependent, always 1:1, sync by default
           </span>
         </div>

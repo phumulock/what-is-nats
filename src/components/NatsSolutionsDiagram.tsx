@@ -77,7 +77,7 @@ export function NatsSolutionsDiagram() {
             {/* TCP problem (faded reference) */}
             <div className="flex items-start gap-3 p-3 bg-terminal-bg">
               <div
-                className="flex-shrink-0 text-[10px] font-mono px-2 py-0.5 rounded border mt-0.5"
+                className="flex-shrink-0 text-xs font-mono px-2 py-0.5 rounded border mt-0.5"
                 style={{
                   color: `${item.problemColor}80`,
                   borderColor: `${item.problemColor}30`,
@@ -102,7 +102,7 @@ export function NatsSolutionsDiagram() {
               }}
             >
               <div
-                className="flex-shrink-0 text-[10px] font-mono px-2 py-0.5 rounded border mt-0.5"
+                className="flex-shrink-0 text-xs font-mono px-2 py-0.5 rounded border mt-0.5"
                 style={{
                   color: item.solutionColor,
                   borderColor: `${item.solutionColor}50`,
@@ -126,7 +126,7 @@ export function NatsSolutionsDiagram() {
         <p className="text-sm text-accent-green">
           Keep TCP&apos;s reliability. Replace what doesn&apos;t work at scale.
         </p>
-        <p className="text-xs text-gray-500 mt-1">
+        <p className="text-xs text-gray-200 mt-1">
           Own connection management, own buffering, own failure detection.
         </p>
       </motion.div>
@@ -134,7 +134,7 @@ export function NatsSolutionsDiagram() {
       {/* Status text */}
       <div className="mt-4 text-center text-sm min-h-[20px]">
         {step === 0 && (
-          <span className="text-gray-500">
+          <span className="text-gray-200">
             NATS doesn&apos;t fight TCP&mdash;it builds on top...
           </span>
         )}

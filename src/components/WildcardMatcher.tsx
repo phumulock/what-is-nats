@@ -80,7 +80,7 @@ export function WildcardMatcher() {
     <div className="border border-border rounded-lg overflow-hidden bg-surface" {...containerProps}>
       {/* Input */}
       <div className="p-4 border-b border-border">
-        <label className="text-sm text-gray-500 block mb-2">
+        <label className="text-sm text-gray-200 block mb-2">
           PUBLISH TO SUBJECT:
         </label>
         <div className="flex gap-2">
@@ -95,7 +95,7 @@ export function WildcardMatcher() {
           {isManual && (
             <button
               onClick={handleResetDemo}
-              className="text-xs text-gray-500 hover:text-white border border-border rounded px-3 transition-colors"
+              className="text-xs text-gray-200 hover:text-white border border-border rounded px-3 transition-colors"
             >
               Auto
             </button>
@@ -107,17 +107,17 @@ export function WildcardMatcher() {
       <div className="px-4 py-3 border-b border-border flex flex-col sm:flex-row gap-2 sm:gap-6 text-sm">
         <div>
           <code className="text-accent-yellow">*</code>
-          <span className="text-gray-500"> — matches exactly one token</span>
+          <span className="text-gray-200"> — matches exactly one token</span>
         </div>
         <div>
           <code className="text-accent-yellow">&gt;</code>
-          <span className="text-gray-500"> — matches one or more tokens (must be last)</span>
+          <span className="text-gray-200"> — matches one or more tokens (must be last)</span>
         </div>
       </div>
 
       {/* Results */}
       <div className="p-4">
-        <div className="text-sm text-gray-500 mb-3">
+        <div className="text-sm text-gray-200 mb-3">
           SUBSCRIBERS WHO RECEIVE IT:
         </div>
         <div className="space-y-2">
@@ -135,18 +135,18 @@ export function WildcardMatcher() {
                 className="flex items-center justify-between px-3 py-2 rounded border"
               >
                 <code
-                  className={isMatch ? "text-accent-green" : "text-gray-500"}
+                  className={isMatch ? "text-accent-green" : "text-gray-200"}
                 >
                   {sub.pattern}
                 </code>
-                <span className="text-xs text-gray-500">{sub.description}</span>
+                <span className="text-xs text-gray-200">{sub.description}</span>
               </motion.div>
             );
           })}
         </div>
 
         {/* Status text */}
-        <div className="mt-6 text-sm min-h-10 text-gray-500">
+        <div className="mt-6 text-sm min-h-10 text-gray-200">
           {!isManual && (
             <motion.span
               key={step}

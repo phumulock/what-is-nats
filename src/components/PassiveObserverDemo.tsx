@@ -31,7 +31,7 @@ export function PassiveObserverDemo() {
           >
             Sensor
           </motion.div>
-          <span className="text-xs text-gray-500">Publisher</span>
+          <span className="text-xs text-gray-200">Publisher</span>
         </div>
 
         {/* Mobile: vertical incoming message */}
@@ -47,7 +47,7 @@ export function PassiveObserverDemo() {
                 transition={{ duration: 0.5 }}
                 className="absolute top-0 z-10"
               >
-                <div className="px-2 py-0.5 bg-accent-green text-black text-[10px] rounded whitespace-nowrap">
+                <div className="px-2 py-0.5 bg-accent-green text-black text-xs rounded whitespace-nowrap">
                   temp: {tempValue}
                 </div>
               </motion.div>
@@ -124,7 +124,7 @@ export function PassiveObserverDemo() {
                   transition={{ duration: 0.5 }}
                   className="absolute left-0 top-1/2 -translate-y-1/2"
                 >
-                  <div className="px-1.5 py-0.5 bg-accent-green text-black rounded font-bold" style={{ fontSize: "0.6rem" }}>
+                  <div className="px-1.5 py-0.5 bg-accent-green text-black rounded font-bold" style={{ fontSize: "0.7rem" }}>
                     MSG
                   </div>
                 </motion.div>
@@ -139,7 +139,7 @@ export function PassiveObserverDemo() {
                 transition={{ duration: 1.5 }}
                 className="absolute left-0 top-0"
               >
-                <div className="px-1.5 py-0.5 bg-accent-yellow text-black rounded font-bold" style={{ fontSize: "0.6rem" }}>
+                <div className="px-1.5 py-0.5 bg-accent-yellow text-black rounded font-bold" style={{ fontSize: "0.7rem" }}>
                   LOST
                 </div>
               </motion.div>
@@ -194,7 +194,7 @@ export function PassiveObserverDemo() {
                 transition={{ duration: 0.5 }}
                 className="absolute top-0 z-10"
               >
-                <div className="px-1.5 py-0.5 bg-accent-green text-black rounded font-bold" style={{ fontSize: "0.6rem" }}>
+                <div className="px-1.5 py-0.5 bg-accent-green text-black rounded font-bold" style={{ fontSize: "0.7rem" }}>
                   MSG
                 </div>
               </motion.div>
@@ -271,7 +271,7 @@ export function PassiveObserverDemo() {
             transition={{ duration: 0.2 }}
           >
             {step === 0 && (
-              <span className="text-gray-500">
+              <span className="text-gray-200">
                 Sensor, Dashboard, Logger — all connected to NATS
               </span>
             )}
@@ -293,7 +293,7 @@ export function PassiveObserverDemo() {
             {step === 4 && (
               <span>
                 <span className="text-accent-green">Logger reconnects.</span>{" "}
-                <span className="text-gray-500">temp: 74°F delivered to both — but 73°F is gone forever</span>
+                <span className="text-gray-200">temp: 74°F delivered to both — but 73°F is gone forever</span>
               </span>
             )}
           </motion.div>
@@ -301,8 +301,8 @@ export function PassiveObserverDemo() {
       </div>
 
       {/* Key insight */}
-      <div className="mt-4 pt-4 border-t border-border text-xs text-center">
-        <span className="text-gray-500">Messages live in memory. Miss it and it&apos;s gone</span>
+      <div className="mt-4 pt-4 border-t border-border text-sm text-center">
+        <span className="text-gray-200">Messages live in memory. Miss it and it&apos;s gone</span>
         <span className="text-white"> — that&apos;s the point.</span>
       </div>
 

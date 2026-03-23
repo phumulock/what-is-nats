@@ -35,7 +35,7 @@ export function NestedDiagram({ title, layers, variant = "nested" }: NestedDiagr
                   {layer.label}
                 </span>
                 {layer.examples && (
-                  <span className="text-gray-500 text-xs">{layer.examples}</span>
+                  <span className="text-gray-200 text-xs">{layer.examples}</span>
                 )}
               </div>
               {inner}
@@ -58,7 +58,7 @@ export function NestedDiagram({ title, layers, variant = "nested" }: NestedDiagr
                   {layer.label}
                 </span>
                 {layer.examples && (
-                  <span className="text-gray-500 text-sm">{layer.examples}</span>
+                  <span className="text-gray-200 text-sm">{layer.examples}</span>
                 )}
               </div>
             </div>

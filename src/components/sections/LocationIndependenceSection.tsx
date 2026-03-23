@@ -16,7 +16,7 @@ export function LocationIndependenceSection({ number, id }: SectionProps) {
         href="https://docs.nats.io/nats-concepts/subjects"
       />
       <p className="mt-4 text-white text-lg">Publishers and subscribers never need to know where each other are.</p>
-      <p className="mt-4 text-gray-500">
+      <p className="mt-4 text-gray-200 text-lg">
         In NATS, you don&apos;t send messages to servers, IPs, or endpoints — you
         publish to <span className="text-accent-green font-bold">subjects</span>. A subject is just a
         string like{" "}
@@ -26,7 +26,7 @@ export function LocationIndependenceSection({ number, id }: SectionProps) {
         to them — regardless of where they are in the network.
       </p>
 
-      <p className="mt-4 text-gray-500">
+      <p className="mt-4 text-gray-200 text-lg">
         The dot separator creates a natural hierarchy, and wildcards let
         subscribers listen to entire categories of messages without knowing
         every specific subject:

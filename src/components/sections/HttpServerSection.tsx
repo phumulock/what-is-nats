@@ -11,12 +11,12 @@ export function HttpServerSection({ number, id }: SectionProps) {
     <SectionContainer>
       <SectionHeader number={number} title="The HTTP Server" id={id} />
       <p className="mt-4 text-white text-lg">A process listening on a port.</p>
-      <p className="mt-6 text-gray-500">
+      <p className="mt-6 text-gray-200 text-lg">
         Everyone is familiar with the HTTP server. It&apos;s just a process
         running on a machine. It binds to a port (usually 80 or 443), accepts
         connections, and speaks a protocol: HTTP.
       </p>
-      <p className="mt-4 text-gray-500">
+      <p className="mt-4 text-gray-200 text-lg">
         A client connects, sends a request, gets a response. That&apos;s the
         whole model. Under the hood, it&apos;s all built on{" "}
         <span className="text-accent-green font-bold">TCP</span>&mdash;Transmission Control
@@ -24,7 +24,7 @@ export function HttpServerSection({ number, id }: SectionProps) {
         have to.
       </p>
 
-      <p className="mt-6 text-gray-500">
+      <p className="mt-6 text-gray-200 text-lg">
         This is the mental model to hold onto: a server is just a process,
         listening on a port, speaking a protocol over TCP.
       </p>

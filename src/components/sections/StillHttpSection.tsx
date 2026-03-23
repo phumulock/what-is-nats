@@ -12,7 +12,7 @@ export function StillHttpSection({ number, id }: SectionProps) {
       <p className="mt-4 text-white text-lg">
         Better protocols don&apos;t change the model underneath.
       </p>
-      <p className="mt-6 text-gray-500">
+      <p className="mt-6 text-gray-200 text-lg">
         Each one improves something&mdash;encoding, query flexibility,
         full-duplex&mdash;but none of them introduce native many-to-many
         messaging. Every connection is still one client talking to one server.

@@ -16,12 +16,12 @@ export function PubSubSection({ number, id }: SectionProps) {
         href="https://docs.nats.io/nats-concepts/pubsub"
       />
       <p className="mt-4 text-white text-lg">Fire-and-forget messaging.</p>
-      <p className="mt-4 text-gray-500">
+      <p className="mt-4 text-gray-200 text-lg">
         Publish a message and NATS delivers it to all matching subscribers
         immediately. No disk writes. No acknowledgments. No broker
         consensus. Just memory-to-memory transfer.
       </p>
-      <p className="mt-4 text-gray-500">
+      <p className="mt-4 text-gray-200 text-lg">
         This is <span className="text-accent-green font-bold">at-most-once delivery</span>&mdash;and
         that&apos;s a deliberate design choice, not a limitation. For real-time
         data&mdash;telemetry, metrics, live updates&mdash;you want the latest

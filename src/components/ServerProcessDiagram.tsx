@@ -62,7 +62,7 @@ function ServerPanel({
                 initial={{ opacity: 0, y: 4 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0 }}
-                className="text-[11px] font-mono mt-1"
+                className="text-xs font-mono mt-1"
                 style={{ color: labelColor }}
               >
                 {port}
@@ -84,7 +84,7 @@ function ServerPanel({
                   exit={{ opacity: 0, x: -16 }}
                   className="flex items-center gap-2"
                 >
-                  <div className="w-20 h-9 rounded border border-border bg-surface flex items-center justify-center text-[11px] text-gray-400">
+                  <div className="w-20 h-9 rounded border border-border bg-surface flex items-center justify-center text-xs text-gray-200">
                     {client.name}
                   </div>
                   <motion.div
@@ -95,7 +95,7 @@ function ServerPanel({
                     style={{ backgroundColor: labelColor }}
                   />
                   <span
-                    className="text-[10px] font-mono"
+                    className="text-xs font-mono"
                     style={{ color: labelColor }}
                   >
                     TCP
@@ -120,7 +120,7 @@ function ServerPanel({
                                 }}
                                 exit={{ opacity: 0 }}
                                 transition={{ duration: 0.5 }}
-                                className="absolute px-2 py-0.5 text-black text-[10px] font-mono rounded whitespace-nowrap top-1/2 -translate-y-1/2"
+                                className="absolute px-2 py-0.5 text-black text-xs font-mono rounded whitespace-nowrap top-1/2 -translate-y-1/2"
                                 style={{ backgroundColor: labelColor }}
                               >
                                 {msg.text}
@@ -222,32 +222,32 @@ export function ServerProcessDiagram() {
       {/* Status text */}
       <div className="mt-4 text-center text-sm">
         {step === 0 && (
-          <span className="text-gray-500">
+          <span className="text-gray-200">
             Two server processes starting up...
           </span>
         )}
         {step === 1 && (
-          <span className="text-gray-500">
+          <span className="text-gray-200">
             Each binds to a TCP port and listens...
           </span>
         )}
         {step === 2 && (
-          <span className="text-gray-500">
+          <span className="text-gray-200">
             Clients connect via TCP...
           </span>
         )}
         {step === 3 && (
-          <span className="text-gray-500">
+          <span className="text-gray-200">
             Multiple clients can connect at once...
           </span>
         )}
         {step === 4 && (
-          <span className="text-gray-500">
+          <span className="text-gray-200">
             Clients send messages over the connection...
           </span>
         )}
         {step === 5 && (
-          <span className="text-gray-500">
+          <span className="text-gray-200">
             The server routes the message...
           </span>
         )}

@@ -44,7 +44,7 @@ export function ManyToManyDiagram() {
       <div className="flex flex-col md:flex-row justify-between items-center gap-6 md:gap-4">
         {/* Publishers */}
         <div className="space-y-2 shrink-0">
-          <div className="text-xs text-gray-500 mb-2">PUBLISHERS</div>
+          <div className="text-xs text-gray-200 mb-2">PUBLISHERS</div>
           {PUBLISHERS.map((pub, i) => (
             <motion.div
               key={pub.name}
@@ -117,7 +117,7 @@ export function ManyToManyDiagram() {
                       animate={{ scale: 1 }}
                       transition={{ delay: subIdx * 0.1 }}
                       className="px-1.5 py-0.5 text-black rounded font-bold"
-                      style={{ fontSize: "0.6rem", backgroundColor: SUBSCRIBERS[subIdx].color }}
+                      style={{ fontSize: "0.7rem", backgroundColor: SUBSCRIBERS[subIdx].color }}
                     >
                       MSG
                     </motion.div>
@@ -130,7 +130,7 @@ export function ManyToManyDiagram() {
 
         {/* Subscribers */}
         <div className="space-y-2 shrink-0">
-          <div className="text-xs text-gray-500 mb-2">SUBSCRIBERS</div>
+          <div className="text-xs text-gray-200 mb-2">SUBSCRIBERS</div>
           {SUBSCRIBERS.map((sub, i) => {
             const receiving = activeSubs.includes(i) || (auditReceiving && i < 3);
             return (
@@ -144,7 +144,7 @@ export function ManyToManyDiagram() {
                 className="w-28 h-10 border rounded flex flex-col items-center justify-center bg-terminal-bg"
               >
                 <span className="text-xs">{sub.name}</span>
-                <span className="text-gray-500" style={{ fontSize: "0.6rem" }}>
+                <span className="text-gray-200" style={{ fontSize: "0.7rem" }}>
                   {sub.subs}
                 </span>
               </motion.div>
@@ -166,7 +166,7 @@ export function ManyToManyDiagram() {
                 }}
               >
                 <span className="text-xs" style={{ color: AUDIT_SUB.color }}>{AUDIT_SUB.name}</span>
-                <span className="text-gray-500" style={{ fontSize: "0.6rem" }}>
+                <span className="text-gray-200" style={{ fontSize: "0.7rem" }}>
                   {AUDIT_SUB.subs} (everything)
                 </span>
               </motion.div>
@@ -176,7 +176,7 @@ export function ManyToManyDiagram() {
       </div>
 
       {/* Status text */}
-      <div className="mt-3 text-center text-sm min-h-8 text-gray-500">
+      <div className="mt-3 text-center text-sm min-h-8 text-gray-200">
         <AnimatePresence mode="wait">
           <motion.div
             key={step}

@@ -23,7 +23,7 @@ export function QueueGroupDiagram() {
           <div className="w-16 h-16 rounded-lg bg-terminal-bg border border-border flex items-center justify-center text-xs">
             PUB
           </div>
-          <span className="text-xs text-gray-500">Publisher</span>
+          <span className="text-xs text-gray-200">Publisher</span>
         </div>
 
         {/* Mobile: vertical arrow */}
@@ -36,7 +36,7 @@ export function QueueGroupDiagram() {
             transition={{ duration: 0.5 }}
             className="absolute top-0 z-10"
           >
-            <div className="px-2 py-0.5 text-black text-[10px] rounded whitespace-nowrap" style={{ backgroundColor: workerColors[targetSub] }}>
+            <div className="px-2 py-0.5 text-black text-xs rounded whitespace-nowrap" style={{ backgroundColor: workerColors[targetSub] }}>
               msg #{messageCount}
             </div>
           </motion.div>
@@ -94,7 +94,7 @@ export function QueueGroupDiagram() {
         </div>
       </div>
 
-      <div className="mt-6 text-center text-sm min-h-10 text-gray-500">
+      <div className="mt-6 text-center text-sm min-h-10 text-gray-200">
         Each message goes to exactly one worker in the queue group
       </div>
 

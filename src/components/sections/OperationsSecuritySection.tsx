@@ -54,7 +54,7 @@ export function OperationsSecuritySection({ number, id }: SectionProps) {
         Running at scale means clustering, security, and multi-tenancy. NATS
         builds all three into the server.
       </p>
-      <p className="mt-4 text-gray-500">
+      <p className="mt-4 text-gray-200 text-lg">
         Clustering shouldn&apos;t require a coordinator service. Auth
         shouldn&apos;t require an external system. Multi-tenancy shouldn&apos;t
         be a naming convention. See how NATS handles operations and security

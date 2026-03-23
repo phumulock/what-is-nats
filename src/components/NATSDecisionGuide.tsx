@@ -166,10 +166,10 @@ export function NATSDecisionGuide() {
           <button
             key={layer.layer}
             onClick={() => goTo(i)}
-            className={`flex-1 px-2 py-2.5 text-[11px] font-mono transition-colors cursor-pointer ${
+            className={`flex-1 px-2 py-2.5 text-xs font-mono transition-colors cursor-pointer ${
               step === i
                 ? "border-b-2"
-                : "bg-transparent text-gray-500 hover:text-gray-300"
+                : "bg-transparent text-gray-500 hover:text-white"
             }`}
             style={
               step === i
@@ -208,7 +208,7 @@ export function NATSDecisionGuide() {
                     {uc.feature}
                   </span>
                 </div>
-                <div className="text-xs text-gray-500">{uc.why}</div>
+                <div className="text-xs text-gray-200">{uc.why}</div>
               </div>
             ))}
           </motion.div>

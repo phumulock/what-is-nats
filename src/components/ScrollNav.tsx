@@ -149,7 +149,7 @@ export function ScrollNav({ sections, groups }: ScrollNavProps) {
                 <button
                   key={hero.name}
                   onClick={() => scrollToSection(hero.id, hero.startIndex)}
-                  className="text-xs text-gray-500 hover:text-white whitespace-nowrap transition-all"
+                  className="text-xs text-gray-300 hover:text-white whitespace-nowrap transition-all"
                 >
                   {hero.name}
                 </button>
@@ -176,7 +176,7 @@ export function ScrollNav({ sections, groups }: ScrollNavProps) {
                 className={`flex items-center gap-1.5 text-xs font-medium transition-all whitespace-nowrap pl-2 ${
                   activeId === section.id
                     ? "text-accent-green"
-                    : "text-gray-500 hover:text-white"
+                    : "text-gray-300 hover:text-white"
                 }`}
                 aria-label={`Go to ${section.label}`}
               >
@@ -184,7 +184,7 @@ export function ScrollNav({ sections, groups }: ScrollNavProps) {
                   className={`w-1.5 h-1.5 rounded-full flex-shrink-0 transition-all ${
                     activeId === section.id
                       ? "bg-accent-green"
-                      : "bg-gray-600"
+                      : "bg-gray-400"
                   }`}
                 />
                 {section.label}
@@ -198,7 +198,7 @@ export function ScrollNav({ sections, groups }: ScrollNavProps) {
                 <button
                   key={hero.name}
                   onClick={() => scrollToSection(hero.id, hero.startIndex)}
-                  className="text-xs text-gray-500 hover:text-white whitespace-nowrap transition-all"
+                  className="text-xs text-gray-300 hover:text-white whitespace-nowrap transition-all"
                 >
                   {hero.name}
                 </button>

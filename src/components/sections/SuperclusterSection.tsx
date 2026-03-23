@@ -13,13 +13,13 @@ export function SuperclusterSection({ number, id }: SectionProps) {
       <p className="mt-4 text-white text-lg">
         Gateways between regions&mdash;global reach without full-mesh overhead.
       </p>
-      <p className="mt-4 text-gray-500">
+      <p className="mt-4 text-gray-200 text-lg">
         <span className="text-accent-pink font-bold">Gateway connections</span>{" "}
         &mdash; each cluster elects a gateway pair that maintains a single
         logical link to every other cluster. No full-mesh between
         regions&mdash;just targeted hops.
       </p>
-      <p className="mt-4 text-gray-500">
+      <p className="mt-4 text-gray-200 text-lg">
         <span className="text-accent-green font-bold">Interest-based routing</span>{" "}
         &mdash; messages only traverse gateways when subscribers exist in the
         remote region. Publish{" "}
@@ -27,7 +27,7 @@ export function SuperclusterSection({ number, id }: SectionProps) {
         and nobody in Frankfurt is listening? The message never leaves the US
         cluster.
       </p>
-      <p className="mt-4 text-gray-500">
+      <p className="mt-4 text-gray-200 text-lg">
         Accounts and security boundaries are shared across the supercluster, so
         a service in any region can reach any other service on the same
         account&mdash;same subjects, same permissions, no extra configuration

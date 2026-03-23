@@ -253,8 +253,8 @@ export function SuperclusterDiagram() {
           }}
           className="border rounded-lg px-2 py-1.5 text-center"
         >
-          <div className="text-xs text-gray-400">Publisher</div>
-          <div className="text-[11px] font-mono text-accent-green">orders.us</div>
+          <div className="text-xs text-gray-200">Publisher</div>
+          <div className="text-xs font-mono text-accent-green">orders.us</div>
         </motion.div>
         {/* Sub A */}
         <motion.div
@@ -264,8 +264,8 @@ export function SuperclusterDiagram() {
           }}
           className="border rounded-lg px-2 py-1.5 text-center"
         >
-          <div className="text-xs text-gray-400">Sub A</div>
-          <div className="text-[11px] font-mono text-accent-blue">orders.&gt;</div>
+          <div className="text-xs text-gray-200">Sub A</div>
+          <div className="text-xs font-mono text-accent-blue">orders.&gt;</div>
         </motion.div>
         {/* Sub B */}
         <motion.div
@@ -275,8 +275,8 @@ export function SuperclusterDiagram() {
           }}
           className="border rounded-lg px-2 py-1.5 text-center"
         >
-          <div className="text-xs text-gray-400">Sub B</div>
-          <div className="text-[11px] font-mono text-accent-pink">orders.&gt;</div>
+          <div className="text-xs text-gray-200">Sub B</div>
+          <div className="text-xs font-mono text-accent-pink">orders.&gt;</div>
         </motion.div>
       </div>
 
@@ -290,8 +290,8 @@ export function SuperclusterDiagram() {
             }}
             className="border rounded-lg px-2 py-1.5 text-center"
           >
-            <div className="text-xs text-gray-400">Publisher</div>
-            <div className="text-[11px] font-mono text-accent-green">orders.us</div>
+            <div className="text-xs text-gray-200">Publisher</div>
+            <div className="text-xs font-mono text-accent-green">orders.us</div>
           </motion.div>
           <motion.div
             animate={{ backgroundColor: step === 0 ? COLORS.green : COLORS.borderLight }}
@@ -302,7 +302,7 @@ export function SuperclusterDiagram() {
         {/* SVG Diagram — desktop */}
         <div className="flex-1">
           <div className="border border-dashed border-gray-700/40 rounded-lg bg-surface-dark p-3">
-            <div className="text-[11px] text-gray-500 text-center mb-1 tracking-widest font-mono">
+            <div className="text-xs text-gray-200 text-center mb-1 tracking-widest font-mono">
               SUPERCLUSTER
             </div>
             {superclusterSvg(9, 11, 14, 5, "", 340)}
@@ -323,8 +323,8 @@ export function SuperclusterDiagram() {
               }}
               className="border rounded-lg px-2 py-1.5 text-center"
             >
-              <div className="text-xs text-gray-400">Sub A</div>
-              <div className="text-[11px] font-mono text-accent-blue">orders.&gt;</div>
+              <div className="text-xs text-gray-200">Sub A</div>
+              <div className="text-xs font-mono text-accent-blue">orders.&gt;</div>
             </motion.div>
           </div>
           <div className="flex items-center">
@@ -339,8 +339,8 @@ export function SuperclusterDiagram() {
               }}
               className="border rounded-lg px-2 py-1.5 text-center"
             >
-              <div className="text-xs text-gray-400">Sub B</div>
-              <div className="text-[11px] font-mono text-accent-pink">orders.&gt;</div>
+              <div className="text-xs text-gray-200">Sub B</div>
+              <div className="text-xs font-mono text-accent-pink">orders.&gt;</div>
             </motion.div>
           </div>
         </div>
@@ -349,7 +349,7 @@ export function SuperclusterDiagram() {
       {/* SVG Diagram — mobile (full width, no side columns stealing space) */}
       <div className="md:hidden">
         <div className="border border-dashed border-gray-700/40 rounded-lg bg-surface-dark p-2">
-          <div className="text-[11px] text-gray-500 text-center mb-1 tracking-widest font-mono">
+          <div className="text-xs text-gray-200 text-center mb-1 tracking-widest font-mono">
             SUPERCLUSTER
           </div>
           {superclusterSvg(11, 13, 16, 6, "m-")}
@@ -357,7 +357,7 @@ export function SuperclusterDiagram() {
       </div>
 
       {/* Status text with colored accents */}
-      <div className="mt-6 text-center text-sm min-h-10 text-gray-500 flex items-center justify-center">
+      <div className="mt-6 text-center text-sm min-h-10 text-gray-200 flex items-center justify-center">
         {step === 0 && (
           <span>
             <span style={{ color: COLORS.green }}>Publisher</span> sends to{" "}
@@ -393,8 +393,8 @@ export function SuperclusterDiagram() {
       </div>
 
       {/* Key insight */}
-      <div className="mt-3 pt-3 border-t border-border text-xs text-center">
-        <span className="block sm:inline text-gray-500">No subscribers in a region?</span>{" "}
+      <div className="mt-3 pt-3 border-t border-border text-sm text-center">
+        <span className="block sm:inline text-gray-200">No subscribers in a region?</span>{" "}
         <span className="block sm:inline text-white">Message never leaves the origin cluster</span>
       </div>
 

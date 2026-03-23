@@ -12,13 +12,13 @@ export function NatsCoreIntroSection({ number, id }: SectionProps) {
           seen what HTTP can&apos;t do. NATS flips every one of those
           constraints.
         </p>
-        <p className="mt-4 text-gray-500">
+        <p className="mt-4 text-gray-200 text-lg">
           Instead of addressing servers by location, you address messages by
           subject. Instead of one-to-one, you get many-to-many. Instead of
           request/response only, you get fire-and-forget, fan-out, and
           load-balanced queues&mdash;all from the same primitive.
         </p>
-        <p className="mt-4 text-gray-500">
+        <p className="mt-4 text-gray-200 text-lg">
           This is the foundation everything else in NATS builds on.
         </p>
       </div>

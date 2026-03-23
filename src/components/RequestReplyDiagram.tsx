@@ -22,7 +22,7 @@ export function RequestReplyDiagram() {
           >
             REQ
           </motion.div>
-          <span className="text-xs text-gray-500">Requester</span>
+          <span className="text-xs text-gray-200">Requester</span>
           <div className="text-xs text-accent-yellow h-4">
             {step === 0 && "inbox: _INBOX.abc"}
           </div>
@@ -39,7 +39,7 @@ export function RequestReplyDiagram() {
               transition={{ duration: 0.5 }}
               className="absolute top-0 z-10"
             >
-              <div className="px-2 py-0.5 bg-accent-green text-black text-[10px] rounded">
+              <div className="px-2 py-0.5 bg-accent-green text-black text-xs rounded">
                 request
               </div>
             </motion.div>
@@ -97,7 +97,7 @@ export function RequestReplyDiagram() {
               transition={{ duration: 0.5 }}
               className="absolute top-0 z-10"
             >
-              <div className="px-2 py-0.5 bg-accent-yellow text-black text-[10px] rounded">
+              <div className="px-2 py-0.5 bg-accent-yellow text-black text-xs rounded">
                 reply
               </div>
             </motion.div>
@@ -114,14 +114,14 @@ export function RequestReplyDiagram() {
           >
             RESP
           </motion.div>
-          <span className="text-xs text-gray-500">Responder</span>
-          <div className="text-xs text-gray-500 h-4">
+          <span className="text-xs text-gray-200">Responder</span>
+          <div className="text-xs text-gray-200 h-4">
             {step === 2 && "processing..."}
           </div>
         </div>
       </div>
 
-      <div className="mt-6 text-center text-sm min-h-10 text-gray-500">
+      <div className="mt-6 text-center text-sm min-h-10 text-gray-200">
         {step === 0 && "Requester creates unique inbox (_INBOX.abc)"}
         {step === 1 && "Request sent with reply-to: _INBOX.abc"}
         {step === 2 && "Responder receives request, processes..."}

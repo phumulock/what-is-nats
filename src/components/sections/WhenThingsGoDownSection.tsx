@@ -11,13 +11,13 @@ export function WhenThingsGoDownSection({ number, id }: SectionProps) {
           In distributed systems, something is always down. Deploys, crashes,
           network blips&mdash;failure is the norm, not the exception.
         </p>
-        <p className="mt-4 text-gray-500">
+        <p className="mt-4 text-gray-200 text-lg">
           Core is fast precisely because it makes no durability
           promises&mdash;at-most-once delivery, no persistence, no replay. If a
           subscriber isn&apos;t connected when a message is published, that
           message is gone.
         </p>
-        <p className="mt-4 text-gray-500">
+        <p className="mt-4 text-gray-200 text-lg">
           So how do you keep the speed and simplicity of NATS while surviving
           the reality that things go down?
         </p>

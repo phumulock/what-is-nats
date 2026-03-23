@@ -227,7 +227,7 @@ export function RaftConsensusDiagram() {
   return (
     <div className="border border-border rounded-lg p-5 md:p-6 bg-surface" {...containerProps}>
       <div className="border border-dashed border-accent-green/25 rounded-lg bg-surface-dark p-3">
-        <div className="text-[11px] text-accent-green/50 text-center mb-1 tracking-widest font-mono">
+        <div className="text-xs text-accent-green/50 text-center mb-1 tracking-widest font-mono">
           RAFT GROUP — STREAM &quot;ORDERS&quot; (R3)
         </div>
         {/* Desktop */}
@@ -237,7 +237,7 @@ export function RaftConsensusDiagram() {
       </div>
 
       {/* Status */}
-      <div className="mt-6 text-center text-sm min-h-10 text-gray-500">
+      <div className="mt-6 text-center text-sm min-h-10 text-gray-200">
         {step === 0 && "Stream ORDERS replicated across 3 servers (R3)..."}
         {step === 1 && "nats-2\u2019s election timer fires \u2014 becomes candidate..."}
         {step === 2 && "Requests votes from peers..."}
@@ -249,8 +249,8 @@ export function RaftConsensusDiagram() {
       </div>
 
       {/* Insight */}
-      <div className="mt-3 pt-3 border-t border-border text-xs text-center">
-        <span className="text-gray-500">R1 = no consensus. R3 = tolerates 1 failure. R5 = tolerates 2. </span>
+      <div className="mt-3 pt-3 border-t border-border text-sm text-center">
+        <span className="text-gray-200">R1 = no consensus. R3 = tolerates 1 failure. R5 = tolerates 2. </span>
         <span className="text-white">Choose replication factor per stream.</span>
       </div>
 

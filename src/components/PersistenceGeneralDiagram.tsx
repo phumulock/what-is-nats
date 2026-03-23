@@ -10,7 +10,7 @@ const SCENARIOS = [
     label: "HAPPY PATH",
     labelColor: "text-accent-green",
     status: "Producer sends → Broker holds in memory → Consumer receives.",
-    statusColor: "text-gray-500",
+    statusColor: "text-gray-200",
     producerActive: true,
     brokerState: "ok" as const,
     consumerState: "online" as const,
@@ -186,7 +186,7 @@ export function PersistenceGeneralDiagram() {
               className="absolute top-0 z-10"
             >
               <div
-                className={`px-2 py-0.5 text-black text-[10px] rounded ${
+                className={`px-2 py-0.5 text-black text-xs rounded ${
                   s.msgState === "persisted" || s.msgState === "replicated"
                     ? "bg-accent-blue"
                     : s.msgState === "piling"
@@ -215,7 +215,7 @@ export function PersistenceGeneralDiagram() {
                 className="absolute left-0 top-1/2 -translate-y-1/2 z-10"
               >
                 <div
-                  className={`px-2 py-0.5 text-black text-[10px] rounded ${
+                  className={`px-2 py-0.5 text-black text-xs rounded ${
                     s.msgState === "persisted" || s.msgState === "replicated"
                       ? "bg-accent-blue"
                       : s.msgState === "piling"
@@ -237,7 +237,7 @@ export function PersistenceGeneralDiagram() {
             animate={{ borderColor: brokerBorder }}
             className="relative w-20 h-16 rounded-lg bg-terminal-bg border-2 flex flex-col items-center justify-center gap-1"
           >
-            <span className="text-xs text-gray-400">Broker</span>
+            <span className="text-xs text-gray-200">Broker</span>
             <BufferSlots
               count={bufferCount}
               color={bufferColor}
@@ -258,7 +258,7 @@ export function PersistenceGeneralDiagram() {
               <motion.div
                 initial={{ opacity: 0, y: 4 }}
                 animate={{ opacity: 1, y: 0 }}
-                className="absolute -bottom-3 left-1/2 -translate-x-1/2 text-[10px] text-accent-blue bg-surface px-1 border border-accent-blue rounded"
+                className="absolute -bottom-3 left-1/2 -translate-x-1/2 text-xs text-accent-blue bg-surface px-1 border border-accent-blue rounded"
               >
                 disk
               </motion.div>
@@ -268,7 +268,7 @@ export function PersistenceGeneralDiagram() {
               <motion.div
                 initial={{ opacity: 0, y: 4 }}
                 animate={{ opacity: 1, y: 0 }}
-                className="absolute -bottom-3 left-1/2 -translate-x-1/2 text-[10px] text-accent-blue bg-surface px-1 border border-accent-blue rounded whitespace-nowrap"
+                className="absolute -bottom-3 left-1/2 -translate-x-1/2 text-xs text-accent-blue bg-surface px-1 border border-accent-blue rounded whitespace-nowrap"
               >
                 disk × 3
               </motion.div>
@@ -288,7 +288,7 @@ export function PersistenceGeneralDiagram() {
               transition={{ duration: 0.8, delay: 0.6 }}
               className="absolute top-0 z-10"
             >
-              <div className="px-2 py-0.5 bg-accent-green text-black text-[10px] rounded">
+              <div className="px-2 py-0.5 bg-accent-green text-black text-xs rounded">
                 msg
               </div>
             </motion.div>
@@ -305,7 +305,7 @@ export function PersistenceGeneralDiagram() {
                 transition={{ duration: 0.8, delay: 0.6 }}
                 className="absolute left-0 top-1/2 -translate-y-1/2 z-10"
               >
-                <div className="px-2 py-0.5 bg-accent-green text-black text-[10px] rounded">
+                <div className="px-2 py-0.5 bg-accent-green text-black text-xs rounded">
                   msg
                 </div>
               </motion.div>

@@ -23,11 +23,11 @@ function EntityBox({
       animate={{ borderColor: active ? color : COLORS.border }}
       className="flex-1 min-w-0 rounded-lg border bg-terminal-bg p-3 flex flex-col items-center gap-1"
     >
-      <div className="text-[10px] font-bold" style={{ color }}>
+      <div className="text-xs font-bold" style={{ color }}>
         {label}
       </div>
       {sublabel && (
-        <div className="text-[9px] text-gray-600 truncate max-w-full">{sublabel}</div>
+        <div className="text-xs text-gray-200 truncate max-w-full">{sublabel}</div>
       )}
       {children}
     </motion.div>
@@ -88,7 +88,7 @@ export function AuthCalloutDiagram() {
               animate={{
                 opacity: step === 0 ? 1 : 0.3,
               }}
-              className="mt-1 px-2 py-0.5 rounded text-[9px] bg-accent-yellow/20 border border-accent-yellow/40 text-accent-yellow font-mono"
+              className="mt-1 px-2 py-0.5 rounded text-xs bg-accent-yellow/20 border border-accent-yellow/40 text-accent-yellow font-mono"
             >
               creds
             </motion.div>
@@ -96,10 +96,10 @@ export function AuthCalloutDiagram() {
               animate={{ opacity: step === 4 ? 1 : 0, scale: step === 4 ? 1 : 0.8 }}
               className="mt-1 flex flex-col gap-0.5"
             >
-              <div className="px-1.5 py-0.5 rounded text-[8px] bg-accent-green/20 text-accent-green font-mono">
+              <div className="px-1.5 py-0.5 rounded text-xs bg-accent-green/20 text-accent-green font-mono">
                 pub: orders.&gt;
               </div>
-              <div className="px-1.5 py-0.5 rounded text-[8px] bg-accent-blue/20 text-accent-blue font-mono">
+              <div className="px-1.5 py-0.5 rounded text-xs bg-accent-blue/20 text-accent-blue font-mono">
                 sub: replies.&gt;
               </div>
             </motion.div>
@@ -113,13 +113,13 @@ export function AuthCalloutDiagram() {
             active={step === 1 || step === 4}
           >
             <div className="w-8 h-8 rounded-full border border-accent-green/40 flex items-center justify-center mt-1">
-              <span className="text-accent-green text-[8px] font-bold">
+              <span className="text-accent-green text-xs font-bold">
                 NATS
               </span>
             </div>
             <motion.div
               animate={{ opacity: step === 1 ? 1 : 0 }}
-              className="mt-1 text-[9px] text-gray-500"
+              className="mt-1 text-xs text-gray-200"
             >
               delegating...
             </motion.div>
@@ -138,7 +138,7 @@ export function AuthCalloutDiagram() {
                 opacity: step === 3 ? 1 : 0,
                 scale: step === 3 ? 1 : 0.8,
               }}
-              className="mt-1 px-2 py-0.5 rounded text-[9px] bg-accent-green/20 text-accent-green"
+              className="mt-1 px-2 py-0.5 rounded text-xs bg-accent-green/20 text-accent-green"
             >
               &#10003; validated
             </motion.div>
@@ -156,7 +156,7 @@ export function AuthCalloutDiagram() {
               {["LDAP", "OAuth", "DB"].map((backend) => (
                 <div
                   key={backend}
-                  className="text-[8px] text-gray-600 text-center"
+                  className="text-xs text-gray-200 text-center"
                 >
                   {backend}
                 </div>
@@ -178,7 +178,7 @@ export function AuthCalloutDiagram() {
                 animate={{
                   opacity: step === 0 ? 1 : 0.3,
                 }}
-                className="mt-1 px-2 py-0.5 rounded text-[9px] bg-accent-yellow/20 border border-accent-yellow/40 text-accent-yellow font-mono"
+                className="mt-1 px-2 py-0.5 rounded text-xs bg-accent-yellow/20 border border-accent-yellow/40 text-accent-yellow font-mono"
               >
                 creds
               </motion.div>
@@ -186,10 +186,10 @@ export function AuthCalloutDiagram() {
                 animate={{ opacity: step === 4 ? 1 : 0, scale: step === 4 ? 1 : 0.8 }}
                 className="mt-1 flex flex-col gap-0.5"
               >
-                <div className="px-1.5 py-0.5 rounded text-[8px] bg-accent-green/20 text-accent-green font-mono">
+                <div className="px-1.5 py-0.5 rounded text-xs bg-accent-green/20 text-accent-green font-mono">
                   pub: orders.&gt;
                 </div>
-                <div className="px-1.5 py-0.5 rounded text-[8px] bg-accent-blue/20 text-accent-blue font-mono">
+                <div className="px-1.5 py-0.5 rounded text-xs bg-accent-blue/20 text-accent-blue font-mono">
                   sub: replies.&gt;
                 </div>
               </motion.div>
@@ -205,13 +205,13 @@ export function AuthCalloutDiagram() {
               active={step === 1 || step === 4}
             >
               <div className="w-8 h-8 rounded-full border border-accent-green/40 flex items-center justify-center mt-1">
-                <span className="text-accent-green text-[8px] font-bold">
+                <span className="text-accent-green text-xs font-bold">
                   NATS
                 </span>
               </div>
               <motion.div
                 animate={{ opacity: step === 1 ? 1 : 0 }}
-                className="mt-1 text-[9px] text-gray-500"
+                className="mt-1 text-xs text-gray-200"
               >
                 delegating...
               </motion.div>
@@ -232,7 +232,7 @@ export function AuthCalloutDiagram() {
                   opacity: step === 3 ? 1 : 0,
                   scale: step === 3 ? 1 : 0.8,
                 }}
-                className="mt-1 px-2 py-0.5 rounded text-[9px] bg-accent-green/20 text-accent-green"
+                className="mt-1 px-2 py-0.5 rounded text-xs bg-accent-green/20 text-accent-green"
               >
                 &#10003; validated
               </motion.div>
@@ -248,7 +248,7 @@ export function AuthCalloutDiagram() {
                 {["LDAP", "OAuth", "DB"].map((backend) => (
                   <div
                     key={backend}
-                    className="text-[8px] text-gray-600 text-center"
+                    className="text-xs text-gray-200 text-center"
                   >
                     {backend}
                   </div>
@@ -267,7 +267,7 @@ export function AuthCalloutDiagram() {
               x: step === 1 ? "12%" : "0%",
             }}
             transition={{ duration: 0.6 }}
-            className="absolute left-[5%] top-1/2 -translate-y-1/2 px-2 py-0.5 bg-accent-yellow text-black text-[10px] rounded font-mono"
+            className="absolute left-[5%] top-1/2 -translate-y-1/2 px-2 py-0.5 bg-accent-yellow text-black text-xs rounded font-mono"
           >
             CONNECT + creds
           </motion.div>
@@ -279,7 +279,7 @@ export function AuthCalloutDiagram() {
               x: step === 2 ? "55%" : "25%",
             }}
             transition={{ duration: 0.8 }}
-            className="absolute left-[25%] top-1/2 -translate-y-1/2 px-2 py-0.5 bg-purple-500 text-white text-[10px] rounded font-mono"
+            className="absolute left-[25%] top-1/2 -translate-y-1/2 px-2 py-0.5 bg-purple-500 text-white text-xs rounded font-mono"
           >
             auth request
           </motion.div>
@@ -291,7 +291,7 @@ export function AuthCalloutDiagram() {
               x: step === 3 ? "-20%" : "0%",
             }}
             transition={{ duration: 0.6 }}
-            className="absolute left-[50%] top-1/2 -translate-y-1/2 px-2 py-0.5 bg-accent-green text-black text-[10px] rounded font-mono"
+            className="absolute left-[50%] top-1/2 -translate-y-1/2 px-2 py-0.5 bg-accent-green text-black text-xs rounded font-mono"
           >
             signed JWT
           </motion.div>
@@ -302,8 +302,8 @@ export function AuthCalloutDiagram() {
             className="absolute inset-x-[5%] top-1/2 -translate-y-1/2 flex items-center justify-center"
           >
             <div className="flex items-center gap-2">
-              <span className="text-accent-green text-[10px]">&#10003;</span>
-              <span className="text-accent-green text-[10px] font-mono">
+              <span className="text-accent-green text-xs">&#10003;</span>
+              <span className="text-accent-green text-xs font-mono">
                 authorized connection
               </span>
             </div>
@@ -316,7 +316,7 @@ export function AuthCalloutDiagram() {
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              className="px-2 py-0.5 bg-accent-yellow text-black text-[10px] rounded font-mono"
+              className="px-2 py-0.5 bg-accent-yellow text-black text-xs rounded font-mono"
             >
               CONNECT + creds
             </motion.div>
@@ -325,7 +325,7 @@ export function AuthCalloutDiagram() {
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              className="px-2 py-0.5 bg-purple-500 text-white text-[10px] rounded font-mono"
+              className="px-2 py-0.5 bg-purple-500 text-white text-xs rounded font-mono"
             >
               auth request
             </motion.div>
@@ -334,7 +334,7 @@ export function AuthCalloutDiagram() {
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              className="px-2 py-0.5 bg-accent-green text-black text-[10px] rounded font-mono"
+              className="px-2 py-0.5 bg-accent-green text-black text-xs rounded font-mono"
             >
               signed JWT
             </motion.div>
@@ -345,8 +345,8 @@ export function AuthCalloutDiagram() {
               animate={{ opacity: 1 }}
               className="flex items-center gap-2"
             >
-              <span className="text-accent-green text-[10px]">&#10003;</span>
-              <span className="text-accent-green text-[10px] font-mono">
+              <span className="text-accent-green text-xs">&#10003;</span>
+              <span className="text-accent-green text-xs font-mono">
                 authorized connection
               </span>
             </motion.div>
@@ -357,7 +357,7 @@ export function AuthCalloutDiagram() {
       {/* Status text */}
       <div className="px-4 md:px-6 pb-2 text-center text-sm min-h-[2.5rem] flex items-center justify-center">
         {step === 0 && (
-          <span className="text-gray-500">
+          <span className="text-gray-200">
             Client connects with credentials...
           </span>
         )}
@@ -385,9 +385,9 @@ export function AuthCalloutDiagram() {
 
       {/* Key insight */}
       <div className="px-4 md:px-6 pb-3 text-xs text-center">
-        <span className="text-gray-500">Auth logic lives in </span>
+        <span className="text-gray-200">Auth logic lives in </span>
         <span className="text-white">your code</span>
-        <span className="text-gray-500">
+        <span className="text-gray-200">
           {" "}
           &mdash; NATS just enforces the result
         </span>

@@ -12,7 +12,7 @@ export function LimitsOfHttpSection({ number, id }: SectionProps) {
       <p className="mt-4 text-white text-lg">
         Client asks. Server answers. That&apos;s the whole protocol.
       </p>
-      <p className="mt-6 text-gray-500">
+      <p className="mt-6 text-gray-200 text-lg">
         HTTP does exactly one thing: a client sends a request to a specific
         server, and the server responds. Everything else&mdash;push
         notifications, streaming, fan-out&mdash;is bolted on after the

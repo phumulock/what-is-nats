@@ -18,7 +18,7 @@ export function ComplexitySpectrum() {
   return (
     <div className="mt-6 border border-border rounded-lg bg-surface p-4">
       <div className="flex flex-col md:flex-row items-center justify-between gap-2">
-        <span className="hidden md:inline text-[10px] text-gray-500 uppercase tracking-wider shrink-0">
+        <span className="hidden md:inline text-xs text-gray-200 uppercase tracking-wider shrink-0">
           Start here
         </span>
         <div className="flex flex-wrap items-center gap-1 flex-1 justify-center">
@@ -40,10 +40,10 @@ export function ComplexitySpectrum() {
             </div>
           ))}
         </div>
-        <span className="hidden md:inline text-[10px] text-gray-500 uppercase tracking-wider shrink-0">
+        <span className="hidden md:inline text-xs text-gray-200 uppercase tracking-wider shrink-0">
           Add as needed
         </span>
-        <div className="flex md:hidden items-center justify-center gap-2 text-[10px] text-gray-500 uppercase tracking-wider">
+        <div className="flex md:hidden items-center justify-center gap-2 text-xs text-gray-200 uppercase tracking-wider">
           <span>Start here</span>
           <span>→</span>
           <span>Add as needed</span>
@@ -58,7 +58,7 @@ export function ComplexitySpectrum() {
         <span className="text-xs" style={{ color: SECURITY.color }}>
           {SECURITY.label}
         </span>
-        <span className="text-[10px] text-gray-500 ml-1">
+        <span className="text-xs text-gray-200 ml-1">
           wraps all layers
         </span>
       </div>

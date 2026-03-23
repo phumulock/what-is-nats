@@ -25,7 +25,7 @@ export function AlternativesHeroSection({ number, id }: SectionProps) {
             <span className="font-medium" style={{ color: item.color }}>
               {item.label}
             </span>
-            <span className="text-gray-500 text-xs">{item.examples}</span>
+            <span className="text-gray-300 text-xs">{item.examples}</span>
           </div>
         ))}
       </div>

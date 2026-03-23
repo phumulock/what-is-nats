@@ -13,19 +13,19 @@ export function RaftConsensusSection({ number, id }: SectionProps) {
       <p className="mt-4 text-white text-lg">
         How JetStream keeps streams consistent across a cluster
       </p>
-      <p className="mt-4 text-gray-500">
+      <p className="mt-4 text-gray-200 text-lg">
         <span className="text-accent-green font-bold">One Raft group per stream</span>{" "}
         &mdash; JetStream runs a separate Raft consensus group for each stream
         and each consumer. No single leader bottleneck&mdash;each group elects
         its own leader independently.
       </p>
-      <p className="mt-4 text-gray-500">
+      <p className="mt-4 text-gray-200 text-lg">
         <span className="text-accent-blue font-bold">Meta group for placement</span>{" "}
         &mdash; a cluster-wide meta group (all JetStream-enabled servers) decides
         where to place new streams and consumers. Each stream group then handles
         its own data replication; each consumer group tracks delivery state.
       </p>
-      <p className="mt-4 text-gray-500">
+      <p className="mt-4 text-gray-200 text-lg">
         <span className="text-accent-yellow font-bold">Quorum writes</span>{" "}
         &mdash; a message is only acknowledged once a majority of replicas have
         written it. With R3, that means 2 of 3 servers must confirm before the

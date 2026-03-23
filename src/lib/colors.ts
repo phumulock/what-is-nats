@@ -15,8 +15,8 @@ export const COLORS = {
   borderLight: "#444444",
   surface: "#0a0a0a",
   terminalBg: "#1a1a1a",
-  textTertiary: "#555555",
-  textQuaternary: "#666666",
+  textTertiary: "#a3a3a3",
+  textQuaternary: "#b5b5b5",
   surfaceDark: "#0f0f0f",
 } as const;
 

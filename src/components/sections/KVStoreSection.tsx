@@ -13,11 +13,11 @@ export function KVStoreSection({ number, id }: SectionProps) {
       <p className="mt-4 text-white text-lg">
         Key-value storage over your existing NATS connection.
       </p>
-      <p className="mt-4 text-gray-500">
+      <p className="mt-4 text-gray-200 text-lg">
         NATS KV is a key-value store built on top of JetStream. Get, put,
         delete, and watch keys&mdash;all over your existing NATS connection.
       </p>
-      <p className="mt-2 text-gray-500">
+      <p className="mt-2 text-gray-200 text-lg">
         Every KV bucket is backed by a JetStream stream. Keys map to subjects,
         values to message payloads, and revisions to sequence numbers. A{" "}
         <code className="text-accent-blue">put(&quot;user.123.name&quot;, &quot;Alice&quot;)</code>{" "}
@@ -25,19 +25,19 @@ export function KVStoreSection({ number, id }: SectionProps) {
         <code className="text-accent-blue">$KV.users.user.123.name</code>.
         Watchers are just JetStream consumers with subject filters.
       </p>
-      <p className="mt-4 text-gray-500">
+      <p className="mt-4 text-gray-200 text-lg">
         <span className="text-accent-green font-bold">Watch</span>{" "}
         &mdash; subscribe to key patterns like{" "}
         <code className="text-accent-green">user.123.&gt;</code> and get
         notified on every change in real-time. No polling. Build reactive UIs,
         configuration hot-reload, or distributed coordination.
       </p>
-      <p className="mt-4 text-gray-500">
+      <p className="mt-4 text-gray-200 text-lg">
         <span className="text-accent-yellow font-bold">TTL</span>{" "}
         &mdash; keys expire automatically after a configured duration. Clean
         up stale state without manual intervention.
       </p>
-      <p className="mt-4 text-gray-500">
+      <p className="mt-4 text-gray-200 text-lg">
         <span className="text-accent-blue font-bold">History</span>{" "}
         &mdash; retain previous values per key with atomic compare-and-swap
         for safe concurrent updates.

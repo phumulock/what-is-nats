@@ -24,7 +24,7 @@ export function JetStreamSection({ number, id }: SectionProps) {
       <p className="mt-4 text-white text-lg">
         Still fast. Now durable.
       </p>
-      <p className="mt-4 text-gray-500">
+      <p className="mt-4 text-gray-200 text-lg">
         Core is fire-and-forget. If no one is listening when a message is
         published, it vanishes. JetStream adds persistence on top&mdash;same
         protocol, same subjects, but messages are stored and can be replayed.
@@ -32,7 +32,7 @@ export function JetStreamSection({ number, id }: SectionProps) {
 
       {/* Foundations */}
       <div className="mt-8">
-        <span className="text-xs font-bold tracking-widest text-gray-500 block mb-3">
+        <span className="text-xs font-bold tracking-widest text-gray-300 block mb-3">
           FOUNDATIONS
         </span>
         <div className="grid gap-3">
@@ -48,11 +48,11 @@ export function JetStreamSection({ number, id }: SectionProps) {
               <div className="font-medium mb-1" style={{ color: p.color }}>
                 {p.title}
               </div>
-              <p className="text-sm text-gray-400">
-                <span className="text-gray-500">Problem:</span>{" "}
+              <p className="text-sm text-gray-200">
+                <span className="text-gray-300">Problem:</span>{" "}
                 {p.problem}
               </p>
-              <p className="text-sm text-gray-400 mt-2">
+              <p className="text-sm text-gray-200 mt-2">
                 <span style={{ color: `${p.color}b3` }}>JetStream:</span>{" "}
                 {p.solution}
               </p>

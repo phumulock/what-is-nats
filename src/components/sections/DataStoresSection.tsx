@@ -20,13 +20,13 @@ export function DataStoresSection({ number, id }: SectionProps) {
     <SectionContainer>
       <SectionHeader number={number} title="Data Stores" id={id} />
 
-      <p className="mt-4 text-gray-500">
+      <p className="mt-4 text-gray-200 text-lg">
         Most platforms cover one or two of these well, but not all three.
         Message brokers add key-value APIs as an afterthought. Key-value stores bolt
         on pub/sub. Nobody covers all three over a single protocol.
       </p>
 
-      <p className="mt-6 text-gray-500">
+      <p className="mt-6 text-gray-200 text-lg">
         NATS does. A key-value pair is just a subject with the latest message
         retained. A large file is a sequence of chunked messages in a stream.
         Same protocol, same connection, same replication&mdash;no new
@@ -35,7 +35,7 @@ export function DataStoresSection({ number, id }: SectionProps) {
 
       {/* Foundations */}
       <div className="mt-8">
-        <span className="text-xs font-bold tracking-widest text-gray-500 block mb-3">
+        <span className="text-xs font-bold tracking-widest text-gray-300 block mb-3">
           FOUNDATIONS
         </span>
         <div className="grid gap-3">
@@ -51,11 +51,11 @@ export function DataStoresSection({ number, id }: SectionProps) {
               <div className="font-medium mb-1" style={{ color: p.color }}>
                 {p.title}
               </div>
-              <p className="text-sm text-gray-400">
-                <span className="text-gray-500">Problem:</span>{" "}
+              <p className="text-sm text-gray-200">
+                <span className="text-gray-300">Problem:</span>{" "}
                 {p.problem}
               </p>
-              <p className="text-sm text-gray-400 mt-2">
+              <p className="text-sm text-gray-200 mt-2">
                 <span style={{ color: `${p.color}b3` }}>NATS:</span>{" "}
                 {p.solution}
               </p>

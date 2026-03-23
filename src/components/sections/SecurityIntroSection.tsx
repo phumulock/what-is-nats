@@ -12,13 +12,13 @@ export function SecurityIntroSection({ number, id }: SectionProps) {
           everywhere&mdash;but who&apos;s allowed to connect? And what stops one
           tenant&apos;s data from leaking into another?
         </p>
-        <p className="mt-4 text-gray-500">
+        <p className="mt-4 text-gray-200 text-lg">
           Most messaging systems bolt security on after the fact&mdash;an
           external auth service here, a firewall rule there. NATS takes the
           opposite approach: authentication, authorization, and multi-tenancy
           are built into the protocol itself.
         </p>
-        <p className="mt-4 text-gray-500">
+        <p className="mt-4 text-gray-200 text-lg">
           No external databases to secure. No config file restarts to add
           users. Just cryptographic identity baked into every connection.
         </p>

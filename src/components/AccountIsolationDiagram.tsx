@@ -48,10 +48,10 @@ export function AccountIsolationDiagram() {
               }}
               className="w-full rounded border bg-surface p-2 flex items-center gap-2"
             >
-              <div className="w-6 h-6 rounded bg-accent-green/20 flex items-center justify-center text-[10px] text-accent-green">
+              <div className="w-6 h-6 rounded bg-accent-green/20 flex items-center justify-center text-xs text-accent-green">
                 C
               </div>
-              <span className="text-xs text-gray-400">Order Service</span>
+              <span className="text-xs text-gray-200">Order Service</span>
             </motion.div>
 
             {/* Message within Account A */}
@@ -62,7 +62,7 @@ export function AccountIsolationDiagram() {
                   y: step === 1 || step === 4 ? 0 : -4,
                 }}
                 transition={{ duration: 0.3 }}
-                className="px-2 py-0.5 bg-accent-green text-black text-[10px] rounded font-mono"
+                className="px-2 py-0.5 bg-accent-green text-black text-xs rounded font-mono"
               >
                 orders.new
               </motion.div>
@@ -76,17 +76,17 @@ export function AccountIsolationDiagram() {
               }}
               className="w-full rounded border bg-surface p-2 flex items-center gap-2"
             >
-              <div className="w-6 h-6 rounded bg-accent-green/20 flex items-center justify-center text-[10px] text-accent-green">
+              <div className="w-6 h-6 rounded bg-accent-green/20 flex items-center justify-center text-xs text-accent-green">
                 S
               </div>
-              <span className="text-xs text-gray-400">Processor</span>
+              <span className="text-xs text-gray-200">Processor</span>
             </motion.div>
           </div>
 
           {/* NATS Server (center) */}
           <div className="flex flex-row md:flex-col items-center justify-center gap-2 px-2">
             <div className="w-14 h-14 rounded-full border-2 border-accent-green bg-terminal-bg flex items-center justify-center">
-              <span className="text-accent-green text-[10px] font-bold">
+              <span className="text-accent-green text-xs font-bold">
                 NATS
               </span>
             </div>
@@ -99,11 +99,11 @@ export function AccountIsolationDiagram() {
               }}
               className="flex flex-row md:flex-col items-center gap-0.5"
             >
-              <div className="text-[9px] text-accent-yellow font-mono">
+              <div className="text-xs text-accent-yellow font-mono">
                 export
               </div>
               <div className="text-accent-yellow text-xs">&#8596;</div>
-              <div className="text-[9px] text-accent-yellow font-mono">
+              <div className="text-xs text-accent-yellow font-mono">
                 import
               </div>
             </motion.div>
@@ -130,10 +130,10 @@ export function AccountIsolationDiagram() {
               }}
               className="w-full rounded border bg-surface p-2 flex items-center gap-2"
             >
-              <div className="w-6 h-6 rounded bg-accent-blue/20 flex items-center justify-center text-[10px] text-accent-blue">
+              <div className="w-6 h-6 rounded bg-accent-blue/20 flex items-center justify-center text-xs text-accent-blue">
                 C
               </div>
-              <span className="text-xs text-gray-400">Billing</span>
+              <span className="text-xs text-gray-200">Billing</span>
             </motion.div>
 
             {/* Message blocked / bridged indicator */}
@@ -143,7 +143,7 @@ export function AccountIsolationDiagram() {
                   opacity: step === 2 ? 1 : 0,
                 }}
                 transition={{ duration: 0.3 }}
-                className="px-2 py-0.5 bg-red-500/20 border border-red-500/40 text-red-400 text-[10px] rounded"
+                className="px-2 py-0.5 bg-red-500/20 border border-red-500/40 text-red-400 text-xs rounded"
               >
                 blocked
               </motion.div>
@@ -152,7 +152,7 @@ export function AccountIsolationDiagram() {
                   opacity: showBridgeMessage ? 1 : 0,
                 }}
                 transition={{ duration: 0.3 }}
-                className="absolute px-2 py-0.5 bg-accent-yellow/20 border border-accent-yellow text-accent-yellow text-[10px] rounded font-mono"
+                className="absolute px-2 py-0.5 bg-accent-yellow/20 border border-accent-yellow text-accent-yellow text-xs rounded font-mono"
               >
                 orders.new
               </motion.div>
@@ -165,10 +165,10 @@ export function AccountIsolationDiagram() {
               }}
               className="w-full rounded border bg-surface p-2 flex items-center gap-2"
             >
-              <div className="w-6 h-6 rounded bg-accent-blue/20 flex items-center justify-center text-[10px] text-accent-blue">
+              <div className="w-6 h-6 rounded bg-accent-blue/20 flex items-center justify-center text-xs text-accent-blue">
                 S
               </div>
-              <span className="text-xs text-gray-400">Analytics</span>
+              <span className="text-xs text-gray-200">Analytics</span>
             </motion.div>
           </div>
         </div>
@@ -177,7 +177,7 @@ export function AccountIsolationDiagram() {
       {/* Status */}
       <div className="px-4 md:px-6 pb-2 pt-6 text-center text-sm min-h-10 flex items-center justify-center">
         {step === 0 && (
-          <span className="text-gray-500">
+          <span className="text-gray-200">
             Two accounts on the same NATS server...
           </span>
         )}

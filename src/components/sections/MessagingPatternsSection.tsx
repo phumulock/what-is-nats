@@ -75,7 +75,7 @@ export function MessagingPatternsSection({ number, id }: SectionProps) {
         Every messaging system claims pub/sub. Few give you the rest without
         extra infrastructure.
       </p>
-      <p className="mt-4 text-gray-500">
+      <p className="mt-4 text-gray-200 text-lg">
         Pub/Sub, request/reply, queue groups, and back-pressure are the
         building blocks of real-time messaging. See how NATS handles each one
         natively, while alternatives require workarounds, extra components, or

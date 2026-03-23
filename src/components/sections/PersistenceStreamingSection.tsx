@@ -73,7 +73,7 @@ export function PersistenceStreamingSection({ number, id }: SectionProps) {
         JetStream isn&apos;t the first persistent streaming system. But
         it&apos;s the only one that isn&apos;t a separate system.
       </p>
-      <p className="mt-4 text-gray-500">
+      <p className="mt-4 text-gray-200 text-lg">
         Kafka, Pulsar, and RabbitMQ Streams were built for durable streaming
         too. The difference is in what else they bring along: separate
         protocols, separate clusters, separate operational burdens. JetStream

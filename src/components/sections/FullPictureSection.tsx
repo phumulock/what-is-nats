@@ -11,7 +11,7 @@ export function FullPictureSection({ number, id }: SectionProps) {
           We&apos;ve seen how NATS compares to the alternatives. Now
           let&apos;s step back and see the full picture.
         </p>
-        <p className="mt-4 text-gray-500">
+        <p className="mt-4 text-gray-200 text-lg">
           Four layers in a single binary&mdash;core messaging, persistent
           streams, data stores, and clustering. Most apps only need one or
           two. The question is which layers fit your problem, and when to

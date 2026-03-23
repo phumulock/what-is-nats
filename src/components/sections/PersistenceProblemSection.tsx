@@ -16,12 +16,12 @@ export function PersistenceProblemSection({ number, id }: SectionProps) {
       <p className="mt-4 text-white text-lg">
         Every messaging system has the same Achilles&apos; heel.
       </p>
-      <p className="mt-4 text-gray-500">
+      <p className="mt-4 text-gray-200 text-lg">
         A message broker sits between producers and consumers, holding messages
         in memory until they&apos;re delivered. This works beautifully&mdash;until
         something goes wrong.
       </p>
-      <p className="mt-4 text-gray-500">
+      <p className="mt-4 text-gray-200 text-lg">
         What if a consumer crashes? Messages queue up. What if the broker
         itself crashes? Everything in memory vanishes. This isn&apos;t a bug in
         any particular system&mdash;it&apos;s a fundamental tension in

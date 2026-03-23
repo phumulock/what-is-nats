@@ -56,7 +56,7 @@ export function InfrastructureComparison() {
               exit={{ opacity: 0, x: 20 }}
               className="space-y-3"
             >
-              <div className="text-xs text-gray-500 mb-4">
+              <div className="text-xs text-gray-300 mb-4">
                 TYPICAL MICROSERVICES INFRASTRUCTURE
               </div>
 
@@ -64,11 +64,11 @@ export function InfrastructureComparison() {
               <div className="border border-accent-pink rounded-lg p-3">
                 <div className="flex items-center justify-between">
                   <span className="text-sm text-accent-pink">Service Mesh</span>
-                  <span className="text-xs text-gray-500">
+                  <span className="text-xs text-gray-300">
                     Istio, Linkerd, Consul
                   </span>
                 </div>
-                <p className="text-xs text-gray-500 mt-1">
+                <p className="text-xs text-gray-300 mt-1">
                   Sidecars, mTLS, traffic routing, retries
                 </p>
               </div>
@@ -79,11 +79,11 @@ export function InfrastructureComparison() {
                   <span className="text-sm text-accent-yellow">
                     Service Discovery
                   </span>
-                  <span className="text-xs text-gray-500">
+                  <span className="text-xs text-gray-300">
                     Consul, etcd, Eureka
                   </span>
                 </div>
-                <p className="text-xs text-gray-500 mt-1">
+                <p className="text-xs text-gray-300 mt-1">
                   Registry, health checks, DNS
                 </p>
               </div>
@@ -92,11 +92,11 @@ export function InfrastructureComparison() {
               <div className="border border-accent-blue rounded-lg p-3">
                 <div className="flex items-center justify-between">
                   <span className="text-sm text-accent-blue">Load Balancer</span>
-                  <span className="text-xs text-gray-500">
+                  <span className="text-xs text-gray-300">
                     NGINX, HAProxy, ALB
                   </span>
                 </div>
-                <p className="text-xs text-gray-500 mt-1">
+                <p className="text-xs text-gray-300 mt-1">
                   Routing rules, sticky sessions, health probes
                 </p>
               </div>
@@ -105,11 +105,11 @@ export function InfrastructureComparison() {
               <div className="border border-accent-purple rounded-lg p-3">
                 <div className="flex items-center justify-between">
                   <span className="text-sm text-accent-purple">Message Broker</span>
-                  <span className="text-xs text-gray-500">
+                  <span className="text-xs text-gray-300">
                     Kafka, RabbitMQ, SQS
                   </span>
                 </div>
-                <p className="text-xs text-gray-500 mt-1">
+                <p className="text-xs text-gray-300 mt-1">
                   Topics, partitions, consumer groups, schemas
                 </p>
               </div>
@@ -118,9 +118,9 @@ export function InfrastructureComparison() {
               <div className="border border-accent-pink-bright rounded-lg p-3">
                 <div className="flex items-center justify-between">
                   <span className="text-sm text-accent-pink-bright">Cache / KV Store</span>
-                  <span className="text-xs text-gray-500">Redis, Memcached</span>
+                  <span className="text-xs text-gray-300">Redis, Memcached</span>
                 </div>
-                <p className="text-xs text-gray-500 mt-1">
+                <p className="text-xs text-gray-300 mt-1">
                   Session state, distributed locks, pub/sub
                 </p>
               </div>
@@ -129,9 +129,9 @@ export function InfrastructureComparison() {
               <div className="border border-accent-teal rounded-lg p-3">
                 <div className="flex items-center justify-between">
                   <span className="text-sm text-accent-teal">Object Storage</span>
-                  <span className="text-xs text-gray-500">S3, MinIO, GCS</span>
+                  <span className="text-xs text-gray-300">S3, MinIO, GCS</span>
                 </div>
-                <p className="text-xs text-gray-500 mt-1">
+                <p className="text-xs text-gray-300 mt-1">
                   Blobs, file artifacts, large payloads
                 </p>
               </div>
@@ -140,11 +140,11 @@ export function InfrastructureComparison() {
               <div className="border border-accent-orange rounded-lg p-3">
                 <div className="flex items-center justify-between">
                   <span className="text-sm text-accent-orange">Multi-region / Edge</span>
-                  <span className="text-xs text-gray-500">
+                  <span className="text-xs text-gray-300">
                     MirrorMaker, CDN, IoT Gateways
                   </span>
                 </div>
-                <p className="text-xs text-gray-500 mt-1">
+                <p className="text-xs text-gray-300 mt-1">
                   Cross-region replication, edge compute, data locality
                 </p>
               </div>
@@ -153,17 +153,17 @@ export function InfrastructureComparison() {
               <div className="border border-accent-indigo rounded-lg p-3">
                 <div className="flex items-center justify-between">
                   <span className="text-sm text-accent-indigo">Auth / Multi-tenancy</span>
-                  <span className="text-xs text-gray-500">
+                  <span className="text-xs text-gray-300">
                     Vault, Keycloak, OPA
                   </span>
                 </div>
-                <p className="text-xs text-gray-500 mt-1">
+                <p className="text-xs text-gray-300 mt-1">
                   Identity, token management, tenant isolation
                 </p>
               </div>
 
               <div className="pt-4 text-center">
-                <span className="text-sm text-gray-500">
+                <span className="text-sm text-gray-300">
                   8+ systems to install, configure, and operate
                 </span>
               </div>
@@ -176,7 +176,7 @@ export function InfrastructureComparison() {
               exit={{ opacity: 0, x: -20 }}
               className="flex flex-col items-center justify-center h-full"
             >
-              <div className="text-xs text-gray-500 mb-6">
+              <div className="text-xs text-gray-300 mb-6">
                 NATS PROVIDES ALL OF THIS
               </div>
 
@@ -190,12 +190,12 @@ export function InfrastructureComparison() {
                 {NATS_FEATURES.map((f) => (
                   <div key={f.label} className="flex items-center gap-2">
                     <span style={{ color: f.color }}>&#10003;</span>
-                    <span className="text-gray-400">{f.label}</span>
+                    <span className="text-gray-200">{f.label}</span>
                   </div>
                 ))}
               </div>
 
-              <div className="mt-5 flex items-center gap-6 text-xs text-gray-500">
+              <div className="mt-5 flex items-center gap-6 text-xs text-gray-300">
                 <span>
                   One <span className="text-accent-green">namespace</span>
                 </span>

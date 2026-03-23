@@ -11,13 +11,13 @@ export function ScalingIntroSection({ number, id }: SectionProps) {
           Streams, key-value pairs, object storage&mdash;all from a single
           binary. But real systems don&apos;t run on a single server.
         </p>
-        <p className="mt-4 text-gray-500">
+        <p className="mt-4 text-gray-200 text-lg">
           Production means multiple regions, cloud providers, and edge
           devices. It means tolerating failures without downtime. It means
           messages published in Tokyo reaching subscribers in Frankfurt
           without your code knowing the difference.
         </p>
-        <p className="mt-4 text-gray-500">
+        <p className="mt-4 text-gray-200 text-lg">
           NATS was built for this from the start&mdash;servers form a mesh
           automatically, routing messages only where they&apos;re needed
           across clusters, superclusters, and leaf nodes.

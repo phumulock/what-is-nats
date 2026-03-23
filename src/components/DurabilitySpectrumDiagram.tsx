@@ -17,7 +17,7 @@ const TEMPORAL_SLIDES: {
   {
     phase: "publishing",
     status: "Publisher and consumer in sync...",
-    statusColor: "text-gray-500",
+    statusColor: "text-gray-200",
   },
   {
     phase: "offline",
@@ -84,7 +84,7 @@ function TemporalDecouplingView({ phase }: { phase: Phase }) {
           <div className="w-16 h-16 rounded-lg bg-terminal-bg border border-accent-green flex items-center justify-center text-xs">
             PUB
           </div>
-          <span className="text-xs text-gray-500">Publisher</span>
+          <span className="text-xs text-gray-200">Publisher</span>
           <span className="text-xs text-accent-green">
             {phase === "offline" ? "still sending..." : ""}
           </span>
@@ -97,7 +97,7 @@ function TemporalDecouplingView({ phase }: { phase: Phase }) {
 
         {/* JetStream */}
         <div className="flex-1 flex flex-col items-center w-full md:w-auto">
-          <div className="text-xs text-gray-500 mb-2">JETSTREAM STREAM</div>
+          <div className="text-xs text-gray-200 mb-2">JETSTREAM STREAM</div>
           <div className="flex gap-1 overflow-hidden flex-wrap justify-center">
             {allMessages.map((msg, i) => (
               <motion.div
@@ -113,7 +113,7 @@ function TemporalDecouplingView({ phase }: { phase: Phase }) {
               </motion.div>
             ))}
           </div>
-          <div className="text-xs text-gray-500 mt-2">
+          <div className="text-xs text-gray-200 mt-2">
             {visibleMessageCount} messages persisted
           </div>
         </div>
@@ -134,7 +134,7 @@ function TemporalDecouplingView({ phase }: { phase: Phase }) {
           >
             SUB
           </motion.div>
-          <span className="text-xs text-gray-500">Consumer</span>
+          <span className="text-xs text-gray-200">Consumer</span>
           <span
             className={`text-xs ${
               subscriberOnline ? "text-accent-green" : "text-accent-red"
@@ -147,7 +147,7 @@ function TemporalDecouplingView({ phase }: { phase: Phase }) {
 
       {/* Received messages */}
       <div className="mt-4 pt-4 border-t border-border">
-        <div className="text-xs text-gray-500 mb-2">CONSUMER RECEIVED:</div>
+        <div className="text-xs text-gray-200 mb-2">CONSUMER RECEIVED:</div>
         <div className="flex gap-1 flex-wrap">
           {allMessages.map((msg, i) => (
             <motion.div
@@ -190,7 +190,7 @@ function SingleBroker({
       className={`relative ${isSmall ? "w-14 h-12" : "w-20 h-16"} rounded-lg bg-terminal-bg border-2 flex flex-col items-center justify-center gap-1`}
     >
       <span
-        className={`${isSmall ? "text-[10px]" : "text-xs"} text-gray-400`}
+        className={`${isSmall ? "text-xs" : "text-xs"} text-gray-200`}
       >
         {isSmall ? "Node" : "Broker"}
       </span>
@@ -211,7 +211,7 @@ function SingleBroker({
         <motion.div
           initial={{ opacity: 0, y: 4 }}
           animate={{ opacity: 1, y: 0 }}
-          className="absolute -bottom-3 left-1/2 -translate-x-1/2 text-[10px] bg-surface px-1 border rounded"
+          className="absolute -bottom-3 left-1/2 -translate-x-1/2 text-xs bg-surface px-1 border rounded"
           style={{ color: borderColor, borderColor }}
         >
           disk
@@ -258,7 +258,7 @@ function DurabilityView({ step }: { step: number }) {
             className="absolute top-0 z-10"
           >
             <div
-              className="px-2 py-0.5 text-black text-[10px] rounded"
+              className="px-2 py-0.5 text-black text-xs rounded"
               style={{ backgroundColor: tier.borderColor }}
             >
               msg
@@ -276,7 +276,7 @@ function DurabilityView({ step }: { step: number }) {
               className="absolute left-0 top-1/2 -translate-y-1/2 z-10"
             >
               <div
-                className="px-2 py-0.5 text-black text-[10px] rounded"
+                className="px-2 py-0.5 text-black text-xs rounded"
                 style={{ backgroundColor: tier.borderColor }}
               >
                 msg
@@ -358,7 +358,7 @@ function DurabilityView({ step }: { step: number }) {
             className="absolute top-0 z-10"
           >
             <div
-              className="px-2 py-0.5 text-black text-[10px] rounded"
+              className="px-2 py-0.5 text-black text-xs rounded"
               style={{ backgroundColor: tier.borderColor }}
             >
               msg
@@ -376,7 +376,7 @@ function DurabilityView({ step }: { step: number }) {
               className="absolute left-0 top-1/2 -translate-y-1/2 z-10"
             >
               <div
-                className="px-2 py-0.5 text-black text-[10px] rounded"
+                className="px-2 py-0.5 text-black text-xs rounded"
                 style={{ backgroundColor: tier.borderColor }}
               >
                 msg

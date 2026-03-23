@@ -75,7 +75,7 @@ function LimitsAnimation({ accentColor }: { accentColor: string }) {
           </motion.div>
         ))}
       </div>
-      <div className="text-xs text-gray-500 mt-2">max: 6 messages</div>
+      <div className="text-xs text-gray-200 mt-2">max: 6 messages</div>
     </div>
   );
 }
@@ -124,7 +124,7 @@ function InterestAnimation({ accentColor }: { accentColor: string }) {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 2.2, duration: 0.3 }}
-        className="text-xs text-gray-500 mt-2"
+        className="text-xs text-gray-200 mt-2"
       >
         all consumers seen M1 → removed
       </motion.div>
@@ -173,7 +173,7 @@ function WorkQueueAnimation({ accentColor }: { accentColor: string }) {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.5, duration: 0.3 }}
-        className="text-xs text-gray-500 mt-2"
+        className="text-xs text-gray-200 mt-2"
       >
         ack received → M1 deleted
       </motion.div>
@@ -205,7 +205,7 @@ function RetentionPolicyView({ slide }: { slide: SlideMeta }) {
 
       {/* Stream visualization */}
       <div className="flex flex-col items-center">
-        <div className="text-xs text-gray-500 mb-2">STREAM</div>
+        <div className="text-xs text-gray-200 mb-2">STREAM</div>
         <AnimatePresence mode="wait">
           <motion.div
             key={slide.kind}

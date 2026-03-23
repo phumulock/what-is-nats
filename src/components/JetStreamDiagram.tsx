@@ -15,7 +15,7 @@ interface CursorSlide {
 }
 
 const SLIDES: CursorSlide[] = [
-  { c1Pos: 0, c2Pos: null, status: "Consumer tracks position with a cursor.", statusColor: "text-gray-500" },
+  { c1Pos: 0, c2Pos: null, status: "Consumer tracks position with a cursor.", statusColor: "text-gray-200" },
   { c1Pos: 1, c2Pos: null, status: "As messages are acknowledged, the cursor advances.", statusColor: "text-accent-green" },
   { c1Pos: 2, c2Pos: null, status: "As messages are acknowledged, the cursor advances.", statusColor: "text-accent-green" },
   { c1Pos: 2, c2Pos: 0, status: "Each consumer is independent — add more without interference.", statusColor: "text-accent-blue" },
@@ -109,7 +109,7 @@ function CursorView({ c1Pos, c2Pos }: { c1Pos: number; c2Pos: number | null }) {
                   className="aspect-square rounded border flex flex-col items-center justify-center max-h-16"
                 >
                   <span
-                    className="text-[10px]"
+                    className="text-xs"
                     style={{
                       color: isProcessed ? "#666" : "#999",
                     }}
@@ -137,7 +137,7 @@ function CursorView({ c1Pos, c2Pos }: { c1Pos: number; c2Pos: number | null }) {
                 </motion.div>
               );
             })}
-            <div className="aspect-square rounded border border-dashed border-border flex items-center justify-center text-xs text-gray-500 max-h-16">
+            <div className="aspect-square rounded border border-dashed border-border flex items-center justify-center text-xs text-gray-200 max-h-16">
               ...
             </div>
           </div>
@@ -149,7 +149,7 @@ function CursorView({ c1Pos, c2Pos }: { c1Pos: number; c2Pos: number | null }) {
               style={{ width: cursorWidth, left: c1Left }}
             >
               <CursorTriangle color={COLORS.green} />
-              <span className="text-[9px] font-bold" style={{ color: COLORS.green }}>C1</span>
+              <span className="text-xs font-bold" style={{ color: COLORS.green }}>C1</span>
             </div>
 
             <div
@@ -162,7 +162,7 @@ function CursorView({ c1Pos, c2Pos }: { c1Pos: number; c2Pos: number | null }) {
               }}
             >
               <CursorTriangle color={COLORS.blue} />
-              <span className="text-[9px] font-bold" style={{ color: COLORS.blue }}>C2</span>
+              <span className="text-xs font-bold" style={{ color: COLORS.blue }}>C2</span>
             </div>
           </div>
         </div>
@@ -180,7 +180,7 @@ function CursorView({ c1Pos, c2Pos }: { c1Pos: number; c2Pos: number | null }) {
           }}
         >
           <span className="text-xs font-bold" style={{ color: COLORS.green }}>C1</span>
-          <span className="text-[10px] text-gray-500">pos: {c1Pos + 1}</span>
+          <span className="text-xs text-gray-200">pos: {c1Pos + 1}</span>
         </motion.div>
 
         <motion.div
@@ -194,12 +194,12 @@ function CursorView({ c1Pos, c2Pos }: { c1Pos: number; c2Pos: number | null }) {
           }}
         >
           <span className="text-xs font-bold" style={{ color: COLORS.blue }}>C2</span>
-          <span className="text-[10px] text-gray-500">pos: {c2Pos !== null ? c2Pos + 1 : 0}</span>
+          <span className="text-xs text-gray-200">pos: {c2Pos !== null ? c2Pos + 1 : 0}</span>
         </motion.div>
       </div>
 
       {/* Legend */}
-      <div className="mt-4 pt-4 border-t border-border flex items-center gap-4 text-xs text-gray-500">
+      <div className="mt-4 pt-4 border-t border-border flex items-center gap-4 text-xs text-gray-200">
         <div className="flex items-center gap-1.5">
           <div
             className="w-3 h-3 rounded-sm"

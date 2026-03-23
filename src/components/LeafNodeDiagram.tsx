@@ -223,7 +223,7 @@ export function LeafNodeDiagram() {
       </div>
 
       {/* Status */}
-      <div className="mt-6 text-center text-sm min-h-10 text-gray-500">
+      <div className="mt-6 text-center text-sm min-h-10 text-gray-200">
         {step === 0 && "Device publishes sensor data at the factory..."}
         {step === 1 && "Leaf node forwards upstream to cluster..."}
         {step === 2 && "Cluster receives and routes to subscribers..."}
@@ -234,8 +234,8 @@ export function LeafNodeDiagram() {
       </div>
 
       {/* Insight */}
-      <div className="mt-3 pt-3 border-t border-border text-xs text-center">
-        <span className="text-gray-500">Same NATS subjects, same client code — </span>
+      <div className="mt-3 pt-3 border-t border-border text-sm text-center">
+        <span className="text-gray-200">Same NATS subjects, same client code — </span>
         <span className="text-white">just closer to the data source</span>
       </div>
 

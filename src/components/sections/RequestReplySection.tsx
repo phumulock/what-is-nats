@@ -11,7 +11,7 @@ export function RequestReplySection({ number, id }: SectionProps) {
     <SectionContainer>
       <SectionHeader number={number} title="Request & Reply" id={id} href="https://docs.nats.io/nats-concepts/reqreply" />
       <p className="mt-4 text-white text-lg">RPC without the service mesh.</p>
-      <p className="mt-4 text-gray-500">
+      <p className="mt-4 text-gray-200 text-lg">
         Need a response? NATS creates a{" "}
         <span className="text-accent-green font-bold">
           unique inbox subject

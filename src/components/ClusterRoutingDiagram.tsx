@@ -14,7 +14,7 @@ export function ClusterRoutingDiagram() {
       <div className="flex justify-between items-start gap-2">
         {/* Region A - Tokyo */}
         <div className="flex-1 min-w-0">
-          <div className="text-xs text-gray-500 text-center mb-2">TOKYO</div>
+          <div className="text-xs text-gray-200 text-center mb-2">TOKYO</div>
           <div className="border border-border rounded-lg p-3 bg-terminal-bg">
             {/* Publisher */}
             <motion.div
@@ -40,7 +40,7 @@ export function ClusterRoutingDiagram() {
 
         {/* Route connection */}
         <div className="flex flex-col items-center justify-center pt-8">
-          <div className="text-xs text-gray-500 mb-1">route</div>
+          <div className="text-xs text-gray-200 mb-1">route</div>
           <div className="relative w-10 md:w-16 h-8">
             <div className="absolute top-1/2 left-0 right-0 border-t border-dashed border-border" />
             {step === 2 && (
@@ -57,7 +57,7 @@ export function ClusterRoutingDiagram() {
 
         {/* Region B - London */}
         <div className="flex-1 min-w-0">
-          <div className="text-xs text-gray-500 text-center mb-2">LONDON</div>
+          <div className="text-xs text-gray-200 text-center mb-2">LONDON</div>
           <div className="border border-border rounded-lg p-3 bg-terminal-bg">
             {/* Server */}
             <motion.div
@@ -84,7 +84,7 @@ export function ClusterRoutingDiagram() {
       </div>
 
       {/* Status */}
-      <div className="mt-6 text-center text-sm min-h-10 text-gray-500">
+      <div className="mt-6 text-center text-sm min-h-10 text-gray-200">
         {step === 0 && "Publisher sends message in Tokyo..."}
         {step === 1 && "Local server receives message..."}
         {step === 2 && "Message routes to London cluster..."}
@@ -93,10 +93,10 @@ export function ClusterRoutingDiagram() {
       </div>
 
       {/* Key insight */}
-      <div className="mt-4 pt-4 border-t border-border text-xs text-center">
-        <span className="text-gray-500">The publisher doesn&apos;t know </span>
+      <div className="mt-4 pt-4 border-t border-border text-sm text-center">
+        <span className="text-gray-200">The publisher doesn&apos;t know </span>
         <span className="text-white">where</span>
-        <span className="text-gray-500"> subscribers are</span>
+        <span className="text-gray-200"> subscribers are</span>
       </div>
 
       <DiagramControls

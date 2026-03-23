@@ -12,7 +12,7 @@ export function SummarySection({ number, id }: SectionProps) {
       <p className="mt-4 text-white text-lg">
         Start simple. Layer on capabilities as your needs grow.
       </p>
-      <p className="mt-4 text-gray-500">
+      <p className="mt-4 text-gray-200 text-lg">
         NATS gives you a toolkit of capabilities that share one subject
         namespace, one connection, and one security model. Most applications
         start with Core and add capabilities only when needed. Security
@@ -30,7 +30,7 @@ export function SummarySection({ number, id }: SectionProps) {
         <p className="text-lg mb-2">
           Start simple. Add complexity only when needed.
         </p>
-        <p className="text-gray-500 text-sm">
+        <p className="text-gray-300 text-sm">
           That&apos;s the NATS philosophy&mdash;and why it scales from IoT
           sensors to global financial systems.
         </p>

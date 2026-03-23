@@ -44,7 +44,7 @@ export function KVStoreDemo() {
       <div className="flex flex-col md:flex-row border-b border-border">
         {/* KV Bucket */}
         <div className="flex-1 p-4 border-b md:border-b-0 md:border-r border-border">
-          <div className="text-xs text-gray-500 mb-3">KV BUCKET: users</div>
+          <div className="text-xs text-gray-200 mb-3">KV BUCKET: users</div>
           <div className="space-y-2">
             {entries.map((entry) => (
               <motion.div
@@ -59,7 +59,7 @@ export function KVStoreDemo() {
                 <code className="text-accent-blue">{entry.key}</code>
                 <div className="flex items-center gap-2">
                   <code className="text-accent-green">{entry.value}</code>
-                  <span className="text-gray-600">r{entry.revision}</span>
+                  <span className="text-gray-200">r{entry.revision}</span>
                 </div>
               </motion.div>
             ))}
@@ -68,7 +68,7 @@ export function KVStoreDemo() {
 
         {/* Watcher */}
         <div className="w-full md:w-40 p-4 bg-surface">
-          <div className="text-xs text-gray-500 mb-3">WATCHING</div>
+          <div className="text-xs text-gray-200 mb-3">WATCHING</div>
           {watchers.map((w) => (
             <div
               key={w}
@@ -83,7 +83,7 @@ export function KVStoreDemo() {
             animate={{ opacity: lastUpdate ? 1 : 0 }}
             className="mt-4 text-xs"
           >
-            <div className="text-gray-500 mb-1">UPDATE:</div>
+            <div className="text-gray-200 mb-1">UPDATE:</div>
             <div className="text-accent-green text-xs break-all">
               {lastUpdate || "\u00A0"}
             </div>
@@ -92,7 +92,7 @@ export function KVStoreDemo() {
       </div>
 
       {/* Status */}
-      <div className="p-3 pt-6 text-center text-sm min-h-10 text-gray-500">
+      <div className="p-3 pt-6 text-center text-sm min-h-10 text-gray-200">
         {step === 0 && "KV store with 3 keys..."}
         {step === 1 && (
           <span className="text-accent-green">

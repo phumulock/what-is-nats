@@ -17,7 +17,7 @@ export function ObjectStoreDemo() {
         <div className="flex flex-col md:flex-row items-center justify-between gap-3 md:gap-4">
           {/* Source file */}
           <div className="flex flex-col items-center gap-2 min-w-[80px]">
-            <div className="text-xs text-gray-500 mb-1">FILE</div>
+            <div className="text-xs text-gray-200 mb-1">FILE</div>
             <motion.div
               animate={{
                 opacity: step <= 2 ? 1 : 0.4,
@@ -38,8 +38,8 @@ export function ObjectStoreDemo() {
                   d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"
                 />
               </svg>
-              <span className="text-[10px] text-accent-blue">config.bin</span>
-              <span className="text-[10px] text-gray-600">512 KB</span>
+              <span className="text-xs text-accent-blue">config.bin</span>
+              <span className="text-xs text-gray-200">512 KB</span>
             </motion.div>
           </div>
 
@@ -47,7 +47,7 @@ export function ObjectStoreDemo() {
           <div className="flex md:hidden items-center justify-center w-8 h-8 relative">
             <motion.div
               animate={{ opacity: step >= 1 ? 1 : 0.3 }}
-              className="text-gray-500 text-lg"
+              className="text-gray-200 text-lg"
             >
               {step <= 2 ? "↓" : "↑"}
             </motion.div>
@@ -57,13 +57,13 @@ export function ObjectStoreDemo() {
           <div className="hidden md:flex flex-col items-center gap-1">
             <motion.div
               animate={{ opacity: step >= 1 ? 1 : 0.3 }}
-              className="text-gray-500 text-lg"
+              className="text-gray-200 text-lg"
             >
               {step <= 2 ? "→" : "←"}
             </motion.div>
             <motion.span
               animate={{ opacity: step >= 1 ? 1 : 0 }}
-              className="text-[10px] text-gray-600"
+              className="text-xs text-gray-200"
             >
               {step <= 2 ? "chunk" : "reassemble"}
             </motion.span>
@@ -71,7 +71,7 @@ export function ObjectStoreDemo() {
 
           {/* Chunks / JetStream stream */}
           <div className="flex-1 w-full md:w-auto max-w-[240px]">
-            <div className="text-xs text-gray-500 mb-1 text-center">
+            <div className="text-xs text-gray-200 mb-1 text-center">
               JETSTREAM STREAM
             </div>
             <div className="border border-border rounded bg-surface p-2 space-y-1.5">
@@ -97,8 +97,8 @@ export function ObjectStoreDemo() {
                   transition={{ delay: step >= 1 ? i * 0.1 : 0 }}
                   className="flex items-center justify-between text-xs p-1.5 rounded border"
                 >
-                  <span className="text-gray-400">{chunk}</span>
-                  <span className="text-gray-600 text-[10px]">
+                  <span className="text-gray-200">{chunk}</span>
+                  <span className="text-gray-200 text-xs">
                     seq {i + 1}
                   </span>
                 </motion.div>
@@ -110,7 +110,7 @@ export function ObjectStoreDemo() {
           <div className="flex md:hidden items-center justify-center w-8 h-8 relative">
             <motion.div
               animate={{ opacity: step >= 3 ? 1 : 0.3 }}
-              className="text-gray-500 text-lg"
+              className="text-gray-200 text-lg"
             >
               ↓
             </motion.div>
@@ -120,13 +120,13 @@ export function ObjectStoreDemo() {
           <div className="hidden md:flex flex-col items-center gap-1">
             <motion.div
               animate={{ opacity: step >= 3 ? 1 : 0.3 }}
-              className="text-gray-500 text-lg"
+              className="text-gray-200 text-lg"
             >
               →
             </motion.div>
             <motion.span
               animate={{ opacity: step >= 3 ? 1 : 0 }}
-              className="text-[10px] text-gray-600"
+              className="text-xs text-gray-200"
             >
               read
             </motion.span>
@@ -134,7 +134,7 @@ export function ObjectStoreDemo() {
 
           {/* Reassembled file */}
           <div className="flex flex-col items-center gap-2 min-w-[80px]">
-            <div className="text-xs text-gray-500 mb-1">READER</div>
+            <div className="text-xs text-gray-200 mb-1">READER</div>
             <motion.div
               animate={{
                 opacity: step === 3 ? 1 : 0.3,
@@ -157,10 +157,10 @@ export function ObjectStoreDemo() {
                   d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"
                 />
               </svg>
-              <span className="text-[10px] text-accent-green" style={{ opacity: step === 3 ? 1 : 0.3 }}>
+              <span className="text-xs text-accent-green" style={{ opacity: step === 3 ? 1 : 0.3 }}>
                 config.bin
               </span>
-              <span className="text-[10px] text-gray-600" style={{ opacity: step === 3 ? 1 : 0.3 }}>
+              <span className="text-xs text-gray-200" style={{ opacity: step === 3 ? 1 : 0.3 }}>
                 512 KB
               </span>
             </motion.div>
@@ -169,7 +169,7 @@ export function ObjectStoreDemo() {
       </div>
 
       {/* Status */}
-      <div className="p-3 pt-6 text-center text-sm min-h-10 text-gray-500 border-t border-border">
+      <div className="p-3 pt-6 text-center text-sm min-h-10 text-gray-200 border-t border-border">
         {step === 0 && "Large file ready to store..."}
         {step === 1 && (
           <span className="text-accent-blue">

@@ -53,7 +53,7 @@ export function NoRespondersDiagram() {
           >
             REQ
           </motion.div>
-          <span className="text-xs text-gray-500">Requester</span>
+          <span className="text-xs text-gray-200">Requester</span>
         </div>
 
         {/* Mobile: vertical request arrow */}
@@ -67,7 +67,7 @@ export function NoRespondersDiagram() {
               transition={{ duration: 0.5 }}
               className="absolute top-0 z-10"
             >
-              <div className="px-2 py-0.5 bg-accent-green text-black text-[10px] rounded">
+              <div className="px-2 py-0.5 bg-accent-green text-black text-xs rounded">
                 request
               </div>
             </motion.div>
@@ -110,15 +110,15 @@ export function NoRespondersDiagram() {
               borderColor: COLORS.border,
               opacity: step >= 1 ? 0.3 : 0.5,
             }}
-            className="w-16 h-16 rounded-lg bg-terminal-bg border border-dashed flex items-center justify-center text-xs text-gray-600"
+            className="w-16 h-16 rounded-lg bg-terminal-bg border border-dashed flex items-center justify-center text-xs text-gray-200"
           >
             ???
           </motion.div>
-          <span className="text-xs text-gray-600">No subscribers</span>
+          <span className="text-xs text-gray-200">No subscribers</span>
         </div>
       </div>
 
-      <div className="mt-6 text-center text-sm min-h-10 text-gray-500">
+      <div className="mt-6 text-center text-sm min-h-10 text-gray-200">
         {step === 0 && "Requester sends a request to a subject"}
         {step === 1 && "NATS checks for subscribers on that subject..."}
         {step === 2 && "No one is listening — NATS responds immediately"}

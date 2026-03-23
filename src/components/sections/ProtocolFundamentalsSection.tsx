@@ -67,7 +67,7 @@ export function ProtocolFundamentalsSection({ number, id }: SectionProps) {
         How each system talks on the wire, names its destinations, and layers on
         persistence.
       </p>
-      <p className="mt-4 text-gray-500">
+      <p className="mt-4 text-gray-200 text-lg">
         The protocol shapes everything else&mdash;how easy it is to debug, how
         fast you can onboard, and how much ceremony stands between you and your
         first message. Compare the foundations.

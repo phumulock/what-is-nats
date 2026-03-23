@@ -13,7 +13,7 @@ export function ConsumersSection({ number, id }: SectionProps) {
       <p className="mt-4 text-white text-lg">
         Durable cursors that track delivery progress.
       </p>
-      <p className="mt-4 text-gray-500">
+      <p className="mt-4 text-gray-200 text-lg">
         Consumers act as durable cursors, tracking delivery progress
         independently. Messages redeliver until acknowledged, guaranteeing{" "}
         <span className="text-accent-green font-bold">at-least-once</span> delivery.

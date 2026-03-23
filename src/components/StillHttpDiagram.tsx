@@ -82,7 +82,7 @@ export function StillHttpDiagram() {
           >
             <div className="flex-shrink-0">
               <div
-                className="text-[10px] font-mono px-2 py-0.5 rounded border"
+                className="text-xs font-mono px-2 py-0.5 rounded border"
                 style={{ color: proto.color, borderColor: withAlpha(proto.color, 0.375) }}
               >
                 {proto.name}
@@ -94,7 +94,7 @@ export function StillHttpDiagram() {
                   {proto.layer}
                 </span>
               </div>
-              <p className="text-[11px] text-gray-600 mt-0.5">{proto.desc}</p>
+              <p className="text-xs text-gray-200 mt-0.5">{proto.desc}</p>
             </div>
             {/* Connector indicator */}
             <motion.div
@@ -135,7 +135,7 @@ export function StillHttpDiagram() {
           </span>
           <motion.span
             animate={{ opacity: step >= 0 ? 1 : 0 }}
-            className="text-[11px] text-gray-600"
+            className="text-xs text-gray-200"
           >
             — the foundation underneath
           </motion.span>
@@ -143,7 +143,7 @@ export function StillHttpDiagram() {
         <motion.div
           animate={{ opacity: step === 5 ? 1 : 0 }}
           transition={{ delay: 0.2 }}
-          className="mt-2 text-[10px] text-gray-600"
+          className="mt-2 text-xs text-gray-200"
         >
           request/reply · point-to-point · location-dependent · one-to-one
         </motion.div>

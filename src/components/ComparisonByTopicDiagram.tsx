@@ -73,10 +73,10 @@ export function ComparisonByTopicDiagram({
           <button
             key={comp.category}
             onClick={() => goTo(i)}
-            className={`md:flex-1 md:min-w-0 px-1 md:px-2 py-2.5 text-[9px] md:text-[11px] font-mono transition-colors cursor-pointer ${
+            className={`md:flex-1 md:min-w-0 px-1 md:px-2 py-2.5 text-[10px] md:text-xs font-mono transition-colors cursor-pointer ${
               step === i
                 ? "bg-accent-green/15 text-accent-green border-b-2 border-accent-green"
-                : "bg-transparent text-gray-500 hover:text-gray-300"
+                : "bg-transparent text-gray-500 hover:text-white"
             }`}
           >
             {comp.category}
@@ -102,10 +102,10 @@ export function ComparisonByTopicDiagram({
                 className="rounded-lg border border-accent-green/40 bg-accent-green/5 p-4 mb-4"
               >
                 <div className="flex items-center gap-2 mb-2">
-                  <span className="text-[10px] font-mono font-bold px-2 py-0.5 rounded border border-accent-green/60 text-accent-green">
+                  <span className="text-xs font-mono font-bold px-2 py-0.5 rounded border border-accent-green/60 text-accent-green">
                     {activeComparison.natsLabel ?? natsLabel}
                   </span>
-                  <span className="text-[10px] text-gray-500 font-mono uppercase tracking-wider">
+                  <span className="text-xs text-gray-200 font-mono uppercase tracking-wider">
                     {activeComparison.category}
                   </span>
                 </div>
@@ -132,13 +132,13 @@ export function ComparisonByTopicDiagram({
                     >
                       <div className="shrink-0">
                         <div
-                          className="text-[10px] font-mono px-2 py-0.5 rounded border"
+                          className="text-xs font-mono px-2 py-0.5 rounded border"
                           style={{ color, borderColor: withAlpha(color, 0.375) }}
                         >
                           {alt.name}
                         </div>
                       </div>
-                      <p className="text-sm text-gray-500 leading-relaxed min-w-0 flex-1">
+                      <p className="text-sm text-gray-200 leading-relaxed min-w-0 flex-1">
                         {alt.detail}
                       </p>
                     </motion.div>

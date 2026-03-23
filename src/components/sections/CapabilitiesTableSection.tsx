@@ -79,7 +79,7 @@ export function CapabilitiesTableSection({ number, id }: SectionProps) {
           <table className="w-full text-xs md:text-sm font-mono">
             <thead>
               <tr className="border-b border-border">
-                <th className="text-left text-gray-500 text-xs uppercase tracking-wider px-2 md:px-4 py-3 sticky left-0 bg-surface z-10">
+                <th className="text-left text-gray-300 text-xs uppercase tracking-wider px-2 md:px-4 py-3 sticky left-0 bg-surface z-10">
                   Capability
                 </th>
                 {SYSTEMS.map((sys) => (
@@ -103,7 +103,7 @@ export function CapabilitiesTableSection({ number, id }: SectionProps) {
                       : ""
                   }
                 >
-                  <td className="text-gray-400 text-xs px-2 md:px-4 py-2.5 sticky left-0 bg-surface z-10">
+                  <td className="text-gray-200 text-xs px-2 md:px-4 py-2.5 sticky left-0 bg-surface z-10">
                     {cap.label}
                   </td>
                   {SYSTEMS.map((sys) => (

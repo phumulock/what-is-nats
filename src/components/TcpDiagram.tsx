@@ -59,7 +59,7 @@ export function TcpDiagram() {
         animate={{ opacity: step >= 0 ? 1 : 0 }}
         className="text-center mb-4"
       >
-        <span className="text-xs font-mono text-gray-500 border border-border rounded-full px-3 py-1">
+        <span className="text-xs font-mono text-gray-200 border border-border rounded-full px-3 py-1">
           TCP &mdash; The Foundation
         </span>
       </motion.div>
@@ -85,7 +85,7 @@ export function TcpDiagram() {
               <div className="text-xs font-medium" style={{ color: item.color }}>
                 {item.label}
               </div>
-              <div className="text-[10px] text-gray-600 mt-1">{item.desc}</div>
+              <div className="text-xs text-gray-200 mt-1">{item.desc}</div>
             </motion.div>
           ))}
         </div>
@@ -128,7 +128,7 @@ export function TcpDiagram() {
               >
                 <div className="flex items-center gap-2">
                   <div
-                    className="text-[10px] font-mono px-2 py-0.5 rounded border"
+                    className="text-xs font-mono px-2 py-0.5 rounded border"
                     style={{ color: item.color, borderColor: `${item.color}50` }}
                   >
                     PROBLEM
@@ -137,7 +137,7 @@ export function TcpDiagram() {
                     {item.problem}
                   </span>
                 </div>
-                <p className="text-xs text-gray-600 mt-1 whitespace-nowrap">{item.detail}</p>
+                <p className="text-xs text-gray-200 mt-1 whitespace-nowrap">{item.detail}</p>
               </div>
             </motion.div>
           ))}
@@ -147,10 +147,10 @@ export function TcpDiagram() {
       {/* Status text */}
       <div className="mt-4 text-center text-sm min-h-10">
         {step === 0 && (
-          <span className="text-gray-500">TCP was built for reliable communication...</span>
+          <span className="text-gray-200">TCP was built for reliable communication...</span>
         )}
         {step >= 1 && step <= 3 && (
-          <span className="text-gray-500">The kernel handles retransmission, congestion, and ordering...</span>
+          <span className="text-gray-200">The kernel handles retransmission, congestion, and ordering...</span>
         )}
         {step === 4 && (
           <span className="text-accent-red">But at high throughput, these features become liabilities...</span>

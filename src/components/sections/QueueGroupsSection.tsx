@@ -11,23 +11,23 @@ export function QueueGroupsSection({ number, id }: SectionProps) {
     <SectionContainer>
       <SectionHeader number={number} title="Queue Groups" id={id} href="https://docs.nats.io/nats-concepts/queue" />
       <p className="mt-4 text-white text-lg">Scaling without Kubernetes.</p>
-      <p className="mt-4 text-gray-500">
+      <p className="mt-4 text-gray-200 text-lg">
         Add a queue group name to your subscription and NATS distributes
         messages across all subscribers in that group. No coordinator, no
         leader election, no split-brain scenarios.
       </p>
-      <p className="mt-4 text-gray-500">
+      <p className="mt-4 text-gray-200 text-lg">
         <span className="text-accent-green font-bold">Exactly one subscriber</span>{" "}
         &mdash; each message goes to one subscriber in the group. Start a new
         worker and it gets messages immediately&mdash;stop one and others pick
         up instantly. No partition rebalancing delay.
       </p>
-      <p className="mt-4 text-gray-500">
+      <p className="mt-4 text-gray-200 text-lg">
         <span className="text-accent-yellow font-bold">Load balance</span>{" "}
         &mdash; NATS distributes work evenly across workers. Scale from 1 to
         1000 processes with zero configuration changes.
       </p>
-      <p className="mt-4 text-gray-500">
+      <p className="mt-4 text-gray-200 text-lg">
         <span className="text-accent-blue font-bold">Fanning out</span>{" "}
         &mdash; queue groups and regular subscribers coexist on the same
         subject. Load balance to workers while simultaneously sending to

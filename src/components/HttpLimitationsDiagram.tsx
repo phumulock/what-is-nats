@@ -33,7 +33,7 @@ const LIMITATIONS = [
 ];
 
 const STATUS_TEXT: { text: string; color: string }[] = [
-  { text: "HTTP at its core...", color: "text-gray-500" },
+  { text: "HTTP at its core...", color: "text-gray-200" },
   { text: "Client must know exactly where the server lives \u2192 requires Discovery.", color: "text-accent-red" },
   { text: "One client, one server\u2014every time \u2192 requires Load Balancing.", color: "text-accent-orange" },
   { text: "Request blocks until response. Both sides must be online \u2192 requires Service Mesh.", color: "text-accent-yellow" },
@@ -80,7 +80,7 @@ export function HttpLimitationsDiagram() {
               <span className="font-medium" style={{ color: item.color }}>
                 {item.title}
               </span>
-              <span className="text-gray-500 text-sm">
+              <span className="text-gray-200 text-sm">
                 {" "}&mdash; {item.desc}
               </span>
               <span
@@ -103,10 +103,10 @@ export function HttpLimitationsDiagram() {
           }}
           className="w-24 h-16 rounded-lg border-2 bg-terminal-bg flex flex-col items-center justify-center"
         >
-          <span className="text-xs text-gray-400">Client</span>
+          <span className="text-xs text-gray-200">Client</span>
           <motion.span
             animate={{ opacity: step >= 2 ? 1 : 0 }}
-            className="text-[10px] text-gray-600 font-mono mt-0.5"
+            className="text-xs text-gray-200 font-mono mt-0.5"
           >
             knows URL
           </motion.span>
@@ -125,7 +125,7 @@ export function HttpLimitationsDiagram() {
           <motion.span
             animate={{ opacity: step >= 1 ? 1 : 0 }}
             transition={{ delay: step >= 1 ? 0.2 : 0 }}
-            className="text-[10px] font-mono text-accent-blue"
+            className="text-xs font-mono text-accent-blue"
           >
             GET /api/data
           </motion.span>
@@ -140,7 +140,7 @@ export function HttpLimitationsDiagram() {
           <motion.span
             animate={{ opacity: step >= 2 ? 1 : 0 }}
             transition={{ delay: step >= 2 ? 0.2 : 0 }}
-            className="text-[10px] font-mono text-accent-green"
+            className="text-xs font-mono text-accent-green"
           >
             200 OK
           </motion.span>
@@ -153,10 +153,10 @@ export function HttpLimitationsDiagram() {
           }}
           className="w-24 h-16 rounded-lg border-2 bg-terminal-bg flex flex-col items-center justify-center"
         >
-          <span className="text-xs text-gray-400">Server</span>
+          <span className="text-xs text-gray-200">Server</span>
           <motion.span
             animate={{ opacity: step >= 1 ? 1 : 0 }}
-            className="text-[10px] text-gray-600 font-mono mt-0.5"
+            className="text-xs text-gray-200 font-mono mt-0.5"
           >
             :443
           </motion.span>
@@ -168,7 +168,7 @@ export function HttpLimitationsDiagram() {
         animate={{ opacity: step >= 3 ? 1 : 0 }}
         className="text-center mt-4 mb-2"
       >
-        <span className="text-xs text-gray-600 border border-border rounded-full px-3 py-1">
+        <span className="text-xs text-gray-200 border border-border rounded-full px-3 py-1">
           This is all HTTP does natively
         </span>
       </motion.div>

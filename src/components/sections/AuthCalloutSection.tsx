@@ -13,18 +13,18 @@ export function AuthCalloutSection({ number, id }: SectionProps) {
       <p className="mt-4 text-white text-lg">
         Your auth rules. NATS enforcement.
       </p>
-      <p className="mt-4 text-gray-500">
+      <p className="mt-4 text-gray-200 text-lg">
         NKeys and JWTs handle most scenarios, but what if credentials already
         live in an LDAP directory, an OAuth provider, or a custom database?{" "}
       </p>
-      <p className="mt-4 text-gray-500">
+      <p className="mt-4 text-gray-200 text-lg">
         <span className="text-accent-purple font-bold">Auth Callout</span>{" "}
         &mdash; lets NATS delegate authentication to your own service&mdash;a
         regular NATS subscriber that receives connection requests, validates
         credentials against any backend, and returns a signed JWT with scoped
         permissions.
       </p>
-      <p className="mt-4 text-gray-500">
+      <p className="mt-4 text-gray-200 text-lg">
         The callout service subscribes to{" "}
         <code className="text-accent-green">$SYS.REQ.USER.AUTH</code>. When a
         client connects, NATS publishes the connection details to that subject.

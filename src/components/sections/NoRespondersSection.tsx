@@ -13,7 +13,7 @@ export function NoRespondersSection({ number, id }: SectionProps) {
       <p className="mt-4 text-white text-lg">
         Instant failure feedback, not silent timeouts.
       </p>
-      <p className="mt-4 text-gray-500">
+      <p className="mt-4 text-gray-200 text-lg">
         With HTTP, if a service is down your request hangs until a timeout
         fires&mdash;30 seconds of wasted time and a blocked thread. NATS knows
         the subscription table. If nobody is listening on a subject, the server

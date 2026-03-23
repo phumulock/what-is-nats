@@ -123,7 +123,7 @@ export function ClusterMeshDiagram() {
       }}
       className="border rounded-lg px-2 py-1.5 text-center"
     >
-      <div className="text-xs text-gray-400">Publisher</div>
+      <div className="text-xs text-gray-200">Publisher</div>
     </motion.div>
   );
 
@@ -136,7 +136,7 @@ export function ClusterMeshDiagram() {
       }}
       className="border rounded-lg px-2 py-1.5 text-center"
     >
-      <div className="text-xs text-gray-400">{sub}</div>
+      <div className="text-xs text-gray-200">{sub}</div>
     </motion.div>
   ));
 
@@ -162,7 +162,7 @@ export function ClusterMeshDiagram() {
         {/* Cluster SVG — desktop */}
         <div className="flex-1">
           <div className="border border-dashed border-accent-green/25 rounded-lg bg-surface-dark p-3">
-            <div className="text-[11px] text-accent-green/50 text-center mb-1 tracking-widest font-mono">
+            <div className="text-xs text-accent-green/50 text-center mb-1 tracking-widest font-mono">
               CLUSTER
             </div>
             {clusterSvg(12, 25)}
@@ -184,7 +184,7 @@ export function ClusterMeshDiagram() {
                 }}
                 className="border rounded-lg px-2 py-1.5 text-center"
               >
-                <div className="text-xs text-gray-400">{sub}</div>
+                <div className="text-xs text-gray-200">{sub}</div>
               </motion.div>
             </div>
           ))}
@@ -194,7 +194,7 @@ export function ClusterMeshDiagram() {
       {/* Mobile: full-width SVG */}
       <div className="md:hidden">
         <div className="border border-dashed border-accent-green/25 rounded-lg bg-surface-dark p-2">
-          <div className="text-[11px] text-accent-green/50 text-center mb-1 tracking-widest font-mono">
+          <div className="text-xs text-accent-green/50 text-center mb-1 tracking-widest font-mono">
             CLUSTER
           </div>
           {clusterSvg(13, 27)}
@@ -202,7 +202,7 @@ export function ClusterMeshDiagram() {
       </div>
 
       {/* Status */}
-      <div className="mt-6 text-center text-sm min-h-10 text-gray-500">
+      <div className="mt-6 text-center text-sm min-h-10 text-gray-200">
         {step === 0 && "Publisher sends message to nats-1..."}
         {step === 1 && "nats-1 receives the message..."}
         {step === 2 && "Routes propagate to nats-2 and nats-3..."}
@@ -212,8 +212,8 @@ export function ClusterMeshDiagram() {
       </div>
 
       {/* Insight */}
-      <div className="mt-3 pt-3 border-t border-border text-xs text-center">
-        <span className="text-gray-500">Core routing is symmetric — </span>
+      <div className="mt-3 pt-3 border-t border-border text-sm text-center">
+        <span className="text-gray-200">Core routing is symmetric — </span>
         <span className="text-white">JetStream uses Raft to elect a leader per stream for consistency</span>
       </div>
 

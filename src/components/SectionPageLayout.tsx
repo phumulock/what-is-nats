@@ -59,7 +59,7 @@ export function SectionPageLayout({
                   <NestedDiagram layers={page.heroLayers} />
                 </div>
               )}
-              <p className="text-gray-500 text-sm">Scroll to explore</p>
+              <p className="text-gray-300 text-sm">Scroll to explore</p>
             </div>
             {sections.map(([id, Component], i) => (
               <Fragment key={id}>

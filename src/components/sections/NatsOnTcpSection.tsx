@@ -13,7 +13,7 @@ export function NatsOnTcpSection({ number, id }: SectionProps) {
         title="How NATS Builds on TCP"
         id={id}
       />
-      <p className="mt-4 text-gray-500">
+      <p className="mt-4 text-gray-200 text-lg">
         The NATS protocol is human-readable text over TCP&mdash;you can
         debug it with telnet.
       </p>
@@ -21,7 +21,7 @@ export function NatsOnTcpSection({ number, id }: SectionProps) {
       <p className="mt-6 text-white text-lg">
         But NATS doesn&apos;t just speak text over TCP. It takes control.
       </p>
-      <p className="mt-4 text-gray-500">
+      <p className="mt-4 text-gray-200 text-lg">
         TCP&apos;s trade-offs at scale&mdash;head-of-line blocking,
         unpredictable buffering, slow failure detection&mdash;don&apos;t
         go away just because you have a nice protocol on top. NATS handles
