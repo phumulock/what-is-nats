@@ -37,7 +37,7 @@ export function SectionPageLayout({
         groups={SECTION_GROUPS}
       />
       <a
-        href="https://synadia.com"
+        href="https://synadia.com?utm_source=whatisnats&utm_medium=referral"
         target="_blank"
         rel="noopener noreferrer"
         className="flex items-center justify-center py-4"
@@ -75,7 +75,7 @@ export function SectionPageLayout({
         </SpotlightProvider>
       </main>
       <a
-        href="https://synadia.com"
+        href="https://synadia.com?utm_source=whatisnats&utm_medium=referral"
         target="_blank"
         rel="noopener noreferrer"
         className="flex items-center justify-center py-8"

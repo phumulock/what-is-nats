@@ -38,6 +38,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <script
+          defer
+          data-domain="nats.synadia.com"
+          src="https://plausible.io/js/script.hash.outbound-links.js"
+        />
+      </head>
       <body className={`${jetbrainsMono.variable} antialiased`}>
         {children}
       </body>
