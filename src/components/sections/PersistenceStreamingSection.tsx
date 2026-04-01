@@ -26,9 +26,9 @@ const COMPARISONS = [
   },
   {
     category: "Stream Retention",
-    nats: "Retention per-subject with limits on count, size, or age. Subjects are the unit of organization — no partition math, no consumer-to-partition binding.",
+    nats: "Retention per-subject with limits on count, size, or age. Subjects are the unit of organization — no partition math, no consumer-to-partition binding. Work-queue retention turns a stream into a proper queue: individual messages are deleted on acknowledgement, giving you exactly-once processing with durable replay.",
     others: [
-      { name: "Kafka", detail: "Retention is per-topic. Partition count is set at creation and painful to change. Consumers are bound to partitions, complicating scaling." },
+      { name: "Kafka", detail: "Retention is per-topic. Partition count is set at creation and painful to change. Consumers are bound to partitions, complicating scaling. Queue-like per-message consumption only arrived recently with share groups (KIP-932)." },
       { name: "Pulsar", detail: "Topics have partitions like Kafka. Retention policies exist but are less granular — no per-subject control within a topic." },
       { name: "RabbitMQ Streams", detail: "Append-only logs with time or size limits, but no subject-based filtering. You get the whole stream or nothing." },
     ],

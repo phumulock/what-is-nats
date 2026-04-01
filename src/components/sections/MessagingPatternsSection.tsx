@@ -27,7 +27,7 @@ const COMPARISONS = [
   },
   {
     category: "Req/Reply",
-    nats: "First-class request/reply built into the protocol. A single PUB with an inbox subject gives you synchronous RPC over an async transport — no extra infrastructure.",
+    nats: "First-class request/reply built into the protocol. A single PUB with an inbox subject gives you synchronous RPC over an async transport — no extra infrastructure. The NATS microservices framework builds on this with service discovery, observability, and metadata — service-mesh functionality without the mesh. Over super-clusters or leaf nodes, you get built-in geo-affinity for free.",
     others: [
       { name: "Kafka", detail: "No native request/reply. You build it yourself with two topics, correlation IDs, and a consumer polling for responses." },
       { name: "RabbitMQ", detail: "Supported via reply-to headers and temporary queues, but you manage correlation IDs and queue lifecycle yourself." },
@@ -37,7 +37,7 @@ const COMPARISONS = [
   },
   {
     category: "Queue Groups",
-    nats: "Any subscriber joins a queue group by name. No coordinator, no leader election, no partition assignment. New workers get messages immediately.",
+    nats: "Any subscriber joins a queue group by name. No coordinator, no leader election, no partition assignment. New workers get messages immediately. Deploy over super-clusters or leaf nodes and you get built-in geo-affinity — requests are served by the closest responder automatically.",
     others: [
       { name: "Kafka", detail: "Consumer groups need a group coordinator. Partition rebalancing can pause consumption for minutes. Workers are locked to partitions." },
       { name: "RabbitMQ", detail: "Competing consumers work, but require explicit queue declaration, binding, and prefetch tuning per consumer." },

@@ -29,9 +29,9 @@ const COMPARISONS = [
   },
   {
     category: "Subjects & Topics",
-    nats: "Subjects are just dot-delimited strings. No pre-creation, no partition count, no replication factor. Publish to any subject instantly.",
+    nats: "Subjects are just dot-delimited strings. No pre-creation, no partition count, no replication factor. Publish to any subject instantly. Subject-based addressing extends into streaming — streams capture whole subject hierarchies, and consumers can filter by subject or query the first or last message for any subject. Like a filtered tap: edge clients pull exactly the slice they need instead of drinking from the firehose.",
     others: [
-      { name: "Kafka", detail: "Topics auto-create by default, but production deployments pre-create them with explicit partition counts and replication factors. Adding a new event type means admin CLI calls." },
+      { name: "Kafka", detail: "Topics auto-create by default, but production deployments pre-create them with explicit partition counts and replication factors. Fundamentally, it's one topic per stream with no subject-based filtering — consumers drink directly from the firehose and get every message. You can match topic names against a regex, but there's no hierarchy or intra-stream addressing. That's a problem at the edge where clients lack the bandwidth and compute to consume an entire topic." },
       { name: "RabbitMQ", detail: "Exchanges and queues must be declared and bound before messages flow. Routing topology is configured, not implicit." },
       { name: "ZeroMQ", detail: "No subject model. You connect sockets to endpoints directly. Routing logic lives in your application code, not the transport." },
     ],
