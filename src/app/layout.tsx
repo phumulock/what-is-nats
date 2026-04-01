@@ -9,7 +9,8 @@ const jetbrainsMono = JetBrains_Mono({
 
 export const metadata: Metadata = {
   title: "What is NATS?",
-  description: "An interactive guide to understanding NATS - the simple, high-performance messaging system",
+  description:
+    "An interactive guide to understanding NATS - the simple, high-performance messaging system",
   openGraph: {
     title: "What is NATS?",
     description: "An interactive guide to understanding NATS",
@@ -26,7 +27,8 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "What is NATS?",
-    description: "An interactive guide to understanding NATS - the simple, high-performance messaging system",
+    description:
+      "An interactive guide to understanding NATS - the simple, high-performance messaging system",
     images: ["/images/whatisnats-og.png"],
   },
 };
@@ -40,9 +42,13 @@ export default function RootLayout({
     <html lang="en">
       <head>
         <script
-          defer
-          data-domain="nats.synadia.com"
-          src="https://plausible.io/js/script.hash.outbound-links.js"
+          async
+          src="https://plausible.io/js/pa-WcmeuGLd2KwYmJjeLI3UZ.js"
+        ></script>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};plausible.init()`,
+          }}
         />
       </head>
       <body className={`${jetbrainsMono.variable} antialiased`}>
