@@ -142,6 +142,18 @@ export function ScrollNav({ sections, groups }: ScrollNavProps) {
             transition={{ duration: 0.2 }}
             className="flex flex-col items-start gap-2"
           >
+            {/* What is NATS? top-level link */}
+            <button
+              onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+              className={`text-xs whitespace-nowrap transition-all ${
+                !activeSection || activeSection.globalIndex < groups[0].startIndex
+                  ? "text-sm font-semibold text-accent-green"
+                  : "text-gray-300 hover:text-white"
+              }`}
+            >
+              What is NATS?
+            </button>
+
             {/* Groups before active */}
             {groupHeroes
               .filter((hero) => hero.startIndex < activeGroup.startIndex)

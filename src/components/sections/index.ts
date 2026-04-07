@@ -1,16 +1,11 @@
 import { ComponentType } from "react";
 
-import { WhatIsNatsSection } from "./WhatIsNatsSection";
-import { HttpServerSection } from "./HttpServerSection";
-import { SingleBinarySection } from "./SingleBinarySection";
-import { HttpHeroSection } from "./HttpHeroSection";
-import { ProblemWithHttpSection } from "./ProblemWithHttpSection";
+import { ServerHeroSection } from "./ServerHeroSection";
+import { HttpAndNatsServerSection } from "./HttpAndNatsServerSection";
 import { NatsCoreHeroSection } from "./NatsCoreHeroSection";
 import { NatsCoreIntroSection } from "./NatsCoreIntroSection";
 import { LimitsOfHttpSection } from "./LimitsOfHttpSection";
-import { StillHttpSection } from "./StillHttpSection";
-import { TcpTradeoffsSection } from "./TcpTradeoffsSection";
-import { NatsOnTcpSection } from "./NatsOnTcpSection";
+import { TcpAndNatsSection } from "./TcpAndNatsSection";
 import { NatsCoreSection } from "./NatsCoreSection";
 import { LocationIndependenceSection } from "./LocationIndependenceSection";
 import { MNCommunicationSection } from "./MNCommunicationSection";
@@ -58,64 +53,60 @@ export type { SectionProps } from "./types";
 type SectionEntry = [string, ComponentType<{ number: string; id: string }>];
 
 export const WHAT_IS_NATS_SECTIONS: SectionEntry[] = [
-  ["what-is-nats", WhatIsNatsSection], // 00
-  ["http-server", HttpServerSection], // 01
-  ["single-binary", SingleBinarySection], // 02
+  // --- The Server ---
+  ["server-hero", ServerHeroSection], // 00
+  ["http-and-nats-server", HttpAndNatsServerSection], // 01
   // --- Why Not HTTP? ---
-  ["http-hero", HttpHeroSection], // 03
-  ["problem-with-http", ProblemWithHttpSection], // 04
-  ["limits-of-http", LimitsOfHttpSection], // 05
-  ["still-http", StillHttpSection], // 06
-  ["tcp-tradeoffs", TcpTradeoffsSection], // 07
-  ["nats-on-tcp", NatsOnTcpSection], // 08
+  ["limits-of-http", LimitsOfHttpSection], // 02
+  ["tcp-and-nats", TcpAndNatsSection], // 03
   // --- Core ---
-  ["nats-core-hero", NatsCoreHeroSection], // 09
-  ["nats-core-intro", NatsCoreIntroSection], // 10
-  ["nats-core", NatsCoreSection], // 11
-  ["subject-based-routing", LocationIndependenceSection], // 12
-  ["many-to-many", MNCommunicationSection], // 13
-  ["pub-sub", PubSubSection], // 14
-  ["request-reply", RequestReplySection], // 15
-  ["no-responders", NoRespondersSection], // 16
-  ["queue-groups", QueueGroupsSection], // 17
+  ["nats-core-hero", NatsCoreHeroSection], // 04
+  ["nats-core-intro", NatsCoreIntroSection], // 05
+  ["nats-core", NatsCoreSection], // 06
+  ["subject-based-routing", LocationIndependenceSection], // 07
+  ["many-to-many", MNCommunicationSection], // 08
+  ["pub-sub", PubSubSection], // 09
+  ["request-reply", RequestReplySection], // 10
+  ["no-responders", NoRespondersSection], // 11
+  ["queue-groups", QueueGroupsSection], // 12
   // --- JetStream ---
-  ["jetstream-hero", JetStreamHeroSection], // 18
-  ["when-things-go-down", WhenThingsGoDownSection], // 19
-  ["persistence-problem", PersistenceProblemSection], // 20
-  ["jetstream", JetStreamSection], // 21
-  ["persistence", PersistenceSection], // 22
-  ["streams", StreamsSection], // 23
-  ["consumers", ConsumersSection], // 24
+  ["jetstream-hero", JetStreamHeroSection], // 13
+  ["when-things-go-down", WhenThingsGoDownSection], // 14
+  ["persistence-problem", PersistenceProblemSection], // 15
+  ["jetstream", JetStreamSection], // 16
+  ["persistence", PersistenceSection], // 17
+  ["streams", StreamsSection], // 18
+  ["consumers", ConsumersSection], // 19
   // --- Data Stores ---
-  ["data-stores-hero", DataStoresHeroSection], // 25
-  ["beyond-messages", BeyondMessagesSection], // 26
-  ["data-stores", DataStoresSection], // 27
-  ["kv-store", KVStoreSection], // 28
-  ["object-store", ObjectStoreSection], // 29
+  ["data-stores-hero", DataStoresHeroSection], // 20
+  ["beyond-messages", BeyondMessagesSection], // 21
+  ["data-stores", DataStoresSection], // 22
+  ["kv-store", KVStoreSection], // 23
+  ["object-store", ObjectStoreSection], // 24
   // --- Scaling ---
-  ["scaling-hero", ScalingHeroSection], // 30
-  ["scaling-intro", ScalingIntroSection], // 31
-  ["clustering", ClusteringSection], // 32
-  ["leaf-node", LeafNodeSection], // 33
-  ["cluster", ClusterSection], // 34
-  ["raft-consensus", RaftConsensusSection], // 35
-  ["supercluster", SuperclusterSection], // 36
+  ["scaling-hero", ScalingHeroSection], // 25
+  ["scaling-intro", ScalingIntroSection], // 26
+  ["clustering", ClusteringSection], // 27
+  ["leaf-node", LeafNodeSection], // 28
+  ["cluster", ClusterSection], // 29
+  ["raft-consensus", RaftConsensusSection], // 30
+  ["supercluster", SuperclusterSection], // 31
   // --- Security ---
-  ["security-hero", SecurityHeroSection], // 37
-  ["security-intro", SecurityIntroSection], // 38
-  ["security", SecuritySection], // 39
-  ["auth-callout", AuthCalloutSection], // 40
+  ["security-hero", SecurityHeroSection], // 32
+  ["security-intro", SecurityIntroSection], // 33
+  ["security", SecuritySection], // 34
+  ["auth-callout", AuthCalloutSection], // 35
   // --- Alternatives ---
-  ["alternatives-hero", AlternativesHeroSection], // 41
-  ["alternatives-intro", AlternativesIntroSection], // 42
-  ["capabilities-table", CapabilitiesTableSection], // 43
-  ["protocol-fundamentals", ProtocolFundamentalsSection], // 44
-  ["messaging-patterns", MessagingPatternsSection], // 45
-  ["persistence-streaming", PersistenceStreamingSection], // 46
-  ["operations-security", OperationsSecuritySection], // 47
+  ["alternatives-hero", AlternativesHeroSection], // 36
+  ["alternatives-intro", AlternativesIntroSection], // 37
+  ["capabilities-table", CapabilitiesTableSection], // 38
+  ["protocol-fundamentals", ProtocolFundamentalsSection], // 39
+  ["messaging-patterns", MessagingPatternsSection], // 40
+  ["persistence-streaming", PersistenceStreamingSection], // 41
+  ["operations-security", OperationsSecuritySection], // 42
   // --- Summary ---
-  ["summary-hero", SummaryHeroSection], // 48
-  ["full-picture", FullPictureSection], // 49
-  ["what-nats-replaces", WhatNatsReplacesSection], // 50
-  ["summary", SummarySection], // 51
+  ["summary-hero", SummaryHeroSection], // 43
+  ["full-picture", FullPictureSection], // 44
+  ["what-nats-replaces", WhatNatsReplacesSection], // 45
+  ["summary", SummarySection], // 46
 ];

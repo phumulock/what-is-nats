@@ -16,8 +16,7 @@ interface HamburgerNavProps {
 }
 
 const GROUP_DESCRIPTIONS: Record<string, string> = {
-  "What is NATS?": "The communication fabric",
-  "Why Not HTTP?": "The limits of request/response",
+  "The HTTP Server": "A process, a port, a protocol",
   "Core": "Pub/Sub, request/reply & more",
   "JetStream": "Persistence & guaranteed delivery",
   "Data Stores": "KV, Object Store & beyond",
@@ -184,6 +183,26 @@ export function HamburgerNav({ sections, groups }: HamburgerNavProps) {
           >
             <div className="max-w-md mx-auto px-6 py-16 pb-24">
               <div className="space-y-6">
+                {/* What is NATS? standalone link */}
+                <div>
+                  <button
+                    data-section-id="what-is-nats-hero"
+                    onClick={() => handleSectionClick("", 0)}
+                    className="w-full text-left px-4 py-2.5 rounded-lg hover:bg-white/5 transition-colors group"
+                  >
+                    <div className="flex items-center gap-3">
+                      <div>
+                        <span className="group-hover:text-accent-green transition-colors font-medium text-white">
+                          What is NATS?
+                        </span>
+                        <p className="text-xs text-gray-400 mt-0.5">
+                          The communication fabric
+                        </p>
+                      </div>
+                    </div>
+                  </button>
+                </div>
+
                 {groupedSections.map(({ group, description, sections: groupSecs }) => {
                   if (groupSecs.length === 0) return null;
                   const hero = groupSecs[0];
