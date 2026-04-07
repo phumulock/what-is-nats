@@ -25,7 +25,7 @@ export function LimitsOfHttpSection({ number, id }: SectionProps) {
         streaming, fan-out&mdash;is bolted on after the fact.
       </p>
       <p className="mt-4 text-gray-200 text-lg">
-        Better protocols don&apos;t change the model underneath. Each one
+        <span className="text-accent-green font-bold">Better protocols don&apos;t change the model underneath.</span> Each one
         improves something&mdash;encoding, query flexibility,
         full-duplex&mdash;but none of them introduce native many-to-many
         messaging. Every connection is still one client talking to one server.

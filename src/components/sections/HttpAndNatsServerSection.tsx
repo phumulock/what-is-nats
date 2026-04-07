@@ -22,8 +22,8 @@ export function HttpAndNatsServerSection({ number, id }: SectionProps) {
         no special infrastructure&mdash;just a process on your machine.
       </p>
       <p className="mt-4 text-gray-200 text-lg">
-        A simple foundation&mdash;a single binary speaking a simple protocol
-        over TCP.
+        A simple foundation&mdash;<span className="text-accent-green font-bold">a single binary speaking a simple protocol
+        over TCP</span>.
       </p>
 
       <DiagramReveal>

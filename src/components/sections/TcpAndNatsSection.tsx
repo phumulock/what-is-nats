@@ -19,8 +19,8 @@ export function TcpAndNatsSection({ number, id }: SectionProps) {
         start working against you.
       </p>
       <p className="mt-4 text-gray-200 text-lg">
-        The NATS protocol is human-readable text over TCP&mdash;you can debug it
-        with telnet. But NATS doesn&apos;t just speak text over TCP. It takes
+        The NATS protocol is human-readable text over TCP&mdash;<span className="text-accent-green font-bold">you can debug it
+        with telnet</span>. But NATS doesn&apos;t just speak text over TCP. It takes
         control of the problems TCP can&apos;t solve at high throughput:
       </p>
 
