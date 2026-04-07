@@ -103,10 +103,10 @@ export function HamburgerNav({ sections, groups }: HamburgerNavProps) {
     return group?.name ?? groups[0]?.name ?? "";
   }, [activeId, sections, groups]);
 
-  const handleSectionClick = (id: string, globalIndex: number) => {
+  const handleSectionClick = (id: string) => {
     close();
     requestAnimationFrame(() => {
-      if (globalIndex === 0) {
+      if (!id) {
         window.scrollTo({ top: 0, behavior: "smooth" });
       } else {
         const el = document.getElementById(id);
@@ -198,7 +198,7 @@ export function HamburgerNav({ sections, groups }: HamburgerNavProps) {
                 <div>
                   <button
                     data-section-id="what-is-nats-hero"
-                    onClick={() => handleSectionClick("", 0)}
+                    onClick={() => handleSectionClick("")}
                     className="w-full text-left px-4 py-2.5 rounded-lg hover:bg-white/5 transition-colors group"
                   >
                     <div className="flex items-center gap-3">
@@ -224,7 +224,7 @@ export function HamburgerNav({ sections, groups }: HamburgerNavProps) {
                       {/* Hero / group heading */}
                       <button
                         data-section-id={hero.id}
-                        onClick={() => handleSectionClick(hero.id, hero.globalIndex)}
+                        onClick={() => handleSectionClick(hero.id)}
                         className="w-full text-left px-4 py-2.5 rounded-lg hover:bg-white/5 transition-colors group"
                       >
                         <div className="flex items-center gap-3">
@@ -249,7 +249,7 @@ export function HamburgerNav({ sections, groups }: HamburgerNavProps) {
                             <button
                               key={section.id}
                               data-section-id={section.id}
-                              onClick={() => handleSectionClick(section.id, section.globalIndex)}
+                              onClick={() => handleSectionClick(section.id)}
                               className={`w-full text-left px-3 py-1 rounded text-sm hover:text-white hover:bg-white/5 transition-colors flex items-center gap-3 ${activeId === section.id ? "text-accent-green bg-accent-green/10" : "text-gray-300"}`}
                             >
                               <span className="text-xs text-gray-500 font-mono w-5 shrink-0">
