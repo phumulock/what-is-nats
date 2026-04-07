@@ -28,7 +28,7 @@ const GROUP_DESCRIPTIONS: Record<string, string> = {
 
 export function HamburgerNav({ sections, groups }: HamburgerNavProps) {
   const [isOpen, setIsOpen] = useState(false);
-  const [activeId, setActiveId] = useState(sections[0]?.id ?? "");
+  const [activeId, setActiveId] = useState("");
   const overlayRef = useRef<HTMLDivElement>(null);
 
   const close = useCallback(() => setIsOpen(false), []);
@@ -80,6 +80,17 @@ export function HamburgerNav({ sections, groups }: HamburgerNavProps) {
 
     return () => observer.disconnect();
   }, [sections]);
+
+  // When scrolled to the top (hero area), clear activeId
+  useEffect(() => {
+    const onScroll = () => {
+      if (window.scrollY < window.innerHeight * 0.5) {
+        setActiveId("");
+      }
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   const activeGroupName = useMemo(() => {
     const activeSection = sections.find((s) => s.id === activeId);
@@ -192,7 +203,7 @@ export function HamburgerNav({ sections, groups }: HamburgerNavProps) {
                   >
                     <div className="flex items-center gap-3">
                       <div>
-                        <span className="group-hover:text-accent-green transition-colors font-medium text-white">
+                        <span className={`group-hover:text-accent-green transition-colors font-medium ${activeId === "" ? "text-accent-green" : "text-white"}`}>
                           What is NATS?
                         </span>
                         <p className="text-xs text-gray-400 mt-0.5">
