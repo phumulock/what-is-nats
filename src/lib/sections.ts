@@ -1,7 +1,8 @@
 export const pad = (n: number) => String(n).padStart(2, "0");
 
 export const CUSTOM_LABELS: Record<string, string> = {
-  "server-hero": "The HTTP Server",
+  "server-hero": "HTTP vs NATS",
+  "http-server-intro": "The HTTP Server",
   "http-and-nats-server": "A Process, a Port, a Protocol",
   "limits-of-http": "The Limits of HTTP",
   "tcp-and-nats": "TCP and NATS",

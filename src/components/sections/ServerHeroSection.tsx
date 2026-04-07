@@ -7,7 +7,7 @@ import { SectionProps } from "./types";
 export function ServerHeroSection({ number, id }: SectionProps) {
   return (
     <SectionContainer variant="hero">
-      <SectionHeader number={number} title="The HTTP Server" id={id} />
+      <SectionHeader number={number} title="HTTP vs NATS" id={id} />
       <div className="mt-6">
         <NestedDiagram
           title="HTTP Server — Layer Stack"

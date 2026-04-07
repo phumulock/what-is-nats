@@ -14,16 +14,6 @@ export function HttpAndNatsServerSection({ number, id }: SectionProps) {
         id={id}
         href="https://docs.nats.io/reference/reference-protocols"
       />
-      <p className="mt-4 text-white text-lg">A process listening on a port.</p>
-      <p className="mt-6 text-gray-200 text-lg">
-        Everyone is familiar with the HTTP server. It&apos;s just a process
-        running on a machine. It binds to a port (usually 80 or 443), accepts
-        connections, and speaks a protocol: HTTP. Under the hood, it&apos;s all
-        built on{" "}
-        <span className="text-accent-green font-bold">TCP</span>&mdash;Transmission
-        Control Protocol handles the reliable delivery so the application
-        doesn&apos;t have to.
-      </p>
       <p className="mt-6 text-gray-200 text-lg">
         NATS is exactly the same idea. Where an HTTP server listens on port 80
         and speaks HTTP, a NATS server listens on port 4222 and speaks the{" "}

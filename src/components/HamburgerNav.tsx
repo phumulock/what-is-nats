@@ -16,7 +16,7 @@ interface HamburgerNavProps {
 }
 
 const GROUP_DESCRIPTIONS: Record<string, string> = {
-  "The HTTP Server": "A process, a port, a protocol",
+  "HTTP vs NATS": "A process, a port, a protocol",
   "Core": "Pub/Sub, request/reply & more",
   "JetStream": "Persistence & guaranteed delivery",
   "Data Stores": "KV, Object Store & beyond",
