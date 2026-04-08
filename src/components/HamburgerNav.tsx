@@ -16,8 +16,7 @@ interface HamburgerNavProps {
 }
 
 const GROUP_DESCRIPTIONS: Record<string, string> = {
-  "What is NATS?": "The communication fabric",
-  "Why Not HTTP?": "The limits of request/response",
+  "HTTP vs NATS": "A process, a port, a protocol",
   "Core": "Pub/Sub, request/reply & more",
   "JetStream": "Persistence & guaranteed delivery",
   "Data Stores": "KV, Object Store & beyond",
@@ -29,7 +28,7 @@ const GROUP_DESCRIPTIONS: Record<string, string> = {
 
 export function HamburgerNav({ sections, groups }: HamburgerNavProps) {
   const [isOpen, setIsOpen] = useState(false);
-  const [activeId, setActiveId] = useState(sections[0]?.id ?? "");
+  const [activeId, setActiveId] = useState("");
   const overlayRef = useRef<HTMLDivElement>(null);
 
   const close = useCallback(() => setIsOpen(false), []);
@@ -82,6 +81,17 @@ export function HamburgerNav({ sections, groups }: HamburgerNavProps) {
     return () => observer.disconnect();
   }, [sections]);
 
+  // When scrolled to the top (hero area), clear activeId
+  useEffect(() => {
+    const onScroll = () => {
+      if (window.scrollY < window.innerHeight * 0.5) {
+        setActiveId("");
+      }
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
   const activeGroupName = useMemo(() => {
     const activeSection = sections.find((s) => s.id === activeId);
     if (!activeSection) return groups[0]?.name ?? "";
@@ -93,10 +103,10 @@ export function HamburgerNav({ sections, groups }: HamburgerNavProps) {
     return group?.name ?? groups[0]?.name ?? "";
   }, [activeId, sections, groups]);
 
-  const handleSectionClick = (id: string, globalIndex: number) => {
+  const handleSectionClick = (id: string) => {
     close();
     requestAnimationFrame(() => {
-      if (globalIndex === 0) {
+      if (!id) {
         window.scrollTo({ top: 0, behavior: "smooth" });
       } else {
         const el = document.getElementById(id);
@@ -184,6 +194,26 @@ export function HamburgerNav({ sections, groups }: HamburgerNavProps) {
           >
             <div className="max-w-md mx-auto px-6 py-16 pb-24">
               <div className="space-y-6">
+                {/* What is NATS? standalone link */}
+                <div>
+                  <button
+                    data-section-id="what-is-nats-hero"
+                    onClick={() => handleSectionClick("")}
+                    className="w-full text-left px-4 py-2.5 rounded-lg hover:bg-white/5 transition-colors group"
+                  >
+                    <div className="flex items-center gap-3">
+                      <div>
+                        <span className={`group-hover:text-accent-green transition-colors font-medium ${activeId === "" ? "text-accent-green" : "text-white"}`}>
+                          What is NATS?
+                        </span>
+                        <p className="text-xs text-gray-400 mt-0.5">
+                          The communication fabric
+                        </p>
+                      </div>
+                    </div>
+                  </button>
+                </div>
+
                 {groupedSections.map(({ group, description, sections: groupSecs }) => {
                   if (groupSecs.length === 0) return null;
                   const hero = groupSecs[0];
@@ -194,7 +224,7 @@ export function HamburgerNav({ sections, groups }: HamburgerNavProps) {
                       {/* Hero / group heading */}
                       <button
                         data-section-id={hero.id}
-                        onClick={() => handleSectionClick(hero.id, hero.globalIndex)}
+                        onClick={() => handleSectionClick(hero.id)}
                         className="w-full text-left px-4 py-2.5 rounded-lg hover:bg-white/5 transition-colors group"
                       >
                         <div className="flex items-center gap-3">
@@ -219,7 +249,7 @@ export function HamburgerNav({ sections, groups }: HamburgerNavProps) {
                             <button
                               key={section.id}
                               data-section-id={section.id}
-                              onClick={() => handleSectionClick(section.id, section.globalIndex)}
+                              onClick={() => handleSectionClick(section.id)}
                               className={`w-full text-left px-3 py-1 rounded text-sm hover:text-white hover:bg-white/5 transition-colors flex items-center gap-3 ${activeId === section.id ? "text-accent-green bg-accent-green/10" : "text-gray-300"}`}
                             >
                               <span className="text-xs text-gray-500 font-mono w-5 shrink-0">

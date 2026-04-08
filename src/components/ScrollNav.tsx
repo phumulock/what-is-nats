@@ -18,18 +18,14 @@ interface ScrollNavProps {
   groups: SectionGroup[];
 }
 
-function scrollToSection(id: string, globalIndex: number) {
-  if (globalIndex === 0) {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-    return;
-  }
+function scrollToSection(id: string) {
   const el = document.getElementById(id);
   const section = el?.closest("section");
   (section ?? el)?.scrollIntoView({ behavior: "smooth", block: "start" });
 }
 
 export function ScrollNav({ sections, groups }: ScrollNavProps) {
-  const [activeId, setActiveId] = useState(sections[0]?.id ?? "");
+  const [activeId, setActiveId] = useState("");
   const pathname = usePathname();
   const currentIndex = getPageIndex(pathname);
   const prevPage = currentIndex > 0 ? PAGES[currentIndex - 1] : null;
@@ -60,20 +56,34 @@ export function ScrollNav({ sections, groups }: ScrollNavProps) {
     return () => observer.disconnect();
   }, [sections]);
 
+  // When scrolled to the top (hero area), clear activeId so "What is NATS?" highlights
+  useEffect(() => {
+    const onScroll = () => {
+      if (window.scrollY < window.innerHeight * 0.5) {
+        setActiveId("");
+      }
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
   const activeSection = sections.find((s) => s.id === activeId);
 
+  const isHero = !activeSection;
+
   const activeGroup = useMemo(() => {
-    if (!activeSection) return groups[0];
+    if (!activeSection) return null;
     return (
       groups.find(
         (g) =>
           activeSection.globalIndex >= g.startIndex &&
           activeSection.globalIndex < g.endIndex
-      ) ?? groups[0]
+      ) ?? null
     );
   }, [activeSection, groups]);
 
   const visibleSections = useMemo(() => {
+    if (!activeGroup) return [];
     return sections
       .filter(
         (s) =>
@@ -135,20 +145,32 @@ export function ScrollNav({ sections, groups }: ScrollNavProps) {
 
         <AnimatePresence mode="wait">
           <motion.div
-            key={activeGroup.name}
+            key={activeGroup?.name ?? "hero"}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
             className="flex flex-col items-start gap-2"
           >
+            {/* What is NATS? top-level link */}
+            <button
+              onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+              className={`whitespace-nowrap transition-all ${
+                isHero
+                  ? "text-sm font-semibold text-accent-green"
+                  : "text-xs text-gray-300 hover:text-white"
+              }`}
+            >
+              What is NATS?
+            </button>
+
             {/* Groups before active */}
-            {groupHeroes
+            {activeGroup && groupHeroes
               .filter((hero) => hero.startIndex < activeGroup.startIndex)
               .map((hero) => (
                 <button
                   key={hero.name}
-                  onClick={() => scrollToSection(hero.id, hero.startIndex)}
+                  onClick={() => scrollToSection(hero.id)}
                   className="text-xs text-gray-300 hover:text-white whitespace-nowrap transition-all"
                 >
                   {hero.name}
@@ -156,23 +178,25 @@ export function ScrollNav({ sections, groups }: ScrollNavProps) {
               ))}
 
             {/* Active group name */}
-            <button
-              onClick={() => {
-                const hero = groupHeroes.find((h) => h.name === activeGroup.name);
-                if (hero) {
-                  scrollToSection(hero.id, hero.startIndex);
-                }
-              }}
-              className="text-sm font-semibold text-accent-green whitespace-nowrap transition-all"
-            >
-              {activeGroup.name}
-            </button>
+            {activeGroup && (
+              <button
+                onClick={() => {
+                  const hero = groupHeroes.find((h) => h.name === activeGroup.name);
+                  if (hero) {
+                    scrollToSection(hero.id);
+                  }
+                }}
+                className="text-sm font-semibold text-accent-green whitespace-nowrap transition-all"
+              >
+                {activeGroup.name}
+              </button>
+            )}
 
             {/* Section labels within active group */}
             {visibleSections.map((section) => (
               <button
                 key={section.id}
-                onClick={() => scrollToSection(section.id, section.globalIndex)}
+                onClick={() => scrollToSection(section.id)}
                 className={`flex items-center gap-1.5 text-xs font-medium transition-all whitespace-nowrap pl-2 ${
                   activeId === section.id
                     ? "text-accent-green"
@@ -193,11 +217,11 @@ export function ScrollNav({ sections, groups }: ScrollNavProps) {
 
             {/* Groups after active */}
             {groupHeroes
-              .filter((hero) => hero.startIndex > activeGroup.startIndex)
+              .filter((hero) => !activeGroup || hero.startIndex > activeGroup.startIndex)
               .map((hero) => (
                 <button
                   key={hero.name}
-                  onClick={() => scrollToSection(hero.id, hero.startIndex)}
+                  onClick={() => scrollToSection(hero.id)}
                   className="text-xs text-gray-300 hover:text-white whitespace-nowrap transition-all"
                 >
                   {hero.name}

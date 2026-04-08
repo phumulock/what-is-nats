@@ -13,15 +13,14 @@ export interface SectionGroup {
 }
 
 export const SECTION_GROUPS: SectionGroup[] = [
-  { name: "What is NATS?", startIndex: 0, endIndex: 3 },
-  { name: "Why Not HTTP?", startIndex: 3, endIndex: 9 },
-  { name: "Core", startIndex: 9, endIndex: 18 },
-  { name: "JetStream", startIndex: 18, endIndex: 25 },
-  { name: "Data Stores", startIndex: 25, endIndex: 30 },
-  { name: "Scaling", startIndex: 30, endIndex: 37 },
-  { name: "Security", startIndex: 37, endIndex: 41 },
-  { name: "Alternatives", startIndex: 41, endIndex: 48 },
-  { name: "Summary", startIndex: 48, endIndex: 52 },
+  { name: "HTTP vs NATS", startIndex: 0, endIndex: 5 },
+  { name: "Core", startIndex: 5, endIndex: 14 },
+  { name: "JetStream", startIndex: 14, endIndex: 21 },
+  { name: "Data Stores", startIndex: 21, endIndex: 26 },
+  { name: "Scaling", startIndex: 26, endIndex: 33 },
+  { name: "Security", startIndex: 33, endIndex: 37 },
+  { name: "Alternatives", startIndex: 37, endIndex: 44 },
+  { name: "Summary", startIndex: 44, endIndex: 48 },
 ];
 
 export interface PageConfig {
@@ -34,7 +33,7 @@ export interface PageConfig {
 }
 
 // Global spotlight indices from the original single-page layout
-const GLOBAL_SPOTLIGHT = [0, 4, 10, 19, 26, 31, 38, 42, 50];
+const GLOBAL_SPOTLIGHT = [0, 1, 3, 6, 15, 22, 27, 34, 38, 46];
 
 function makePageConfig(
   path: string,
@@ -58,7 +57,7 @@ function makePageConfig(
 }
 
 export const PAGES: PageConfig[] = [
-  makePageConfig("/", "What is NATS?", 0, 52, [
+  makePageConfig("/", "What is NATS?", 0, 48, [
     { label: "Core", examples: "Pub/Sub, request/reply, queue groups", color: "#4ade80" },
   ]),
 ];

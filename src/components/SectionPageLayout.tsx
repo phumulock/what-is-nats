@@ -8,7 +8,6 @@ import { ScrollNav } from "@/components/ScrollNav";
 import { HamburgerNav } from "@/components/HamburgerNav";
 import type { PageConfig } from "@/config/pages";
 import { getPageSections, SECTION_GROUPS } from "@/config/pages";
-import { NestedDiagram } from "@/components/NestedDiagram";
 import { pad } from "@/lib/sections";
 
 interface SectionPageLayoutProps {
@@ -47,18 +46,32 @@ export function SectionPageLayout({
       <main className="min-h-screen px-6 py-12 md:py-20">
         <SpotlightProvider>
           <div className="max-w-2xl mx-auto space-y-32">
-            <div className="h-[calc(100dvh-6rem)] md:h-[calc(100dvh-10rem)] flex flex-col items-center justify-center gap-4 py-12">
+            <div className="min-h-[calc(100dvh-6rem)] md:min-h-[calc(100dvh-10rem)] flex flex-col items-center justify-center gap-4 py-12">
               <span className="text-sm tracking-widest text-accent-green/40 uppercase">
                 Interactive Guide
               </span>
               <h1 className="text-4xl md:text-5xl font-semibold text-white tracking-tight text-center">
                 {page.title}
               </h1>
-              {page.heroLayers && (
-                <div className="mt-4">
-                  <NestedDiagram layers={page.heroLayers} />
-                </div>
-              )}
+              <div className="mt-4 border-l-2 border-green-400/40 pl-6 text-left max-w-xl">
+                <p className="text-white text-lg">
+                  A communication fabric for distributed applications.
+                </p>
+                <p className="mt-4 text-gray-200 text-lg">
+                  NATS lets any service talk to any other service&mdash;without
+                  knowing where it lives, how many instances are running, or
+                  whether it&apos;s even online yet. One protocol covers pub/sub,
+                  request/reply, queue-based load distribution, persistent
+                  streaming, key-value storage, and object storage. Layer on
+                  multi-region clustering, edge deployments via leaf nodes, and
+                  built-in security with accounts and decentralized
+                  auth&mdash;all from a single binary.
+                </p>
+                <p className="mt-4 text-gray-200 text-lg">
+                  But to understand what that means&mdash;and everything NATS can
+                  do&mdash;let&apos;s start with something everyone knows.
+                </p>
+              </div>
               <p className="text-gray-300 text-sm">Scroll to explore</p>
             </div>
             {sections.map(([id, Component], i) => (
