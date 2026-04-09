@@ -126,7 +126,7 @@ export function ServerProcessDiagram() {
       className="border border-border rounded-lg p-4 md:p-6 bg-surface"
       {...containerProps}
     >
-      <div className="flex gap-3 md:gap-6">
+      <div className="flex flex-col md:flex-row gap-3 md:gap-6">
         <ServerColumn
           step={step}
           label="HTTP Server"
@@ -142,14 +142,16 @@ export function ServerProcessDiagram() {
           ]}
         />
 
-        {/* Equals divider */}
-        <div className="flex flex-col items-center justify-start pt-5">
+        {/* Equals divider — horizontal on mobile, vertical on desktop */}
+        <div className="flex md:flex-col items-center justify-center md:justify-start md:pt-5 gap-3">
+          <div className="flex-1 h-px md:h-0 md:w-0 bg-border md:bg-transparent" />
           <motion.span
             animate={{ opacity: step >= 1 ? 1 : 0.2 }}
-            className="text-lg font-mono text-gray-200"
+            className="text-lg font-mono text-gray-200 shrink-0"
           >
             ≈
           </motion.span>
+          <div className="flex-1 h-px md:h-0 md:w-0 bg-border md:bg-transparent" />
         </div>
 
         <ServerColumn
