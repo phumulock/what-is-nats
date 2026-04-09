@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, AnimatePresence, LayoutGroup } from "framer-motion";
 import { COLORS } from "@/lib/colors";
 import { useDiagramPlayback } from "./useDiagramPlayback";
 import { DiagramControls } from "./DiagramControls";
@@ -35,15 +35,15 @@ const PROBLEMS_AND_SOLUTIONS = [
   },
 ];
 
-// Steps:
-// 0: TCP foundation title
-// 1-3: TCP provides items appear
-// 4: "But at scale..." divider
-// 5-7: Problem items appear (with problem detail)
-// 8: Transition — "NATS builds on top of TCP"
-// 9-11: NATS solutions reveal on each problem card
-// 12: Final summary
+// Phase 1 (steps 0-3): TCP foundation + what TCP provides
+// Phase 2 (steps 4-12): "at scale" problems + NATS solutions + summary
 const TOTAL_STEPS = 13;
+
+const pageSwap = {
+  initial: { opacity: 0 },
+  animate: { opacity: 1, transition: { duration: 0.35 } },
+  exit: { opacity: 0, transition: { duration: 0.2 } },
+};
 
 export function TcpAndNatsDiagram() {
   const {
@@ -57,167 +57,141 @@ export function TcpAndNatsDiagram() {
     containerProps,
   } = useDiagramPlayback(TOTAL_STEPS, 2500);
 
+  const inPhase2 = step >= 4;
+
   return (
     <div
-      className="border border-border rounded-lg p-6 bg-surface"
+      className="border border-border rounded-lg p-4 md:p-6 bg-surface"
       {...containerProps}
     >
-      {/* TCP Foundation */}
-      <motion.div
-        animate={{ opacity: step >= 0 ? 1 : 0 }}
-        className="text-center mb-4"
-      >
-        <span className="text-xs font-mono text-gray-200 border border-border rounded-full px-3 py-1">
-          TCP &mdash; The Foundation
-        </span>
-      </motion.div>
-
-      {/* TCP provides */}
-      <div className="flex flex-col md:flex-row md:gap-3 gap-2 mb-4">
-        {TCP_PROVIDES.map((item, i) => (
-          <motion.div
-            key={item.label}
-            animate={{
-              opacity: step >= i + 1 ? 1 : 0,
-              y: step >= i + 1 ? 0 : 10,
-            }}
-            transition={{ duration: 0.4 }}
-            className="flex-1 text-center p-3 rounded-lg border"
-            style={{
-              borderColor: step >= i + 1 ? `${item.color}40` : COLORS.border,
-              backgroundColor: step >= i + 1 ? `${item.color}08` : "transparent",
-            }}
-          >
-            <div className="text-xs font-medium" style={{ color: item.color }}>
-              {item.label}
-            </div>
-            <div className="text-xs text-gray-200 mt-1">{item.desc}</div>
-          </motion.div>
-        ))}
-      </div>
-
-      {/* "But at scale..." divider */}
-      <motion.div
-        animate={{ opacity: step >= 4 ? 1 : 0, scale: step >= 4 ? 1 : 0 }}
-        transition={{ duration: 0.5 }}
-        className="my-4 flex items-center gap-3"
-      >
-        <div className="flex-1 h-px bg-gradient-to-r from-transparent to-accent-red/40" />
-        <span className="text-xs text-accent-red font-mono whitespace-nowrap">
-          at millions of msg/sec
-        </span>
-        <div className="flex-1 h-px bg-gradient-to-l from-transparent to-accent-red/40" />
-      </motion.div>
-
-      {/* Problem + Solution cards */}
-      <div className="space-y-3">
-        {PROBLEMS_AND_SOLUTIONS.map((item, i) => (
-          <motion.div
-            key={item.problem}
-            animate={{
-              opacity: step >= i + 5 ? 1 : 0,
-              x: step >= i + 5 ? 0 : -16,
-            }}
-            transition={{ duration: 0.4 }}
-            className="rounded-lg border overflow-hidden"
-            style={{
-              borderColor:
-                step >= i + 9
-                  ? `${item.solutionColor}30`
-                  : step >= i + 5
-                    ? `${item.problemColor}30`
-                    : COLORS.border,
-            }}
-          >
-            {/* TCP problem */}
-            <div
-              className="flex items-start gap-3 p-3"
-              style={{ backgroundColor: `${item.problemColor}06` }}
-            >
-              <div
-                className="flex-shrink-0 text-xs font-mono px-2 py-0.5 rounded border mt-0.5"
-                style={{
-                  color: step >= i + 9 ? `${item.problemColor}80` : item.problemColor,
-                  borderColor: `${item.problemColor}${step >= i + 9 ? "30" : "50"}`,
-                }}
-              >
-                {step >= i + 9 ? "TCP" : "PROBLEM"}
-              </div>
-              <div>
-                <span
-                  className="text-sm font-medium"
-                  style={{
-                    color: step >= i + 9 ? `${item.problemColor}80` : item.problemColor,
-                  }}
-                >
-                  {item.problem}
-                </span>
-                {step < i + 9 && (
-                  <p className="text-xs text-gray-200 mt-1">{item.problemDetail}</p>
-                )}
-              </div>
+      {/* Swappable content area */}
+      <LayoutGroup>
+      <motion.div layout transition={{ layout: { duration: 0.35, ease: "easeInOut" } }}>
+      <AnimatePresence mode="popLayout">
+        {!inPhase2 ? (
+          <motion.div key="tcp" layout {...pageSwap}>
+            {/* Phase 1: TCP Foundation */}
+            <div className="text-center mb-3">
+              <span className="text-xs font-mono text-gray-200 border border-border rounded-full px-3 py-1">
+                TCP &mdash; The Foundation
+              </span>
             </div>
 
-            {/* NATS solution */}
-            <motion.div
-              animate={{
-                opacity: step >= i + 9 ? 1 : 0,
-                height: step >= i + 9 ? "auto" : 0,
-              }}
-              transition={{ duration: 0.4 }}
-              className="overflow-hidden"
-            >
-              <div
-                className="flex items-start gap-3 p-3 border-t"
-                style={{
-                  borderColor: `${item.solutionColor}20`,
-                  backgroundColor: `${item.solutionColor}06`,
-                }}
-              >
-                <div
-                  className="flex-shrink-0 text-xs font-mono px-2 py-0.5 rounded border mt-0.5"
+            <div className="flex flex-col md:flex-row gap-2 md:gap-3">
+              {TCP_PROVIDES.map((item, i) => (
+                <motion.div
+                  key={item.label}
+                  animate={{
+                    opacity: step >= i + 1 ? 1 : 0,
+                    y: step >= i + 1 ? 0 : 10,
+                  }}
+                  transition={{ duration: 0.4 }}
+                  className="flex-1 text-center p-3 rounded-lg border"
                   style={{
-                    color: item.solutionColor,
-                    borderColor: `${item.solutionColor}50`,
+                    borderColor: step >= i + 1 ? `${item.color}40` : COLORS.border,
+                    backgroundColor: step >= i + 1 ? `${item.color}08` : "transparent",
                   }}
                 >
-                  NATS
-                </div>
-                <span className="text-sm" style={{ color: item.solutionColor }}>
-                  {item.solution}
-                </span>
-              </div>
-            </motion.div>
+                  <div className="text-xs font-medium" style={{ color: item.color }}>
+                    {item.label}
+                  </div>
+                  <div className="text-xs text-gray-200 mt-1">{item.desc}</div>
+                </motion.div>
+              ))}
+            </div>
           </motion.div>
-        ))}
-      </div>
+        ) : (
+          <motion.div key="problems" layout {...pageSwap}>
+            {/* Phase 2: At scale — problems & NATS solutions */}
+            <div className="flex items-center gap-3 mb-3">
+              <div className="flex-1 h-px bg-gradient-to-r from-transparent to-accent-red/40" />
+              <span className="text-xs text-accent-red font-mono whitespace-nowrap">
+                at millions of msg/sec
+              </span>
+              <div className="flex-1 h-px bg-gradient-to-l from-transparent to-accent-red/40" />
+            </div>
 
-      {/* NATS transition badge */}
-      <motion.div
-        animate={{ opacity: step >= 8 ? 1 : 0, scale: step >= 8 ? 1 : 0.9 }}
-        transition={{ duration: 0.4 }}
-        className="text-center my-4"
-      >
-        <span className="text-xs font-mono text-accent-green border border-accent-green/30 rounded-full px-3 py-1">
-          NATS builds on top of TCP
-        </span>
-      </motion.div>
+            <div className="flex flex-col md:flex-row gap-2 md:gap-3">
+              {PROBLEMS_AND_SOLUTIONS.map((item, i) => {
+                const visible = step >= i + 5;
+                const solved = step >= i + 9;
 
-      {/* Final summary */}
-      <motion.div
-        animate={{ opacity: step >= 12 ? 1 : 0 }}
-        className="p-4 border border-accent-green/30 rounded-lg bg-accent-green/5 text-center"
-      >
-        <p className="text-sm text-accent-green">
-          Keep TCP&apos;s reliability. Replace what doesn&apos;t work at scale.
-        </p>
-        <p className="text-xs text-gray-200 mt-1">
-          Own connection management, own buffering, own failure detection.
-        </p>
+                return (
+                  <motion.div
+                    key={item.problem}
+                    animate={{
+                      opacity: visible ? 1 : 0,
+                      y: visible ? 0 : 10,
+                    }}
+                    transition={{ duration: 0.4 }}
+                    className="flex-1 rounded-lg border p-3"
+                    style={{
+                      borderColor: solved
+                        ? `${item.solutionColor}30`
+                        : visible
+                          ? `${item.problemColor}30`
+                          : COLORS.border,
+                      backgroundColor: solved
+                        ? `${item.solutionColor}06`
+                        : `${item.problemColor}06`,
+                    }}
+                  >
+                    {/* Badge */}
+                    <div
+                      className="inline-block text-xs font-mono px-2 py-0.5 rounded border mb-1"
+                      style={{
+                        color: solved ? item.solutionColor : item.problemColor,
+                        borderColor: solved ? `${item.solutionColor}50` : `${item.problemColor}50`,
+                      }}
+                    >
+                      {solved ? "NATS" : "TCP"}
+                    </div>
+                    {/* Title — always visible */}
+                    <div
+                      className="text-sm font-medium"
+                      style={{ color: solved ? item.solutionColor : item.problemColor }}
+                    >
+                      {item.problem}
+                    </div>
+                    {/* Detail swaps: problem detail → solution */}
+                    <AnimatePresence mode="wait">
+                      {solved ? (
+                        <motion.p
+                          key="solution"
+                          initial={{ opacity: 0 }}
+                          animate={{ opacity: 1 }}
+                          exit={{ opacity: 0 }}
+                          transition={{ duration: 0.25 }}
+                          className="text-xs mt-1"
+                          style={{ color: item.solutionColor }}
+                        >
+                          {item.solution}
+                        </motion.p>
+                      ) : (
+                        <motion.p
+                          key="problem"
+                          initial={{ opacity: 0 }}
+                          animate={{ opacity: 1 }}
+                          exit={{ opacity: 0 }}
+                          transition={{ duration: 0.25 }}
+                          className="text-xs text-gray-200 mt-1"
+                        >
+                          {item.problemDetail}
+                        </motion.p>
+                      )}
+                    </AnimatePresence>
+                  </motion.div>
+                );
+              })}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
       </motion.div>
+      </LayoutGroup>
 
       {/* Status text */}
-      <div className="mt-4 text-center text-sm min-h-10">
+      <div className="mt-3 text-center text-sm min-h-10">
         {step === 0 && (
           <span className="text-gray-200">TCP was built for reliable communication...</span>
         )}
